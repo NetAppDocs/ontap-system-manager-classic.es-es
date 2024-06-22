@@ -1,0 +1,90 @@
+---
+permalink: online-help-96-97/task_adding_capacity_disks.html 
+sidebar: sidebar 
+keywords: add, capacity, disk, online, help, aggregate 
+summary: Puede aumentar el tamaño de un agregado no raíz o de un agregado raíz que contenga discos mediante la adición de discos de capacidad. Puede usar System Manager para añadir HDD o SSD del tipo de disco ONTAP seleccionado y para modificar las opciones de grupos RAID. 
+---
+= Añadir discos de capacidad con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede aumentar el tamaño de un agregado no raíz o de un agregado raíz que contenga discos mediante la adición de discos de capacidad. Puede usar el clásico de System Manager (disponible en ONTAP 9.7 y versiones anteriores) para añadir HDD o SSD del tipo de disco ONTAP seleccionado y modificar las opciones de grupos RAID.
+
+.Antes de empezar
+* El agregado debe estar en línea.
+* Debe haber suficientes discos de repuesto compatibles.
+
+
+.Acerca de esta tarea
+* Se recomienda añadir discos con el mismo tamaño que los demás discos del agregado.
++
+Si se añaden discos más pequeños, la configuración del agregado no será óptima, lo que puede causar problemas de rendimiento.
+
++
+Si se añaden discos más grandes que los de un grupo RAID existente en el agregado, el tamaño de los discos se reducirá para equiparar su espacio al de los demás discos del grupo RAID. Si se crea un nuevo grupo RAID en el agregado con discos cuyo tamaño es similar, el tamaño de estos no se reducirá.
+
++
+Si se añaden discos que no tienen el mismo tamaño que los demás discos del agregado, es posible que no se añadan los demás discos seleccionados; si no se agregan automáticamente otros discos con un tamaño útil entre 90 y 105 por ciento del tamaño especificado. Por ejemplo, para un disco de 744 GB, se podrán elegir todos los discos de entre 669 GB y 781 GB. Para todos los discos de repuesto en este rango, ONTAP los seleccionará en este orden: Primero solo los discos con particiones, luego solo los discos sin particiones y, finalmente, los discos con particiones y sin particiones.
+
+* No se puede usar System Manager para añadir unidades HDD a las siguientes configuraciones:
++
+** Agregados que solo contienen unidades SSD
+** Agregados raíz que contienen discos con particiones
+Debe usar la interfaz de línea de comandos para añadir unidadades HDD a dichas configuraciones.
+
+
+* Los discos compartidos admiten dos tipos de RAID: RAID DP y RAID-TEC.
+* No se pueden usar SSD con pools de almacenamiento.
+* Si el tipo de grupo RAID es RAID DP, y si se añaden discos de tipo FSAS o MSATA con un tamaño igual o mayor que 10 TB, solo se podrán añadir a. `Specific RAID group`, y no a. `New RAID group` o. `All RAID groups`.
++
+Los discos se añaden tras reducir su tamaño hasta que coincida con el de los discos del grupo RAID preexistente del agregado actual.
+
+* Si el tipo de grupo RAID es RAID-TEC, y si se añaden discos de tipo FSAS o MSATA con un tamaño igual o mayor que 10 TB, se podrán añadir a. `All RAID groups`, `New RAID group`, y. `Specific RAID group`.
++
+Los discos se añaden tras reducir su tamaño hasta que coincida con el de los discos del grupo RAID preexistente del agregado actual.
+
+
+
+.Pasos
+. Elija uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento*.
+** Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+
+
+. En la ventana *niveles de almacenamiento*, seleccione el agregado al que desea agregar discos de capacidad y, a continuación, haga clic en menú:más acciones[Añadir capacidad].
+. Especifique la siguiente información en el cuadro de diálogo *Añadir capacidad*:
++
+.. Especifique el tipo de disco de los discos de capacidad mediante la opción *Tipo de disco a Agregar*.
+.. Especifique el número de discos de capacidad mediante la opción *número de discos o particiones*.
+
+
+. Especifique el grupo RAID al que se agregarán los discos de capacidad mediante la opción *Agregar discos a*.
++
+De forma predeterminada, System Manager agrega los discos de capacidad a. `All RAID groups`.
+
++
+.. Haga clic en *Cambiar*.
+.. En el cuadro de diálogo *selección de grupo RAID*, especifique el grupo RAID como `New RAID group` o. `Specific RAID group` Mediante la opción *Agregar discos a*.
++
+Los discos compartidos solo se pueden añadir a la `New RAID group` opción.
+
+
+
+. Haga clic en *Agregar*.
++
+Para los agregados con mirroring, se muestra un cuadro de diálogo *Añadir capacidad* con la información de que se agregará el doble del número de discos seleccionados.
+
+. En el cuadro de diálogo *Agregar capacidad*, haga clic en *Sí* para agregar los discos de capacidad.
+
+
+.Resultados
+Los discos de capacidad se incluirán en el agregado seleccionado y el tamaño del agregado aumentará.
+
+*Información relacionada*
+
+xref:concept_what_compatible_spare_disks_are.adoc[¿Qué discos de repuesto son compatibles]

@@ -1,0 +1,46 @@
+---
+permalink: fc-config-windows/task_discovering_new_disks.html 
+sidebar: sidebar 
+keywords: lun, storage, virtual, machine, svm, appear, disk, windows, host, automatic, discover, manual, rescan, discover new disk 
+summary: 'Los LUN de su máquina virtual de almacenamiento (SVM) aparecen como discos en el host Windows. El host no detecta automáticamente los discos nuevos de los LUN que agregue al sistema. Debe volver a analizar manualmente los discos para detectarlos.' 
+---
+= Detección de nuevos discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los LUN de su máquina virtual de almacenamiento (SVM) aparecen como discos en el host Windows. El host no detecta automáticamente los discos nuevos de los LUN que agregue al sistema. Debe volver a analizar manualmente los discos para detectarlos.
+
+.Pasos
+. Abra la utilidad Administración de equipos de Windows:
++
+|===
+| Si está usando... | Vaya a... 
+
+
+ a| 
+Windows Server 2012
+ a| 
+*Herramientas* > *Administración de ordenadores*
+
+
+
+ a| 
+Windows Server 2008
+ a| 
+*Inicio* > *Herramientas administrativas* > *Administración de ordenadores*
+
+
+
+ a| 
+Windows Server 2016
+ a| 
+*Inicio* *> Herramientas administrativas* *> Administración de equipos*
+
+|===
+. Expanda el nodo *almacenamiento* en el árbol de navegación.
+. Haga clic en *Administración de discos*.
+. Haga clic en *Acción* > *discos de reexploración*.
+

@@ -1,0 +1,234 @@
+---
+permalink: online-help-96-97/concept_qtrees.html 
+sidebar: sidebar 
+keywords: system, manager, create, edit, delete, qtree, partition, data, policies, svm 
+summary: Puede usar System Manager para crear, editar y eliminar qtrees. 
+---
+= Gestione Qtrees con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear, editar y eliminar qtrees.
+
+
+
+== Cree qtrees
+
+Los qtrees permiten gestionar los datos y crear particiones de estos en un volumen. Puede usar el cuadro de diálogo Create Qtree de System Manager para añadir un nuevo qtree a un volumen en el sistema de almacenamiento.
+
+.Pasos
+. Haga clic en *almacenamiento* > *Qtrees*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que desea crear un qtree.
+. Haga clic en *Crear*.
+. En la ficha *Detalles* del cuadro de diálogo *Crear qtree*, escriba un nombre para el qtree.
+. Seleccione el volumen al que desea añadir el qtree.
++
+La lista de exploración de volumen incluye solo los volúmenes que están en línea.
+
+. Si desea deshabilitar los bloqueos oportunistas del qtree, desactive la casilla de comprobación *Enable Oplocks for files and directories in this Qtree*.
++
+De forma predeterminada, los bloqueos oportunistas están habilitados para cada qtree.
+
+. Si desea cambiar el estilo de seguridad heredado predeterminado, seleccione un nuevo estilo de seguridad.
++
+El estilo de seguridad predeterminado del qtree es el estilo de seguridad del volumen en el que se encuentra.
+
+. Si desea cambiar la política de exportación heredada predeterminada, seleccione una política de exportación existente o cree una política de exportación.
++
+La política de exportación predeterminada del qtree es la política de exportación asignada al volumen en el que se encuentra.
+
+. Si desea restringir el uso de espacio en disco, haga clic en la ficha *cuotas*.
++
+.. Si desea aplicar cuotas al qtree, haga clic en *Qtree quota* y, a continuación, especifique el límite de espacio en disco.
+.. Si desea aplicar cuotas a todos los usuarios en el qtree, haga clic en *cuota de usuario* y, a continuación, especifique el límite de espacio en disco.
+
+
+. Haga clic en *Crear*.
+. Compruebe que el qtree que ha creado se encuentre en la lista de qtrees de la ventana *Qtrees*.
+
+
+
+
+== Eliminar qtrees
+
+Puede eliminar un qtree y reclamar el espacio en disco que usa el qtree dentro de un volumen mediante System Manager. Cuando se elimina un qtree, ONTAP ya no aplica todas las cuotas que correspondan a ese qtree.
+
+.Antes de empezar
+* El estado del qtree debe ser normal.
+* El qtree no debe contener ninguna LUN.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *Qtrees*.
+. En la ventana *Qtrees*, seleccione uno o más qtrees que desee eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+. Compruebe que el qtree que ha eliminado ya no esté incluido en la lista de qtrees de la ventana *Qtrees*.
+
+
+
+
+== Editar qtrees
+
+Puede usar System Manager para modificar las propiedades de un qtree como el estilo de seguridad, habilitar o deshabilitar los bloqueos oportunistas y asignar una política de exportación nueva o existente.
+
+.Pasos
+. Haga clic en *almacenamiento* > *Qtrees*.
+. Seleccione el qtree que desea editar y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Edit Qtree*, edite las siguientes propiedades como corresponda:
++
+** Bloqueos oportunistas
+** Estilo de seguridad
+** Política de exportación
+
+
+. Haga clic en *Guardar*.
+. Compruebe los cambios realizados en el qtree seleccionado en la ventana *Qtrees*.
+
+
+
+
+== Asigne políticas de exportación a qtrees
+
+En lugar de exportar un volumen completo, puede exportar un qtree concreto de un volumen para que los clientes puedan acceder a él directamente. Puede usar System Manager para asignar una política de exportación al qtree y exportarlo. Puede asignar una política de exportación a uno o varios qtrees desde la ventana Qtrees.
+
+.Pasos
+. Haga clic en *almacenamiento* > *Qtrees*.
+. En el menú desplegable del campo SVM, seleccione la máquina virtual de almacenamiento (SVM) en la que residen los qtrees que desea exportar.
+. Seleccione uno o varios qtrees a los que desee asignar una política de exportación y, a continuación, haga clic en *Cambiar política de exportación*.
+. En el cuadro de diálogo *Política de exportación*, cree una política de exportación o seleccione una política de exportación existente.
++
+link:task_creating_export_policy.html["Creación de una política de exportación"]
+
+. Haga clic en *Guardar*.
+. Compruebe que la política de exportación y sus reglas de exportación relacionadas que ha asignado a los qtrees aparecen en la pestaña *Details* de los qtrees correspondientes.
+
+
+
+
+== Ver la información de los qtrees
+
+Puede usar la ventana Qtrees de System Manager para ver el volumen que contiene el qtree, el nombre, el estilo de seguridad y el estado del qtree y los bloqueos oportunistas.
+
+.Pasos
+. Haga clic en *almacenamiento* > *Qtrees*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que reside el qtree sobre el que desea ver información.
+. Seleccione el qtree de la lista de qtrees que se muestra.
+. Revise los detalles del qtree en la ventana *Qtrees*.
+
+
+
+
+== Opciones Qtree
+
+Un qtree es un sistema de archivos definido de forma lógica que puede existir como un subdirectorio especial del directorio raíz dentro de un volumen FlexVol. Los qtrees se utilizan para gestionar los datos y crear particiones de estos en el volumen.
+
+Si crea qtrees en una FlexVol que contiene volúmenes, los qtrees aparecen como directorios. Por lo tanto, debe tener cuidado de no eliminar los qtrees accidentalmente al eliminar volúmenes.
+
+Puede especificar las siguientes opciones al crear un qtree:
+
+* Nombre del qtree
+* Volumen en el que desea que resida el qtree
+* Bloqueos oportunistas
++
+De forma predeterminada, los bloqueos oportunistas están habilitados para el qtree. Si deshabilita los bloqueos oportunistas del sistema de almacenamiento completo, los bloqueos oportunistas no se establecen incluso si habilita los bloqueos oportunistas para cada qtree.
+
+* Estilo de seguridad
++
+El estilo de seguridad puede ser UNIX, NTFS o mixto (UNIX y NTFS). De forma predeterminada, el estilo de seguridad del qtree es el mismo que el del volumen seleccionado.
+
+* Política de exportación
++
+Puede crear una nueva política de exportación o seleccionar una existente. De forma predeterminada, la política de exportación del qtree es la misma que la del volumen seleccionado.
+
+* Límites de uso de espacio para qtree y cuotas de usuario
+
+
+
+
+== Ventana Qtrees
+
+Puede utilizar la ventana Qtrees para crear, mostrar y gestionar información sobre los qtrees.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create Qtree, que permite crear un nuevo qtree.
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit Qtree, que permite cambiar el estilo de seguridad y habilitar o deshabilitar los bloqueos oportunistas (bloqueos oportunistas) en un qtree.
+
+* *Cambiar la política de exportación*
++
+Abre el cuadro de diálogo Export Policy, que permite asignar uno o más qtrees a políticas de exportación nuevas o existentes.
+
+* *Eliminar*
++
+Elimina el qtree seleccionado.
+
++
+Este botón está deshabilitado a menos que el estado del qtree seleccionado sea normal.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista Qtree
+
+La lista de Qtree muestra el volumen en el que reside el qtree y el nombre del qtree.
+
+* *Nombre*
++
+Muestra el nombre del qtree.
+
+* *Volumen*
++
+Muestra el nombre del volumen en el que reside el qtree.
+
+* *Estilo de seguridad*
++
+Especifica el estilo de seguridad del qtree.
+
+* *Estado*
++
+Especifica el estado actual del qtree.
+
+* *Bloqueos oportunistas*
++
+Especifica si la configuración de bloqueos oportunistas está habilitada o deshabilitada para el qtree.
+
+* *Política de exportación*
++
+Muestra el nombre de la política de exportación a la que se asigna el qtree.
+
+
+
+
+
+=== El área Detalles
+
+* *Ficha Detalles*
++
+Muestra información detallada sobre el qtree seleccionado, como la ruta de montaje del volumen que contiene el qtree, detalles sobre la política de exportación y las reglas de política de exportación.
+
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceptos de ONTAP"^]
+
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Gestión de almacenamiento lógico"^]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["Gestión de NFS"^]
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gestión de SMB/CIFS"^]

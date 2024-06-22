@@ -1,0 +1,121 @@
+---
+permalink: online-help-96-97/reference_storage_tiers_window.html 
+sidebar: sidebar 
+keywords: online, help, storage, tier, window, command, button 
+summary: Puede usar la ventana Storage Tiers para ver detalles del espacio de todo el clúster y agregar y ver detalles de los agregados. 
+---
+= Ventana Storage Tiers en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana Storage Tiers en el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y la unidad de tiempo libre) para ver detalles de espacio de todo el clúster y añadir y ver detalles del agregado.
+
+El panel Internal Tier, o el panel Performance Tier si el clúster tiene agregados all-flash (todos SSD), muestra detalles de espacio de todo el clúster como la suma de los tamaños totales de todos los agregados, el espacio utilizado por los agregados del clúster, y el espacio disponible en el clúster.
+
+El panel Cloud Tier muestra los niveles de cloud totales con licencia del clúster, el espacio con licencia que se utiliza en el clúster y el espacio con licencia disponible en el clúster. El panel Cloud Tier también muestra la capacidad de cloud sin licencia que se utiliza.
+
+Los agregados se agrupan por tipo, y el panel de agregados muestra detalles sobre el espacio total del agregado, el espacio utilizado y el espacio disponible. Si los datos inactivos (fríos) están disponibles en una unidad de estado sólido (SSD) o un agregado de All Flash FAS, también se muestra la cantidad de espacio que utiliza. Puede seleccionar el agregado y realizar cualquiera de las acciones relacionadas con el agregado.
+
+
+
+== Botones de comando
+
+* *Agregar agregado*
++
+Permite crear un agregado.
+
+* *Acciones*
++
+Proporciona las siguientes opciones:
+
++
+** *Cambie el estado a*
++
+Cambia el estado del agregado seleccionado a uno de los siguientes Estados:
+
++
+*** *En línea*
++
+Se permite el acceso de lectura y escritura a los volúmenes que están contenidos en este agregado.
+
+*** *Fuera de línea*
++
+No se permite el acceso de lectura y escritura.
+
+*** *Restringir*
++
+Se permiten algunas operaciones como la reconstrucción de paridad, pero no se permite el acceso a los datos.
+
+
+
+** *Añadir capacidad*
++
+Le permite añadir capacidad (HDD o SSD) a los agregados existentes.
+
+** *Agregar caché*
++
+Le permite añadir discos de caché (SSD) a agregados de HDD o agregados de Flash Pool existentes.
+
++
+No se pueden añadir discos de caché a agregados habilitados para FabricPool.
+
++
+Esta opción no está disponible para un clúster que contenga nodos con personalidad de All Flash Optimized.
+
+** *Espejo*
++
+Permite reflejar los agregados.
+
+** *Movimiento de volumen*
++
+Permite mover un volumen de FlexVol.
+
+
+
+
+
+
+
+== El área Detalles
+
+Puede hacer clic en el nombre del agregado para ver información detallada sobre él.
+
+* *Ficha Descripción general*
++
+Muestra información detallada sobre el agregado seleccionado y muestra una representación gráfica de la asignación de espacio del agregado, el ahorro de espacio del agregado y el rendimiento del agregado.
+
+* *Ficha Información del disco*
++
+Muestra la información de distribución de discos del agregado seleccionado.
+
+* *Ficha de volúmenes*
++
+Muestra detalles sobre el número total de volúmenes en el agregado, el espacio total del agregado y el espacio asignado al agregado.
+
+* *Ficha rendimiento*
++
+Muestra gráficos que muestran las métricas de rendimiento de los agregados, incluidos el rendimiento y las IOPS. Los datos de las métricas de rendimiento para transferencias de lectura, escritura y total se muestran para el rendimiento e IOPS, y los datos de las unidades SSD y HDD se registran por separado.
+
++
+Si se cambia la zona horaria del cliente o la zona horaria del clúster, se afectan los gráficos de métricas de rendimiento. Si cambia la zona horaria del cliente o la zona horaria del clúster, debe actualizar el navegador para ver los gráficos actualizados.
+
+
+
+*Información relacionada*
+
+xref:task_adding_cloud_tier.adoc[Añadiendo un nivel de cloud]
+
+xref:task_attaching_aggregate_to_cloud_tier.adoc[Adición de un agregado a un nivel de cloud]
+
+xref:task_deleting_cloud_tier.adoc[Eliminar un nivel de cloud]
+
+xref:task_editing_cloud_tier.adoc[Editar un nivel de cloud]
+
+xref:task_provisioning_storage_through_aggregates.adoc[Aprovisionamiento de almacenamiento mediante agregados]
+
+xref:task_deleting_aggregates.adoc[Eliminación de agregados]
+
+xref:task_editing_aggregates.adoc[Editar agregados]

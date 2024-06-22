@@ -1,0 +1,40 @@
+---
+permalink: fc-config-esxi/task_deciding_where_to_provision_volume.html 
+sidebar: sidebar 
+keywords: provision, volume, contain, lun, exist, storage, virtual, machine, svm, configure, fc, exist, svm, decide where to provision the volume 
+summary: Antes de aprovisionar un volumen para contener LUN, debe decidir si va a añadir el volumen a una máquina virtual de almacenamiento existente o crear una nueva SVM para el volumen. Es posible que también deba configurar FC en una SVM existente. 
+---
+= Decidir dónde se aprovisionará el volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de aprovisionar un volumen para contener LUN, debe decidir si va a añadir el volumen a una máquina virtual de almacenamiento (SVM) existente o crear una nueva SVM para el volumen. Es posible que también deba configurar FC en una SVM existente.
+
+.Acerca de esta tarea
+Si una SVM existente ya está configurada con los protocolos necesarios y tiene LIF a los que se puede acceder desde el host, resulta más fácil usar el SVM existente.
+
+Puede crear una nueva SVM para separar los datos o la administración de otros usuarios del clúster de almacenamiento. No hay ventajas de usar SVM independientes para separar diferentes protocolos.
+
+
+
+== Procedimiento
+
+* Si desea aprovisionar volúmenes en una SVM que ya está configurada para FC, debe verificar que el servicio FC esté en ejecución.
++
+link:task_verifying_that_fc_service_is_running_on_existing_svm.html["Comprobar que el servicio FC se está ejecutando en una SVM existente"]
+
+* Si desea aprovisionar volúmenes en una SVM existente que tiene FC habilitado pero no configurado, configure iSCSI en la SVM existente.
++
+link:task_configuring_iscsi_fc_creating_lun_on_existing_svm.html["Configurar FC en una SVM existente"]
+
++
+Este es el caso si no ha seguido este procedimiento para crear la SVM mientras se configura un protocolo diferente.
+
+* Si desea aprovisionar volúmenes en una SVM nueva, cree la SVM.
++
+link:task_creating_svm.html["Creación de una SVM nueva"]
+
+

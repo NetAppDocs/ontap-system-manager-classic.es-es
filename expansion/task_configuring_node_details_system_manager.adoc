@@ -1,0 +1,45 @@
+---
+permalink: expansion/task_configuring_node_details_system_manager.html 
+sidebar: sidebar 
+keywords: system, manager, configure, node, management, lif, service, processor, setting, add, configure the node details in system manager 
+summary: Puede usar System Manager para configurar los ajustes del LIF de gestión de nodos y de Service Processor para los nodos recién añadidos. 
+---
+= Configure los detalles del nodo en System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager para configurar los ajustes del LIF de gestión de nodos y de Service Processor para los nodos recién añadidos.
+
+.Antes de empezar
+* El número de puertos debe estar suficiente en el espacio IP predeterminado para la creación de la LIF.
+* Todos los puertos deben estar activos y en funcionamiento.
+
+
+.Pasos
+. Configurar gestión de nodos:
++
+.. Introduzca la dirección IP en el campo *Dirección IP*.
+.. Seleccione el puerto para la administración de nodos en el campo *Puerto*.
+.. Introduzca los detalles de la máscara de red y la puerta de enlace.
+
+
+. Configure los ajustes de Service Processor:
++
+.. Active la casilla de verificación *Anular valores predeterminados* para anular los valores predeterminados.
+.. Introduzca los detalles de la dirección IP, la máscara de red y la puerta de enlace.
+
+
+. Haga clic en *Enviar y continuar* para completar la configuración de red de los nodos.
+. Compruebe los detalles de los nodos en la página *Resumen*.
+
+
+
+
+== Qué hacer a continuación
+
+* Si el clúster está protegido, debe crear el número necesario de LIF de interconexión de clústeres en los nodos recién añadidos para evitar que la relación de paridad sea parcial y una protección que no sea adecuada.
+* Si existen protocolos DE datos SAN habilitados en su clúster, debería crear el número necesario de LIF DE datos DE SAN para servir datos.
+

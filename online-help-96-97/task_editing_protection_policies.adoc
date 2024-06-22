@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_editing_protection_policies.html 
+sidebar: sidebar 
+keywords: edit, protection, policies, online, help, system, manager 
+summary: Puede usar System Manager para modificar una política de protección y aplicar la política a una relación de protección de datos. 
+---
+= Editar políticas de protección
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager para modificar una política de protección y aplicar la política a una relación de protección de datos.
+
+.Acerca de esta tarea
+Las políticas de protección no se muestran en el nivel del clúster.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la máquina virtual de almacenamiento (SVM) y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *Directivas de protección*.
+. Seleccione la directiva de protección que desea editar y, a continuación, haga clic en *Editar*.
+. Modifique la prioridad de transferencia y, a continuación, habilite o deshabilite la compresión de red.
+. Para una política de mirroring asíncrono, realice un backup de todas las copias Snapshot de origen.
+. En el caso de una política de almacén o una política de almacén de reflejos, modifique el recuento de retenciones y la etiqueta de SnapMirror.
++
+No se puede quitar la etiqueta sm_creado para una política de almacén de reflejos.
+
+. Haga clic en *Guardar*.
+

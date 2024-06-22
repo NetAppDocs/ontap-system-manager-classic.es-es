@@ -1,0 +1,146 @@
+---
+permalink: online-help-96-97/reference_cifs_window.html 
+sidebar: sidebar 
+keywords: cifs, window, configuration, tab, domain, symlink, branchcache, online, help 
+summary: Puede utilizar la ventana CIFS para configurar el servidor CIFS, gestionar controladores de dominio, gestionar asignaciones de UNIX simbólicas y configurar BranchCache. 
+---
+= Ventana CIFS en el Administrador del sistema: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana CIFS en ONTAP System Manager (disponible en ONTAP 9.7 y versiones anteriores) para configurar el servidor CIFS, gestionar controladoras de dominio, gestionar asignaciones de UNIX simbólicas y configurar BranchCache.
+
+
+
+== Pestaña Configuration
+
+La pestaña Configuration permite crear y gestionar el servidor CIFS.
+
+* *Servidor*
++
+Especifica el estado del servidor CIFS, el nombre del servidor, el modo de autenticación, el nombre del dominio de Active Directory y el estado de multicanal SMB.
+
+* *Directorios particulares*
++
+Especifica las rutas de acceso al directorio principal y el estilo para determinar cómo se asignan los nombres de usuario de PC a las entradas del directorio principal.
+
+* *Botones de comando*
++
+** Configuración
++
+Abre el asistente de configuración de CIFS, que permite configurar CIFS en las máquinas virtuales de almacenamiento (SVM).
+
+** Opciones
++
+Muestra el cuadro de diálogo Opciones de CIFS, que permite habilitar o deshabilitar la firma SMB 3.0, habilitar o deshabilitar el cifrado SMB 3.0 y agregar servidores Windows Internet Name Service (WINS).
+
++
+La firma SMB impide que se vea comprometido el tráfico de red entre el servidor CIFS y el cliente.
+
+** Eliminar
++
+Permite eliminar el servidor CIFS.
+
+** Actualice
++
+Actualiza la información de la ventana.
+
+
+
+
+
+
+
+== Dominio
+
+La pestaña dominio permite ver y restablecer los controladores de dominio CIFS, así como agregar o eliminar controladores de dominio preferidos. También puede utilizar esta pestaña para gestionar la configuración de políticas de grupos CIFS.
+
+* *Servidores*
++
+Muestra información sobre los servidores de autenticación detectados y las controladoras de dominio preferidas en la SVM habilitada para CIFS.
+
++
+También puede restablecer la información sobre los servidores detectados, agregar un controlador de dominio preferido, eliminar un controlador de dominio o actualizar la lista de controladores de dominio.
+
+* *Directiva de grupo*
++
+Permite ver, habilitar o deshabilitar configuraciones de políticas de grupo en el servidor CIFS. También puede volver a cargar una directiva de grupo si se cambia el estado de la directiva.
+
+
+
+
+
+== Enlaces simbólicos
+
+La pestaña symlinks permite gestionar las asignaciones de enlaces simbólicos UNIX para usuarios CIFS.
+
+* *Asignaciones de ruta*
++
+Muestra la lista de asignaciones de enlaces simbólicos para CIFS.
+
+* *Botones de comando*
++
+** Cree
++
+Abre el cuadro de diálogo Crear nuevas asignaciones de ruta de enlace simbólico, que permite crear una asignación de vínculos simbólicos de UNIX.
+
+** Editar
++
+Abre el cuadro de diálogo Editar asignaciones de ruta de enlace simbólico, que permite modificar el recurso compartido y la ruta de acceso CIFS.
+
+** Eliminar
++
+Permite eliminar la asignación de enlaces simbólicos.
+
+** Actualice
++
+Actualiza la información de la ventana.
+
+
+
+
+
+
+
+== Pestaña BranchCache
+
+La pestaña BranchCache permite configurar y gestionar la configuración de BranchCache en las SVM habilitadas para CIFS.
+
+Puede ver el estado del servicio BranchCache, la ruta al almacén hash, el tamaño del almacén hash y el modo operativo, la clave de servidor y la versión de BranchCache.
+
+* *Botones de comando*
++
+** Configuración
++
+Abre el cuadro de diálogo BranchCache Setup, que permite configurar BranchCache para el servidor CIFS.
+
+** Editar
++
+Abre el cuadro de diálogo Modify BranchCache Settings, que permite modificar las propiedades de la configuración de BranchCache.
+
+** Eliminar
++
+Permite eliminar la configuración de BranchCache.
+
+** Actualice
++
+Actualiza la información de la ventana.
+
+
+
+
+
+*Información relacionada*
+
+xref:task_setting_up_cifs.adoc[Configuración de CIFS]
+
+xref:task_editing_cifs_general_properties.adoc[Editar las propiedades generales de CIFS]
+
+xref:task_adding_home_directory_paths.adoc[Agregando rutas de acceso al directorio inicial]
+
+xref:task_deleting_home_directory_paths.adoc[Eliminando rutas de acceso al directorio inicial]
+
+xref:task_resetting_cifs_domain_controllers.adoc[Restablecimiento de controladoras de dominio CIFS]

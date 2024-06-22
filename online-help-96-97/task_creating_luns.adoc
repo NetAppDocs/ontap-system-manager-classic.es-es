@@ -1,0 +1,108 @@
+---
+permalink: online-help-96-97/task_creating_luns.html 
+sidebar: sidebar 
+keywords: create, lun, system, manager, qtree, online, help 
+summary: Puede usar System Manager para crear LUN para un agregado, volumen o qtree existentes cuando haya espacio libre disponible. Es posible crear un LUN en un volumen existente o crear un nuevo volumen de FlexVol para el LUN. También es posible habilitar la calidad de servicio del almacenamiento para gestionar el rendimiento de la carga de trabajo. 
+---
+= Crear LUN con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear LUN para un agregado, un volumen o un qtree existentes cuando haya espacio libre disponible. Es posible crear un LUN en un volumen existente o crear un nuevo volumen de FlexVol para el LUN. También es posible habilitar la calidad de servicio del almacenamiento para gestionar el rendimiento de la carga de trabajo.
+
+.Acerca de esta tarea
+Si especifica el ID de LUN, System Manager comprueba la validez del ID de LUN antes de añadirlo. Si no especifica un ID de LUN, el software ONTAP le asigna automáticamente uno.
+
+Al seleccionar el tipo multiprotocolo de LUN, debería haber tenido en cuenta las directrices para utilizar cada tipo. El tipo de sistema operativo, multiprotocolo o el tipo de LUN, determina la distribución de los datos de la LUN y los tamaños mínimo y máximo de la LUN. Después de crear el LUN, no puede modificar el tipo de sistema operativo del host LUN.
+
+En una configuración de MetroCluster, System Manager solo muestra los siguientes agregados para crear volúmenes FlexVol para el LUN:
+
+* En el modo normal, cuando crea volúmenes en SVM sincronizada en origen o SVM que sirva datos en el sitio primario, solo se mostrarán los agregados que pertenecen al clúster del sitio primario.
+* En el modo de conmutación por switches, cuando crea volúmenes en las SVM sincronizada en destino o las SVM que sirven los datos en el sitio superviviente, solo se muestran los agregados conmutados.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Administración de LUN*, haga clic en *Crear*.
+. Examine y seleccione una SVM en la que desea crear las LUN.
+. En el *Asistente para crear LUN*, especifique el nombre, tamaño, tipo, descripción de la LUN, seleccione *Reserva de espacio* y, a continuación, haga clic en *Siguiente*.
+. Cree un nuevo volumen FlexVol para el LUN o seleccione un volumen o qtree existente y, a continuación, haga clic en *Siguiente*.
+. Agregue iGroups si desea controlar el acceso del host a la LUN y, a continuación, haga clic en *Siguiente*.
+. Active la casilla de verificación *gestionar calidad de servicio* si desea administrar el rendimiento de carga de trabajo de la LUN.
+. Cree un nuevo grupo de políticas de calidad de servicio de almacenamiento o seleccione un grupo de políticas existente para controlar el rendimiento de entrada/salida (I/o) de la LUN:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Crear un nuevo grupo de políticas
+ a| 
+.. Seleccione *Nuevo grupo de políticas*
+.. Escriba el nombre del grupo de políticas.
+.. Especifique el límite mínimo de rendimiento.
++
+*** En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+*** No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+*** Si no especifica el valor de rendimiento mínimo o si el valor de rendimiento mínimo se establece en 0, el sistema mostrará automáticamente «'Ninguno'» como valor.
++
+Este valor distingue entre mayúsculas y minúsculas.
+
+
+
+.. Especifique el límite máximo de rendimiento para asegurarse de que la carga de trabajo de los objetos del grupo de políticas no supere el límite de rendimiento establecido.
++
+*** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+*** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS y B/s, KB/s, MB/s, etc.
+*** Si no especifica el valor de rendimiento máximo, el sistema mostrará automáticamente "'Unlimited'" como valor y este valor distingue entre mayúsculas y minúsculas.
++
+La unidad que especifique no afecta al rendimiento máximo.
+
+
+
+
+
+
+
+ a| 
+Seleccione un grupo de políticas existente
+ a| 
+.. Seleccione *Grupo de políticas existente* y, a continuación, haga clic en *elegir* para seleccionar un grupo de políticas existente en el cuadro de diálogo Seleccionar grupo de políticas.
+.. Especifique el límite mínimo de rendimiento.
++
+*** En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+*** No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+*** Si no especifica el valor de rendimiento mínimo o si el valor de rendimiento mínimo se establece en 0, el sistema mostrará automáticamente «'Ninguno'» como valor.
++
+Este valor distingue entre mayúsculas y minúsculas.
+
+
+
+.. Especifique el límite máximo de rendimiento para asegurarse de que la carga de trabajo de los objetos del grupo de políticas no supere el límite de rendimiento establecido.
++
+*** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+*** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS y B/s, KB/s, MB/s, etc.
+*** Si no especifica el valor de rendimiento máximo, el sistema mostrará automáticamente "'Unlimited'" como valor y este valor distingue entre mayúsculas y minúsculas.
++
+La unidad que especifique no afecta al rendimiento máximo.
+
+
+
++
+Si el grupo de políticas se ha asignado a más de un objeto, el rendimiento máximo que se configure se compartirá entre todos los objetos.
+
+
+
+|===
+. Revise los detalles especificados en la ventana *resumen de LUN* y, a continuación, haga clic en *Siguiente*.
+. Confirme los detalles y, a continuación, haga clic en *Finalizar* para completar el asistente.
+
+
+*Información relacionada*
+
+xref:reference_luns_window.adoc[Ventana de LUN]
+
+xref:concept_lun_multiprotocol_type_guidelines.adoc[Directrices para usar el tipo multiprotocolo de LUN]

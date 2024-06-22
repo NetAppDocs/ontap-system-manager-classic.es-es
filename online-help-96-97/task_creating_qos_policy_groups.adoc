@@ -1,0 +1,89 @@
+---
+permalink: online-help-96-97/task_creating_qos_policy_groups.html 
+sidebar: sidebar 
+keywords: online, help, create, qos, policy, groups, system, manager, quality, service 
+summary: 'Puede usar System Manager para crear grupos de políticas de calidad de servicio (QoS) de almacenamiento con el fin de limitar el rendimiento de las cargas de trabajo y supervisar el rendimiento de estas.' 
+---
+= Gestione grupos de políticas de calidad de servicio con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear grupos de políticas de calidad de servicio del almacenamiento con el fin de limitar el rendimiento de las cargas de trabajo y supervisar el rendimiento de las cargas de trabajo.
+
+
+
+== Cree grupos de políticas de calidad de servicio
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *grupos de directivas de QoS*.
+. En la ventana *grupos de directivas de QoS*, haga clic en *Crear*.
+. En el cuadro de diálogo *Crear grupo de políticas*, especifique un nombre de grupo para la directiva.
+. Especifique el límite mínimo de rendimiento.
++
+** En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+** No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+** Si no especifica el valor de rendimiento mínimo o si el valor de rendimiento mínimo se establece en 0, el sistema mostrará automáticamente «'Ninguno'» como valor.
++
+Este valor distingue entre mayúsculas y minúsculas.
+
+
+
+. Especifique el límite máximo de rendimiento.
++
+** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS y B/s, KB/s, MB/s, etc.
+** Si no especifica el límite de rendimiento máximo, el sistema mostrará automáticamente "'Unlimited'" como valor.
++
+Este valor distingue entre mayúsculas y minúsculas. La unidad que especifique no afecta al rendimiento máximo.
+
+
+
+. Haga clic en *Aceptar*.
+
+
+
+
+== Elimine los grupos de políticas de calidad de servicio
+
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para eliminar un grupo de políticas de calidad de servicio del almacenamiento que ya no sea necesario.
+
+.Antes de empezar
+Debe haber asignado toda la asignación de los objetos de almacenamiento que se asignaron al grupo de políticas.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *grupos de directivas de QoS*.
+. En la ventana *grupos de directivas de QoS*, seleccione el grupo de directivas que desea eliminar y haga clic en *Eliminar*.
+. En el cuadro de diálogo de confirmación, haga clic en *Eliminar*.
+
+
+
+
+== Edite los grupos de políticas de calidad de servicio
+
+Puede usar el cuadro de diálogo Editar grupo de políticas en ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para modificar el nombre y el rendimiento máximo de un grupo de políticas de calidad de servicio de almacenamiento existente.
+
+.Acerca de esta tarea
+* En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+* No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *grupos de directivas de QoS*.
+. Seleccione el grupo de políticas QoS que desea editar y, a continuación, haga clic en *Editar*.
++
+** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS y B/s, KB/s, MB/s, etc.
+** Si no se especifica el límite máximo de rendimiento, el valor se establece en Unlimited y la unidad que se especifica no afecta al rendimiento máximo.
+
+
+. En el cuadro de diálogo *Editar grupo de políticas*, edite los detalles del grupo de políticas QoS y, a continuación, haga clic en *Guardar*.
+

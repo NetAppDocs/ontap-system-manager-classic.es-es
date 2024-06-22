@@ -1,0 +1,116 @@
+---
+permalink: online-help-96-97/concept_unix.html 
+sidebar: sidebar 
+keywords: system, manager, unix, svm, online, help, command, button, group, tab, storage, virtual, machine 
+summary: 'Puede utilizar System Manager para mantener una lista de usuarios y grupos de UNIX locales de cada máquina virtual de almacenamiento (SVM).' 
+---
+= Usuarios locales de UNIX y grupos con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para mantener una lista de usuarios y grupos de UNIX locales para cada máquina virtual de almacenamiento (SVM).
+
+
+
+== Ventana UNIX
+
+Puede utilizar la ventana UNIX para mantener una lista de usuarios y grupos de UNIX locales para cada máquina virtual de almacenamiento (SVM). Se pueden usar usuarios y grupos UNIX locales para fines de autenticación y asignaciones de nombres.
+
+
+
+=== Grupos
+
+Puede usar la pestaña Groups para añadir, editar o eliminar grupos UNIX que están locales a una SVM.
+
+
+
+== Botones de comando
+
+* *Agregar grupo*
++
+Abre el cuadro de diálogo Add Group, que le permite crear grupos UNIX locales a las SVM. Los grupos UNIX locales se utilizan con usuarios UNIX locales.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar grupo, que permite editar un ID de grupo.
+
+* *Eliminar*
++
+Elimina el grupo seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Grupos
+
+* *Nombre del grupo*
++
+Muestra el nombre del grupo.
+
+* *ID de grupo*
++
+Muestra el ID del grupo.
+
+
+
+
+
+=== Pestaña Users
+
+Puede utilizar la ficha *usuarios* para agregar, editar y eliminar usuarios UNIX que son locales de las SVM.
+
+
+
+=== Botones de comando
+
+* *Añadir usuario*
++
+Abre el cuadro de diálogo Add User, que le permite crear usuarios UNIX locales a las SVM.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar usuario, que permite editar el ID de usuario, el grupo UNIX al que pertenece el usuario y el nombre completo del usuario.
+
+* *Eliminar*
++
+Elimina el usuario seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de usuarios
+
+* *Nombre de usuario*
++
+Muestra el nombre del usuario.
+
+* *ID de usuario*
++
+Muestra el ID del usuario.
+
+* *Nombre completo*
++
+Muestra el nombre completo del usuario.
+
+* *ID de grupo primario*
++
+Muestra el código del grupo al que pertenece el usuario.
+
+* *Nombre del grupo primario*
++
+Muestra el nombre del grupo al que pertenece el usuario.
+
+

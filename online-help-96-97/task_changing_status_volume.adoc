@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_changing_status_volume.html 
+sidebar: sidebar 
+keywords: flexvol, change, status, volume, online, help, system, manager 
+summary: Es posible usar System Manager para cambiar el estado de un volumen FlexVol cuando se desea desconectar un volumen, volver a conectar un volumen o restringir el acceso a un volumen. 
+---
+= Cambie el estado de un volumen con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para cambiar el estado de un volumen de FlexVol cuando se desea desconectar un volumen, volver a conectar un volumen o restringir el acceso a un volumen.
+
+.Antes de empezar
+* Si desea que un volumen sea el objetivo de una operación de copia de volumen o una operación de replicación de SnapMirror, el volumen debe estar en estado restringido.
+* Si desea desconectar un volumen NAS, se debe desmontar el volumen NAS.
+
+
+.Acerca de esta tarea
+Puede desconectar un volumen para realizar tareas de mantenimiento en el volumen, mover el volumen o destruir el volumen. Cuando un volumen está sin conexión, el volumen no está disponible para que los clientes puedan acceder de lectura o escritura. No se puede desconectar un volumen raíz.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen para el que desea modificar el estado.
+. En el menú *más acciones* > *Cambiar estado a*, seleccione el estado de volumen requerido.
+. Haga clic en *Aceptar* en el cuadro de diálogo de confirmación para cambiar el estado del volumen.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

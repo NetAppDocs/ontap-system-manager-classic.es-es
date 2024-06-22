@@ -1,0 +1,40 @@
+---
+permalink: volume-move/task_updating_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, move, lun, ha, pair, remote, node, lun, map, slm, reporting-node, partner, lun reporting nodes 
+summary: 'Si el volumen que ha movido LUN y el volumen ahora está en una pareja de alta disponibilidad diferente, debe eliminar todos los nodos remotos de la lista de nodos de generación de informes de asignación de LUN selectiva (SLM). A continuación, la asignación de LUN contiene únicamente el nodo propietario y su compañero de alta disponibilidad, lo que garantiza que se utilicen únicamente las rutas LUN optimizadas.' 
+---
+= Actualice los nodos de generación de informes de LUN después de mover un volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si el volumen que ha movido LUN y el volumen ahora está en una pareja de alta disponibilidad diferente, debe eliminar todos los nodos remotos de la lista de nodos de generación de informes de asignación de LUN selectiva (SLM). A continuación, la asignación de LUN contiene únicamente el nodo propietario y su compañero de alta disponibilidad, lo que garantiza que se utilicen únicamente las rutas LUN optimizadas.
+
+.Acerca de esta tarea
+Este procedimiento solo es necesario si se ha movido el volumen de su pareja de ha a otro par de alta disponibilidad. Si el volumen está en un nodo diferente de la misma pareja de alta disponibilidad, puede omitir este procedimiento.
+
+.Pasos
+. Quite todos los nodos remotos de la lista Reporting-Nodes mediante el `lun mapping remove-reporting-nodes` con el `-remote-nodes` parámetro.
++
+[listing]
+----
+cluster1::> lun mapping remove-reporting-nodes -vserver SVM1 -volume vol1 -igroup ig1 -remote-nodes true
+----
+. Compruebe que la asignación de LUN contiene únicamente el nodo del propietario y su compañero mediante el `lun mapping show` con el `-fields reporting-nodes` parámetro.
++
+[listing]
+----
+cluster1::> lun mapping show -vserver SVM1 -volume vol1 -fields reporting-nodes
+vserver  path        igroup   reporting-nodes
+-------- ----------- -------- ---------------------------------------------
+SVM1     /vol/vol1   ig1      cluster1-3,cluster1-4
+----
+. Elimine las entradas obsoletas del dispositivo para el sistema operativo del host.
+. Vuelva a analizar el host para actualizar las rutas disponibles del host.
++
+Consulte la documentación del host para ver los pasos específicos para volver a analizar los hosts.
+
+

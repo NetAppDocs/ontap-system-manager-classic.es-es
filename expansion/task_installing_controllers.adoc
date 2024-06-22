@@ -1,0 +1,54 @@
+---
+permalink: expansion/task_installing_controllers.html 
+sidebar: sidebar 
+keywords: install, controller, exist, cluster, installation, setup, instruction, install the controllers 
+summary: Al instalar controladoras que se añadirán a un clúster existente, debe seguir los primeros tres pasos de las instrucciones de instalación y configuración adecuadas. 
+---
+= Instale las controladoras
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Al instalar controladoras que se añadirán a un clúster existente, debe seguir los tres primeros pasos de las instrucciones _Installation and Setup_ correspondientes.
+
+[NOTE]
+.Acerca de esta tarea
+====
+A partir de ONTAP 9.0, el modo de alta disponibilidad está habilitado de forma predeterminada en el hardware nuevo.
+
+====
+.Pasos
+. Obtenga el _instrucciones de instalación y configuración_ para el número de modelo FAS del módulo de la controladora que va a añadir al clúster.
++
+** Para un nuevo módulo de controlador, el documento está disponible en la caja.
+** Para un módulo controlador rediseñado, puede descargar el documento.
+https://mysupport.netapp.com/site/docs-and-kb["Documentación de NetApp"]
+
+
+. Siga la sección _prepare for installation_ con las siguientes excepciones:
++
+** Puede omitir las instrucciones sobre la descarga de software o de una hoja de trabajo.
+** Debe proporcionar una conexión de consola serie aunque no se menciona en las _instrucciones de instalación y configuración_.
++
+Necesita una consola de serie porque debe utilizar la CLI nodesinfierno para configurar las LIF de gestión de nodos.
+
++
+Si en la sección ONTAP no se menciona la consola serie, puede ver la sección 7-Mode.
+
+
+
+. Siga la sección _Install hardware_.
+. Siga la sección _cable Storage_.
+. Omitir la mayoría de la sección _Complete System Setup_ con las siguientes excepciones:
++
+** Si se le indica a, debe encender todas las bandejas de discos y comprobar los ID.
+** Debe conectar la consola de serie para poder acceder al nodo.
++
+Si en la sección ONTAP no se menciona la consola serie, puede ver la sección 7-Mode.
+
+
+
+. Omitir la sección _Complete Configuration_.
+

@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/task_provisioning_basic_template.html 
+sidebar: sidebar 
+keywords: sap, hana, provisioning, basic, template, online, help, system, manager 
+summary: Puede usar System Manager para aprovisionar rápidamente plantillas básicas para SAP HANA. 
+---
+= Aprovisionar una plantilla básica con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para aprovisionar rápidamente plantillas básicas para SAP HANA.
+
+.Acerca de esta tarea
+Como administrador de clúster, puede aprovisionar aplicaciones configurando una plantilla básica. En el ejemplo se describe cómo configurar *SAP HANA Server*.
+
+.Pasos
+. Haga clic en *aplicaciones y niveles* > *aplicaciones*
+. En la ficha *básico*, seleccione la plantilla *SAP HANA Server*.
+. En la sección **Detalles de la base de datos**, especifique lo siguiente:
++
+** Nombre de la base de datos
+** Tamaño de la base de datos
+** Tamaño del registro
+** Tamaño tempdb
+** Número de núcleos del servidor
+** Notas de la controladora de alta disponibilidad span
+
+
+. Haga clic en *aprovisionar almacenamiento*
+
+
+.Resultados
+La aplicación SAP HANA Server está aprovisionada.
+
+*Información relacionada*
+
+link:reference_application_provisioning_settings.html["Consulte Configuración de aprovisionamiento de aplicaciones para ver las descripciones de los campos"]

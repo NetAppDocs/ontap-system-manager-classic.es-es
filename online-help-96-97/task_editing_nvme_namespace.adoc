@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_editing_nvme_namespace.html 
+sidebar: sidebar 
+keywords: edit, nvme, namespace, online, help, system, manager 
+summary: Puede usar System Manager para editar el espacio de nombres cambiando el subsistema al que se asigna el espacio de nombres. 
+---
+= Edite un espacio de nombres NVMe con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+
+
+[role="lead"]
+Puede usar System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) de ONTAP para editar el espacio de nombres cambiando el subsistema al que se asigna el espacio de nombres.
+
+.Acerca de esta tarea
+Solo puede modificar la configuración del subsistema NVMe en esta ventana; no puede editar los otros detalles del espacio de nombres.
+
+.Pasos
+. Haga clic en *NVMe* > *espacios de nombres NVMe*.
+. En la ventana *espacios de nombres NVMe*, seleccione el espacio de nombres que desee editar.
+. Seleccione una opción de subsistema:
++
+** Ninguno: Al seleccionar esta opción, se desasigna la asignación de subsistema existente sólo para este espacio de nombres. Esta opción se preselecciona si no hay ninguna asignación de subsistema para el espacio de nombres seleccionado.
+** Utilizar un subsistema existente: Esta opción se preselecciona si está presente la asignación entre subsistema y espacio de nombres. Al seleccionar un subsistema diferente, se asigna el nuevo subsistema desasignación del subsistema anteriormente asignado.
+
+
+

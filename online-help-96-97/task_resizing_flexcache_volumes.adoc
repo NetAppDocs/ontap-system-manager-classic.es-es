@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/task_resizing_flexcache_volumes.html 
+sidebar: sidebar 
+keywords: system, manager, flexcache, resize, volume, online, help 
+summary: A partir de System Manager 9.6, puede cambiar el tamaño de un volumen de FlexCache mediante el cambio de tamaño de los recursos existentes o la adición de nuevos recursos. 
+---
+= Cambio de tamaño de volúmenes de FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, puede cambiar el tamaño de un volumen de FlexCache mediante el cambio de tamaño de los recursos existentes o la adición de nuevos recursos.
+
+.Antes de empezar
+* Para cambiar el tamaño de un volumen de FlexCache, debe haber suficiente espacio libre en los agregados existentes.
+* Para ampliar un volumen de FlexCache, debe haber suficiente espacio libre en el agregado que usa para la expansión.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen de FlexCache cuyo tamaño desea cambiar y, a continuación, haga clic en *más acciones* > *Cambiar tamaño*.
+. En la ventana *Cambiar tamaño del volumen FlexCache*, especifique el tamaño al que desea cambiar el tamaño del volumen FlexCache.
++
+De forma predeterminada, se utilizan los agregados existentes para cambiar el tamaño del volumen de FlexCache. A partir de System Manager 9.6, se muestra el tamaño máximo permitido para el volumen junto al campo de tamaño.
+
++
+[NOTE]
+====
+Si desea expandir el volumen de FlexCache añadiendo nuevos recursos, haga clic en image:../media/advanced_options.gif[""] (opciones avanzadas). Consulte link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Especificar las opciones avanzadas para FlexCache Volumes"].
+
+====
+. Haga clic en *Guardar* para cambiar el tamaño del volumen FlexCache.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

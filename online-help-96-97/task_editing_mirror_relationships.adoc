@@ -1,0 +1,324 @@
+---
+permalink: online-help-96-97/task_editing_mirror_relationships.html 
+sidebar: sidebar 
+keywords: system, manager, edit, mirror, relationships, online, help 
+summary: Puede usar System Manager para editar una relación de mirroring. Para ello, seleccione una política o una programación existentes en el clúster, o bien cree una política o una programación. 
+---
+= Gestione las relaciones de mirroring con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar relaciones de mirroring. Puede actualizar, crear, desactivar, inicializar, restablecer, elimine y edite relaciones de reflejo además de reanudar relaciones de reflejo en modo inactivo.
+
+
+
+== Eliminar relaciones
+
+Puede usar System Manager para eliminar una relación de mirroring y finalizar de forma permanente la relación de reflejo entre los volúmenes de origen y de destino. Cuando se elimina una relación de reflejo, se elimina la copia Snapshot base en el volumen de origen.
+
+.Acerca de esta tarea
+Se recomienda romper la relación de reflejo antes de eliminar la relación.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo que desea eliminar y haga clic en *Eliminar*.
+. Active las casillas de verificación de confirmación para eliminar la relación de reflejo y liberar las copias Snapshot base y, a continuación, haga clic en *Eliminar*.
+
+
+.Resultados
+Se elimina la relación y se elimina la copia Snapshot base en el volumen de origen.
+
+
+
+== Resincronizar relaciones
+
+Puede usar System Manager para restablecer una relación de mirroring rota anteriormente. Puede realizar una operación de resincronización para recuperar el sistema tras un desastre que deshabilitó el volumen de origen.
+
+.Antes de empezar
+Los clústeres de origen y destino, y la SVM de origen y la SVM de destino deben tener relaciones entre iguales.
+
+.Acerca de esta tarea
+* Cuando se realiza una operación de resincronización, el contenido del destino de reflejos se sobrescribe con el contenido del volumen de origen.
++
+[NOTE]
+====
+** En el caso de los volúmenes que cumplen las normativas de los SnapLock, todos los cambios de datos en el sistema de archivos activo con referencia a la copia snapshot común se conservan en una copia snapshot bloqueada hasta el momento de caducidad que se establezca para el volumen actual.
++
+Si el tiempo de caducidad del volumen es pasado o no se ha establecido, la copia Snapshot y la copia Snapshot común se bloquean durante un período de 30 días. Se eliminan todas las copias snapshot intermedias entre la copia snapshot común y la última copia snapshot bloqueada.
+
+** Para todos los volúmenes distintos de los volúmenes de cumplimiento de normativas de SnapLock, la operación de resincronización puede provocar la pérdida de datos más nuevos que se escriben en el volumen de destino una vez creada la copia de Snapshot base.
+
+
+====
+* Si el campo Last Transfer error de la ventana Protection recomienda una operación de resincronización, primero debe interrumpir la relación y, a continuación, realizar la operación de resincronización.
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo que desea volver a sincronizar.
+. Haga clic en *Operaciones* > *Resync*.
+. Seleccione la casilla de verificación de confirmación y, a continuación, haga clic en *Resync*.
+
+
+
+
+== Reanudar relaciones en modo inactivo
+
+Puede usar System Manager para reanudar una relación de reflejo en modo inactivo. Cuando se reanuda la relación, se reanuda una transferencia de datos normal al destino de mirroring y se reinician todas las actividades de mirroring.
+
+.Acerca de esta tarea
+Si colocó en modo inactivo una relación de reflejo rota desde la interfaz de línea de comandos (CLI), no puede reanudar la relación de System Manager. Debe usar la CLI para reanudar la relación.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo que desea reanudar.
+. Haga clic en *Operaciones* > *Reanudar*.
+. Active la casilla de verificación de confirmación y haga clic en *Reanudar*.
+
+
+.Resultados
+La transferencia de datos al destino de mirroring se reanudará para la relación de mirroring seleccionada.
+
+
+
+== Actualizar las relaciones
+
+Puede utilizar System Manager para iniciar una actualización de mirroring no programada del destino. Es posible que tenga que realizar una actualización manual para evitar pérdidas de datos debido a una interrupción del suministro eléctrico, un mantenimiento programado o una migración de datos próxima.
+
+.Antes de empezar
+La relación de mirroring debe estar en el estado con SnapMirror.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de réplica para la que desea actualizar los datos y haga clic en *Operaciones* > *Actualizar*.
+. Seleccione una de las siguientes opciones:
++
+** Seleccione *bajo demanda* para realizar una transferencia incremental de la copia Snapshot común reciente entre los volúmenes de origen y destino.
+** Seleccione *Seleccionar copia Snapshot* y especifique la copia Snapshot que desea transferir.
+
+
+. *Opcional:* Seleccione *limitar el ancho de banda de transferencia a* para limitar el ancho de banda de red utilizado para las transferencias y especificar la velocidad máxima de transferencia.
+. Haga clic en *Actualizar*.
+. Compruebe el estado de la transferencia en la pestaña *Detalles*.
+
+
+
+
+== Relaciones de inactivación
+
+Puede usar System Manager para desactivar un destino de mirroring para estabilizarlo antes de crear una copia Snapshot. La operación de inactividad permite que las transferencias de reflejo activas finalicen y deshabilita las transferencias futuras de la relación de mirroring.
+
+.Acerca de esta tarea
+Sólo puede desactivar las relaciones de réplica que estén en el estado de SnapMirred.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo que desea desactivar.
+. Haga clic en *Operaciones* > *Quiesce*.
+. Active la casilla de verificación de confirmación y haga clic en *Quiesce*.
+
+
+
+
+== Inicializar las relaciones
+
+Cuando se inicia una relación de reflejo, se debe inicializar esa relación. La inicialización de una relación consiste en una transferencia completa de base de datos del volumen de origen al destino. Puede usar System Manager para inicializar una relación de mirroring si todavía no se ha inicializado la relación durante su creación.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo que desea inicializar.
+. Haga clic en *Operaciones* > *inicializar*.
+. Active la casilla de verificación de confirmación y haga clic en *inicializar*.
+. Verificar el estado de la relación de espejo en la ventana *Protección*.
+
+
+.Resultados
+Se crea una copia Snapshot y se transfiere al destino. Esta copia Snapshot se utiliza como base para las copias Snapshot incrementales posteriores.
+
+
+
+== Editar relaciones
+
+Puede usar System Manager para editar una relación de mirroring. Para ello, seleccione una política o una programación existentes en el clúster, o bien cree una política o una programación.
+
+.Acerca de esta tarea
+* No es posible editar una relación de reflejo que se crea entre un volumen en Data ONTAP 8.2.1 y un volumen en ONTAP 8.3 o una versión posterior.
+* No es posible editar los parámetros de una política o una programación existente.
+* Puede modificar el tipo de relación de una relación de reflejo con versión flexible, una relación de almacén o una relación de mirroring y almacén modificando el tipo de política.
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo para la que desea modificar la política o la programación y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar relación*, seleccione una directiva existente o cree una directiva:
++
+|===
+| Si desea... | Haga lo siguiente... 
+
+
+ a| 
+Seleccione una política existente
+ a| 
+Haga clic en *examinar* y, a continuación, seleccione una directiva existente.
+
+
+
+ a| 
+Crear una política
+ a| 
+.. Haga clic en *Crear directiva*.
+.. Escriba un nombre para la política.
+.. Configure la prioridad de las transferencias programadas.
++
+Low indica que la transferencia tiene la prioridad más baja y se suele programar tras transferencias de prioridad normal. De forma predeterminada, la prioridad se establece como normal.
+
+.. Active la casilla de verificación *transferir todas las copias Snapshot de origen* para incluir la regla "'all_source_snapshots'" en la política de mirroring, lo que le permite realizar una copia de seguridad de todas las copias Snapshot del volumen de origen.
+.. Active la casilla de verificación *Activar compresión de red* para comprimir los datos que se están transfiriendo.
+.. Haga clic en *Crear*.
+
+
+|===
+. Especifique una programación para la relación:
++
+|===
+| Si... | Haga lo siguiente... 
+
+
+ a| 
+Desea asignar una programación existente
+ a| 
+Seleccione una programación existente de la lista.
+
+
+
+ a| 
+Desea crear una programación
+ a| 
+.. Haga clic en *Crear programación*.
+.. Escriba un nombre para la programación.
+.. Seleccione *básico* o *Avanzado*.
++
+*** Basic especifica solo el día de la semana, la hora y el intervalo de transferencia.
+*** Advanced crea una programación de tareas con Cron.
+
+
+.. Haga clic en *Crear*.
+
+
+
+
+ a| 
+No desea asignar una programación
+ a| 
+Seleccione *Ninguno*.
+
+|===
+. Haga clic en *Aceptar* para guardar los cambios.
+
+
+
+
+== Crear relaciones de mirroring a partir de una SVM de destino
+
+Puede usar System Manager para crear una relación de mirroring a partir de la máquina virtual de almacenamiento (SVM) de destino, así como para asignar una política y una programación a la relación de mirroring. La copia reflejada permite disponer de los datos de forma rápida si los datos del volumen de origen se pierden o se dañan.
+
+.Antes de empezar
+* El clúster de origen debe ejecutar ONTAP 8.2.2 o una versión posterior.
+* La licencia de SnapMirror debe habilitarse en el clúster de origen y el de destino.
++
+[NOTE]
+====
+En algunas plataformas, no es obligatorio que el clúster de origen tenga habilitada la licencia de SnapMirror si el clúster de destino tiene habilitada la licencia de SnapMirror y la licencia de optimización de protección de datos (DPO).
+
+====
+* Al reflejar un volumen, si se selecciona un volumen de SnapLock como origen, deben instalarse la licencia de SnapMirror y la licencia de SnapLock en el clúster de destino.
+* Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+* La SVM de destino debe tener espacio disponible.
+* Debe haber un volumen de origen del tipo lectura/escritura (rw).
+* Los volúmenes FlexVol deben estar en línea y deben ser de tipo lectura/escritura.
+* El tipo de agregado de SnapLock debe ser del mismo tipo.
+* Si se conecta de un clúster que ejecuta ONTAP 9.2 o una versión anterior a un clúster remoto donde está habilitada la autenticación del lenguaje de marcado de aserción de seguridad (SAML), la autenticación basada en contraseñas debe estar habilitada en el clúster remoto.
+
+
+.Acerca de esta tarea
+* System Manager no admite relaciones en cascada.
++
+Por ejemplo, el volumen de destino de una relación no puede ser el volumen de origen de otra relación.
+
+* No se pueden crear relaciones de mirroring entre una SVM sincronizada en origen y una SVM sincronizada en destino en una configuración de MetroCluster.
+* Puede crear una relación de mirroring entre varias SVM sincronizada en origen en una configuración de MetroCluster.
+* Puede crear una relación de mirroring entre un volumen en una SVM sincronizada en origen y un volumen en una SVM que sirva datos.
+* Puede crear una relación de mirroring entre un volumen en una SVM que sirva datos y un volumen de protección de datos (DP) en una SVM sincronizada en origen.
+* Solo se pueden crear relaciones de mirroring entre volúmenes de SnapLock del mismo tipo.
++
+Por ejemplo, si el volumen de origen es un volumen de empresa de SnapLock, el volumen de destino debe ser también un volumen de SnapLock Enterprise. Debe asegurarse de que la SVM de destino tenga agregados del mismo tipo SnapLock disponibles.
+
+* El volumen de destino que se crea para una relación de mirroring no tiene thin-provisioning.
+* Se puede proteger un máximo de 25 volúmenes en una selección.
+* No se puede crear una relación de mirroring entre los volúmenes de SnapLock si el clúster de destino ejecuta una versión de ONTAP anterior a la versión de ONTAP que ejecuta el clúster de origen.
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. En la ventana *Relaciones de volumen*, haga clic en *Crear*.
+. En el cuadro de diálogo *Browse SVM*, seleccione una SVM para el volumen de destino.
+. En el cuadro de diálogo *Crear relación de protección*, seleccione *espejo* en la lista desplegable *Tipo de relación*.
+. Especifique el clúster, la SVM y el volumen de origen.
++
+Si el clúster especificado ejecuta una versión del software ONTAP anterior a ONTAP 9.3, solo se enumeran las SVM con una relación entre iguales. Si el clúster especificado ejecuta ONTAP 9.3 o una versión posterior, se muestran SVM con una relación entre iguales y SVM permitidas.
+
+. Para los volúmenes FlexVol, especifique un sufijo de nombre de volumen.
++
+El sufijo del nombre del volumen se anexa a los nombres de los volúmenes de origen para generar los nombres de los volúmenes de destino.
+
+. Haga clic en *examinar* y, a continuación, cambie la política de duplicación.
+. Seleccione una programación para la relación en la lista de programaciones existentes.
+. Seleccione *Initialize Relationship* para inicializar la relación de mirroring.
+. Habilite los agregados que admiten FabricPool y, a continuación, seleccione una política de organización en niveles adecuada.
+. Haga clic en *Crear*.
+
+
+.Resultados
+Si decide crear un volumen de destino, se creará un volumen de destino del tipo _dp_, cuyo atributo de idioma coincide con el del volumen de origen.
+
+Se creará una relación de mirroring entre el volumen de origen y el de destino. La copia Snapshot inicial se transferirá al volumen de destino si se ha decidido inicializar la relación.
+
+
+
+== Volver a sincronizar las relaciones de reflejos
+
+Puede utilizar System Manager para restablecer una relación de mirroring que se haya interrumpido anteriormente. En una operación de resincronización inversa, se revierten las funciones del volumen de origen y del volumen de destino.
+
+.Antes de empezar
+El volumen de origen debe estar en línea.
+
+.Acerca de esta tarea
+* Se puede usar el volumen de destino para suministrar datos mientras se repara o se reemplaza el volumen de origen, se actualiza el volumen de origen y se establece la configuración original de los sistemas.
+* Cuando se realiza una resincronización inversa, el contenido del origen de reflejos se sobrescribe con el contenido del volumen de destino.
++
+[NOTE]
+====
+** En el caso de los volúmenes que cumplen las normativas de los SnapLock, todos los cambios de datos en el sistema de archivos activo con referencia a la copia snapshot común se conservan en una copia snapshot bloqueada hasta el momento de caducidad que se establezca para el volumen actual.
++
+Si el tiempo de caducidad del volumen es pasado o no se ha establecido, la copia Snapshot y la copia Snapshot común se bloquean durante un período de 30 días. Se eliminan todas las copias snapshot intermedias entre la copia snapshot común y la última copia snapshot bloqueada.
+
+** Para todos los volúmenes distintos de los volúmenes de cumplimiento de normativas de SnapLock, la operación de resincronización puede provocar la pérdida de datos más nuevos que se escriben en el volumen de origen después de crear la copia Snapshot base.
+
+
+====
+* Cuando realice una resincronización inversa, la política de mirroring de la relación se establece en DPDefault y la programación de mirroring se establece en None.
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo que desea revertir.
+. Haga clic en *Operaciones* > *Reverse Resync*.
+. Seleccione la casilla de verificación de confirmación y, a continuación, haga clic en *Reverse Resync*.
+
+
+*Información relacionada*
+
+xref:reference_protection_window.adoc[Ventana de protección]

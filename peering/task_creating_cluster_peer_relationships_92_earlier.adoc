@@ -1,0 +1,82 @@
+---
+permalink: peering/task_creating_cluster_peer_relationships_92_earlier.html 
+sidebar: sidebar 
+keywords: create, cluster, peer, relationship, enter, predetermined, passphrase, ip, address, intercluster, lif, remote, successful, create a cluster peer relationship, ontap 9.2 or earlier 
+summary: Puede crear una relación de paridad entre dos clústeres introduciendo una clave de acceso predeterminada y las direcciones IP de las LIF entre clústeres del clúster remoto, y luego verificar que la relación se haya creado correctamente. 
+---
+= Crear una relación de paridad de clústeres (ONTAP 9.2 o anterior)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mediante la interfaz _classic_ de ONTAP con ONTAP 9.2 o una versión anterior de ONTAP 9, puede crear una relación entre iguales de clústeres entre dos clústeres introduciendo una clave de acceso predeterminada y las direcciones IP de las LIF entre clústeres del clúster remoto, y, a continuación, verificar que la relación se ha creado correctamente.
+
+.Antes de empezar
+* Debe conocer las direcciones IP de todas las LIF de interconexión de clústeres de los clústeres que desea configurar la paridad.
+* Debe conocer la frase de contraseña que utilizará para cada relación entre iguales.
+
+
+.Acerca de esta tarea
+Debe realizar este procedimiento en cada clúster.
+
+.Pasos
+. En el clúster de origen, cree una relación de paridad con el clúster de destino.
++
+.. Haga clic en la ficha *configuraciones*.
+.. En el panel *Configuración de clúster*, haga clic en *compañeros de clúster*.
+.. Haga clic en *Crear*.
++
+Aparecerá el cuadro de diálogo *Crear par de clúster*.
+
+.. [[step1d-Passphrase-used]]en el área *Detalles del clúster remoto con relación de paridad*, especifique la frase de acceso que utilizarán ambos compañeros para garantizar una relación de paridad de clúster autenticada.
+.. Introduzca las direcciones IP de todas las LIF de interconexión de clústeres del clúster de destino (una por nodo) separadas por comas.
++
+image::../media/cluster_peer_create.gif[Cuadro de diálogo Create Cluster Peer]
+
+.. Haga clic en *Crear*.
++
+El estado de autenticación es «'pendiente'» porque sólo se ha configurado un clúster.
+
+
+
+. Cambie al clúster de destino y cree una relación entre iguales de clústeres con el clúster de origen:
++
+.. Haga clic en la ficha *configuraciones*.
+.. En el panel *Configuración de clúster*, haga clic en *compañeros de clúster*.
+.. Haga clic en *Crear*.
++
+Se muestra el cuadro de diálogo Create Cluster Peer.
+
+.. En el área *Detalles del clúster remoto con relación de paridad*, especifique la misma frase de acceso que especificó en <<step1d-passphrase-used,Paso 1d>> Y las direcciones IP de las LIF de interconexión de clústeres del clúster de origen y, a continuación, haga clic en *Crear*.
+
+
++
+image::../media/cluster_peer_create_2.gif[Esta imagen se explica por el texto circundante.]
+
+. En la ventana *Cluster peers* del clúster de destino, confirme que el clúster de origen es «'disponible'» y que el estado de autenticación es «'OK'».
++
+image::../media/cluster_peers_status.gif[Esta imagen se explica por el texto circundante.]
+
++
+Puede que tenga que hacer clic en *Actualizar* para ver la información actualizada.
+
++
+Los dos clústeres tienen una relación de paridad.
+
+. Cambie al clúster de origen y confirme que el clúster de destino es «'disponible'» y que el estado de autenticación es «'Aceptar'».
++
+Puede que tenga que hacer clic en *Actualizar* para ver la información actualizada.
+
+
+
+
+
+== Qué hacer a continuación
+
+Cree una relación entre iguales de SVM de origen y de destino mientras crea una relación de protección de datos entre el volumen de origen y el volumen de destino.
+
+link:../volume-backup-snapvault/index.html["Backup de volúmenes mediante SnapVault"]
+
+link:../volume-disaster-recovery/index.html["Preparación para la recuperación ante desastres de volúmenes"]

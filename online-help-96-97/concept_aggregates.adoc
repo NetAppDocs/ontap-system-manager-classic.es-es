@@ -1,0 +1,203 @@
+---
+permalink: online-help-96-97/concept_aggregates.html 
+sidebar: sidebar 
+keywords: aggregates, system, manager, security, backup, performance, data, sharing, classic, online, help, window 
+summary: Puede usar System Manager para crear agregados que admitan los distintos requisitos de seguridad, backup, rendimiento y uso compartido de datos de los usuarios. 
+---
+= Gestione agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+
+
+Puede utilizar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear agregados para dar cabida a los distintos requisitos de seguridad, backup, rendimiento y uso compartido de datos de los usuarios.
+
+
+
+== Ventana Aggregates
+
+Puede utilizar la ventana Aggregates para crear, mostrar y gestionar información sobre los agregados.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create aggregate, lo que permite crear un agregado.
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit Aggregate, el cual permite cambiar el nombre de un agregado o el nivel de protección RAID que se desea proporcionar al agregado.
+
+* *Eliminar*
++
+Elimina el agregado seleccionado.
+
++
+[NOTE]
+====
+Este botón está desactivado para el agregado raíz.
+
+====
+* *Más acciones*
++
+Proporciona las siguientes opciones:
+
+* *Cambie el estado a*
++
+Cambia el estado del agregado seleccionado a uno de los siguientes Estados:
+
++
+** En línea
++
+Se permite el acceso de lectura y escritura a los volúmenes que están contenidos en este agregado.
+
+** Sin conexión
++
+No se permite el acceso de lectura y escritura.
+
+** Restringir
++
+Se permiten algunas operaciones, como la reconstrucción de paridad, pero no se permite el acceso a los datos.
+
+
+
+* *Añadir capacidad*
++
+Le permite añadir capacidad (HDD o SSD) a los agregados existentes.
+
+* *Agregar caché*
++
+Le permite añadir discos de caché (SSD) a agregados de HDD o agregados de Flash Pool existentes.
+
++
+Este botón no está disponible para un clúster que contenga nodos con personalidad de All Flash Optimized.
+
+* *Espejo*
++
+Permite reflejar los agregados.
+
+* *Movimiento de volumen*
++
+Permite mover un volumen de FlexVol.
+
+* *Adjuntar Cloud Tier*
++
+Le permite adjuntar un nivel de cloud al agregado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista Aggregate
+
+Muestra la información de nombre y de uso de espacio de cada agregado.
+
+* *Estado*
++
+Muestra el estado del agregado.
+
+* *Nombre*
++
+Muestra el nombre del agregado.
+
+* *Nodo*
++
+Muestra el nombre del nodo al que se asignan los discos del agregado.
+
++
+Este campo solo está disponible a nivel de clúster.
+
+* *Tipo*
++
+Muestra el tipo de agregado.
+
++
+Este campo no se muestra para un clúster que contenga nodos con personalidad de All Flash Optimized.
+
+* *Usado (%)*
++
+Muestra el porcentaje de espacio que se usa en el agregado.
+
+* *Espacio disponible*
++
+Muestra el espacio disponible en el agregado.
+
+* * Espacio usado*
++
+Muestra la cantidad de espacio que se utiliza para los datos del agregado.
+
+* * Espacio total*
++
+Muestra el espacio total del agregado.
+
+* *FabricPool*
++
+Muestra si el agregado seleccionado está asociado a un nivel de cloud.
+
+* *Nivel de cloud*
++
+Si el agregado seleccionado está anexado a un nivel de cloud, muestra el nombre del nivel de cloud.
+
+* *Recuento de volumen*
++
+Muestra la cantidad de volúmenes asociados con el agregado.
+
+* *Número de discos*
++
+Muestra el número de discos que se usan para crear el agregado.
+
+* *Flash Pool*
++
+Muestra el tamaño total de la caché del agregado de Flash Pool. El valor de NA indica que el agregado no es un agregado de Flash Pool.
+
++
+Este campo no se muestra para un clúster que contenga nodos con personalidad de All Flash Optimized.
+
+* *Espejo*
++
+Muestra si el agregado está duplicado.
+
+* *Tipo de SnapLock*
++
+Muestra el tipo de SnapLock del agregado.
+
+
+
+
+
+=== El área Detalles
+
+Seleccione un agregado para ver información sobre el agregado seleccionado. Puede hacer clic en Show More Details para ver información detallada sobre el agregado seleccionado.
+
+* *Ficha Descripción general*
++
+Muestra información detallada sobre el agregado seleccionado y muestra una representación gráfica de la asignación de espacio del agregado, el ahorro de espacio del agregado y el rendimiento del agregado en IOPS y las transferencias totales de datos.
+
+* *Ficha Información del disco*
++
+Muestra información de distribución de discos, como el nombre del disco, tipo de disco, tamaño físico, tamaño útil, posición del disco, Estado del disco, nombre complejo, estado complejo, grupo RAID, tipo RAID, y el pool de almacenamiento (si lo hubiera) para el agregado seleccionado. También se muestran el puerto de disco asociado con la ruta de acceso primaria del disco y el nombre del disco con la ruta secundaria del disco para una configuración multivía.
+
+* *Ficha de volúmenes*
++
+Muestra detalles sobre el número total de volúmenes en el agregado, el espacio total de agregados y el espacio asignado al agregado.
+
+* *Ficha rendimiento*
++
+Muestra gráficos que muestran las métricas de rendimiento de los agregados, incluidos el rendimiento y las IOPS. Los datos de las métricas de rendimiento para transferencias de lectura, escritura y total se muestran para el rendimiento e IOPS, y los datos de las unidades SSD y HDD se registran por separado.
+
++
+Si se cambia la zona horaria del cliente o la zona horaria del clúster, se afectan los gráficos de métricas de rendimiento. Debe actualizar el explorador para ver los gráficos actualizados.
+
+
+
+*Información relacionada*
+
+xref:task_provisioning_storage_through_aggregates.adoc[Aprovisionamiento de almacenamiento mediante agregados]
+
+xref:task_deleting_aggregates.adoc[Eliminación de agregados]
+
+xref:task_editing_aggregates.adoc[Editar agregados]

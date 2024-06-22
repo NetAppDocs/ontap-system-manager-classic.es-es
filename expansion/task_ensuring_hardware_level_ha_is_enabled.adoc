@@ -1,0 +1,50 @@
+---
+permalink: expansion/task_ensuring_hardware_level_ha_is_enabled.html 
+sidebar: sidebar 
+keywords: install, controller, module, reuse, maintenance, mode, ha, state, hardware-level, enable, ensure hardware-level ha is enabled 
+summary: Si se vuelven a utilizar los módulos de controladoras recién instalados, no es nuevo, debe entrar en el modo de mantenimiento y asegurarse de que su estado de alta disponibilidad se establece en alta disponibilidad. 
+---
+= Asegúrese de que la alta disponibilidad en el nivel de hardware está habilitada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si se reutilizan los módulos de controladoras recién instalados, no los nuevos, debe entrar en el modo de mantenimiento y asegurarse de que su estado ha se establece en ha.
+
+.Acerca de esta tarea
+Si está utilizando nuevos módulos de controladora, puede omitir este procedimiento porque la función ha está habilitada de forma predeterminada. De lo contrario, debe realizar este procedimiento en ambos nodos.
+
+.Pasos
+. En el primer nodo, introduzca modo de mantenimiento:
++
+.. Salga del infierno entrando `halt`.
++
+Aparece el aviso del CARGADOR.
+
+.. Para entrar en el modo de mantenimiento, introduzca `boot_ontap maint`.
++
+Después de ver alguna información, se muestra el aviso del modo de mantenimiento.
+
+
+
+. En el modo de mantenimiento, compruebe que el módulo de la controladora y el chasis estén en estado de alta disponibilidad:
++
+.. Muestre el estado de alta disponibilidad del módulo de la controladora y el chasis introduciendo `ha-config show`.
+.. Si el estado que se muestra de la controladora no es `HA`, entre `ha-config modify controller ha`.
+.. Si el estado mostrado del chasis no es `HA`, entre `ha-config modify chassis ha`.
+.. Compruebe que la alta disponibilidad está habilitada tanto en el módulo de la controladora como en el chasis; para ello, introduzca `ha-config show`.
+
+
+. Volver a ONTAP:
++
+.. Introduzca `halt` Para salir del modo de mantenimiento.
+.. Inicie el ONTAP introduciendo `boot_ontap`
+.. Espere mientras arranca el nodo y el Asistente de configuración de clúster se inicia automáticamente en la consola.
+.. Pulse Intro cuatro veces para aceptar la configuración existente del LIF de gestión de nodos.
+.. Inicie sesión en el nodo como el `admin` usuario, que no requiere contraseña.
+
+
+. Repita este procedimiento en el otro nodo que va a añadir al clúster.
+

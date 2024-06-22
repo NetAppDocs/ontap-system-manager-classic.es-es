@@ -1,0 +1,143 @@
+---
+permalink: online-help-96-97/reference_applications_window.html 
+sidebar: sidebar 
+keywords: applications, window, svm, online, help, storage, virtual, machine, online, help, action, icon, tab, column 
+summary: 'Puede usar System Manager para mostrar una lista de las aplicaciones en una máquina virtual de almacenamiento (SVM). La lista incluye información detallada sobre cada aplicación.' 
+---
+= Ventana aplicaciones en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para mostrar una lista de las aplicaciones de una máquina virtual de almacenamiento (SVM). La lista incluye información detallada sobre cada aplicación.
+
+
+
+== Pestañas
+
+Según la configuración del clúster, System Manager muestra información sobre las aplicaciones que utilizan uno de los siguientes métodos:
+
+* *Sin fichas*
++
+Información detallada sobre la aplicación, incluyendo el nombre, el tipo, el uso del almacenamiento, el rendimiento, e información relacionada.
+
+* *Dos pestañas*
++
+La pantalla proporciona dos fichas de información sobre la aplicación.
+
++
+** *Mejorado*
++
+Información detallada sobre la aplicación, incluyendo el nombre, el tipo, el uso del almacenamiento, el rendimiento, e información relacionada.
+
+** *Básico*
++
+Información básica sobre la aplicación.
+
+
+
+
+
+
+
+== Lista de aplicaciones
+
+Las aplicaciones para la SVM seleccionada se muestran en la ficha *mejorada* de una lista de las siguientes formas:
+
+* Para System Manager 9.5 y versiones anteriores, se muestran un máximo de 32 aplicaciones en la lista.
+* Para System Manager 9.6, se muestran las primeras 25 aplicaciones en la lista. A medida que se desplaza a la parte inferior de la lista, se agregan otras 25 aplicaciones a la lista. Cuando continúa desplazándose, puede continuar agregando 25 aplicaciones a la vez para expandir la lista hasta un máximo de 1000 aplicaciones.
+
+
+
+
+== Columnas de lista
+
+La información sobre cada aplicación se muestra en la ficha *mejorada* de las siguientes columnas.
+
+* *Expandir/contraer flecha image:../media/arrow_expand_collapse_white_background.gif[""]*
++
+Contiene una flecha en la que puede hacer clic para expandir la información a una vista detallada o para contraer la información de nuevo a la vista de resumen.
+
+* *Nombre*
++
+Nombre de la aplicación.
+
+* *Tipo*
++
+Tipo de aplicación.
+
+* *Componente*
++
+El componente de la aplicación.
+
+* *Nivel de servicio de ONTAP*
++
+El nivel de servicio ONTAP para la aplicación.
+
+* *Uso*
++
+Barra gráfica que muestra el porcentaje de uso.
+
+* *Utilizado*
++
+La cantidad de espacio de almacenamiento que utiliza la aplicación.
+
+* *Disponible*
++
+La cantidad de espacio de almacenamiento sigue disponible para la aplicación.
+
+* *Tamaño*
++
+El tamaño de la aplicación.
+
+* *IOPS*
++
+El número de operaciones de entrada y salida por segundo (IOPS) de la aplicación.
+
+* *Latencia*
++
+La cantidad de latencia de la aplicación.
+
+
+
+
+
+== Campos de entrada
+
+Los siguientes campos se pueden utilizar para modificar la visualización de información:
+
+* *SVM*
++
+Permite mostrar una lista desplegable de SVM desde la cual puede seleccionar la SVM que contiene las aplicaciones que desea mostrar.
+
+* *Campo de búsqueda*
++
+Permite escribir todo o parte de un nombre de aplicación para iniciar una búsqueda en función de los criterios que escriba. A continuación, sólo se muestran en la lista las aplicaciones con nombres que coincidan con los criterios.
+
+* *Ordenar por campo*
++
+Permite ordenar la lista de aplicaciones según el nombre, el tamaño o el tipo.
+
+
+
+
+
+== Iconos de acción
+
+Los siguientes iconos de la ficha *mejorada* se pueden utilizar para iniciar acciones:
+
+* *Icono Añadir image:../media/add_plus_sign.gif[""]*
++
+Permite añadir una aplicación a la SVM seleccionada.
+
+* *Icono filtro image:../media/filter_icon_white_background.gif[""]*
++
+Permite especificar el tipo de aplicación que desea mostrar en los resultados de la búsqueda.
+
+* *Icono de visualización image:../media/display_icon.gif[""]*
++
+Permite cambiar entre una vista de lista y una vista de tarjeta de la información de la aplicación.
+
+

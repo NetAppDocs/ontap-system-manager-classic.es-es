@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_taking_luns_offline.html 
+sidebar: sidebar 
+keywords: take, lun, offline, online, help, management, system, manager 
+summary: Puede usar la pestaña Gestión de LUN en System Manager para desconectar las LUN seleccionadas y hacer que no estén disponibles para el acceso al protocolo de bloques. 
+---
+= Desconecte las LUN con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar la ficha *Administración de LUN* del clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para desconectar las LUN seleccionadas y hacer que no estén disponibles para el acceso al protocolo de bloque.
+
+.Antes de empezar
+Cualquier aplicación host que acceda a la LUN debe estar en modo inactivo o sincronizada.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Administración de LUN*, seleccione una o más LUN que desee desconectar.
+. Haga clic en *Estado* > *sin conexión*.
+
+
+*Información relacionada*
+
+xref:reference_luns_window.adoc[Ventana de LUN]

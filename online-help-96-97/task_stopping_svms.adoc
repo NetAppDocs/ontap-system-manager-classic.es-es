@@ -1,0 +1,35 @@
+---
+permalink: online-help-96-97/task_stopping_svms.html 
+sidebar: sidebar 
+keywords: stop, svm, online, help, system, manager, storage, virtual, machine 
+summary: 'Puede usar System Manager para detener una máquina virtual de almacenamiento (SVM) si desea solucionar problemas con la SVM, eliminar la SVM o detener el acceso a los datos desde la SVM.' 
+---
+= Detenga SVM con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para detener una máquina virtual de almacenamiento (SVM) si desea solucionar problemas con la SVM, eliminar la SVM o detener el acceso a los datos desde la SVM.
+
+.Antes de empezar
+Todos los clientes conectados a la SVM deben estar desconectados.
+
+[NOTE]
+====
+Si alguno de los clientes está conectado a la SVM cuando lo detiene, se podrían perder datos.
+
+====
+.Acerca de esta tarea
+* No puede detener las SVM durante la conmutación al nodo de respaldo de almacenamiento (SFO).
+* Cuando detiene la SVM, un administrador de SVM no puede iniciar sesión en la SVM.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM que desea detener y, a continuación, haga clic en *Detener*.
+
+
+.Resultados
+La SVM deja de servir datos a los clientes.

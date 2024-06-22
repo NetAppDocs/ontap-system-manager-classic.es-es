@@ -1,0 +1,96 @@
+---
+permalink: online-help-96-97/task_adding_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, add, license, storage, software, online, help 
+summary: Si el software del sistema de almacenamiento viene instalado de fábrica, System Manager lo añadirá a su lista de licencias automáticamente. Si el software no viene instalado de fábrica, o bien si desea añadir licencias de software adicionales, puede utilizar System Manager para añadir la licencia. 
+---
+= Añada licencias con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para añadir la licencia de software si el software no estaba instalado de fábrica o si desea añadir licencias de software adicionales.
+
+Si el software del sistema de almacenamiento viene instalado de fábrica, System Manager lo añadirá a su lista de licencias automáticamente.
+
+.Antes de empezar
+El código de licencia de software del servicio de ONTAP específico debe estar disponible.
+
+.Acerca de esta tarea
+* A partir de ONTAP 9.10.1, es posible usar System Manager para instalar un archivo de licencia de NetApp (NLF) con el fin de habilitar varias funciones con licencia a la vez. El uso de un archivo de licencia de NetApp simplifica la instalación de la licencia porque ya no tiene que añadir claves de licencia de funciones independientes. Descargue el archivo de licencia de NetApp desde el sitio de soporte de NetApp.
++
+Para obtener más información, consulte link:https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Habilite nuevas funciones añadiendo claves de licencia"]
+
++
+Para obtener información acerca de la administración de licencias, consulte link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Información general sobre gestionar licencias (solo administradores de clúster)"^]
+
+* Cuando se agrega una nueva licencia en una configuración de MetroCluster, se recomienda añadirla también en el clúster del sitio superviviente.
+* System Manager no se puede usar para añadir la licencia de Cloud Volumes ONTAP.
++
+La licencia de Cloud Volumes ONTAP no se incluye en la página de licencias. System Manager no muestra ninguna alerta sobre el estado de riesgo de autorización de la licencia de Cloud Volumes ONTAP.
+
+* Solo se pueden cargar licencias basadas en capacidad.
++
+Las licencias basadas en capacidad son del tipo «'json'».
+
+
+
+.Pasos
+. Haga clic en *Configuración* > *clúster* > *licencias*.
+. Haga clic en *Agregar*.
+. En el cuadro de diálogo *Agregar licencia*, realice los pasos adecuados:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Añadir una licencia para un servicio de ONTAP concreto
+ a| 
+.. Introduzca la clave de licencia del software.
++
+Puede añadir varias licencias introduciendo las claves de licencia del software separadas por comas.
+
+.. Haga clic en *Agregar*.
+
+
+
+
+ a| 
+Añadir una licencia basada en capacidad
+ a| 
+.. Haga clic en Browse y seleccione el archivo de licencia basada en capacidad.
+.. Haga clic en *Agregar*.
+
+
+
+
+ a| 
+Añadir una licencia para un servicio de ONTAP concreto y añadir una licencia basada en capacidad
+ a| 
+.. Introduzca la clave de licencia del software.
++
+Puede añadir varias licencias introduciendo las claves de licencia del software separadas por comas.
+
+.. Haga clic en Browse y seleccione el archivo de licencia basada en capacidad.
+.. Haga clic en *Agregar*.
+
+
+|===
++
+Se añadirá la nueva licencia.
+
++
+El cuadro de diálogo Agregar estado de licencia muestra la lista de licencias que se han añadido correctamente. En el cuadro de diálogo también se muestran las claves de las licencias que no se añadieron y el motivo por el que no se añadieron las licencias.
+
+. Haga clic en *Cerrar*.
+
+
+.Resultados
+La licencia del software se añadirá al sistema de almacenamiento y se mostrará en la lista de licencias de la ventana Licenses.
+
+*Información relacionada*
+
+xref:reference_licenses_window.adoc[Licencias]

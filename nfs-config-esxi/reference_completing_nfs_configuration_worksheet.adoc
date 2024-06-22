@@ -1,0 +1,206 @@
+---
+permalink: nfs-config-esxi/reference_completing_nfs_configuration_worksheet.html 
+sidebar: sidebar 
+keywords: network, address, storage, configuration, information, perform, nfs, client, task, complete, complete the nfs client configuration worksheet 
+summary: Es necesaria la información de configuración de almacenamiento y las direcciones de red para ejecutar tareas de configuración del cliente NFS. 
+---
+= Rellene la hoja de trabajo de configuración del cliente NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es necesaria la información de configuración de almacenamiento y las direcciones de red para ejecutar tareas de configuración del cliente NFS.
+
+
+
+== Direcciones de red de destino
+
+Necesita una subred con dos direcciones IP para las LIF de datos de NFS para cada nodo del clúster. Debería haber dos redes separadas para una alta disponibilidad. ONTAP asigna las direcciones IP específicas cuando crea las LIF como parte de la creación de la SVM.
+
+Si es posible, separe el tráfico de red en redes físicas o en VLAN.
+
+image::../media/network_for_nfs_eg.gif[Topología de red para la configuración del cliente]
+
+Subred para LIF:
+
+|===
+| Nodo o LIF con puerto al switch | Dirección IP | Máscara de red | Puerta de enlace | ID DE VLAN | Puerto de inicio 
+
+
+ a| 
+Nodo 1 / LIF al switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 2 / LIF al switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 3/LIF al switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 4 / LIF al switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 1 / LIF al switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 2 / LIF al switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 3 / LIF al switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 4 / LIF al switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+== Configuración del almacenamiento
+
+Si el agregado ya está creado, registre sus nombres aquí; de lo contrario, puede crearlos según sea necesario:
+
+|===
+| A su propio exportación NFS 
+
+
+ a| 
+Nombre del agregado
+
+
+
+ a| 
+nombre
+
+|===
+
+
+== Información de exportación de NFS
+
+|===
+| Tamaño de exportación 
+
+
+ a| 
+Nombre de exportación (opcional)
+
+
+
+ a| 
+Exportar descripción (opcional)
+
+|===
+
+
+== Información de la SVM
+
+Si no está utilizando un , necesita la siguiente información para crear uno nuevo:
+
+[cols="1a,1a"]
+|===
+2+| Nombre de SVM 
+
+
+ a| 
+Agregado para el volumen raíz de la SVM
+
+
+
+ a| 
+Nombre de usuario de SVM (opcional)
+
+
+
+ a| 
+Contraseña de SVM (opcional)
+
+
+
+ a| 
+LIF de gestión de SVM (opcional)
+
+
+
+ a| 
+ a| 
+Subred:
+
+
+
+ a| 
+ a| 
+Dirección IP:
+
+
+
+ a| 
+ a| 
+Máscara de red:
+
+
+
+ a| 
+ a| 
+Puerta de enlace:
+
+
+
+ a| 
+ a| 
+Nodo principal:
+
+|===

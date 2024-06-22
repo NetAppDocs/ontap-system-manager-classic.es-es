@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/task_zeroing_disks.html 
+sidebar: sidebar 
+keywords: zero, spare, disks, system, manager, erase, data, online, help 
+summary: Puede usar System Manager para borrar todos los datos y formatear los discos de repuesto mediante la escritura de ceros en el disco. Estos discos se podrán usar en nuevos agregados. 
+---
+= Cero discos de repuesto con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para borrar todos los datos y formatear los discos de repuesto mediante la escritura de ceros en el disco. Estos discos se podrán usar en nuevos agregados.
+
+.Acerca de esta tarea
+Cuando los discos de repuesto se ponen a cero, también se ponen a cero todos los repuestos del clúster, incluidos los LUN de cabina. Puede poner a cero los discos de repuesto de un nodo concreto o los de todo el clúster.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *discos*.
+. En la ventana *discos*, seleccione la pestaña *Inventario*.
+. Haga clic en *cero repuestos*.
+. En el cuadro de diálogo *cero repuestos*, seleccione un nodo o "'todos los nodos'" del que desea poner a cero los discos.
+. Active la casilla de verificación *Zero all non-zeroed spares* para confirmar la operación de puesta a cero.
+. Haga clic en *cero repuestos*.
+
+
+*Información relacionada*
+
+xref:concept_storage_recommendations_for_creating_aggregates.adoc[Recomendaciones de almacenamiento para la creación de agregados]

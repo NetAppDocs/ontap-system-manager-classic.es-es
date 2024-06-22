@@ -1,0 +1,50 @@
+---
+permalink: volume-backup-snapvault/index.html 
+sidebar: sidebar 
+keywords: content, configure, snapvault, backup, relationship, volume, cluster, read-only, copies, copy, locate, destination, volume, restoring, restore, data, corrupt, lost, volume backup using snapvault overview 
+summary: Es posible configurar rápidamente las relaciones de backup de SnapVault entre volúmenes ubicados en clústeres diferentes. El backup de SnapVault contiene un conjunto de copias de backup de solo lectura, que se encuentran en un volumen de destino que se puede utilizar para restaurar datos cuando se pierden o se dañan. 
+---
+= Información general sobre backup de volúmenes mediante SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible configurar rápidamente las relaciones de backup de SnapVault entre volúmenes ubicados en clústeres diferentes. El backup de SnapVault contiene un conjunto de copias de backup de solo lectura, que se encuentran en un volumen de destino que se puede utilizar para restaurar datos cuando se pierden o se dañan.
+
+Utilice este procedimiento si desea crear relaciones de backup de SnapVault para los volúmenes de la siguiente manera:
+
+* Trabaja con clústeres que ejecutan ONTAP 9.
+* Es un administrador de clúster.
+* Configuró la relación de paridad de clústeres y la relación de paridad de SVM.
++
+link:../peering/index.html["Configuración de relaciones entre iguales de clústeres y SVM"]
+
+* Debe haber habilitado la licencia de SnapMirror o SnapVault, después de que todos los nodos del clúster se hayan actualizado a la misma versión de ONTAP 9.
+* Desea usar las políticas y las programaciones de protección predeterminadas, y no crear políticas personalizadas.
+* No desea realizar backups de datos de un solo archivo o restauración de LUN.
+* Quiere utilizar las prácticas recomendadas, no explorar todas las opciones disponibles.
+* No desea leer muchos antecedentes conceptuales.
+* Desea usar System Manager, no la interfaz de línea de comandos de ONTAP ni una herramienta de secuencias de comandos automatizadas.
+* Desea utilizar la interfaz clásica de System Manager para ONTAP 9.7 y versiones anteriores, no la interfaz de usuario de ONTAP System Manager para ONTAP 9.7 y posteriores.
+
+
+Si estas suposiciones no son correctas para su situación o si desea obtener más información de fondo conceptual, debe consultar el recurso siguiente:
+
+link:http://www.netapp.com/us/media/tr-4183.pdf["Informe técnico de NetApp 4183: Prácticas recomendadas de SnapVault"^]
+
+
+
+== Otras maneras de hacerlo en ONTAP
+
+[cols="2"]
+|===
+| Para ejecutar estas tareas con... | Ver este contenido... 
+
+
+| System Manager rediseñado (disponible con ONTAP 9.7 y versiones posteriores) | link:https://docs.netapp.com/us-en/ontap/task_dp_configure_mirror.html["Configure los reflejos y almacenes"^] 
+
+
+| La interfaz de línea de comandos de ONTAP | link:https://docs.netapp.com/us-en/ontap/data-protection/create-replication-relationship-task.html["Cree una relación de replicación"^] 
+|===

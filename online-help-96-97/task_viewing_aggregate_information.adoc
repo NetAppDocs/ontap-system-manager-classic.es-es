@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_viewing_aggregate_information.html 
+sidebar: sidebar 
+keywords: view, aggregate, information, online, help, system, manager 
+summary: Puede utilizar la ventana Aggregates de System Manager para ver la información sobre un agregado, su estado y espacio. 
+---
+= Vea información de agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar la ventana de agregados en el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver la información sobre nombre, estado y espacio sobre un agregado.
+
+.Pasos
+. Elija uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento*.
+** Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+
+
+. Haga clic en el nombre del agregado para ver los detalles del agregado seleccionado.
+

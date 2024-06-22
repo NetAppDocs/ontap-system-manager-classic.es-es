@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_changing_status_flexcache_volume.html 
+sidebar: sidebar 
+keywords: flexcache, volume, change, status,online, help 
+summary: A partir de System Manager 9.6, es posible cambiar el estado de un volumen FlexCache cuando se desea desconectar, volver a conectar un volumen FlexCache o restringir el acceso a un volumen FlexCache. 
+---
+= Cambiar el estado de un volumen de FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, es posible cambiar el estado de un volumen FlexCache cuando se desea desconectar, volver a conectar un volumen FlexCache o restringir el acceso a un volumen FlexCache.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen de FlexCache para el que desea modificar el estado.
+. Haga clic en *más acciones* > *Cambiar estado a* y, a continuación, actualice el estado del volumen FlexCache seleccionando el estado requerido.
++
+[NOTE]
+====
+Para desconectar un volumen de FlexCache y cambiar el estado a "restringido", primero se debe desmontar el volumen.
+
+====
+

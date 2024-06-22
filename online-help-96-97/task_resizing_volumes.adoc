@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_resizing_volumes.html 
+sidebar: sidebar 
+keywords: resize, volume, capacity, snapshot, copy, online, help 
+summary: Cuando un volumen alcanza la capacidad casi completa, puede aumentar el tamaño del volumen, eliminar algunas copias Snapshot o ajustar la reserva Snapshot. Es posible usar el asistente para cambiar el tamaño de volumen en System Manager para proporcionar más espacio libre. 
+---
+= Cambie el tamaño de los volúmenes con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando un volumen alcanza la capacidad casi completa, puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para aumentar el tamaño del volumen, eliminar algunas copias Snapshot o ajustar la reserva Snapshot. Es posible usar el asistente para cambiar el tamaño de volumen en System Manager para proporcionar más espacio libre.
+
+.Acerca de esta tarea
+* En el caso de un volumen que esté configurado para crecer automáticamente, es posible modificar el límite al que el volumen puede crecer automáticamente en función del mayor tamaño del volumen.
+* No se puede cambiar el tamaño de un volumen de protección de datos si se rompe su relación de reflejo o se ha realizado una operación de resincronización inversa en el volumen.
++
+En su lugar, debe usar la interfaz de línea de comandos (CLI).
+
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen cuyo tamaño desea cambiar.
+. Haga clic en *más acciones* > *Cambiar tamaño*.
+. Escriba o seleccione la información que le solicite el asistente.
+. Confirme los detalles y, a continuación, haga clic en *Finalizar* para completar el asistente.
+. Verifique los cambios realizados en el espacio disponible y el espacio total del volumen en la ventana *Volumes*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

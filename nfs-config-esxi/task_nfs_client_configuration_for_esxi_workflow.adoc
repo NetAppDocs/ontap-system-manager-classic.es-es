@@ -1,0 +1,16 @@
+---
+permalink: nfs-config-esxi/task_nfs_client_configuration_for_esxi_workflow.html 
+sidebar: sidebar 
+keywords: nfs, client, configuration, esxi, workflow, nfs client configuration for esxi workflow 
+summary: Cuando el almacenamiento esté disponible para un host ESXi mediante NFS, debe aprovisionar un volumen en el mediante para y, después, conectarse a la exportación NFS desde el host ESXi. 
+---
+= Flujo de trabajo de configuración del cliente NFS para ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando el almacenamiento esté disponible para un host ESXi mediante NFS, debe aprovisionar un volumen en el mediante para y, después, conectarse a la exportación NFS desde el host ESXi.
+
+image::../media/nfs_client_configuration_with_vaai_workflow.gif[Configuración del cliente de NFS con VAAI para ESX]

@@ -1,0 +1,19 @@
+---
+permalink: peering/concept_cluster_peering_workflow.html 
+sidebar: sidebar 
+keywords: set, relationship, cluster, peer, creating, create, intercluster, logical, interface, lif, relationship, svm, cluster and svm peering workflow 
+summary: 'La configuración de una relación de paridad implica preparar cada clúster para la paridad, crear interfaces lógicas de interconexión de clústeres (LIF) en cada nodo de cada clúster, configurar una relación de paridad de clústeres y, a continuación, configurar una relación de paridad de SVM.' 
+---
+= Flujo de trabajo de relaciones entre iguales de clústeres y SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede configurar una relación de paridad mediante el Administrador del sistema de ONTAP con ONTAP 9.7 o anterior.
+La configuración de una relación de paridad implica preparar cada clúster para la paridad, crear interfaces lógicas de interconexión de clústeres (LIF) en cada nodo de cada clúster, configurar una relación de paridad de clústeres y, a continuación, configurar una relación de paridad de SVM.
+
+image::../media/cluster_peering_workflow.gif[La imagen se describe en el texto circundante]
+
+Si ejecuta ONTAP 9.2 o una versión anterior, debe crear una relación de paridad de SVM mientras crea una relación de protección de datos entre el volumen de origen y el volumen de destino.

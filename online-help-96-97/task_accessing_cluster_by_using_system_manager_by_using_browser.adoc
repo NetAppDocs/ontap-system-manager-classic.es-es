@@ -1,0 +1,49 @@
+---
+permalink: online-help-96-97/task_accessing_cluster_by_using_system_manager_by_using_browser.html 
+sidebar: sidebar 
+keywords: online, help, access, cluster, ontap, system, manager, graphic, interface, cli, command, line, interface 
+summary: 'Si prefiere utilizar una interfaz gráfica en lugar de la interfaz de línea de comandos (CLI) para acceder y gestionar un clúster, puede hacerlo mediante System Manager de ONTAP, que se incluye con ONTAP como servicio web, se habilita de forma predeterminada y se puede acceder a él mediante un navegador.' 
+---
+= Obtener acceso a un clúster mediante la interfaz gráfica basada en navegador de ONTAP System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si prefiere utilizar una interfaz gráfica en lugar de la interfaz de línea de comandos (CLI) para acceder y gestionar un clúster, puede hacerlo mediante System Manager de ONTAP, que se incluye con ONTAP como servicio web, se habilita de forma predeterminada y se puede acceder a él mediante un navegador.
+
+.Antes de empezar
+* Debe tener una cuenta de usuario del clúster que esté configurada con el `admin` función y la `http`, `ontapi`, y. `console` tipos de aplicación.
+* Debe haber activado las cookies y los datos del sitio en el navegador.
+
+
+.Acerca de esta tarea
+Puede usar un LIF de gestión de clústeres o un LIF de gestión de nodos para acceder a System Manager de ONTAP. Para obtener un acceso ininterrumpido a System Manager de ONTAP, debe utilizar una LIF de gestión de clústeres.
+
+.Pasos
+. Dirija el navegador web a la dirección IP de la LIF de administración del clúster:
++
+** Si utiliza IPv4: `+https://cluster-mgmt-LIF+`
+** Si utiliza IPv6: `https://[cluster-mgmt-LIF]`
+Solo se admite HTTPS para el acceso al explorador de ONTAP System Manager.
+
+
++
+Si el clúster utiliza un certificado digital autofirmado, es posible que el explorador muestre una advertencia que indica que el certificado no es de confianza. Puede reconocer el riesgo de continuar con el acceso o instalar un certificado digital firmado de entidad de certificación (CA) en el clúster para la autenticación del servidor.
+
+. Si ha configurado un banner de acceso mediante la CLI, lea el mensaje que aparece en el cuadro de diálogo *Advertencia* y elija la opción necesaria para continuar.
++
+Esta opción no es compatible en sistemas donde está habilitada la autenticación del lenguaje de marcado de aserción de seguridad (SAML).
+
++
+** Si no desea continuar, haga clic en *Cancelar* y cierre el navegador.
+** Si desea continuar, haga clic en *Aceptar* para ir a la página de inicio de sesión del Administrador del sistema de ONTAP.
+
+
+. Inicie sesión en ONTAP System Manager con las credenciales de administrador del clúster.
+
+
+*Información relacionada*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de documentación de ONTAP 9"]

@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/concept_using_space_reservation_with_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: space, reservation, flexvol, volume, online, help 
+summary: Con la reserva de espacio, puede aprovisionar volúmenes de FlexVol. Parece que thin provisioning proporciona más almacenamiento del que realmente está disponible en un agregado determinado, siempre que no todo el almacenamiento se esté utilizando actualmente. 
+---
+= Use las reservas de espacio con FlexVol Volumes con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores), se puede utilizar la reserva de espacio para aprovisionar volúmenes de FlexVol. Parece que thin provisioning proporciona más almacenamiento del que realmente está disponible en un agregado determinado, siempre que no todo el almacenamiento se esté utilizando actualmente.
+
+El aprovisionamiento grueso divide el suficiente almacenamiento del agregado para garantizar que cualquier bloque del volumen se pueda escribir en cualquier momento.
+
+Los agregados pueden proporcionar almacenamiento a los volúmenes contenidos por más de una máquina virtual de almacenamiento (SVM). Si utiliza thin provisioning y necesita mantener una separación estricta entre las SVM (por ejemplo, si proporciona almacenamiento en un entorno multi-tenancy), debe usar volúmenes totalmente asignados (aprovisionamiento grueso) o asegurarse de que sus agregados no se compartan entre inquilinos.
+
+Cuando la reserva de espacio se establece en "predeterminado", la configuración de la reserva de espacio de ONTAP se aplica a los volúmenes.
+
+*Información relacionada*
+
+http://www.netapp.com/us/media/tr-3563.pdf["Informe técnico de NetApp 3563: Thin Provisioning de NetApp aumenta el uso de almacenamiento con la asignación bajo demanda"^]
+
+http://www.netapp.com/us/media/tr-3483.pdf["Informe técnico de NetApp 3483: Thin Provisioning en un entorno empresarial SAN o SAN IP DE NetApp"^]

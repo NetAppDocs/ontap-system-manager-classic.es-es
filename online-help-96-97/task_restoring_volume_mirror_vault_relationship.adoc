@@ -1,0 +1,85 @@
+---
+permalink: online-help-96-97/task_restoring_volume_mirror_vault_relationship.html 
+sidebar: sidebar 
+keywords: restore, volume, mirror, vault, relationship, online, help, snapshot, copy, system, manager 
+summary: Puede usar System Manager para restaurar copias de Snapshot en un volumen de origen o en otros volúmenes si los datos de origen se encuentran dañados y ya no se pueden utilizar. Puede reemplazar los datos originales por las copias Snapshot en el volumen de destino. 
+---
+= Restaure un volumen en una relación de mirroring y almacén con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para restaurar copias de Snapshot en un volumen de origen o en otros volúmenes si los datos de origen están dañados y ya no se pueden utilizar. Puede reemplazar los datos originales por las copias Snapshot en el volumen de destino.
+
+.Antes de empezar
+* Las licencias de SnapMirror y SnapVault deben habilitarse en el clúster de origen y el de destino, o en los nodos que contienen el volumen de origen y el volumen de destino.
+* Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+* El agregado de origen o cualquier otro agregado que seleccione para la operación de restauración deben ser un agregado de 64 bits.
+* Si se conecta de un clúster que ejecuta ONTAP 9.2 o una versión anterior a un clúster remoto en el que se habilitó la autenticación de SAML, la autenticación basada en contraseña también debe estar habilitada en el clúster remoto.
+
+
+.Acerca de esta tarea
+* No es posible restaurar un volumen que está en una relación de mirroring y almacén entre una máquina virtual de almacenamiento (SVM) de origen y una SVM de destino en una configuración de MetroCluster.
+* Puede restaurar una relación de mirroring y almacén para las siguientes configuraciones:
++
+** Entre SVM sincronizada en origen en una configuración de MetroCluster
+** Desde un volumen en una SVM sincronizada en origen a una SVM predeterminada
+** Desde un volumen en una SVM predeterminada a un volumen de DP en una SVM sincronizada en origen
+
+
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo y almacén que desea restaurar y, a continuación, haga clic en *Operaciones* > *Restaurar*.
+. En el cuadro de diálogo *Restaurar*, restaure los datos al volumen de origen en la relación o seleccione cualquier otro volumen:
++
+|===
+| Si desea restaurar los datos en... | Realice lo siguiente... 
+
+
+ a| 
+El volumen de origen
+ a| 
+.. Seleccione *volumen de origen*.
+.. link:#step6["Vaya al paso 6"].
+
+
+
+
+ a| 
+Cualquier otro volumen
+ a| 
+Seleccione *Other volume* y, a continuación, seleccione el clúster y la SVM.
+
+|===
+. Restaure los datos en un volumen nuevo o en uno existente:
++
+|===
+| Si desea restaurar los datos en... | Realice lo siguiente... 
+
+
+ a| 
+Un volumen nuevo
+ a| 
+Si desea cambiar el nombre predeterminado, que aparece con el formato "desfiguration_SVM_name_destination_volume_name_restore", especifique un nombre nuevo y, a continuación, seleccione el agregado que contiene el volumen.
+
+
+
+ a| 
+Un volumen existente
+ a| 
+Seleccione la opción *Seleccionar volumen*.
+
+Debe seleccionar un volumen distinto al de origen, o un volumen de lectura/escritura con algunos datos en él y con una copia Snapshot común.
+
+Solo se mostrarán los volúmenes con el mismo atributo de idioma que el volumen de origen.
+
+|===
+. Seleccione la copia de Snapshot más reciente o la copia de Snapshot específica que desea restaurar.
+. [[step6]]Active la casilla de comprobación de confirmación para restaurar el volumen desde la copia Snapshot.
+. *Opcional:* Active la casilla de verificación *Activar compresión de red* para comprimir los datos que se transfieren durante la operación de restauración.
+. Haga clic en *Restaurar*.
+

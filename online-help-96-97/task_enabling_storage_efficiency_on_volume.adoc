@@ -1,0 +1,73 @@
+---
+permalink: online-help-96-97/task_enabling_storage_efficiency_on_volume.html 
+sidebar: sidebar 
+keywords: system, manager, enable, storage, efficiency, volume, deduplication, online, help 
+summary: Puede usar System Manager para habilitar la eficiencia del almacenamiento y para configurar tanto la deduplicación como la compresión de datos o solo la deduplicación en un volumen con el fin de ahorrar espacio de almacenamiento. Si no habilitó la eficiencia de almacenamiento cuando se crea el volumen, se puede hacerlo más adelante mediante la edición del volumen. 
+---
+= Habilite la eficiencia del almacenamiento en un volumen con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para habilitar la eficiencia del almacenamiento y configurar la deduplicación y la compresión de datos o solo la deduplicación en un volumen para ahorrar espacio de almacenamiento. Si no habilitó la eficiencia de almacenamiento cuando se crea el volumen, se puede hacerlo más adelante mediante la edición del volumen.
+
+.Antes de empezar
+* El volumen debe estar en línea.
+* Si desea utilizar una programación de deduplicación basada en normativas, debe haber creado una normativa de eficiencia.
+
+
+.Acerca de esta tarea
+* Solo puede activar la compresión en segundo plano si ha activado la deduplicación en segundo plano.
+* Puede activar la compresión inline y la deduplicación inline con o sin la habilitación de la compresión en segundo plano y la deduplicación en segundo plano, respectivamente.
+* Puede habilitar la deduplicación inline solo en volúmenes contenidos en un agregado con personalidad All Flash Optimized y en volúmenes contenidos en un agregado de Flash Pool.
+* A partir de System Manager 9.6, la edición de la eficiencia del almacenamiento es compatible con los volúmenes FlexGroup DP.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen para el que desea activar la eficiencia de almacenamiento y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar volumen*, haga clic en *eficacia de almacenamiento*.
+. Active la casilla de verificación *deduplicación de fondo*.
+. Seleccione uno de los siguientes métodos para ejecutar la deduplicación:
++
+|===
+| Si desea ejecutar la deduplicación... | Realice lo siguiente... 
+
+
+ a| 
+Basado en una normativa de eficiencia del almacenamiento
+ a| 
+.. Asegúrese de que la opción *basado en directivas* está seleccionada.
+.. Haga clic en *elegir* y, a continuación, seleccione una política de eficiencia del almacenamiento.
+.. Haga clic en *Aceptar*.
+
+
+
+
+ a| 
+Cuando sea necesario
+ a| 
+Seleccione la opción *a petición*.
+
+|===
+. Active la casilla de verificación *compresión de fondo* para activar la compresión de fondo.
++
+No se puede activar la compresión en segundo plano para un volumen contenido por un agregado con la personalidad de All Flash Optimized.
+
+. Active la casilla de verificación *compresión en línea* para comprimir los datos mientras se escriben en el volumen.
++
+De forma predeterminada, la compresión inline está habilitada en volúmenes contenidos en un agregado con personalidad All Flash Optimized.
+
+. Active la casilla de verificación *deduplicación en línea* para ejecutar la deduplicación antes de que los datos se escriban en el disco.
++
+De forma predeterminada, la deduplicación inline está habilitada en volúmenes que están contenidos en un agregado con personalidad All Flash Optimized.
+
+. Haga clic en *Guardar y cerrar*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

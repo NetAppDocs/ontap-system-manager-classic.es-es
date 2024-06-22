@@ -1,0 +1,184 @@
+---
+permalink: online-help-96-97/concept_array_luns.html 
+sidebar: sidebar 
+keywords: system, manager, array, lun, aggregate, assign, online, help, classic 
+summary: Puede usar System Manager para asignar LUN de cabina a un agregado existente y gestionar LUN de cabina. 
+---
+= Gestione los LUN de cabina con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para asignar LUN de cabina a un agregado existente y gestionar los LUN de cabina.
+
+
+
+== Asigne LUN de cabina
+
+Puede usar System Manager para asignar LUN de cabina no asignados a un agregado existente a fin de aumentar el tamaño de este último.
+
+.Acerca de esta tarea
+* Puede asignar LUN de cabina si se cumplen las siguientes condiciones:
++
+** El tipo de contenedor de los LUN de cabina seleccionados debe ser «'unassigned'».
+** Los discos deben estar conectados a nodos de una pareja de ha.
+** Los discos deben ser visibles para el nodo.
+
+
+* En las configuraciones de MetroCluster, no se puede usar System Manager con el objetivo de asignar LUN de cabina como repuestos.
++
+En su lugar, debe usar la interfaz de línea de comandos.
+
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *LUN de matriz*.
+. Seleccione los LUN de matriz y, a continuación, haga clic en *asignar*.
+. En el cuadro de diálogo *asignar LUN de matriz*, seleccione el nodo al que desea asignar los LUN de matriz.
+. Haga clic en *asignar*.
+
+
+
+
+== Reasignar los LUN de cabina de repuesto a los nodos
+
+Puede usar System Manager para reasignar la propiedad de LUN de cabina de repuesto de un nodo a otro a fin de aumentar la capacidad de un agregado.
+
+.Acerca de esta tarea
+* Puede reasignar los LUN de cabina si se cumplen las siguientes condiciones:
++
+** El tipo de contenedor de los LUN de cabina seleccionados debe ser «Estados».
+** Los discos deben estar conectados a nodos de una pareja de ha.
+** Los discos deben ser visibles para el nodo.
+
+
+* En las configuraciones de MetroCluster, no se puede usar System Manager para reasignar LUN de cabina como repuestos.
++
+En su lugar, debe usar la interfaz de línea de comandos.
+
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *LUN de matriz*.
+. Seleccione los LUN de matriz de repuesto que desea reasignar y haga clic en *asignar*.
+. En el cuadro de diálogo *Advertencia*, haga clic en *continuar*.
+. En el cuadro de diálogo *asignar LUN de matriz*, seleccione el nodo al que desea reasignar los LUN de matriz de repuesto.
+. Haga clic en *asignar*.
+
+
+
+
+== Puesta a cero de los LUN de cabina de repuesto
+
+Puede usar System Manager para borrar todos los datos y formatear los LUN de cabina de repuesto mediante la escritura de ceros en los LUN de cabina. Estos LUN de cabina se podrán usar en nuevos agregados.
+
+.Acerca de esta tarea
+Cuando los LUN de cabina de repuesto se ponen a cero, también se ponen a cero todos los repuestos del clúster, incluidos los discos. Puede poner a cero los LUN de cabina de repuesto de un nodo concreto o los de todo el clúster.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *LUN de matriz*.
+. Haga clic en *cero repuestos*.
+. En el cuadro de diálogo *cero repuestos*, seleccione un nodo o "'todos los nodos'" en el que desea poner a cero las LUN de la matriz.
+. Active la casilla de verificación *Zero all non-zeroed spares* para confirmar la operación de puesta a cero.
+. Haga clic en *cero repuestos*.
+
+
+
+
+== Acerca de los discos y los LUN de cabina
+
+Un disco es la unidad básica de almacenamiento de los sistemas de almacenamiento que utilizan el software ONTAP para acceder a bandejas de discos nativas. Una LUN de cabina es la unidad básica de almacenamiento que ofrecen cabinas de almacenamiento de terceros a sistemas de almacenamiento que ejecutan el software ONTAP.
+
+El software ONTAP le permite asignar propiedad a sus discos y LUN de cabina, y añadirlos a un agregado. El software ONTAP también le ofrece una serie de formas de gestionar sus discos, como eliminarlos, sustituirlos y sanarlos. Dado que la cabina de almacenamiento de terceros proporciona LUN de cabina, esta se usa para el resto de tareas de gestión para LUN de cabina.
+
+Puede crear un agregado usando discos o LUN de cabina. Después de crear el agregado, lo gestiona usando el software ONTAP de la misma manera, tanto si se creó a partir de discos como LUN de cabina.
+
+
+
+== Ventana LUN de cabina
+
+La ventana Array LUN permite asignar la propiedad a los LUN de cabina y añadirlos a un agregado.
+
+El enlace Array LUNs (LUN de cabina) del panel de navegación izquierdo solo se muestra si hay algún LUN de cabina de repuesto o si está instalada la licencia V_StorageAttach.
+
+
+
+=== Botones de comando
+
+* *Asignar*
++
+Permite asignar o reasignar la propiedad de LUN de cabina a un nodo.
+
+* *Cero repuestos*
++
+Borra todos los datos y formatea los LUN y los discos de la cabina de repuesto.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de LUN de cabina
+
+Muestra información como el nombre, el estado y el proveedor de cada LUN de cabina.
+
+* *Nombre*
++
+Especifica el nombre del LUN de cabina.
+
+* *Estado*
++
+Especifica el estado del LUN de cabina.
+
+* *Proveedor*
++
+Especifica el nombre del proveedor.
+
+* * Espacio usado*
++
+Especifica el espacio utilizado por el LUN de cabina.
+
+* *Tamaño total*
++
+Especifica el tamaño del LUN de cabina.
+
+* *Contenedor*
++
+Especifica el agregado al que pertenece el LUN de cabina.
+
+* *Nombre de nodo*
++
+Especifica el nombre del nodo al que pertenece el LUN de cabina.
+
+* *Propietario del hogar*
++
+Muestra el nombre del nodo inicial al que se asigna el LUN de cabina.
+
+* *Propietario actual*
++
+Muestra el nombre del nodo que posee actualmente el LUN de cabina.
+
+* *Nombre de matriz*
++
+Especifica el nombre de la matriz.
+
+* * Piscina*
++
+Muestra el nombre del pool al que se asignó el LUN de cabina seleccionado.
+
+
+
+
+
+=== El área Detalles
+
+El área debajo de la lista de LUN de cabina muestra información detallada sobre el LUN de cabina seleccionado.
+
+*Información relacionada*
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Referencias y requisitos de instalación de la virtualización FlexArray"]

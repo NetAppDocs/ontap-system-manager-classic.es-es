@@ -1,0 +1,155 @@
+---
+permalink: online-help-96-97/concept_snmp.html 
+sidebar: sidebar 
+keywords: system, manager, configure, snmp, svm, cluster, online, help, test, trap, host, configuration, window, command, protocol, 
+summary: Puede usar System Manager para configurar SNMP a fin de supervisar las SVM en el clúster. 
+---
+= Configure SNMP con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar SNMP a fin de supervisar las SVM del clúster.
+
+
+
+== Habilite o deshabilite SNMP
+
+Puede habilitar o deshabilitar SNMP en los clústeres mediante System Manager. SNMP le permite supervisar las máquinas virtuales de almacenamiento (SVM) de un clúster para evitar los problemas antes de que puedan producirse y evitar que se produzcan.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Configuración*, haga clic en *SNMP*.
+. En la ventana *SNMP*, haga clic en *Activar* o en *Desactivar*.
+
+
+
+
+== Editar información de SNMP
+
+Puede usar el cuadro de diálogo Editar configuración SNMP en System Manager para actualizar la información sobre la ubicación del sistema de almacenamiento y el personal de contacto, así como para especificar las comunidades SNMP del sistema.
+
+.Acerca de esta tarea
+System Manager usa los protocolos SNMP SNMPv1 y SNMPv2c y una comunidad SNMP para detectar sistemas de almacenamiento.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Configuración*, haga clic en *SNMP*.
+. Haga clic en *Editar*.
+. En la ficha *General*, especifique la información del personal de contacto y la información de ubicación del sistema de almacenamiento y las comunidades SNMP.
++
+El nombre de la comunidad puede tener 32 caracteres y no debe contener los siguientes caracteres especiales: , / : " ' |.
+
+. En la ficha **SNMPv3**, haga lo siguiente:
++
+.. Haga clic en *Agregar* para agregar un usuario SNMPv3.
+.. Especifique el nombre de usuario y modifique el ID del motor, si es necesario.
+.. Seleccione *Protocolo de autenticación* e introduzca sus credenciales.
+.. Seleccione *Privacy Protocol* e introduzca sus credenciales.
+.. Haga clic en *Aceptar* para guardar los cambios.
+
+
+. Haga clic en *Aceptar*.
+. Compruebe los cambios realizados en la configuración de SNMP en la ventana *SNMP*.
+
+
+
+
+== Habilitar o deshabilitar capturas SNMP
+
+Las capturas SNMP permiten supervisar el estado y el estado de los diferentes componentes del sistema de almacenamiento. Puede utilizar el cuadro de diálogo Edit SNMP Settings en System Manager para habilitar o deshabilitar capturas SNMP en el sistema de almacenamiento.
+
+.Acerca de esta tarea
+Aunque SNMP está habilitado de forma predeterminada, las capturas SNMP se deshabilitan de forma predeterminada.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Configuración*, haga clic en *SNMP*.
+. En la ventana *SNMP*, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar configuración SNMP*, seleccione la ficha *hosts de captura* y, a continuación, active o desactive la casilla de verificación *Habilitar capturas* para habilitar o deshabilitar las capturas SNMP, respectivamente.
+. Si habilita las capturas SNMP, añada el nombre de host o la dirección IP de los hosts a los que se envían las capturas.
+. Haga clic en *Aceptar*.
+
+
+
+
+== Probar la configuración del host de captura
+
+Puede usar System Manager para probar si configuró los ajustes del host de capturas correctamente.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Configuración*, haga clic en *SNMP*.
+. En la ventana *SNMP*, haga clic en *probar host de captura*.
+. Haga clic en *Aceptar*.
+
+
+
+
+== Ventana SNMP
+
+La ventana SNMP permite ver los ajustes de SNMP actuales del sistema. También es posible cambiar la configuración de SNMP del sistema, habilitar los protocolos SNMP y añadir hosts de captura.
+
+
+
+=== Botones de comando
+
+* *Activar/Desactivar*
++
+Habilita o deshabilita SNMP.
+
+* *Edición*
++
+Se abre el cuadro de diálogo Edit SNMP Settings, que permite especificar las comunidades SNMP para el sistema de almacenamiento y habilitar o deshabilitar capturas.
+
+* *Probar host de captura*
++
+Envía una captura de prueba a todos los hosts configurados para comprobar si la captura de prueba llega a todos los hosts y si las configuraciones de SNMP se han configurado correctamente.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Detalles
+
+En el área de detalles, se muestra la siguiente información sobre las capturas de host y servidor SNMP del sistema de almacenamiento:
+
+* *SNMP*
++
+Muestra si SNMP está habilitado o no.
+
+* *Trampas*
++
+Muestra si las capturas SNMP están habilitadas o no.
+
+* *Ubicación*
++
+Muestra la dirección del servidor SNMP.
+
+* *Contacto*
++
+Muestra los detalles de contacto del servidor SNMP.
+
+* *Dirección IP del host de captura*
++
+Muestra las direcciones IP del host de captura.
+
+* *Nombres de comunidad*
++
+Muestra el nombre de comunidad del servidor SNMP.
+
+* *Nombres de seguridad*
++
+Muestra el estilo de seguridad del servidor SNMP.
+
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Gestión de redes"]

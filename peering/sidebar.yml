@@ -1,0 +1,30 @@
+---
+section: peering
+title: Configuración de relaciones entre iguales de clústeres y SVM
+entries:
+- title: Descripción general
+  url: "/peering/index.html"
+- title: Requisitos previos para la relación de clústeres entre iguales
+  url: "/peering/reference_prerequisites_for_cluster_peering.html"
+- title: Flujo de trabajo de relaciones entre iguales de clústeres y SVM
+  url: "/peering/concept_cluster_peering_workflow.html"
+  entries:
+  - title: Prepare la relación de clústeres entre iguales
+    url: "/peering/task_preparing_for_cluster_peering.html"
+  - title: Configuración de relaciones de paridad (a partir de ONTAP 9.3)
+    url: "/peering/concept_creating_peer_relationships_93_later.html"
+    entries:
+    - title: Crear LIF de interconexión de clústeres (empezando por ONTAP 9.3)
+      url: "/peering/task_creating_intercluster_lifs.html"
+    - title: Crear una relación de paridad de clústeres (a partir de ONTAP 9.3)
+      url: "/peering/task_creating_cluster_peer_relationship_starting_with_ontap_9_3.html"
+    - title: Cree una relación de paridad de SVM
+      url: "/peering/task_creating_svm_peers.html"
+  - title: Configuración de relaciones de paridad (ONTAP 9.2 y versiones anteriores)
+    url: "/peering/concept_creating_peer_relationship_between_clusters_92_earlier.html"
+    entries:
+    - title: Crear interfaces de interconexión de clústeres en todos los nodos (ONTAP
+        9.2 o anterior)
+      url: "/peering/task_creating_intercluster_interfaces_on_all_nodes.html"
+    - title: Crear una relación de paridad de clústeres (ONTAP 9.2 o anterior)
+      url: "/peering/task_creating_cluster_peer_relationships_92_earlier.html"

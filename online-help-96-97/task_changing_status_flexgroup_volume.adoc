@@ -1,0 +1,28 @@
+---
+permalink: online-help-96-97/task_changing_status_flexgroup_volume.html 
+sidebar: sidebar 
+keywords: flexgroup, volume, status, change, online, help 
+summary: Es posible usar System Manager para cambiar el estado de un volumen FlexGroup cuando se desea desconectar un volumen FlexGroup, volver a conectar un volumen FlexGroup o restringir el acceso a un volumen FlexGroup. 
+---
+= Cambie el estado de un volumen FlexGroup con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para cambiar el estado de un volumen de FlexGroup cuando se desea desconectar un volumen de FlexGroup, volver a conectar un volumen de FlexGroup o restringir el acceso a un volumen de FlexGroup.
+
+.Acerca de esta tarea
+System Manager no admite la gestión a nivel de componentes para los volúmenes de FlexGroup.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen de FlexGroup para el que desea modificar el estado.
+. Haga clic en *más acciones* > *Cambiar estado a* y, a continuación, actualice el estado del volumen FlexGroup seleccionando el estado requerido.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

@@ -1,0 +1,293 @@
+---
+permalink: online-help-96-97/task_configuring_managing_cloud_tiers.html 
+sidebar: sidebar 
+keywords: configure, manage, cloud, tier, online, help, fabricpool, aggregate, storage, system, add, ssd, provision, storage, fabricpool, aggregate, manually, tiering, policy 
+summary: El almacenamiento de datos en niveles puede mejorar la eficiencia del sistema de almacenamiento. Los niveles de almacenamiento se gestionan mediante agregados habilitados para FabricPool. Los niveles de cloud almacenan datos en un nivel según la frecuencia de acceso a estos. 
+---
+= Configure y gestione niveles de cloud con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+
+
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar y gestionar niveles en el cloud. El almacenamiento de datos en niveles puede mejorar la eficiencia del sistema de almacenamiento. Los niveles de almacenamiento se gestionan mediante agregados habilitados para FabricPool. Los niveles de cloud almacenan datos en un nivel según la frecuencia de acceso a estos.
+
+.Antes de empezar
+* Debe ejecutar ONTAP 9,2 o una versión posterior.
+* Debe tener agregados all-flash (todos SSD)
+
+
+image::../media/fabricpool_workflow.gif[flujo de trabajo de FabricPool]
+
+
+
+= Añada un nivel de cloud
+
+[role="lead"]
+Puede usar System Manager para añadir un nivel de cloud a un agregado de SSD o un agregado de disco de máquina virtual (VMDK). Los niveles de cloud ofrecen almacenamiento para datos que no se suelen usar.
+
+.Antes de empezar
+* Debe tener el ID de clave de acceso y la clave secreta para conectarse con el almacén de objetos.
+* Debe haber creado un bucket en el almacén de objetos.
+* Debe haber conectividad de red entre el clúster y el nivel de cloud.
+* Si la comunicación entre el nivel de cloud y el clúster está cifrada mediante SSL o TLS, deben instalarse los certificados necesarios.
+
+
+.Acerca de esta tarea
+Los siguientes almacenes de objetos se pueden usar como niveles de cloud:
+
+* StorageGRID
+* Alibaba Cloud (a partir de System Manager 9.6)
+* Simple Storage Service (S3) de Amazon Web Services (AWS)
+* Servicio cloud comercial (C2S) de Amazon Web Services (AWS)
+* Almacenamiento de Microsoft Azure Blob
+* Cloud de IBM
+* Google Cloud
+
+
+[NOTE]
+====
+* Azure Stack, que es un servicio de Azure en el entorno local, no es compatible.
+* Si desea usar cualquier almacén de objetos como un nivel de cloud, distinto de StorageGRID, debe tener la licencia de capacidad de FabricPool. Puede agregar la licencia haciendo clic en *Agregar licencia*.
+* Si desea utilizar un entorno de almacenamiento de objetos de cloud de IBM (como Cleversafe) con FabricPool, debe especificar un certificado de entidad de certificación (CA). Puede especificar el certificado de CA moviendo el botón de alternar *Certificado de almacén de objetos* y especificando las credenciales del certificado.
+
+
+====
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *Cloud Tier*.
+. Haga clic en *Agregar*.
++
+Aparece un cuadro de diálogo que enumera todos los proveedores de almacenes de objetos admitidos.
+
+. Seleccione el proveedor de almacenes de objetos de la lista que desea designar como nivel de cloud.
++
+Aparecerá la ventana Add Cloud Tier.
+
+. Seleccione una región de la lista desplegable en el campo *Región*.
++
+En función de su selección, el campo *Nombre de servicio (FQDN)* se rellena automáticamente con el extremo del servidor.
+
+. Especifique el ID de clave de acceso del nivel de cloud, la clave secreta del nivel de cloud y el nombre del contenedor.
++
+Si ha seleccionado AWS Commercial Cloud Service (C2S) como tipo, debe especificar la URL de CAP, los certificados de CA de servidor y los certificados de cliente.
+
+. Si desea modificar cualquiera de los siguientes ajustes, haga clic en el icono Opciones avanzadas image:../media/advanced_options.gif[""] Para mostrar la ventana de diálogo *Opciones avanzadas*, donde puede realizar los cambios:
++
+** El número de puerto utilizado para acceder al nivel de cloud
+** Active o desactive la opción *SSL* que le permite transferir datos de forma segura al nivel de nube
+
+
+. *Opcional:* Si desea agregar un nivel de nube para StorageGRID o desea usar el entorno de almacenamiento de objetos en nube de IBM (como Cleversafe) con FabricPool, debe especificar un certificado de CA. Especifique el certificado de CA moviendo el botón de alternar *Certificado de almacén de objetos* y copiando el contenido del certificado. A continuación, pegue el contenido del certificado en la certificación firmada.
+. En la lista *IPspace*, seleccione el espacio IP que se utiliza para conectarse al nivel de la nube.
+. Haga clic en *Guardar* para guardar el nivel de nube.
+. Haga clic en *Guardar y adjuntar agregados* para guardar el nivel en la nube y adjuntar agregados al nivel en la nube.
+
+
+
+
+== Adjuntar un agregado a un nivel de cloud
+
+Puede usar System Manager para adjuntar un agregado all-flash a un nivel de cloud. Permite almacenar datos que no se suelen usar en niveles de cloud.
+
+.Antes de empezar
+Debe haber añadido un nivel de cloud al clúster.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *Cloud Tier*.
+. En la columna *utilizado en agregados*, haga clic en *Adjuntar agregados*.
++
+Aparecerá la ventana Attach Aggregates.
+
+. Seleccione el agregado que desea adjuntar al nivel de cloud.
+. Haga clic en *Guardar*.
+
+
+
+
+== Aprovisionamiento de almacenamiento mediante la creación manual de un agregado habilitado para FabricPool
+
+Puede usar System Manager para crear un agregado habilitado para FabricPool y adjuntar un nivel de cloud al agregado de SSD.
+
+.Antes de empezar
+* Debe haber creado un nivel de cloud y haberlo adjuntado al clúster en el que se encuentra el agregado de SSD.
+* Es necesario haber creado un nivel de cloud en las instalaciones.
+* Debe haber una conexión de red dedicada entre el nivel de cloud y el agregado.
+
+
+.Acerca de esta tarea
+Los siguientes almacenes de objetos se pueden usar como niveles de cloud:
+
+* StorageGRID
+* Alibaba Cloud (a partir de System Manager 9.6)
+* Simple Storage Service (S3) de Amazon Web Services (AWS)
+* Servicio cloud comercial (C2S) de Amazon Web Services (AWS)
+* Almacenamiento de Microsoft Azure Blob
+* Cloud de IBM
+* Google Cloud
+
+
+[NOTE]
+====
+* Azure Stack, que es un servicio de Azure en el entorno local, no es compatible.
+* Si desea usar cualquier almacén de objetos como un nivel de cloud, distinto de StorageGRID, debe tener la licencia de capacidad de FabricPool.
+
+
+====
+.Pasos
+. Cree un agregado que sea compatible con FabricPool mediante uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento* > *Agregar agregado*.
+** Haga clic en *almacenamiento* > *agregado y discos* > *agregados* > *Crear*.
+
+
+. Active la opción *Crear agregado manualmente* para crear un agregado.
+. Cree un agregado compatible con FabricPool:
++
+.. Especifique el nombre del agregado, el tipo de disco y la cantidad de discos o particiones que se incluirán en el agregado.
++
+[NOTE]
+====
+Solo los agregados all-flash (todos SSD) admiten agregados habilitados para FabricPool.
+
+====
++
+La regla de pieza de repuesto mínima se aplicará al grupo de discos que contenga el tamaño de disco más grande.
+
+.. *Opcional:* modifique la configuración RAID del agregado:
++
+... Haga clic en *Cambiar*.
+... En el cuadro de diálogo Change RAID Configuration, especifique el tipo de RAID y el tamaño del grupo RAID.
++
+Los discos compartidos admiten dos tipos de RAID: RAID-DP y RAID-TEC.
+
+... Haga clic en *Guardar*.
+
+
+
+
+. Seleccione la casilla de verificación *FabricPool* y, a continuación, seleccione un nivel de nube de la lista.
+. Haga clic en *Crear*.
+
+
+
+
+== Cambiar la política de organización en niveles de un volumen
+
+Puede usar System Manager para cambiar la política de organización en niveles predeterminada de un volumen a fin de controlar si los datos del volumen se mueven al nivel de cloud cuando los datos quedan inactivos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen para el que desea cambiar la política de organización en niveles y, a continuación, haga clic en *más acciones* > *Cambiar política de organización en niveles*.
+. Seleccione la política de organización en niveles necesaria en la lista *Directiva de organización en niveles* y, a continuación, haga clic en *Guardar*.
+
+
+
+
+== Editar un nivel de cloud
+
+Puede usar System Manager para modificar la información de configuración del nivel de cloud. Los detalles de configuración que puede editar incluyen el nombre, el nombre de dominio completo (FQDN), el puerto, el ID de clave de acceso, la clave secreta y el certificado de almacén de objetos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *Cloud Tier*.
+. Seleccione el nivel de nube que desea editar y, a continuación, haga clic en *Editar*.
+. En la ventana *Edit Cloud Tier*, modifique el nombre del nivel de nube, FQDN, puerto, ID de clave de acceso, clave secreta, y el certificado de almacén de objetos, según sea necesario.
++
+Si ha seleccionado el nivel de cloud del Servicio de cloud comercial de AWS (C2S), puede modificar los certificados de CA de servidor y los certificados de cliente.
+
+. Haga clic en *Guardar*.
+
+
+
+
+== Eliminar un nivel de cloud
+
+Puede usar System Manager para eliminar un nivel de cloud que ya no necesite.
+
+.Antes de empezar
+Debe haber eliminado el agregado habilitado para FabricPool que está asociado al nivel de cloud.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *Cloud Tier*.
+. Seleccione el nivel de nube que desea eliminar y, a continuación, haga clic en *Eliminar*.
+
+
+
+
+== Qué son los niveles de cloud y las políticas de organización en niveles
+
+Los niveles de cloud ofrecen almacenamiento para datos a los que se accede con poca frecuencia. Puede adjuntar un agregado all-flash (all-SSD) a un nivel de cloud para almacenar datos que no se suelen usar. Puede usar las políticas de organización en niveles para decidir si los datos deben moverse a un nivel de cloud.
+
+Puede establecer una de las siguientes políticas de organización en niveles en un volumen:
+
+* *Sólo instantánea*
++
+Mueve las copias snapshot de solo aquellos volúmenes a los que no hace referencia actualmente el sistema de archivos activo. La política de solo Snapshot es la política de organización en niveles predeterminada.
+
+* *Auto*
++
+Mueve los datos inactivos (fríos) y las copias snapshot del sistema de archivos activo al nivel de cloud.
+
+* *Copia de seguridad (para System Manager 9.5)*
++
+Mueve los datos recién transferidos de un volumen de protección de datos (DP) al nivel de cloud.
+
+* *Todo (empezando por System Manager 9.6)*
++
+Mueve todos los datos al nivel de cloud.
+
+* *Ninguno*
++
+Impide que los datos del volumen se muevan a un nivel de cloud.
+
+
+
+
+
+== Qué son los datos inactivos (fríos)
+
+Los datos a los que se accede con poca frecuencia en un nivel de rendimiento se conocen como datos inactivos (fríos). De forma predeterminada, los datos a los que no se accede durante un periodo de 31 días quedan inactivos.
+
+Los datos inactivos se muestran a nivel de agregado, clúster y volumen. Los datos inactivos de un agregado o un clúster solo se muestran si el análisis inactivo se ha completado en ese agregado o clúster. De manera predeterminada, se muestran los datos inactivos en los agregados y SSD habilitados por FabricPool. Los datos inactivos no se muestran para FlexGroups.
+
+
+
+== Ventana Cloud Tier
+
+Puede usar System Manager para añadir, editar y eliminar niveles de cloud, así como para ver detalles de los niveles de cloud.
+
+La ventana Cloud Tier muestra el número total de niveles de cloud con licencia en el clúster, el espacio con licencia que se utiliza en el clúster y el espacio con licencia disponible en el clúster. La ventana Cloud Tier también muestra la capacidad de cloud sin licencia que se utiliza.
+
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Permite añadir un nivel de cloud.
+
+* *Adjuntar agregados*
++
+Le permite adjuntar agregados a un nivel de cloud.
+
+* *Eliminar*
++
+Permite eliminar un nivel de cloud seleccionado.
+
+* *Edición*
++
+Permite modificar las propiedades de un nivel de cloud seleccionado.
+
+
+
+
+
+=== El área Detalles
+
+Es posible ver información detallada sobre niveles de cloud, como la lista de niveles de cloud, los detalles de los almacenes de objetos, los agregados utilizados y la capacidad utilizada.
+
+Si crea un nivel de cloud distinto a Alibaba Cloud, Amazon AWS S3, AWS Commercial Cloud Service (C2S), Google Cloud, IBM Cloud, almacenamiento blob de Microsoft Azure o StorageGRID con la interfaz de línea de comandos (CLI), este nivel de cloud se muestra como otros en System Manager. A continuación, puede adjuntar agregados a este nivel de cloud.
+
+*Información relacionada*
+
+xref:task_installing_ca_certificate_if_you_use_storagegrid_webscale.adoc[Instalar un certificado de CA si utiliza StorageGRID]
+
+xref:reference_storage_tiers_window.adoc[Ventana Storage Tiers]

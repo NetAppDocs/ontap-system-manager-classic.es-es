@@ -1,0 +1,39 @@
+---
+permalink: volume-disaster-recovery/task_updating_source_volume.html 
+sidebar: sidebar 
+keywords: resynchronize, resynchronizing, source, volume, update, activate, update the source volume 
+summary: Después de volver a sincronizar el volumen de origen, es posible que desee asegurarse de que todos los cambios más recientes se hayan actualizado en el volumen de origen antes de activar el volumen de origen. 
+---
+= Actualice el volumen de origen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de volver a sincronizar el volumen de origen, es posible que desee asegurarse de que todos los cambios más recientes se hayan actualizado en el volumen de origen antes de activar el volumen de origen.
+
+.Acerca de esta tarea
+Debe realizar esta tarea desde el clúster *fuente*.
+
+.Pasos
+. Según la versión de System Manager que esté ejecutando, realice uno de los pasos siguientes:
++
+** ONTAP 9.4 o anterior: Haga clic en *Protección* > *Relaciones*.
+** A partir de ONTAP 9.5: Haga clic en *Protección* > *Relaciones de volumen*.
+
+
+. Seleccione la relación de SnapMirror entre los volúmenes de origen y destino y, a continuación, haga clic en *Operaciones* > *Actualizar*.
+. Realice una transferencia incremental desde la copia Snapshot común reciente entre los volúmenes de origen y de destino.
++
+** A partir de ONTAP 9.3: Seleccione la opción *según directiva*.
+** ONTAP 9.2 o anterior: Seleccione la opción *bajo demanda*.
+
+
+. *Opcional:* Seleccione *limitar el ancho de banda de transferencia a* para limitar el ancho de banda de red utilizado para las transferencias y, a continuación, especifique la velocidad máxima de transferencia.
+. Haga clic en *Actualizar*.
+. Compruebe que el estado de la transferencia es `Idle` y el último tipo de transferencia es `Update` En la pestaña *Detalles*.
++
+image::../media/snapmirror_update_verify.gif[Detalles de las relaciones de SnapMirror]
+
+

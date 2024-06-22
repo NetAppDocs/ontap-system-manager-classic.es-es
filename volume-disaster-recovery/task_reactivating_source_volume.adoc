@@ -1,0 +1,14 @@
+---
+permalink: volume-disaster-recovery/task_reactivating_source_volume.html 
+sidebar: sidebar 
+keywords: source, volume, resynchronize, data, destination, volume, source, update, modification, resynchronization, operation, activate, reactivate the source volume 
+summary: Cuando el volumen de origen esté disponible, es necesario volver a sincronizar los datos del volumen de destino con el volumen de origen, actualizar cualquier modificación después de la operación de resincronización y activar el volumen de origen. 
+---
+= Vuelva a activar el volumen de origen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando el volumen de origen esté disponible, es necesario volver a sincronizar los datos del volumen de destino con el volumen de origen, actualizar cualquier modificación después de la operación de resincronización y activar el volumen de origen.

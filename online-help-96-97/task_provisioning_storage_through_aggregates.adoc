@@ -1,0 +1,318 @@
+---
+permalink: online-help-96-97/task_provisioning_storage_through_aggregates.html 
+sidebar: sidebar 
+keywords: provision, storage, aggregates, snaplock, fabricpool, online, help, flash, pool 
+summary: Puede crear un agregado sobre la base de recomendaciones de almacenamiento o manualmente en función de sus requisitos. Puede crear agregados de Flash Pool, agregados de SnapLock y agregados habilitados para FabricPool a fin de proporcionar almacenamiento a uno o varios volúmenes mediante System Manager. 
+---
+= Aprovisione el almacenamiento mediante agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear un agregado sobre la base de recomendaciones de almacenamiento o de forma manual según sus requisitos. Puede crear agregados de Flash Pool, agregados de SnapLock y agregados habilitados para FabricPool a fin de proporcionar almacenamiento a uno o varios volúmenes mediante System Manager.
+
+.Antes de empezar
+Debe tener suficientes discos de repuesto para crear un agregado.
+
+.Acerca de esta tarea
+Las siguientes acciones no se pueden llevar a cabo mediante System Manager:
+
+* Combinar discos de distintos tamaños, aunque haya suficientes discos de repuesto de varios tamaños.
++
+Puede crear un agregado con discos del mismo tamaño para empezar y, después, añadir discos de distinto tamaño.
+
+* Combine discos con distintos tipos de suma de comprobación.
++
+Puede crear un agregado con un solo tipo de suma de comprobación para empezar y, después, añadir almacenamiento con otro tipo de suma de comprobación.
+
+
+
+
+
+== Crear un agregado sobre la base de recomendaciones de almacenamiento
+
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear un agregado sobre la base de recomendaciones de almacenamiento. System Manager analiza la configuración del sistema de almacenamiento y proporciona recomendaciones de almacenamiento tales como la cantidad de agregados que se crearán, los nodos disponibles y los discos de reserva disponibles.
+
+.Acerca de esta tarea
+* No se puede crear un agregado sobre la base de recomendaciones de almacenamiento en las configuraciones de Cloud Volumes ONTAP, ONTAP Select y MetroCluster.
+* Los errores, si los hay, se muestran en la pantalla.
++
+Puede corregir estos errores y crear un agregado en función de las recomendaciones de almacenamiento; también puede crear un agregado manualmente.
+
+
+
+.Pasos
+. Cree un agregado mediante uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento* > *Agregar agregado*.
+** Haga clic en *almacenamiento* > *agregado y discos* > *agregados* > *Crear*.
+
+
+. Revise las recomendaciones de almacenamiento y haga clic en *Enviar*.
++
+El cuadro de diálogo Información muestra el estado de los agregados.
+
+. Haga clic en *Ejecutar en segundo plano* para ir a la ventana *agregados*.
+. Haga clic en *Actualizar* para ver los agregados creados.
+
+
+
+
+== Crear manualmente un agregado
+
+Puede crear manualmente un agregado compuesto solo de HDD o de SSD mediante System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores).
+
+.Antes de empezar
+Todos los discos deben tener el mismo tamaño.
+
+.Acerca de esta tarea
+* Si va a crear un agregado en un clúster de cuatro nodos en ONTAP Select, la opción de agregado reflejado se selecciona de forma predeterminada.
+* A partir de ONTAP 9.0, se pueden crear agregados con un tamaño de disco igual o mayor que 10 TB.
+* Si el tipo de disco de los discos de agregado es FSAS o MSATA, y el tamaño de disco es igual o mayor que 10 TB, RAID-TEC será el único tipo de RAID disponible.
+
+
+.Pasos
+. Cree un agregado mediante uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento* > *Agregar agregado*.
+** Haga clic en *almacenamiento* > *agregado y discos* > *agregados* > *Crear*.
+
+
+. Active la opción *Crear agregado manualmente* para crear un agregado.
+. Para crear un agregado:
++
+.. Especifique el nombre del agregado, el tipo de disco y la cantidad de discos o particiones que se incluirán en el agregado.
++
+La regla de pieza de repuesto mínima se aplicará al grupo de discos que contenga el tamaño de disco más grande.
+
+.. *Opcional:* modifique la configuración RAID del agregado:
++
+... Haga clic en *Cambiar*.
+... En el cuadro de diálogo *Change RAID Configuration*, especifique el tipo de RAID y el tamaño del grupo RAID.
++
+Los discos compartidos admiten dos tipos de RAID: RAID DP y RAID-TEC.
+
+... Haga clic en *Guardar*.
+
+
+.. Si desea reflejar el agregado, active la casilla de verificación *reflejar este agregado* .
++
+En las configuraciones de MetroCluster, está restringido la creación de agregados no reflejados. Por lo tanto, la opción de mirroring está habilitada de forma predeterminada para las configuraciones de MetroCluster.
+
+
+
+. Haga clic en *Crear*.
+
+
+.Resultados
+El agregado se creará con la configuración indicada y se añadirá a la lista de agregados de la ventana Aggregates.
+
+
+
+== Cree manualmente un agregado de Flash Pool
+
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear un agregado de Flash Pool de forma manual o para convertir un agregado de HDD existente en un agregado de Flash Pool mediante la adición de SSD. Cuando se crea un nuevo agregado de HDD, se puede aprovisionar con una caché SSD y crear un agregado de Flash Pool.
+
+.Antes de empezar
+* Debe conocer las prácticas recomendadas específicas de la plataforma y las prácticas recomendadas específicas de la carga de trabajo para el tamaño y la configuración del nivel SSD del agregado de Flash Pool.
+* Todos los HDD deben estar puestos a cero.
+* Si desea añadir SSD al agregado, todos los SSD y SSD dedicados deben tener el mismo tamaño.
+
+
+.Acerca de esta tarea
+* No se pueden usar SSD con particiones al crear un agregado de Flash Pool.
+* Los agregados no se pueden reflejar si el origen de caché es un pool de almacenamiento.
+* A partir de ONTAP 9.0, se pueden crear agregados con un tamaño de disco igual o mayor que 10 TB.
+* Si el tipo de disco de los discos de agregado es FSAS o MSATA, y el tamaño de disco es igual o mayor que 10 TB, RAID-TEC será el único tipo de RAID disponible.
+
+
+.Pasos
+. Cree un agregado mediante uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento* > *Agregar agregado*.
+** Haga clic en *almacenamiento* > *agregado y discos* > *agregados* > *Crear*.
+
+
+. Active la opción *Crear agregado manualmente* para crear un agregado.
+. En la ventana *Crear agregado*, especifique el nombre del agregado, el tipo de disco y el número de discos o particiones que se incluirán para los HDD del agregado.
+. Si desea reflejar el agregado, active la casilla de verificación *reflejar este agregado* .
++
+En las configuraciones de MetroCluster, está restringido la creación de agregados no reflejados. Por lo tanto, la opción de mirroring está habilitada de forma predeterminada para las configuraciones de MetroCluster.
+
+. Haga clic en *usar Flash Pool Cache con este agregado*.
+. Especifique el origen de caché:
++
+|===
+| Si desea establecer el origen de caché como... | Realice lo siguiente... 
+
+
+ a| 
+Pools de almacenamiento
+ a| 
+.. Seleccione *agrupaciones de almacenamiento* como origen de caché.
+.. Seleccione el pool de almacenamiento a partir del que se puede obtener la caché y, a continuación, establezca el tamaño de la caché.
+.. Modifique el tipo de RAID, si es necesario.
+
+
+
+
+ a| 
+SSD dedicados
+ a| 
+.. Seleccione *unidades SSD dedicadas* como origen de caché.
+.. Seleccione el tamaño de SSD y la cantidad de SSD que se incluirán en el agregado.
+.. Modifique la configuración de RAID, si es necesario:
++
+... Haga clic en *Cambiar*.
+... En el cuadro de diálogo Change RAID Configuration, especifique el tipo de RAID y el tamaño del grupo RAID.
+... Haga clic en *Guardar*.
+
+
+
+
+|===
+. Haga clic en *Crear*.
+
+
+.Resultados
+El agregado de Flash Pool se creará con la configuración indicada y se añadirá a la lista de agregados de la ventana Aggregates.
+
+
+
+== Cree manualmente un agregado de SnapLock
+
+Puede usar System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para crear un agregado de SnapLock Compliance o un agregado de SnapLock Enterprise manualmente. Puede crear volúmenes SnapLock en estos agregados, los cuales proporcionan funcionalidades «WORM» (escritura única y lectura múltiple).
+
+.Antes de empezar
+Debe haber añadido la licencia de SnapLock.
+
+.Acerca de esta tarea
+* En las configuraciones de MetroCluster, solo se pueden crear agregados de SnapLock Enterprise.
+* Para los LUN de cabina, solo se admiten los agregados empresariales de SnapLock.
+* A partir de ONTAP 9.0, se pueden crear agregados con un tamaño de disco igual o mayor que 10 TB.
+* Si el tipo de disco de los discos de agregado es FSAS o MSATA, y el tamaño de disco es igual o mayor que 10 TB, RAID-TEC será el único tipo de RAID disponible.
+* A partir de ONTAP 9.1, se pueden crear agregados de SnapLock en una plataforma de AFF.
+
+
+.Pasos
+. Cree un agregado de SnapLock mediante uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento* > *Agregar agregado*.
+** Haga clic en *almacenamiento* > *agregado y discos* > *agregados* > *Crear*.
+
+
+. Active la opción *Crear agregado manualmente* para crear un agregado.
+. Para crear un agregado de SnapLock:
++
+.. Especifique el nombre del agregado, el tipo de disco y la cantidad de discos o particiones que se incluirán en el agregado.
++
+Tras crear el agregado, no se podrá cambiar el nombre de un agregado de SnapLock Compliance.
+
++
+La regla de pieza de repuesto mínima se aplicará al grupo de discos que contenga el tamaño de disco más grande.
+
+.. *Opcional:* modifique la configuración RAID del agregado:
++
+... Haga clic en *Cambiar*.
+... En el cuadro de diálogo Change RAID Configuration, especifique el tipo de RAID y el tamaño del grupo RAID.
++
+Los discos compartidos admiten dos tipos de RAID: RAID-DP y RAID-TEC.
+
+... Haga clic en *Guardar*.
+
+
+.. Especifique el tipo de SnapLock.
+.. Si no ha inicializado la instancia de ComplianceClock del sistema, active la casilla de comprobación *Initialize ComplianceClock*.
++
+Esta opción no se muestra si la instancia de ComplianceClock ya se ha inicializado en el nodo.
+
++
+[NOTE]
+====
+Debe asegurarse de que la hora actual del sistema sea correcta. La instancia de ComplianceClock se basa en el reloj del sistema. Una vez que se establece la instancia de ComplianceClock, no puede modificar ni detener dicha instancia de ComplianceClock.
+
+====
+.. *Opcional:* Si desea reflejar el agregado, active la casilla de verificación *reflejar este agregado* .
++
+En las configuraciones de MetroCluster, está restringido la creación de agregados no reflejados. Por lo tanto, la opción de mirroring está habilitada de forma predeterminada para las configuraciones de MetroCluster.
+
++
+De manera predeterminada, la opción de mirroring está deshabilitada para los agregados de SnapLock Compliance.
+
+
+
+. Haga clic en *Crear*.
+
+
+
+
+== Cree manualmente un agregado habilitado para FabricPool
+
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear un agregado con FabricPool manualmente o para convertir un agregado de SSD existente en un agregado habilitado para FabricPool añadiéndole un nivel de cloud al agregado de SSD.
+
+.Antes de empezar
+* Debe haber creado un nivel de cloud y haberlo adjuntado al clúster en el que se encuentra el agregado de SSD.
+* Es necesario haber creado un nivel de cloud en las instalaciones.
+* Debe haber una conexión de red dedicada entre el nivel de cloud y el agregado.
+
+
+.Acerca de esta tarea
+Los siguientes almacenes de objetos se pueden usar como niveles de cloud:
+
+* StorageGRID
+* Alibaba Cloud (una empresa que comienza con System Manager 9.6)
+* Simple Storage Service (S3) de Amazon Web Services (AWS)
+* Servicio cloud comercial (C2S) de Amazon Web Services (AWS)
+* Almacenamiento de Microsoft Azure Blob
+* Cloud de IBM
+* Google Cloud
+
+
+[NOTE]
+====
+* Azure Stack, que es un servicio de Azure en el entorno local, no es compatible.
+* Si desea usar cualquier almacén de objetos como un nivel de cloud, distinto de StorageGRID, debe tener la licencia de capacidad de FabricPool.
+
+
+====
+.Pasos
+. Cree un agregado que sea compatible con FabricPool mediante uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento* > *Agregar agregado*.
+** Haga clic en *almacenamiento* > *agregado y discos* > *agregados* > *Crear*.
+
+
+. Active la opción *Crear agregado manualmente* para crear un agregado.
+. Cree un agregado compatible con FabricPool:
++
+.. Especifique el nombre del agregado, el tipo de disco y la cantidad de discos o particiones que se incluirán en el agregado.
++
+[NOTE]
+====
+Solo los agregados all-flash (todos SSD) admiten agregados habilitados para FabricPool.
+
+====
++
+La regla de pieza de repuesto mínima se aplicará al grupo de discos que contenga el tamaño de disco más grande.
+
+.. *Opcional:* modifique la configuración RAID del agregado:
++
+... Haga clic en *Cambiar*.
+... En el cuadro de diálogo Change RAID Configuration, especifique el tipo de RAID y el tamaño del grupo RAID.
++
+Los discos compartidos admiten dos tipos de RAID: RAID-DP y RAID-TEC.
+
+... Haga clic en *Guardar*.
+
+
+
+
+. Seleccione la casilla de verificación *FabricPool* y, a continuación, seleccione un nivel de nube de la lista.
+. Haga clic en *Crear*.
+
+
+*Información relacionada*
+
+http://www.netapp.com/us/media/tr-4070.pdf["Informe técnico de NetApp 4070: Diseño e implementación de Flash Pool"^]

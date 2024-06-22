@@ -1,0 +1,75 @@
+---
+permalink: online-help-96-97/concept_nis_services.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, nis, services, add, edit, manage, network, information, service, domain, svm, modify, command 
+summary: 'Puede usar System Manager para añadir, editar y gestionar dominios de servicio de información de red (NIS).' 
+---
+= Gestione servicios NIS con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para añadir, editar y gestionar dominios de servicios de información de red (NIS).
+
+
+
+== Agregar dominios NIS
+
+Puede mantener información del host de forma centralizada mediante NIS. Puede usar System Manager para añadir el nombre de dominio NIS de su sistema de almacenamiento. Solo un dominio NIS puede estar activo en una máquina virtual de almacenamiento (SVM) en un momento dado.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Servicios*, haga clic en *NIS*.
+. Haga clic en *Crear*.
+. Escriba el nombre de dominio NIS y, a continuación, agregue uno o más servidores NIS.
+. Haga clic en *Crear*.
+
+
+
+
+== Edite dominios NIS
+
+Puede utilizar System Manager para modificar dominios NIS en función del requisito para la autenticación y autorización de la máquina virtual de almacenamiento.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Servicios*, haga clic en *NIS*.
+. Seleccione el dominio NIS y, a continuación, haga clic en *Editar*.
+. Realice los cambios necesarios y, a continuación, haga clic en *Editar*.
+
+
+
+
+== NIS
+
+La ventana NIS le permite ver la configuración NIS actual para el sistema de almacenamiento.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Crear dominio NIS, que permite crear dominios NIS.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar dominio NIS, que permite agregar, eliminar o modificar servidores NIS.
+
+* *Eliminar*
++
+Elimina el dominio NIS seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/nfs-config/index.html["Configuración de NFS"^]

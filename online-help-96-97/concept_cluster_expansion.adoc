@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/concept_cluster_expansion.html 
+sidebar: sidebar 
+keywords: cluster, expanision, system, manager, storage, size, capabilities, add, node, configure, network, online, help 
+summary: Puede usar System Manager para aumentar el tamaño y las capacidades del almacenamiento mediante la adición de nodos compatibles al clúster y la configuración de los detalles de red de los nodos. También puede ver el resumen de los nodos. 
+---
+= Expansión de clúster con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para aumentar el tamaño y las funcionalidades del almacenamiento añadiendo nodos compatibles al clúster y configurando los detalles de red del nodo. También puede ver el resumen de los nodos.
+
+Cuando se inicia sesión en System Manager, System Manager detecta automáticamente los nodos compatibles que se cablean, pero no se añadieron al clúster y solicita añadir los nodos. Puede añadir nodos compatibles tal y como System Manager detecte los nodos, o bien puede añadir manualmente los nodos más adelante.
+
+
+
+== Añada nodos a un clúster
+
+Puede usar System Manager para aumentar el tamaño y las funcionalidades del sistema de almacenamiento mediante la adición de nodos a un clúster existente.
+
+.Antes de empezar
+* Deben cablearse nuevos nodos compatibles con el clúster.
++
+Sólo los puertos que están en el dominio de difusión predeterminado se mostrarán en la ventana Red.
+
+* Todos los nodos del clúster deben estar en funcionamiento.
+* Todos los nodos deben tener la misma versión.
+
+
+.Pasos
+. Añada los nuevos nodos compatibles al clúster:
++
+|===
+| Si está... | Realice lo siguiente... 
+
+
+ a| 
+No se ha iniciado sesión en System Manager
+ a| 
+.. Inicie sesión en System Manager.
++
+[NOTE]
+====
+System Manager detecta automáticamente los nodos compatibles nuevos al iniciar sesión. System Manager le solicita añadir los nuevos nodos compatibles al clúster.
+
+====
+.. Haga clic en *Agregar nodos al clúster*.
+.. Modifique el nombre de los nodos.
+.. Especifique las licencias de nodo.
+.. Haga clic en *Enviar y continuar*.
+
+
+
+
+ a| 
+Inició sesión en System Manager
+ a| 
+.. Haga clic en *Configuración* > *clúster* > *expansión*.
++
+System Manager buscará nodos añadidos recientemente. Si se muestra alguna advertencia, debe solucionarla antes de continuar. Si se detectan nuevos nodos compatibles, continúe con el siguiente paso.
+
+.. Modifique el nombre de los nodos.
+.. Especifique las licencias de nodo.
+.. Haga clic en *Enviar y continuar*.
+
+
+|===
+
+
+
+
+== Configure los detalles de red de los nodos
+
+Puede usar System Manager para configurar los ajustes del LIF de gestión de nodos y de Service Processor para los nodos recién añadidos.
+
+.Antes de empezar
+* El número de puertos debe estar suficiente en el espacio IP predeterminado para la creación de la LIF.
+* Todos los puertos deben estar activos y en funcionamiento.
+
+
+.Pasos
+. Configurar gestión de nodos:
++
+.. Introduzca la dirección IP en el campo *Dirección IP*.
+.. Seleccione el puerto para la administración de nodos en el campo *Puerto*.
+.. Introduzca los detalles de la máscara de red y la puerta de enlace.
+
+
+. Configure los ajustes de Service Processor:
++
+.. Active la casilla de verificación *Anular valores predeterminados* para anular los valores predeterminados.
+.. Introduzca los detalles de la dirección IP, la máscara de red y la puerta de enlace.
+
+
+. Haga clic en *Enviar y continuar* para completar la configuración de red de los nodos.
+. Compruebe los detalles de los nodos en la página *Resumen*.
+
+
+
+
+=== Qué hacer a continuación
+
+* Si el clúster está protegido, debe crear el número necesario de LIF de interconexión de clústeres en los nodos recién añadidos para evitar que la relación de paridad sea parcial y una protección que no sea adecuada.
+* Si existen protocolos DE datos SAN habilitados en su clúster, debería crear el número necesario de LIF DE datos DE SAN para servir datos.
+
+
+*Información relacionada*
+
+xref:task_creating_network_interfaces.adoc[Creación de interfaces de red]

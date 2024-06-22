@@ -1,0 +1,39 @@
+---
+permalink: volume-move/task_verifying_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, lun, destination, aggregate, high-availability, ha, pair, ontap, selective, reporting-nodes, list, path, verify, verify lun reporting nodes after moving a volume 
+summary: Puede agregar nodos de generación de informes de LUN para ayudar a mantener las rutas optimizadas de LUN. 
+---
+= Compruebe los nodos de generación de informes de LUN después de mover un volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede agregar nodos de generación de informes de LUN para ayudar a mantener las rutas optimizadas de LUN.
+
+Si el volumen que se mueve contiene LUN y el agregado de destino está en otra pareja de alta disponibilidad (ha), ONTAP agrega automáticamente una pareja de alta disponibilidad a la lista nodos de generación de informes de asignación de LUN selectiva
+
+.Antes de empezar
+Deben configurarse dos LIF: Un LIF en el nodo de destino y la otra LIF en el partner de alta disponibilidad del nodo de destino.
+
+.Acerca de esta tarea
+Este procedimiento solo es necesario si mueve un volumen de una pareja de ha a otra. Si mueve un volumen a otro nodo de la misma pareja de ha, por ejemplo, si tiene un clúster de dos nodos o una configuración MetroCluster, puede omitir este procedimiento.
+
+.Pasos
+. Compruebe que el nodo de destino y el nodo del partner se encuentran en la lista Reporting-Nodes del volumen. Si los nodos no están en la lista Reporting-Nodes, añada el nodo de destino y su compañero a la lista Reporting-Nodes del volumen:
++
+`lun mapping add-reporting-nodes`
+
+. Vuelva a analizar el host para detectar las rutas recién añadidas.
+. Añada las nuevas rutas a la configuración de MPIO.
+. Elimine el propietario anterior de la LUN y su nodo asociado de la lista de nodos de generación de informes:
++
+`lun mapping remove-reporting-nodes -remote-nodes -vserver vserver_name -path lun_path -igroup igroup_name`
+
+. Vuelva a analizar el host para verificar la eliminación de las rutas antiguas.
++
+Consulte la documentación del host para ver los pasos específicos para volver a analizar los hosts.
+
+

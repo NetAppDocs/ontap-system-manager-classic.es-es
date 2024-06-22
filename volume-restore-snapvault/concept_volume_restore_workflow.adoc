@@ -1,0 +1,28 @@
+---
+permalink: volume-restore-snapvault/concept_volume_restore_workflow.html 
+sidebar: sidebar 
+keywords: source, volume, data, corrupt, restore, snapvault, backup, destination, restoring, exist, operation, volume restore workflow 
+summary: Si el volumen de origen no está disponible o los datos están dañados, es posible realizar una restauración desde un backup de SnapVault. La restauración de un volumen a partir de un backup de SnapVault implica seleccionar el volumen de destino de SnapVault, restaurar un volumen nuevo o uno existente y verificar la operación de restauración. 
+---
+= Flujo de trabajo de restauración de volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si el volumen de origen no está disponible o los datos están dañados, es posible realizar una restauración desde un backup de SnapVault. La restauración de un volumen a partir de un backup de SnapVault implica seleccionar el volumen de destino de SnapVault, restaurar un volumen nuevo o uno existente y verificar la operación de restauración.
+
+image::../media/volume_restore_workflow.gif[Esta ilustración es un diagrama de flujo del flujo de trabajo de restauración de volúmenes de SnapVault. Los pasos del flujo de trabajo coinciden con los temas.">]
+
+Hay información adicional disponible que sirve de ayuda para gestionar las relaciones de backup de SnapVault y para usar otros métodos de protección de datos a fin de proteger la disponibilidad de los recursos de datos.
+
+* xref:../volume-disaster-prep/index.html[Preparación para la recuperación ante desastres de volúmenes]
++
+Describe cómo configurar rápidamente un volumen de destino en otro clúster de ONTAP con el fin de prepararse para la recuperación ante desastres.
+
+* xref:../volume-disaster-recovery/index.html[Recuperación ante desastres de volúmenes]
++
+Describe cómo activar rápidamente un volumen de destino desde otro clúster de ONTAP después de un desastre, así como cómo restaurar el estado original de la relación de SnapMirror mediante la reactivación del volumen de origen tras su recuperación.
+
+

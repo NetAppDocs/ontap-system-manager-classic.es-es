@@ -1,0 +1,45 @@
+---
+permalink: iscsi-config-windows/task_recording_iscsi_node_name.html 
+sidebar: sidebar 
+keywords: record, iscsi, initiator, node, program, windows, host, record the iscsi intiator node name, name 
+summary: Debe registrar el nombre de nodo iniciador de iSCSI desde el programa iniciador de iSCSI en el host Windows. 
+---
+= Registre el nombre del nodo iniciador iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe registrar el nombre de nodo iniciador de iSCSI desde el programa iniciador de iSCSI en el host Windows.
+
+.Pasos
+. Abra el cuadro de diálogo *Propiedades del iniciador iSCSI*:
++
+|===
+| Si está usando... | Vaya a... 
+
+
+ a| 
+Windows Server 2012 o Windows Server 2012 R2 o Windows Server 2016
+ a| 
+*Server Manager* > *Panel* > *Herramientas* > *Iniciador iSCSI* > *Configuración*
+
+
+
+ a| 
+Windows Server 2008 y Windows Server 2008 R2
+ a| 
+*Inicio* > *Herramientas administrativas* > *Iniciador iSCSI*
+
+|===
+. Copie el valor *Nombre de iniciador* o *Nombre de nodo de iniciador* en un archivo de texto o escríbalo.
++
+La etiqueta exacta del cuadro de diálogo varía en función de la versión de Windows. El nombre del nodo iniciador iSCSI debe tener el siguiente aspecto:
+
++
+[listing]
+----
+iqn.1991-05.com.microsoft:server3
+----
+

@@ -1,0 +1,43 @@
+---
+permalink: iscsi-config-rhel/task_deciding_where_to_provision_volume.html 
+sidebar: sidebar 
+keywords: provision, volume, lun, add, storage, virtual, machine, svm, volume, exist, decide where to provision the volume 
+summary: Antes de aprovisionar un volumen para contener LUN, debe decidir si va a añadir el volumen a una máquina virtual de almacenamiento existente o crear una nueva SVM para el volumen. También es posible que deba configurar iSCSI en una SVM existente. 
+---
+= Decidir dónde se aprovisionará el volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de aprovisionar un volumen para contener LUN, debe decidir si va a añadir el volumen a una máquina virtual de almacenamiento (SVM) existente o crear una nueva SVM para el volumen. También es posible que deba configurar iSCSI en una SVM existente.
+
+.Acerca de esta tarea
+Si una SVM existente ya está configurada con los protocolos necesarios y tiene LIF a los que se puede acceder desde el host, resulta más fácil usar el SVM existente.
+
+Puede crear una nueva SVM para separar los datos o la administración de otros usuarios del clúster de almacenamiento. No hay ventajas de usar SVM independientes para separar diferentes protocolos.
+
+
+
+== Procedimiento
+
+* Si desea aprovisionar volúmenes en una SVM que ya está configurada para iSCSI, debe verificar que el servicio iSCSI esté en ejecución y, a continuación, crear un LUN en la SVM.
++
+link:task_verifying_iscsi_is_running_on_existing_vserver.html["Comprobar que el servicio iSCSI se está ejecutando en una SVM existente"]
+
++
+link:task_creating_lun_its_containing_volume.html["Crear una LUN"]
+
+* Si desea aprovisionar volúmenes en una SVM existente que tenga habilitado pero no configurado iSCSI, configure iSCSI en la SVM existente.
++
+link:task_configuring_iscsi_fc_creating_lun_on_existing_svm.html["Configuración de iSCSI en una SVM existente"]
+
++
+Este es el caso, cuando no ha seguido este procedimiento para crear la SVM mientras se configura un protocolo diferente.
+
+* Si desea aprovisionar volúmenes en una SVM nueva, cree la SVM.
++
+link:task_creating_svm.html["Creación de una SVM nueva"]
+
+

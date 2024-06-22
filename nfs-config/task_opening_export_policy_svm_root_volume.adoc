@@ -1,0 +1,40 @@
+---
+permalink: nfs-config/task_opening_export_policy_svm_root_volume.html 
+sidebar: sidebar 
+keywords: add, rule, default, export, policy, allow, client, access, storage, virtual, machine, svm, volume, open the export policy of the svm root volume, create a new nfs-enabled svm 
+summary: 'Debe añadir una regla a la política de exportación predeterminada para permitir que todos los clientes accedan a través de NFSv3. Sin esa regla, todos los clientes NFS se ven privados del acceso a la máquina virtual de almacenamiento (SVM) y sus volúmenes.' 
+---
+= Abrir la política de exportación del volumen raíz de SVM (Crear una SVM nueva habilitada para NFS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe añadir una regla a la política de exportación predeterminada para permitir que todos los clientes accedan a través de NFSv3. Sin esa regla, todos los clientes NFS se ven privados del acceso a la máquina virtual de almacenamiento (SVM) y sus volúmenes.
+
+.Acerca de esta tarea
+Debe especificar todo el acceso de NFS como la política de exportación predeterminada y, más adelante, restringir el acceso a volúmenes individuales mediante la creación de políticas de exportación personalizadas para volúmenes individuales.
+
+.Pasos
+. Vaya a la ventana *SVMs*.
+. Haga clic en la ficha *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *políticas de exportación*.
+. Seleccione la política de exportación denominada *default*, que se aplica al volumen raíz de SVM.
+. En el panel inferior, haga clic en *Agregar*.
+. En el cuadro de diálogo *Crear regla de exportación*, cree una regla que abra el acceso a todos los clientes para los clientes NFS:
++
+.. En el campo *especificación del cliente*, introduzca `0.0.0.0/0` de modo que la regla se aplica a todos los clientes.
+.. Conserve el valor predeterminado como *1* para el índice de regla.
+.. Selecciona *NFSv3*.
+.. Desactive todas las casillas de verificación excepto la casilla de verificación *UNIX* en *sólo lectura*.
+.. Haga clic en *Aceptar*.
+
+
++
+image::../media/export_rule_for_root_volume_nfs.gif[Esta imagen se explica por el texto circundante.]
+
+
+
+.Resultados
+Los clientes de NFSv3 ahora pueden acceder a cualquier volumen creado en la SVM.

@@ -1,0 +1,157 @@
+---
+permalink: online-help-96-97/concept_svm_user_accounts.html 
+sidebar: sidebar 
+keywords: system, manager, create, manage, online, help, storage, virtual, machine, svm, user, account, password, change, lock, unlock , command, button 
+summary: 'Puede usar System Manager para crear y gestionar cuentas de usuario de máquinas virtuales de almacenamiento (SVM).' 
+---
+= Cree y gestione cuentas de usuario de SVM con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar cuentas de usuario de máquinas virtuales de almacenamiento (SVM).
+
+
+
+== Añadir cuentas de usuario de SVM
+
+Puede usar System Manager para añadir una cuenta de usuario de máquina virtual de almacenamiento (SVM) y especificar un método de inicio de sesión de usuario para acceder al sistema de almacenamiento.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Detalles del usuario de SVM*, haga clic en *usuarios*.
+. Haga clic en *Agregar*.
+. Especifique un nombre de usuario y una contraseña para conectarse al sistema de almacenamiento y confirme la contraseña.
+. Agregue uno o más métodos de inicio de sesión de usuario y, a continuación, haga clic en *Agregar*.
++
+Se incluye automáticamente un método de inicio de sesión para la nueva cuenta vsadmin que utiliza HTTP como aplicación y que se autentica con un certificado.
+
+
+
+
+
+== Cambiar la contraseña de las cuentas de usuario de SVM
+
+Puede usar System Manager para restablecer la contraseña de una cuenta de usuario de máquina virtual de almacenamiento (SVM).
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Detalles del usuario de SVM*, haga clic en *usuarios*.
+. Seleccione la cuenta de usuario para la que desea modificar la contraseña y, a continuación, haga clic en *Restablecer contraseña*.
+. En el cuadro de diálogo *Restablecer contraseña*, escriba la nueva contraseña, confirme la nueva contraseña y haga clic en *Cambiar*.
+
+
+
+
+== Editar cuentas de usuario de SVM
+
+Puede usar System Manager para editar una cuenta de usuario de máquina virtual de almacenamiento (SVM). Para ello, se modifican los métodos de inicio de sesión de usuario para acceder al sistema de almacenamiento.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Detalles del usuario de SVM*, haga clic en *usuarios*.
+. Seleccione la cuenta de usuario que desea editar y, a continuación, haga clic en *Editar*.
+. Modifique uno o más métodos de inicio de sesión de usuario y, a continuación, haga clic en *Modificar*.
+
+
+
+
+== Bloquear o desbloquear cuentas de usuario de SVM
+
+Puede usar System Manager para bloquear o desbloquear cuentas de usuario de máquinas virtuales de almacenamiento (SVM).
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Detalles del usuario de SVM*, haga clic en *usuarios*.
+. En la ventana *usuarios*, seleccione la cuenta de usuario para la que desea modificar el estado de la cuenta y, a continuación, haga clic en *Bloquear* o en *Desbloquear*, según sea necesario.
+
+
+
+
+== Ventana usuarios
+
+Puede utilizar la ventana usuarios para administrar cuentas de usuario, restablecer la contraseña de un usuario y ver información sobre todas las cuentas de usuario.
+
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Abre el cuadro de diálogo Agregar usuario, que permite agregar cuentas de usuario.
+
+* *Edición*
++
+Abre el cuadro de diálogo Modificar usuario, que permite modificar los métodos de inicio de sesión de usuario.
+
++
+[NOTE]
+====
+Se recomienda usar un solo rol para todos los métodos de acceso y autenticación de una cuenta de usuario.
+
+====
+* *Eliminar*
++
+Permite eliminar una cuenta de usuario seleccionada.
+
+* *Cambiar contraseña*
++
+Abre el cuadro de diálogo Cambiar contraseña, que permite restablecer la contraseña de un usuario seleccionado.
+
+* *Bloqueo*
++
+Bloquea la cuenta de usuario.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de usuarios
+
+El área situada debajo de la lista de usuarios muestra información detallada sobre el usuario seleccionado.
+
+* *Usuario*
++
+Muestra el nombre de la cuenta de usuario.
+
+* *Cuenta bloqueada*
++
+Muestra si la cuenta de usuario está bloqueada.
+
+
+
+
+
+=== Área métodos de inicio de sesión de usuario
+
+* *Aplicación*
++
+Muestra el método de acceso que un usuario puede utilizar para acceder al sistema de almacenamiento. Los métodos de acceso admitidos incluyen los siguientes:
+
++
+** Consola del sistema (consola)
+** HTTP(S) (http)
+** API de ONTAP (ontapi)
+** Procesador de servicio (Service-Processor)
+** SSH (SSH)
+
+
+* *Autenticación*
++
+Muestra el método de autenticación admitido por defecto, que es "'password'".
+
+* *Rol*
++
+Muestra la función de un usuario seleccionado.
+
+

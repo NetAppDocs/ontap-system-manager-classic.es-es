@@ -1,0 +1,85 @@
+---
+permalink: iscsi-config-rhel/task_configuring_dm_multipath.html 
+sidebar: sidebar 
+keywords: dm-multipath, manage, path, linux, host, storage, cluster, configuring, configure, lun, scsi, device, component, fail, cluster, configure, configure dm-multipath 
+summary: DM-Multipath gestiona varias rutas entre el host Linux y el clúster de almacenamiento. La configuración de DM-Multipath en un LUN, que parece al host Linux como un dispositivo SCSI, permite al host Linux acceder a su LUN en el clúster de almacenamiento si se produce un error en una ruta o componente. 
+---
+= Configurar DM-Multipath
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+DM-Multipath gestiona varias rutas entre el host Linux y el clúster de almacenamiento. La configuración de DM-Multipath en un LUN, que parece al host Linux como un dispositivo SCSI, permite al host Linux acceder a su LUN en el clúster de almacenamiento si se produce un error en una ruta o componente.
+
+.Antes de empezar
+Debe haber identificado la versión necesaria de DM-Multipath desde la herramienta de matriz de interoperabilidad.
+
+https://mysupport.netapp.com/matrix["Herramienta de matriz de interoperabilidad de NetApp"]
+
+[NOTE]
+====
+El enfoque recomendado es que configure dos rutas por nodo en cada estructura o red Ethernet. Esto permite un fallo de ruta sin que el nodo cambie a su compañero. El uso de la agregación de vínculos (LAG) para los puertos físicos no se recomienda con un sistema operativo basado en Windows.
+
+====
+.Pasos
+. Edite el `/etc/multipath.conf` el archivo es el siguiente:
++
+.. Determine si hay dispositivos SCSI que no son de NetApp que excluir (lista negra).
++
+Estos son los dispositivos que no se muestran al introducir la `sanlun lun show` comando.
+
++
+*** Si hay dispositivos SCSI que no son de NetApp para excluir, introduzca el identificador a nivel mundial (WWID) para los dispositivos en la sección de lista negra de `multipath.conf` archivo.
++
+Para mostrar el WWID de un dispositivo SCSI que no sea de NetApp, introduzca el siguiente comando en el dispositivo que desea excluir, donde `SCSI_device_name` es un dispositivo que usted especifica: `/lib/udev/scsi_id -gud /dev/SCSI_device_name`
+
++
+Por ejemplo, si `/dev/sda` Es el dispositivo SCSI que no es de NetApp que desea excluir, debe introducir lo siguiente:
+
++
+`/lib/udev/scsi_id -gud /dev/sda`
+
++
+Esto muestra el WWID del dispositivo, que se puede copiar y pegar en `multipath.conf` archivo.
+
++
+En el siguiente ejemplo que muestra la sección de lista negra de `multipath.conf` Archivo, el dispositivo SCSI no NetApp con WWID `3600508e000000000753250f933cc4606` se excluye:
+
++
+[listing]
+----
+blacklist {
+            **wwid       3600508e000000000753250f933cc4606**
+            devnode    "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+            devnode    "^hd[a-z]"
+            devnode     "^cciss.*"
+}
+----
+*** Si no hay dispositivos que excluir, quite la línea _wwid_ del `multipath.conf` archivo.
+
+
+.. Habilite la configuración de DM-Multipath recomendada de NetApp anexando la siguiente cadena al final de la línea del kernel en el cargador de arranque: `rdloaddriver=scsi_dh_alua`
+
+
+. Inicie el daemon DM-Multipath:
++
+`/etc/init.d/multipathd start`
+
+. Agregue el servicio multivía a la secuencia de arranque para que el daemon multipath siempre se inicie durante el arranque del sistema:
++
+`chkconfig multipathd on`
+
+. Reinicie el host Linux.
+. Compruebe que el `rdloaddriver` el ajuste aparece en la salida cuando se ejecuta `cat /proc/cmdline`.
++
+La `rdloaddriver` la configuración aparece como una de las varias opciones de arranque que se pasan al núcleo:
+
++
+[listing]
+----
+# cat /proc/cmdline
+ro root=/dev/mapper/vg_ibmx3650210104-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD rd_LVM_LV=vg_ibmx3650210104/lv_root SYSFONT=latarcyrheb-sun16 rd_LVM_LV=vg_ibmx3650210104/lv_swap crashkernel=129M@0M  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet **rdloaddriver=scsi_dh_alua**
+----
+

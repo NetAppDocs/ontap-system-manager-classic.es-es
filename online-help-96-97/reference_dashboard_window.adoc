@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/reference_dashboard_window.html 
+sidebar: sidebar 
+keywords: system, manager, dashboard, window, multiple, panel, online, help 
+summary: La ventana Consola contiene varios paneles que proporcionan información acumulativa de un vistazo acerca de su sistema y su rendimiento. 
+---
+= Ventana Consola para System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La ventana Consola de System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) contiene varios paneles que proporcionan información acumulativa de un vistazo acerca de su sistema y su rendimiento.
+
+Puede usar la ventana Consola para ver información sobre alertas y notificaciones importantes, la eficiencia y la capacidad de los agregados y volúmenes, los nodos disponibles en un clúster, el estado de los nodos en un par de alta disponibilidad (ha), las aplicaciones y objetos más activos, y las métricas de rendimiento de un clúster o un nodo.
+
+* *Alertas y Notificaciones*
++
+Muestra todas las alertas en rojo, como eventos de EMS de emergencia, detalles de nodos sin conexión, detalles de discos dañados, autorizaciones de licencia con alto riesgo y detalles de puertos de red sin conexión. Muestra todas las notificaciones en amarillo, como las notificaciones del monitor de estado realizadas en las últimas 24 horas en el nivel de clúster, derechos de licencia de riesgo medio, detalles de disco sin asignar, el número de LIF migradas, operaciones de movimiento de volúmenes que han fallado, y de movimiento de volúmenes que requerían intervención administrativa en las últimas 24 horas.
+
++
+El panel Alertas y Notificaciones muestra hasta tres alertas y notificaciones más allá de las cuales se muestra el enlace View-All. Puede hacer clic en el enlace View-All para ver más información sobre las alertas y las notificaciones.
+
++
+El intervalo de actualización del panel Alertas y Notificaciones es de un minuto.
+
+* *Descripción general del clúster*
++
+Muestra los agregados y los volúmenes que están casi por capacidad, la eficiencia de almacenamiento de un clúster o nodo y los detalles de protección de los volúmenes principales.
+
++
+En la pestaña capacidad, se muestran los agregados en línea más importantes que están cerca de su capacidad, en orden descendente de espacio usado.
+
++
+En la pestaña capacidad, se proporciona un enlace a la cantidad de volúmenes con la capacidad más alta utilizada cuando se introduce un valor válido en el campo volúmenes que superan la capacidad utilizada. También muestra la cantidad de datos (fríos) inactivos disponibles en el clúster.
+
++
+La pestaña Efficiency muestra el ahorro de eficiencia del almacenamiento para un clúster o nodo. Puede ver el espacio lógico total utilizado, el espacio físico total utilizado y el ahorro general. Puede seleccionar un clúster o un nodo específico para ver el ahorro en eficiencia del almacenamiento. Para System Manager 9.5, el espacio utilizado para las copias de Snapshot _no_ se incluye en los valores de espacio lógico total utilizado, espacio físico total utilizado y ahorro general. Sin embargo, a partir de System Manager 9.6, el espacio utilizado para las copias Snapshot se incluye en los valores de espacio lógico total utilizado, espacio físico total utilizado y ahorro general.
+
++
+El intervalo de actualización del panel Cluster Overview es de 15 minutos.
+
++
+La pestaña Protection muestra información sobre los volúmenes de todo el clúster que no tienen relaciones de protección definidas. Solo se muestran los volúmenes FlexVol y los volúmenes FlexGroup que cumplen con los siguientes criterios:
+
++
+** Los volúmenes son volúmenes RW y están en línea.
+** El agregado que contiene los volúmenes está en línea.
+** Los volúmenes tienen relaciones de protección y aún no se han inicializado.
+Puede desplazarse a la ventana Volumes para ver los volúmenes que no tienen una relación de protección definida.
+
+
++
+En la pestaña Protection, también se muestran las cinco SVM principales que tienen la cantidad más alta de volúmenes que no tienen relaciones de protección definidas.
+
+* *Nodos*
++
+Muestra una representación gráfica del número y los nombres de los nodos que están disponibles en el clúster, así como el estado de los nodos que están en un par ha. Debe colocar el cursor sobre la representación gráfica de los nodos para ver el estado de los nodos en un par de alta disponibilidad.
+
++
+Puede ver más información sobre todos los nodos mediante el enlace Nodes. También puede hacer clic en la representación gráfica para ver el modelo de los nodos y el número de agregados, pools de almacenamiento, bandejas y discos disponibles en los nodos. Puede gestionar los nodos mediante el enlace gestionar nodos. Puede gestionar los nodos de un par de alta disponibilidad mediante el enlace Manage ha.
+
++
+El intervalo de actualización del panel Nodes es de 15 minutos.
+
+* *Aplicaciones y objetos*
++
+Puede utilizar el panel aplicaciones y objetos para mostrar información sobre aplicaciones, clientes y archivos de un clúster.
+
++
+La pestaña aplicaciones muestra información sobre las cinco principales aplicaciones del clúster. Puede ver las cinco principales aplicaciones basadas en IOPS y en la latencia (de baja a alta o de alta a baja) o en la capacidad (de baja a alta o de alta a baja).
+
++
+Debe hacer clic en el gráfico de barras específico para ver más información acerca de la aplicación. El espacio total, el espacio usado y el espacio disponible se muestran para la capacidad, los detalles de IOPS se muestran para las IOPS y los detalles de latencia se muestran para la latencia.
+
++
+Puede hacer clic en *Ver detalles* para abrir la ventana aplicaciones de la aplicación específica.
+
++
+La pestaña Objects muestra información acerca de los cinco principales clientes activos y archivos del clúster. Puede ver los cinco clientes y archivos más activos en función de IOPS o de su rendimiento.
+
++
+[NOTE]
+====
+Esta información solo se muestra para los protocolos CIFS y NFS.
+
+====
++
+El intervalo de actualización del panel aplicaciones y objetos es de un minuto.
+
+* *Rendimiento*
++
+Muestra las métricas de rendimiento medio, métricas de rendimiento de lectura y métricas de rendimiento de escritura del clúster en función de la latencia, las IOPS y el rendimiento. Las métricas de rendimiento promedio se muestran de forma predeterminada. Es posible hacer clic en Read or Write para ver las métricas de rendimiento de lectura o escritura, respectivamente. Puede ver las métricas de rendimiento del clúster o de un nodo.
+
++
+Si la información acerca del rendimiento del clúster no se puede recuperar de ONTAP, no puede ver el gráfico correspondiente. En estos casos, System Manager muestra el mensaje de error específico.
+
++
+El intervalo de actualización de los gráficos del panel rendimiento es de 15 segundos.
+
+
+
+
+
+== Supervisar un clúster mediante la consola
+
+La consola de System Manager le permite supervisar el estado y el rendimiento de un clúster. También puede identificar problemas de hardware y de configuración del almacenamiento mediante la consola.
+
+.Pasos
+. Haga clic en la ficha *Panel* para ver los paneles de control de estado y rendimiento.
+

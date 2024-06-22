@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_obtaining_ontap_software_images.html 
+sidebar: sidebar 
+keywords: online, help, obtain, ontap, software, image, netapp, support, site, online, help 
+summary: Para ONTAP 9.4 y versiones posteriores, es posible copiar la imagen del software ONTAP del sitio de soporte de NetApp en una carpeta local. Para las actualizaciones desde ONTAP 9.3 o versiones anteriores, debe copiar la imagen del software ONTAP en un servidor HTTP o FTP de la red. 
+---
+= Obtenga imágenes del software de ONTAP con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede obtener imágenes del software de ONTAP con el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores). Para ONTAP 9.4 y versiones posteriores, es posible copiar la imagen del software ONTAP del sitio de soporte de NetApp en una carpeta local. Para las actualizaciones desde ONTAP 9.3 o versiones anteriores, debe copiar la imagen del software ONTAP en un servidor HTTP o FTP de la red.
+
+.Acerca de esta tarea
+Para actualizar el clúster a la versión de destino de ONTAP, necesita acceder a imágenes de software. Las imágenes de software, la información de versión de firmware y el firmware más reciente para el modelo de su plataforma están disponibles en el sitio de soporte de NetApp. Debe tener en cuenta la siguiente información importante:
+
+* Las imágenes de software son específicas para los modelos de la plataforma.
++
+Debe obtener la imagen correcta para su clúster.
+
+* Las imágenes de software incluyen la versión más reciente del firmware del sistema disponible cuando se publicó una versión concreta de ONTAP.
+* Si actualiza un sistema con el cifrado de volúmenes de NetApp a ONTAP 9.5 o una versión posterior, debe descargar la imagen del software ONTAP para países no restringidos, que incluye el cifrado de volúmenes de NetApp.
++
+Si utiliza la imagen del software de ONTAP para países restringidos a fin de actualizar un sistema con el cifrado de volúmenes de NetApp, el sistema produce una alarma y perderá el acceso a los volúmenes.
+
+* Si va a actualizar de ONTAP 9.3 a 9.7, debe copiar la imagen de software de ONTAP 9.5 y 9.7.
+
+
+.Pasos
+. Busque el software ONTAP de destino en el área *Descargas de software* del sitio de soporte de NetApp.
+. Copie la imagen del software.
++
+** En ONTAP 9.3 o anterior, copie la imagen de software (por ejemplo, `93_q_image.tgz`) Desde el sitio de soporte de NetApp hasta el directorio del servidor HTTP o FTP a partir del que se servirá la imagen
+** En ONTAP 9.4 o posterior, copie la imagen de software (por ejemplo, `97_q_image.tgz`) Desde el sitio de soporte de NetApp hasta el directorio del servidor HTTP o FTP a partir del que se servirá la imagen o a una carpeta local.
+
+
+

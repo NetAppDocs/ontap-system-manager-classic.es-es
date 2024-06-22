@@ -1,0 +1,42 @@
+---
+permalink: online-help-96-97/concept_storage_recommendations_for_creating_aggregates.html 
+sidebar: sidebar 
+keywords: storage, recommendations, create, aggregate, system, manager, online, help 
+summary: A partir de System Manager 9.4, se pueden crear agregados basados en recomendaciones de almacenamiento. Sin embargo, debe determinar si la creación de agregados en función de las recomendaciones de almacenamiento es compatible en su entorno. Si su entorno no admite la creación de agregados sobre la base de recomendaciones de almacenamiento, debe decidir la política de RAID y la configuración de discos, y luego crear los agregados manualmente. 
+---
+= Recomendaciones de almacenamiento para la creación de agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.4, se pueden crear agregados basados en recomendaciones de almacenamiento. Sin embargo, debe determinar si la creación de agregados en función de las recomendaciones de almacenamiento es compatible en su entorno. Si su entorno no admite la creación de agregados sobre la base de recomendaciones de almacenamiento, debe decidir la política de RAID y la configuración de discos, y luego crear los agregados manualmente.
+
+System Manager analiza los discos de reserva disponibles en el clúster y genera una recomendación acerca de cómo deben utilizarse los discos de reserva para crear agregados de acuerdo con las mejores prácticas. System Manager muestra el resumen de los agregados recomendados, incluidos sus nombres y tamaño utilizable.
+
+En muchos casos, la recomendación de almacenamiento será óptima para su entorno. Sin embargo, si el clúster ejecuta ONTAP 9.3 o una versión anterior, o si el entorno incluye las siguientes configuraciones, debe crear agregados manualmente:
+
+* Agregados que utilizan LUN de cabina de terceros
+* Discos virtuales con Cloud Volumes ONTAP o ONTAP Select
+* Configuraciones de MetroCluster
+* Funcionalidad de SyncMirror
+* Discos MSATA
+* Agregados de Flash Pool
+* Los diferentes tipos o tamaños de disco están conectados al nodo
+
+
+Además, si existe alguna de las siguientes condiciones de disco en su entorno, debe rectificar las condiciones de disco antes de utilizar la recomendación de almacenamiento para crear agregados:
+
+* Faltan discos
+* Fluctuación en los números de disco de repuesto
+* Discos sin asignar
+* Piezas de repuesto no ceros (para versiones de ONTAP anteriores a 9.6)
+* Discos en los que se está probando el mantenimiento
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestión de discos y agregados"]
+
+xref:task_zeroing_disks.adoc[Puesta a cero de los discos de repuesto]

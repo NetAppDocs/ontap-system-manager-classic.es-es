@@ -1,0 +1,174 @@
+---
+permalink: online-help-96-97/reference_disks_window.html 
+sidebar: sidebar 
+keywords: command, button, disk, window, inventory, detail, online, help 
+summary: Puede utilizar la ventana Disks para ver todos los discos del sistema de almacenamiento. 
+---
+= Ventana discos en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar la ventana Disks del clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver todos los discos del sistema de almacenamiento.
+
+
+
+== Botones de comando
+
+* *Asignar*
++
+Asigna o reasigna la propiedad de los discos a un nodo.
+
++
+Este botón solo se habilita si el tipo de contenedor de los discos seleccionados es unassigned, spare o shared.
+
+* *Cero repuestos*
++
+Borra todos los datos y formatea los discos de repuesto y los LUN de cabina.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+== Pestañas
+
+
+
+== Resumen
+
+Muestra información detallada sobre los discos del clúster, incluido el tamaño de los discos de repuesto y los discos asignados. La pestaña también muestra gráficamente información sobre discos de reserva, agregados y agregados raíz para HDD e información sobre discos de reserva, discos en un pool de almacenamiento, agregados, agregados de Flash Pool y agregados raíz para discos de caché (SSD).
+
+El panel HDD no se muestra para sistemas con la personalidad de All Flash Optimized.
+
+El panel de detalles proporciona información adicional sobre los discos de repuesto con particiones y sin particiones (tipo de disco, nodo, tamaño de disco, RPM, suma de comprobación, número de discos disponibles y capacidad de reserva), en formato de tabla de resultados.
+
+
+
+== Inventario
+
+* *Nombre*
++
+Muestra el nombre del disco.
+
+* *Tipo de contenedor*
++
+Muestra el propósito para el que se utiliza el disco. Los valores posibles son agregado, roto, extranjero, Mantenimiento de etiquetas, mantenimiento, Compartido, repuesto, sin asignar, volumen, desconocido, Y no se admite.
+
+* *Tipo de partición*
++
+Muestra el tipo de partición del disco.
+
+* *Nombre de nodo*
++
+Muestra el nombre del nodo que contiene el agregado.
+
++
+Este campo solo está disponible a nivel de clúster.
+
+* *Propietario del hogar*
++
+Muestra el nombre del nodo de inicio al que está asignado este disco.
+
+* *Propietario actual*
++
+Muestra el nombre del nodo que posee actualmente este disco.
+
+* *Propietario raíz*
++
+Muestra el nombre del nodo que posee actualmente la partición raíz de este disco.
+
+* *Propietario de datos*
++
+Muestra el nombre del nodo que posee actualmente la partición de datos de este disco.
+
+* *Dueño de Data1*
++
+Muestra el nombre del nodo que posee actualmente la partición data1 del disco.
+
+* *Propietario de Data2*
++
+Muestra el nombre del nodo que posee actualmente la partición data2 del disco.
+
+* *Piscina de almacenamiento*
++
+Muestra el nombre del pool de almacenamiento al que está asociado el disco.
+
+* *Tipo*
++
+Muestra el tipo de disco.
+
+* *Versión del firmware*
++
+Muestra la versión del firmware del disco.
+
+* *Modelo*
++
+Muestra el modelo del disco.
+
+* *RPM*
++
+Muestra la velocidad efectiva de la unidad de disco cuando la opción está activada `raid.mix.hdd.rpm.capacity` está activada y muestra la velocidad real de la unidad de disco cuando la opción está activada `raid.mix.hdd.rpm.capacity` está desactivado.
+
++
+Este campo no es aplicable a los SSD.
+
+* *Tamaño efectivo*
++
+Muestra el espacio útil disponible en el disco.
+
+* * Espacio físico*
++
+Muestra el espacio físico total del disco.
+
+* *Estante*
++
+Muestra la bandeja donde están ubicados los discos físicos.
+
++
+Este campo está oculto de forma predeterminada.
+
+* * Bahía*
++
+Muestra la bahía dentro de la bandeja para el disco físico.
+
++
+Este campo está oculto de forma predeterminada.
+
+* * Piscina*
++
+Muestra el nombre del pool al que se asigna el disco seleccionado.
+
++
+Este campo está oculto de forma predeterminada.
+
+* *Suma de comprobación*
++
+Muestra el tipo de suma de comprobación.
+
++
+Este campo está oculto de forma predeterminada.
+
+* *ID del operador*
++
+Especifica la información acerca de los discos que se encuentran dentro del portador de varios discos especificado. El ID es un valor de 64 bits.
+
++
+Este campo está oculto de forma predeterminada.
+
+
+
+
+
+== Área de detalles del inventario
+
+El área que se encuentra debajo de la pestaña del inventario muestra información detallada sobre el disco seleccionado, incluida información sobre el agregado o el volumen (si corresponde), el ID del proveedor, el estado de puesta a cero (en porcentaje), el número de serie del disco y los detalles de error en el caso de un disco roto. Para los discos compartidos, el área de detalles Inventory muestra los nombres de todos los agregados, incluidos la raíz y los agregados que no son raíz.
+
+*Información relacionada*
+
+xref:task_viewing_disk_information.adoc[Visualización de información de disco]

@@ -1,0 +1,268 @@
+---
+permalink: online-help-96-97/concept_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, view, manage, delete, software, licenses, cluster, node, types, entitlement, risk, 
+summary: Puede usar System Manager para ver, gestionar o eliminar cualquier licencia de software instalada en un clúster o nodo. 
+---
+= Gestione licencias con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver, gestionar o eliminar las licencias de software instaladas en un clúster o nodo.
+
+
+
+== Elimine licencias
+
+Puede usar la ventana Licenses en System Manager para eliminar las licencias de software que se hayan instalado en un clúster o un nodo.
+
+Para obtener información sobre la gestión de licencias mediante ONTAP 9.8 y versiones posteriores, consulte la siguiente información:
+
+* link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Información general sobre gestionar licencias (solo administradores de clúster)"^]
+* https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Habilite nuevas funciones añadiendo claves de licencia"^]
+
+
+.Antes de empezar
+La licencia de software que desea eliminar no debe ser utilizada por ningún servicio o función.
+
+.Pasos
+. Haga clic en *Configuración* > *clúster* > *licencias*.
+. En la ventana *licencias*, realice la acción correspondiente:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Eliminar un paquete de licencia específico de un nodo o una licencia maestra
+ a| 
+Haga clic en la ficha *Detalles*.
+
+
+
+ a| 
+Elimine un paquete de licencia específico en todos los nodos del clúster
+ a| 
+Haga clic en la ficha *Paquetes*.
+
+|===
+. Seleccione el paquete de licencia de software que desea eliminar y, a continuación, haga clic en *Eliminar*.
++
+Sólo puede eliminar un paquete de licencia cada vez.
+
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+.Resultados
+La licencia de software se elimina del sistema de almacenamiento. La licencia eliminada también se elimina de la lista de licencias de la ventana licencias.
+
+
+
+== Tipos de licencia y riesgo de derechos
+
+Comprender los diversos tipos de licencia y el riesgo de autorización asociado le ayuda a gestionar el riesgo que está asociado con las licencias de un clúster.
+
+
+
+=== Tipos de licencia
+
+Un paquete puede tener instalados uno o varios de los siguientes tipos de licencias en el clúster:
+
+* Licencia estándar o licencia de bloqueo de nodo
++
+Se emite una licencia de bloqueo de nodo para un nodo con un número de serie de sistema específico (también conocido como _Controller serial number_). Esta licencia solo es válida para el nodo que tenga el número de serie coincidente.
+
++
+La instalación de una licencia de bloqueo de nodo da derecho a un nodo a la funcionalidad con licencia. Para que el clúster utilice la funcionalidad con licencia, debe tener licencia al menos un nodo para la funcionalidad. Puede que no cumpla las normativas utilizar la funcionalidad con licencia en un nodo que no tenga derecho a la funcionalidad.
+
++
+En ONTAP 8.2 y versiones posteriores se trata una licencia que se instaló antes de Data ONTAP 8.2 como licencia estándar. Por lo tanto, en ONTAP 8.2 y versiones posteriores, todos los nodos del clúster tienen automáticamente la licencia estándar para el paquete del que forma parte la funcionalidad con licencia anterior.
+
+* Licencia principal o de sitio
++
+Una licencia maestra o de sitio no está vinculada a un número de serie de sistema específico. Cuando instala una licencia de sitio, todos los nodos del clúster podrán disfrutar de la funcionalidad con licencia.
+
++
+Si su clúster tiene una licencia maestra y se quita un nodo del clúster, el nodo no lleva consigo la licencia del sitio y el nodo ya no tiene derecho a la funcionalidad con licencia. Si agrega un nodo a un clúster que tiene una licencia maestra, el nodo tendrá derecho automáticamente a la funcionalidad que concede la licencia de sitio.
+
+* Demostración o licencia temporal
++
+Una demostración o licencia temporal expira después de un cierto período de tiempo. Esta licencia le permite probar ciertas funcionalidades de software sin tener que adquirir derechos. Una licencia temporal es una licencia para todo el clúster y no está vinculada a un número de serie específico de un nodo.
+
++
+Si su clúster tiene una licencia temporal para un paquete y quita un nodo del clúster, el nodo no lleva con ella la licencia de evaluación.
+
+* Licencia de capacidad (solo ONTAP Select y FabricPool)
++
+Una instancia de ONTAP Select tiene licencia en función de la cantidad de datos que el usuario desea gestionar. Por ejemplo, el usuario puede comprar una licencia de capacidad de 10 TB para permitir a ONTAP Select gestionar hasta 10 TB de datos. Si se conecta más capacidad de almacenamiento al sistema de la que ONTAP Select tiene licencia para gestionar, ONTAP Select no funcionará. De forma predeterminada, la capacidad de almacenamiento máxima que se puede conectar a una instancia de ONTAP Select es de 2 TB hasta que se adquiera y se instale una licencia de capacidad (por ejemplo, una licencia de 5 TB, una licencia de capacidad de 10 TB, etc.).
+
++
+A partir de ONTAP 9.2, los agregados habilitados para FabricPool requieren una licencia de capacidad para usar en un nivel de almacenamiento de terceros (por ejemplo, AWS). La licencia de capacidad de FabricPool define la cantidad de datos que se pueden almacenar en el almacenamiento de nivel de cloud.
+
+
+
+
+
+=== Riesgo de concesión
+
+Un riesgo de autorización se debe a la instalación no uniforme de una licencia de bloqueo de nodo. Si se instala la licencia de bloqueo de nodo en todos los nodos, no existe riesgo de autorización.
+
+El nivel de riesgo de autorización puede ser alto riesgo, riesgo medio, sin riesgo o riesgo desconocido dependiendo de ciertas condiciones:
+
+* Alto riesgo
++
+** Si existe el uso en un nodo en particular, pero la licencia de bloqueo de nodo no se instala en ese nodo
+** Si caduca la licencia de demostración que se instaló en el clúster y se está utilizando en cualquier nodo
+
+
++
+[NOTE]
+====
+Si se instala una licencia de sitio en un clúster, el riesgo de autorización nunca es alto.
+
+====
+* Riesgo medio
++
+Si no se instala una licencia de sitio, y la licencia de bloqueo de nodo se instala de manera no uniforme en los nodos de un clúster
+
+* Sin riesgo
++
+No existe ningún riesgo de autorización si se instala una licencia de bloqueo de nodo en todos los nodos o se instala una licencia de sitio en el clúster, independientemente del uso.
+
+* Desconocido
++
+El riesgo se desconoce si la API en ocasiones no puede recuperar los datos relacionados con el riesgo de autorización asociado con un clúster o los nodos del clúster.
+
+
+
+
+
+== Licencias
+
+Su sistema de almacenamiento llega de fábrica con software preinstalado. Si desea añadir o eliminar una licencia de software después de recibir el sistema de almacenamiento, puede utilizar la ventana Licenses.
+
+[NOTE]
+====
+System Manager no supervisa las licencias de evaluación y no proporciona ninguna advertencia cuando una licencia de evaluación está a punto de expirar. Una licencia de evaluación es una licencia temporal que expira después de un cierto período de tiempo.
+
+====
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Abre la ventana Agregar licencia, que permite agregar nuevas licencias de software.
+
+* *Eliminar*
++
+Elimina la licencia de software que seleccione en la lista de licencias de software.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Ficha Paquetes
+
+Muestra información sobre los paquetes de licencia que se encuentran instalados en el sistema de almacenamiento.
+
+* *Paquete*
++
+Muestra el nombre del paquete de licencia.
+
+* *Riesgo de derechos*
++
+Indica el nivel de riesgo como resultado de problemas de autorización de licencia para un clúster. El nivel de riesgo de concesión puede ser de alto riesgo (image:../media/high_risk_entitlementrisk.gif[""]), riesgo medio (image:../media/medium_risk_entitlementrisk.gif[""]), ningún riesgo (image:../media/no_risk_entitlementrisk.gif[""]), desconocido (image:../media/unknown_risk_entitlementrisk.gif[""]), o sin licencia (-).
+
+* *Descripción*
++
+Muestra el nivel de riesgo como resultado de problemas de autorización de licencia para un clúster.
+
+
+
+
+
+=== Área de detalles del paquete de licencias
+
+El área debajo de la lista de paquetes de licencia muestra información adicional sobre el paquete de licencia seleccionado. Esta área incluye información sobre el clúster o nodo en el que se instala la licencia, el número de serie de la licencia, el uso en la semana anterior, si la licencia está instalada, la fecha de caducidad de la licencia y si la licencia es una anterior.
+
+
+
+=== Ficha Detalles
+
+Muestra información adicional acerca de los paquetes de licencia que están instalados en el sistema de almacenamiento.
+
+* *Paquete*
++
+Muestra el nombre del paquete de licencia.
+
+* *Cluster/Node*
++
+Muestra el clúster o el nodo en el que se ha instalado el paquete de licencia.
+
+* *Número de serie*
++
+Muestra el número de serie del paquete de licencia que se instala en el clúster o el nodo.
+
+* *Tipo*
++
+Muestra el tipo de paquete de licencia, que puede ser el siguiente:
+
++
+** Temporal: Especifica que la licencia es temporal, que sólo es válida durante el período de demostración.
+** Master: Especifica que la licencia es una licencia maestra, que se instala en todos los nodos del clúster.
+** Node Locked: Especifica que la licencia es una licencia de bloqueo de nodo, que se instala en un solo nodo del clúster.
+** Capacidad:
++
+*** Para ONTAP Select, especifica que la licencia es una licencia de capacidad, que define la cantidad total de capacidad de datos que debe gestionar la instancia según la licencia.
+*** Para FabricPool, especifica que la licencia es una licencia de capacidad, que define la cantidad de datos que se pueden gestionar en el almacenamiento de terceros conectado (por ejemplo, AWS).
+
+
+
+
+* *Estado*
++
+Muestra el estado del paquete de licencia, que puede ser el siguiente:
+
++
+** Evaluación: Especifica que la licencia instalada es una licencia de evaluación.
+** Instalado: Especifica que la licencia instalada es una licencia adquirida válida.
+** ADVERTENCIA: Especifica que la licencia instalada es una licencia válida adquirida y se está aproximando a la capacidad máxima.
+** Cumplimiento: Especifica que la licencia instalada es una licencia adquirida válida y ha superado la fecha de caducidad.
+** Esperando licencia: Especifica que aún no se ha instalado la licencia.
+
+
+* *Legado*
++
+Muestra si la licencia es una licencia heredada.
+
+* *Capacidad máxima*
++
+** Para ONTAP Select, muestra la cantidad máxima de almacenamiento que se puede asociar a la instancia de ONTAP Select.
+** Para FabricPool, muestra la cantidad máxima de almacenamiento de almacenes de objetos de terceros que se puede usar como almacenamiento de nivel cloud.
+
+
+* *Capacidad actual*
++
+** Para ONTAP Select, muestra la cantidad total de almacenamiento conectado actualmente a la instancia de ONTAP Select.
+** Para FabricPool, muestra la cantidad total de almacenamiento de almacenes de objetos de terceros que se usa actualmente como almacenamiento de nivel de cloud.
+
+
+* *Fecha de caducidad*
++
+Muestra la fecha de caducidad del paquete de licencia de software.
+
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administración del sistema"]
+
+xref:task_creating_cluster.adoc[Crear un clúster]

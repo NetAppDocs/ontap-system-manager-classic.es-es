@@ -1,0 +1,44 @@
+---
+permalink: fc-config-windows/task_zoning_fc_switches_by_host_lif_wwpns.html 
+sidebar: sidebar 
+keywords: zone, zoning, fc, switch, enable, host, connect, storage, limit, path, management, interface, zone the fc switches by the host and lif wwpns 
+summary: La división en zonas de los switches de FC permite que los hosts se conecten al almacenamiento y limita el número de rutas. Debe dividir los switches de mediante la interfaz de gestión de los switches de en zonas. 
+---
+= Dividir en zonas los switches FC por el host y WWPN de LIF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La división en zonas de los switches de FC permite que los hosts se conecten al almacenamiento y limita el número de rutas. Debe dividir los switches de mediante la interfaz de gestión de los switches de en zonas.
+
+.Antes de empezar
+* Debe tener credenciales de administrador para los switches.
+* Debe conocer el nombre de puerto WWPN de cada puerto iniciador de host y de cada LIF de FC para la máquina virtual de almacenamiento (SVM) en la que creó la LUN.
+
+
+.Acerca de esta tarea
+Para obtener detalles acerca de la división en zonas de los switches, consulte la documentación del proveedor del switch.
+
+Debe dividir en zonas por WWPN, no por puerto físico. Cada puerto del iniciador debe estar en una zona separada con todos sus puertos de destino correspondientes.
+
+Las LUN se asignan a un subconjunto de los iniciadores del igroup para limitar el número de rutas desde el host a la LUN.
+
+* De forma predeterminada, ONTAP utiliza una asignación de LUN selectiva para hacer accesible la LUN únicamente a través de las rutas en el nodo al que pertenece la LUN y su partner de alta disponibilidad.
+* Aún debe dividir en zonas todos los LIF FC en cada nodo para la movilidad de la LUN en caso de que la LUN se mueva a otro nodo del clúster.
+* Al mover un volumen o una LUN, debe modificar la lista de nodos de generación de informes de asignación de LUN selectiva antes de mover.
+
+
+En la siguiente ilustración, se muestra un host conectado a un clúster de cuatro nodos. Hay dos zonas, una zona indicada por las líneas sólidas y una zona indicada por las líneas discontinuas. Cada zona contiene un iniciador del host y un LIF de cada nodo de almacenamiento.
+
+image::../media/scm_en_drw_dual_fabric_zoning_fc_windows.gif[La imagen muestra un host,two FC switches,and four storage nodes. Lines represent the two zones.]
+
+Debe usar los WWPN de las LIF de destino, no los WWPN de los puertos FC físicos en los nodos de almacenamiento. Todos los WWPN de LIF están en el rango `2x:xx:00:a0:98:xx:xx:xx`, donde `x` es cualquier dígito hexadecimal. Los WWPN del puerto físico están todos en el rango `50:0a:09:8x:xx:xx:xx:xx`.
+
+.Pasos
+. Inicie sesión en el programa de administración del switch FC y, a continuación, seleccione la opción de configuración de división en zonas.
+. Cree una nueva zona que incluya el primer iniciador y todos los LIF FC que se conectan al mismo switch de FC que el iniciador.
+. Cree zonas adicionales para cada iniciador de FC en el host.
+. Guarde las zonas y, a continuación, active la nueva configuración de particiones.
+

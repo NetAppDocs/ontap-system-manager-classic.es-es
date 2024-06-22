@@ -1,0 +1,37 @@
+---
+permalink: online-help-96-97/task_extending_expiry_date_snapshot_copies.html 
+sidebar: sidebar 
+keywords: extend, expiry, date, snapshot, copy, system, manager, online, help 
+summary: Puede usar System Manager para ampliar la fecha de caducidad de las copias de Snapshot en un volumen. 
+---
+= Amplíe la fecha de caducidad de las copias de Snapshot con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ampliar la fecha de caducidad de las copias Snapshot en un volumen.
+
+.Antes de empezar
+Debe tener instalada la licencia de SnapLock en el sistema.
+
+.Acerca de esta tarea
+Puede ampliar la fecha de caducidad solo para copias Snapshot en un volumen de protección de datos (DP) que sea el destino de una relación de SnapLock para SnapVault.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccionar un volumen.
+. Haga clic en *Mostrar más detalles* para ver más información sobre el volumen.
+. Haga clic en la ficha *copias Snapshot*.
++
+Se muestra la lista de copias Snapshot disponibles para el volumen seleccionado.
+
+. Seleccione la copia Snapshot que desea modificar y, a continuación, haga clic en *ampliar fecha de caducidad*.
+. En el cuadro de diálogo *ampliar fecha de caducidad*, especifique la fecha de caducidad.
++
+El valor debe estar comprendido entre 1 día y 70 años, o bien puede definirse como infinito.
+
+. Haga clic en *Aceptar*.
+

@@ -1,0 +1,512 @@
+---
+permalink: online-help-96-97/concept_managing_network.html 
+sidebar: sidebar 
+keywords: system, manager, storage, create, manage, ipspace, broadcast, domain, subnet, network, interface, ethernet, port, fc, fcoe, adapter, online, help 
+summary: Puede usar System Manager para gestionar la red del sistema de almacenamiento mediante la creación y la gestión de espacios IP, dominios de retransmisión, subredes, interfaces de red, puertos Ethernet, Y los adaptadores FC/FCoE. 
+---
+= Gestione la red con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar la red del sistema de almacenamiento mediante la creación y la gestión de espacios IP, dominios de retransmisión, subredes, interfaces de red, puertos Ethernet, Y los adaptadores FC/FCoE.
+
+
+
+== Ventana de red
+
+[role="lead"]
+Puede usar la ventana Network para ver la lista de componentes de red, como subredes, interfaces de red, puertos Ethernet, dominios de retransmisión, Adaptadores FC/FCoE y NVMe, así como espacios IP, y para crear, editar o eliminar estos componentes en el sistema de almacenamiento.
+
+
+
+=== Pestañas
+
+* *Subred*
++
+Permite ver una lista de subredes y crear, editar o eliminar subredes desde el sistema de almacenamiento.
+
+* *Interfaces de red*
++
+Le permite ver una lista de interfaces de red, crear, editar o eliminar interfaces del sistema de almacenamiento, migrar las LIF, cambiar el estado de la interfaz y enviar de nuevo la interfaz al puerto de inicio.
+
+* *Puertos Ethernet*
++
+Permite ver y editar los puertos de un clúster, así como crear, editar o eliminar grupos de interfaces y puertos VLAN.
+
+* *Dominios de difusión*
++
+Permite ver una lista de dominios de retransmisión y crear, editar o eliminar dominios del sistema de almacenamiento.
+
+* *Adaptadores FC/FCoE y NVMe*
++
+Permite ver los puertos de un clúster y editar la configuración de los adaptadores FC/FCoE y NVMe.
+
+* *IPspaces*
++
+Permite ver una lista de espacios IP y dominios de retransmisión, y crear, editar o eliminar un espacio IP del sistema de almacenamiento.
+
+
+
+
+
+=== Pestaña Subnet
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Crear subred, que permite crear nuevas subredes que contienen información de configuración para crear una interfaz de red.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar subred, que permite modificar ciertos atributos de una subred, como el nombre, la dirección de subred, el rango de direcciones IP y los detalles de la puerta de enlace.
+
+* *Eliminar*
++
+Elimina la subred seleccionada.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de subredes
+
+* *Nombre*
++
+Especifica el nombre de la subred.
+
+* *Máscara de subred/IP*
++
+Especifica los detalles de la dirección de la subred.
+
+* *Puerta de enlace*
++
+Especifica la dirección IP de la puerta de enlace.
+
+* *Disponible*
++
+Especifica el número de direcciones IP disponibles en la subred.
+
+* *Utilizado*
++
+Especifica el número de direcciones IP utilizadas en la subred.
+
+* * Cuenta total*
++
+Especifica el número total de direcciones IP (disponibles y utilizadas) en la subred.
+
+* *Dominio de difusión*
++
+Especifica el dominio de difusión al que pertenece la subred.
+
+* *Espacio IP*
++
+Especifica el espacio IP al que pertenece la subred.
+
+
+
+
+
+=== El área Detalles
+
+El área debajo de la lista de subredes muestra información detallada sobre la subred seleccionada, incluido el rango de subredes y un gráfico que muestra el número total de direcciones IP disponibles, utilizadas y disponibles.
+
+
+
+=== Limitaciones de la pestaña Network interfaces
+
+* Para las LIF de clúster, las LIF de gestión de nodos, las LIF VIP y los LIF BGP, no puede utilizar System Manager para realizar las siguientes acciones:
++
+** Cree, edite, elimine, habilite o deshabilite las LIF
+** Migrar las LIF o enviar las LIF de nuevo al puerto de inicio
+
+
+* Para las LIF de administración de clúster, puede usar System Manager para migrar las LIF o volver a enviar las LIF al puerto de inicio.
++
+Sin embargo, no puede crear, editar, eliminar, habilitar, O deshabilite las LIF.
+
+* Para las LIF de interconexión de clústeres, se puede usar System Manager para crear, editar, eliminar, habilitar o deshabilitar las LIF.
++
+Sin embargo, no puede migrar las LIF ni enviar las LIF de nuevo al puerto de inicio.
+
+* No se pueden crear, editar ni eliminar interfaces de red en las siguientes configuraciones:
++
+** Una configuración de MetroCluster
+** SVM configuradas para recuperación ante desastres (DR).
+
+
+
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create Network Interface, que permite crear interfaces de red y LIF entre clústeres para servir datos y gestionar SVM.
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit Network Interface, que se puede utilizar para habilitar el acceso de gestión de una LIF de datos.
+
+* *Eliminar*
++
+Elimina la interfaz de red seleccionada.
+
++
+Este botón está habilitado solo si la LIF de datos está deshabilitada.
+
+* *Estado*
++
+Abra el menú desplegable, que proporciona la opción de activar o desactivar la interfaz de red seleccionada.
+
+* *Migración*
++
+Le permite migrar un LIF de datos o un LIF de gestión de clústeres a un puerto diferente en el mismo nodo o a un nodo diferente dentro del clúster.
+
+* *Enviar a casa*
++
+Permite volver a alojar la LIF en su puerto inicial.
+
++
+Este botón de comando sólo se habilita cuando la interfaz seleccionada se aloja en un puerto que no es de inicio y cuando el puerto de inicio está disponible.
+
++
+Este botón de comando está deshabilitado cuando algún nodo del clúster está inactivo.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de interfaces
+
+Es posible mover el puntero por el icono de código de color para ver el estado operativo de la interfaz:
+
+* El verde especifica que la interfaz está habilitada.
+* Rojo especifica que la interfaz está deshabilitada.
+* *Nombre de interfaz*
++
+Especifica el nombre de la interfaz de red.
+
+* *Máquina virtual de almacenamiento*
++
+Especifica la SVM a la que pertenece la interfaz.
+
+* *Dirección IP/WWPN*
++
+Especifica la dirección IP o el nombre de puerto WWPN de la interfaz.
+
+* *Puerto actual*
++
+Especifica el nombre del nodo y el puerto en el que se aloja la interfaz.
+
+* *Acceso al protocolo de datos*
++
+Especifica el protocolo utilizado para acceder a los datos.
+
+* *Acceso de administración*
++
+Especifica si el acceso de administración está habilitado en la interfaz.
+
+* *Subred*
++
+Especifica la subred a la que pertenece la interfaz.
+
+* *Rol mx*
++
+Especifica la función operativa de la interfaz, que puede ser la gestión de nodos, la interconexión de clústeres, el clúster o los datos.
+
+
+
+
+
+=== El área Detalles
+
+El área debajo de la lista de interfaces muestra información detallada sobre la interfaz seleccionada: Propiedades de conmutación por error como el puerto principal, el puerto actual, la velocidad de los puertos, la política de conmutación por error, el grupo de conmutación por error y el estado de conmutación por error, así como propiedades generales como el estado administrativo, la función, el espacio IP, el dominio de difusión, la máscara de red, Puerta de enlace y estado DDNS.
+
+
+
+=== Pestaña puertos Ethernet
+
+
+
+=== Botones de comando
+
+* *Crear Grupo de interfaces*
++
+Abre el cuadro de diálogo Crear grupo de interfaces, que permite crear grupos de interfaces eligiendo los puertos y determinando el uso de puertos y distribución de tráfico de red.
+
+* *Crear VLAN*
++
+Abre el cuadro de diálogo Crear VLAN, que le permite crear una VLAN seleccionando un puerto Ethernet o un grupo de interfaces y añadiendo etiquetas VLAN.
+
+* *Edición*
++
+Abre uno de los siguientes cuadros de diálogo:
+
++
+** Cuadro de diálogo Edit Ethernet Port: Permite modificar la configuración de los puertos Ethernet.
+** Cuadro de diálogo Edit VLAN: Permite modificar la configuración de VLAN.
+** Cuadro de diálogo Editar grupo de interfaces: Permite modificar los grupos de interfaces.
+
+
++
+Solo puede editar las VLAN que no están asociadas a un dominio de retransmisión.
+
+* *Eliminar*
++
+Abre uno de los siguientes cuadros de diálogo:
+
++
+** Cuadro de diálogo Delete VLAN (Eliminar VLAN): Permite eliminar una VLAN.
+** Cuadro de diálogo Eliminar grupo de interfaces: Permite eliminar un grupo de interfaces.
+
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de puertos
+
+Es posible mover el puntero por el icono de código de color para ver el estado operativo del puerto:
+
+* El verde especifica que el puerto está habilitado.
+* Rojo especifica que el puerto está desactivado.
+* *Puerto*
++
+Muestra el nombre de puerto del puerto físico, del puerto VLAN o del grupo de interfaces.
+
+* *Nodo*
++
+Muestra el nodo en el que está ubicada la interfaz física.
+
+* *Dominio de difusión*
++
+Muestra el dominio de retransmisión del puerto.
+
+* *Espacio IP*
++
+Muestra el espacio IP al que pertenece el puerto.
+
+* *Tipo*
++
+Muestra el tipo de interfaz, como grupo de interfaces, interfaz física, vip o VLAN.
+
+
+
+
+
+=== El área Detalles
+
+El área debajo de la lista de puertos muestra información detallada sobre las propiedades del puerto.
+
+* *Ficha Detalles*
++
+Muestra detalles administrativos y detalles operativos.
+
++
+Como parte de los detalles operativos, la pestaña muestra el estado de los puertos. El estado de los puertos puede ser bueno o degradado. Un puerto degradado es un puerto en el que se producen fluctuaciones de red continuas o un puerto que no tiene conectividad a ningún otro puerto en el mismo dominio de retransmisión.
+
++
+Además, la pestaña también muestra el nombre de la interfaz, los detalles de SVM y la dirección IP de las interfaces de red que están alojadas en el puerto seleccionado. También indica si la interfaz está en el puerto de inicio o no.
+
+* *Ficha rendimiento*
++
+Muestra gráficos de métricas de rendimiento de los puertos ethernet, incluidos la tasa de errores y el rendimiento.
+
++
+Si se cambia la zona horaria del cliente o la zona horaria del clúster, se afectan los gráficos de métricas de rendimiento. Debe actualizar el explorador para ver los gráficos actualizados.
+
+
+
+
+
+=== Ficha dominio de difusión
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Crear dominio de difusión, que permite crear nuevos dominios de difusión para contener puertos.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar dominio de difusión, que permite modificar los atributos de un dominio de difusión, como el nombre, el tamaño de MTU y los puertos asociados.
+
+* *Eliminar*
++
+Elimina el dominio de difusión seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de dominios de retransmisión
+
+* *Dominio de difusión*
++
+Especifica el nombre del dominio de difusión.
+
+* *MTU*
++
+Especifica el tamaño de MTU.
+
+* *Espacio IP*
++
+Especifica el espacio IP.
+
+* *Estado de actualización de puerto combinado*
++
+Especifica el estado de las actualizaciones de puerto cuando se crea o edita un dominio de difusión. Los errores de las actualizaciones de puertos se muestran en una ventana independiente, que puede abrir haciendo clic en el vínculo asociado.
+
+
+
+
+
+=== El área Detalles
+
+El área debajo de la lista de dominios de retransmisión muestra todos los puertos en un dominio de retransmisión. En un espacio IP no predeterminado, si un dominio de retransmisión tiene puertos con errores de actualización, dichos puertos no se muestran en el área de detalles. Es posible mover el puntero por el icono de código de color para ver el estado operativo de los puertos:
+
+* El verde especifica que el puerto está habilitado.
+* Rojo especifica que el puerto está desactivado.
+
+
+
+
+=== Pestaña FC/FCoE and NVMe Adapters
+
+
+
+=== Botones de comando
+
+* *Edición*
++
+Se abre el cuadro de diálogo Editar configuración de FC/FCoE y NVMe, que permite modificar la velocidad del adaptador.
+
+* *Estado*
++
+Le permite conectar el adaptador o desconectarlo.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de adaptadores de FC/FCoE y NVMe
+
+* *WWNN*
++
+Especifica el identificador único del adaptador FC/FCoE y NVMe.
+
+* *Nombre de nodo*
++
+Especifica el nombre del nodo que utiliza el adaptador.
+
+* *Ranura*
++
+Especifica la ranura que utiliza el adaptador.
+
+* *WWPN*
++
+Especifica el nombre de puerto WWPN del adaptador.
+
+* *Estado*
++
+Especifica si el estado del adaptador es en línea o sin conexión.
+
+* *Velocidad*
++
+Especifica si los ajustes de velocidad son automáticos o manuales.
+
+
+
+
+
+=== El área Detalles
+
+El área debajo de la lista de adaptadores de FC/FCoE y NVMe muestra información detallada sobre los adaptadores seleccionados.
+
+* *Ficha Detalles*
++
+Muestra detalles del adaptador, como el tipo de medio, la dirección de puerto, la tasa de enlaces de datos, el estado de la conexión, el estado de la operación, estado de la estructura y velocidad del adaptador.
+
+* *Ficha rendimiento*
++
+Muestra gráficos de métricas de rendimiento del adaptador FC/FCoE y NVMe, incluidos IOPS y tiempo de respuesta.
+
++
+Si se cambia la zona horaria del cliente o la zona horaria del clúster, se afectan los gráficos de métricas de rendimiento. Debe actualizar el explorador para ver los gráficos actualizados.
+
+
+
+
+
+=== Pestaña IPspaces
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create IPspace, que le permite crear un nuevo espacio IP.
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit IPspace, que le permite cambiar el nombre a un espacio IP existente.
+
+* *Eliminar*
++
+Elimina el espacio IP seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista IPspaces
+
+* *Nombre*
++
+Especifica el nombre del espacio IP.
+
+* *Dominios de difusión*
++
+Especifica el dominio de retransmisión.
+
+
+
+
+
+=== El área Detalles
+
+El área debajo de la lista IPspaces muestra la lista de máquinas virtuales de almacenamiento (SVM) en el espacio IP seleccionado.

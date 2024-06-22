@@ -1,0 +1,44 @@
+---
+permalink: online-help-96-97/concept_options_for_resizing_volumes.html 
+sidebar: sidebar 
+keywords: option, resize, volume, wizard, snapshot, reserve, snapshot, copy, results, view, online, help 
+summary: Puede usar el asistente Resize Volume para cambiar el tamaño del volumen, ajustar la reserva Snapshot, eliminar copias Snapshot y ver dinámicamente los resultados de los cambios. 
+---
+= Opciones para ajustar el tamaño de volúmenes con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el asistente para cambiar el tamaño de volumen en el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para cambiar el tamaño del volumen, ajustar la reserva de Snapshot, eliminar copias Snapshot y ver de forma dinámica los resultados de los cambios.
+
+El asistente Volume Resize muestra un gráfico de barras que muestra las asignaciones de espacio actuales dentro del volumen, incluida la cantidad de espacio usado y libre. Cuando se realizan cambios en el tamaño o la reserva Snapshot del volumen, este gráfico se actualiza de forma dinámica para reflejar los cambios.
+
+También puede utilizar el botón *calcular espacio* para determinar la cantidad de espacio que se libera eliminando las copias Snapshot seleccionadas.
+
+Puede usar el asistente para cambiar el tamaño de volumen para realizar los siguientes cambios en el volumen:
+
+* *Cambiar el tamaño del volumen*
++
+Es posible cambiar el tamaño total del volumen para aumentar o reducir el espacio de almacenamiento.
+
+* *Ajustar reserva de instantánea*
++
+Puede ajustar la cantidad de espacio reservado para las copias de Snapshot a fin de aumentar o reducir el espacio de almacenamiento.
+
+* *Eliminar copias Snapshot*
++
+Puede eliminar copias Snapshot para reclamar espacio en el volumen.
+
++
+[NOTE]
+====
+Las copias Snapshot que están en uso no se pueden eliminar.
+
+====
+* *Auto-fila*
++
+Puede especificar el límite al que se puede aumentar el volumen automáticamente, si fuera necesario.
+
+

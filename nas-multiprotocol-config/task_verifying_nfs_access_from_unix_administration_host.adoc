@@ -1,0 +1,67 @@
+---
+permalink: nas-multiprotocol-config/task_verifying_nfs_access_from_unix_administration_host.html 
+sidebar: sidebar 
+keywords: configure, nfs, access, storage, virtual, machine, svm, configuration, administration, host, read, data, verify, verify nfs access from a unix administration host 
+summary: Después de configurar el acceso de NFS a la SVM, debe verificar la configuración iniciando sesión en un host de administración NFS y leyendo datos desde y escribiendo datos en la SVM. 
+---
+= Comprobar el acceso de NFS desde un host de administración UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de configurar el acceso de NFS a la SVM, debe verificar la configuración iniciando sesión en un host de administración NFS y leyendo datos desde y escribiendo datos en la SVM.
+
+.Antes de empezar
+* El sistema cliente debe tener una dirección IP permitida por la regla de exportación especificada anteriormente.
+* Debe tener la información de inicio de sesión para el usuario raíz.
+
+
+.Pasos
+. Inicie sesión como usuario root en el sistema cliente.
+. Introduzca `cd /mnt/` para cambiar el directorio a la carpeta de montaje.
+. Cree y monte una nueva carpeta con la dirección IP de la SVM:
++
+.. Introduzca `mkdir /mnt/folder` para crear una carpeta nueva.
+.. Introduzca `mount -t nfs -o nfsvers=3,hard IPAddress:/volume_name /mnt/folder` para montar el volumen en este nuevo directorio.
+.. Introduzca `cd folder` para cambiar el directorio a la nueva carpeta.
++
+Los siguientes comandos crean una carpeta llamada test1, montan el volumen vol1 en la dirección IP 192.0.2.130 de la carpeta de montaje test1 y cambian al nuevo directorio test1:
+
++
+[listing]
+----
+host# mkdir /mnt/test1
+host# mount -t nfs -o nfsvers=3,hard 192.0.2.130:/vol1 /mnt/test1
+host# cd /mnt/test1
+----
+
+
+. Cree un archivo nuevo, compruebe que existe y escriba texto en él:
++
+.. Introduzca `touch filename` para crear un archivo de prueba.
+.. Introduzca `ls -l filename` para comprobar que el archivo existe.
+.. Introduzca `cat >filename`, Escriba algún texto y, a continuación, presione Ctrl+D para escribir texto en el archivo de prueba.
+.. Introduzca `cat filename` para mostrar el contenido del archivo de prueba.
+.. Introduzca `rm filename` para eliminar el archivo de prueba.
+.. Introduzca `cd ..` para volver al directorio principal.
+
+
++
+[listing]
+----
+host# touch myfile1
+host# ls -l myfile1
+-rw-r--r-- 1 root root 0 Sep 18 15:58 myfile1
+host# cat >myfile1
+This text inside the first file
+host# cat myfile1
+This text inside the first file
+host# rm -r myfile1
+host# cd ..
+----
+
+
+.Resultados
+Confirmó que había habilitado el acceso de NFS a la SVM.

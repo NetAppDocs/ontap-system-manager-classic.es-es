@@ -1,0 +1,285 @@
+---
+permalink: online-help-96-97/task_editing_vault_relationships.html 
+sidebar: sidebar 
+keywords: edit, vault, relationships, system, manager, online, help, cluster, schedule 
+summary: Puede usar System Manager para editar una relación de almacén seleccionando una política o programación existente en el clúster, o bien creando una nueva política o programación. Sin embargo, no es posible editar los parámetros de una política o una programación existente. 
+---
+= Gestione relaciones de almacén con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para actualizar, reanudar, desactivar, inicializar y eliminar relaciones de almacén, además de crear relaciones de almacén a partir de una SVM de destino.
+
+
+
+== Editar relaciones
+
+Puede usar System Manager para editar una relación de almacén seleccionando una política o programación existente en el clúster, o bien creando una nueva política o programación. Sin embargo, no es posible editar los parámetros de una política o una programación existente.
+
+.Antes de empezar
+Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de almacén para la que desea modificar la política o la programación y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar relación*, seleccione la acción adecuada:
++
+|===
+| Si desea... | Haga lo siguiente... 
+
+
+ a| 
+Seleccione una política existente
+ a| 
+Haga clic en *examinar* y, a continuación, seleccione una directiva existente.    Puede seleccionar una política que tenga la cantidad más alta de etiquetas coincidentes con la política de Snapshot adjunta al volumen de origen.
+
+
+
+ a| 
+Crear una nueva política
+ a| 
+.. Haga clic en *Crear directiva*.
+.. Escriba un nombre para la política.
+.. Configure la prioridad de las transferencias programadas.
++
+Low indica que la transferencia tiene la prioridad más baja y se suele programar tras transferencias de prioridad normal. De forma predeterminada, la prioridad se establece como normal.
+
+.. Active la casilla de verificación *Activar compresión de red* para comprimir los datos que se están transfiriendo.
+.. Especifique una etiqueta de SnapMirror y un recuento de retenciones de destino para la política de almacén.
++
+Debe asegurarse de que se cree una copia Snapshot con la misma etiqueta en el volumen de origen para que la nueva etiqueta de SnapMirror surta efecto.
+
+.. Haga clic en *Crear*.
+
+
+|===
+. Especifique una programación para la relación:
++
+|===
+| Si... | Haga lo siguiente... 
+
+
+ a| 
+Desea asignar una programación existente
+ a| 
+Seleccione una programación existente de la lista.
+
+
+
+ a| 
+Desea crear una nueva programación
+ a| 
+.. Haga clic en *Crear programación*.
+.. Escriba un nombre para la programación.
+.. Seleccione una de las siguientes opciones:
++
+*** *Básico*
++
+Seleccione esta opción para especificar solo el día de la semana, la hora y el intervalo de transferencia.
+
+*** *Avanzado*
++
+Puede seleccionar esta opción para especificar una programación de tareas con Cron.
+
+
+
+.. Haga clic en *Crear*.
+
+
+
+
+ a| 
+No desea asignar una programación
+ a| 
+Seleccione *Ninguno*.
+
+|===
+. Haga clic en *Aceptar*.
+
+
+*Información relacionada*
+
+xref:reference_protection_window.adoc[Ventana de protección]
+
+
+
+== Inicializar las relaciones
+
+Puede usar System Manager para inicializar una relación de almacén si no la ha inicializado aún durante la creación de la relación. Se inicia una transferencia inicial de datos desde el volumen de FlexVol de origen al volumen de FlexVol de destino.
+
+.Antes de empezar
+Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación que desea inicializar y haga clic en *Operaciones* > *inicializar*.
+. En la ventana *inicializar*, haga clic en *inicializar*.
+
+
+.Resultados
+Se crea una copia Snapshot y se transfiere al destino.
+
+Esta copia Snapshot se utiliza como base para las copias Snapshot incrementales posteriores.
+
+*Información relacionada*
+
+xref:reference_protection_window.adoc[Ventana de protección]
+
+
+
+== Crear relaciones a partir de una SVM de destino
+
+Puede usar System Manager para crear una relación de almacén desde la máquina virtual de almacenamiento (SVM) de destino, así como para asignar una política de almacén a fin de crear un almacén de backup. Si los datos en un sistema se pierden o se dañan, se podrán restaurar a partir del destino del almacén de backup.
+
+.Antes de empezar
+* El clúster de origen debe ejecutar ONTAP 8.2.2 o una versión posterior.
+* Las licencias de SnapVault o SnapMirror deben habilitarse en el clúster de origen y el de destino.
++
+[NOTE]
+====
+En algunas plataformas, no es obligatorio que el clúster de origen tenga habilitada la licencia de SnapVault o SnapMirror si el clúster de destino tiene habilitada la licencia de SnapVault o SnapMirror, y la licencia DPO.
+
+====
+* Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+* La SVM de destino debe tener espacio disponible.
+* Los agregados de origen y destino deben ser agregados de 64 bits.
+* Debe haber un volumen de origen del tipo lectura/escritura (rw).
+* Debe haber una política de almacén (XDP).
++
+Si no hay ninguna política de almacén, debe crear una política de almacén o aceptar la predeterminada (XDPDefault), la cual se asigna de forma automática.
+
+* Los volúmenes FlexVol deben estar en línea y de lectura/escritura.
+* El tipo de agregado de SnapLock debe ser el mismo.
+* Si se conecta desde un clúster que ejecuta ONTAP 9.2 o una versión anterior a un clúster remoto en el que la autenticación de SAML está habilitada, la autenticación basada en contraseña debe estar habilitada en el clúster remoto.
+
+
+.Acerca de esta tarea
+* System Manager no admite relaciones en cascada.
++
+Por ejemplo, el volumen de destino de una relación no puede ser el volumen de origen de otra relación.
+
+* No se pueden crear relaciones de almacén entre una SVM sincronizada en origen y una SVM sincronizada en destino en una configuración de MetroCluster.
+* Puede crear una relación de almacén entre varias SVM sincronizada en origen en una configuración de MetroCluster.
+* Puede crear una relación de almacén entre un volumen en una SVM sincronizada en origen y un volumen en una SVM que sirva datos.
+* Puede crear una relación de almacén entre un volumen en una SVM que sirva datos y un volumen de protección de datos (DP) en una SVM sincronizada en origen.
+* Solo se pueden crear relaciones de almacén entre un volumen que no sea de SnapLock (principal) y un volumen de destino de SnapLock (secundario).
+* Se puede proteger un máximo de 25 volúmenes en una selección.
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. En la ventana *Relaciones*, haga clic en *Crear*.
+. En el cuadro de diálogo *Browse SVM*, seleccione una SVM para el volumen de destino.
+. En el cuadro de diálogo *Crear relación de protección*, seleccione *Vault* en la lista desplegable *Tipo de relación*.
+. Especifique el clúster, la SVM y el volumen de origen.
++
+Si el clúster especificado ejecuta una versión del software ONTAP anterior a ONTAP 9.3, solo se enumeran las SVM con una relación entre iguales. Si el clúster especificado ejecuta ONTAP 9.3 o una versión posterior, se muestran SVM con una relación entre iguales y SVM permitidas.
+
+. Introduzca un sufijo de nombre de volumen.
++
+El sufijo del nombre del volumen se anexa a los nombres de los volúmenes de origen para generar los nombres de los volúmenes de destino.
+
+. Si crea un volumen de SnapLock, especifique el período de retención predeterminado.
++
+El período de retención predeterminado se puede establecer como cualquier valor entre 1 día y 70 años, o incluso como infinito.
+
+. *Opcional:* haga clic en *examinar* y, a continuación, cambie la política de almacén.
+. Seleccione una programación para la relación en la lista de programaciones existentes.
+. *Opcional:* Seleccione *Initialize Relationship* para inicializar la relación de almacén.
+. Habilite los agregados de SnapLock y, a continuación, seleccione un agregado de SnapLock Compliance o un agregado de SnapLock Enterprise.
+. Habilite los agregados que admiten FabricPool y, a continuación, seleccione una política de organización en niveles adecuada.
+. Haga clic en *Validar* para comprobar si los volúmenes seleccionados tienen etiquetas coincidentes.
+. Haga clic en *Crear*.
+
+
+.Resultados
+Si decide crear un volumen de destino, se creará un volumen del tipo _dp_ con la siguiente configuración predeterminada:
+
+* El crecimiento automático está habilitado.
+* La deduplicación se habilita o se deshabilita según las preferencias del usuario, o bien según la configuración de deduplicación del volumen de origen.
+* La compresión está deshabilitada.
+* El atributo de idioma se establece de modo que coincida con el del volumen de origen.
+
+
+Se creará una relación de almacén entre el volumen de destino y el de origen. La copia Snapshot inicial se transferirá al volumen de destino si se ha decidido inicializar la relación.
+
+
+
+== Actualizar las relaciones
+
+Puede utilizar System Manager para iniciar manualmente una actualización incremental no programada. Es posible que requiera una actualización manual para evitar pérdidas de datos debido a una interrupción del servicio de energía, un mantenimiento programado o una migración de datos que se avecinan.
+
+.Antes de empezar
+Debe inicializarse la relación de almacén.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación para la que desea actualizar los datos y haga clic en *Operaciones* > *Actualizar*.
+. Seleccione una de las siguientes opciones:
++
+** Seleccione *según la directiva* para realizar una transferencia incremental de la copia Snapshot común reciente entre los volúmenes de origen y destino.
+** Seleccione *Seleccionar copia Snapshot* y especifique la copia Snapshot que desea transferir.
+
+
+. *Opcional:* Seleccione *limitar el ancho de banda de transferencia a* para limitar el ancho de banda de red que se utiliza para las transferencias y especificar la velocidad máxima de transferencia.
+. Haga clic en *Actualizar*.
+. Compruebe el estado de la transferencia en la pestaña *Detalles*.
+
+
+
+
+== Eliminar relaciones
+
+Puede usar System Manager para finalizar una relación de almacén entre un volumen de origen y de destino, y liberar las copias Snapshot desde el origen.
+
+.Acerca de esta tarea
+Si se libera la relación, se eliminan de forma permanente las copias Snapshot base que utiliza la relación de almacén en el volumen de origen. Para volver a crear la relación de almacén, es necesario ejecutar la operación de resincronización desde el volumen de origen mediante la interfaz de línea de comandos (CLI).
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione el volumen para el que desea eliminar la relación de almacén y haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
++
+También puede seleccionar la casilla de comprobación Release base Snapshot Copies para eliminar las copias Snapshot básicas utilizadas por la relación de almacén en el volumen de origen.
+
++
+Si la relación no se libera, debe usar la interfaz de línea de comandos para ejecutar la operación de versión en el clúster de origen a fin de eliminar las copias Snapshot básicas que se crearon para la relación de almacén desde el volumen de origen.
+
+
+
+
+
+== Reanudar relaciones
+
+Puede reanudar una relación de almacén en modo inactivo con System Manager. Cuando reanuda la relación, se reanuda la transferencia de datos normal al volumen FlexVol de destino y se reinician todas las actividades del almacén.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación para la que desea reanudar la transferencia de datos y haga clic en *Operaciones* > *Reanudar*.
+. En la ventana *Reanudar*, haga clic en *Reanudar*.
+
+
+.Resultados
+Se reanudan las transferencias de datos normales. Si hay una transferencia programada para la relación, se iniciará la transferencia desde la siguiente programación.
+
+
+
+== Relaciones de inactivación
+
+Puede usar System Manager para deshabilitar las transferencias de datos al volumen de FlexVol de destino desactivando la relación de almacén.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación para la que desea detener las transferencias de datos programadas y haga clic en *Operaciones* > *Quiesce*.
+. En la ventana *Quiesce*, haga clic en *Quiesce*.
+
+
+.Resultados
+Si no hay transferencia en curso, el estado de transferencia se muestra como Quiesced. Si hay una transferencia en curso, la transferencia no se ve afectada y el estado de la transferencia aparece como "Quicing" hasta que la transferencia se haya completado.
+
+*Información relacionada*
+
+xref:reference_protection_window.adoc[Ventana de protección]

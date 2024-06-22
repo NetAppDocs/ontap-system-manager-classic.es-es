@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_completing_expansion.html 
+sidebar: sidebar 
+keywords: node, cluster, configuring, configure, autosupport, network, expansion, lun, path, complete, complete the expansion 
+summary: Después de unir ambos nodos al clúster, debe terminar de configurar los nodos recién agregados mediante la configuración de AutoSupport y la finalización de la red del SP. 
+---
+= Complete la expansión
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de unir ambos nodos al clúster, debe terminar de configurar los nodos recién agregados mediante la configuración de AutoSupport y la finalización de la red del SP. A continuación, debe validar el clúster ampliado y generar un mensaje de AutoSupport para completar la ampliación. Si el clúster utiliza SAN, debe actualizar las rutas de LUN.

@@ -1,0 +1,99 @@
+---
+permalink: online-help-96-97/concept_protection_policies.html 
+sidebar: sidebar 
+keywords: online, help, protection, policy, system, manager, create, edit, delete 
+summary: Se puede usar System Manager para crear, editar y eliminar políticas de protección. 
+---
+= Gestione políticas de protección con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear, editar y eliminar políticas de protección.
+
+
+
+== Cree políticas de protección
+
+Puede usar System Manager para crear políticas de mirroring asíncrono a nivel de clúster, políticas de almacén o políticas de mirroring y almacén, así como para aplicar estas políticas a una relación de protección de datos a nivel de clúster.
+
+.Pasos
+. Haga clic en *Protección* > *Directivas de protección*.
+. Haga clic en *Crear*.
+. En el cuadro de diálogo *Crear directiva*, seleccione el tipo de directiva que desea crear.
+. Escriba el nombre de la política y la prioridad de transferencia.
++
+Low indica que la transferencia tiene la prioridad más baja. Las transferencias de prioridad baja suelen programarse tras transferencias de prioridad normal. De forma predeterminada, la prioridad de transferencia se establece como normal.
+
+. *Opcional:* Active la casilla de verificación *Activar compresión de red* para comprimir los datos que se transfieren durante una transferencia de datos.
+. *Opcional:* para una política de duplicación asíncrona, active la casilla de verificación *transferir todas las copias Snapshot de origen* para incluir la regla "'all_source_snapshots'" en la política de duplicación, que realiza una copia de seguridad de todas las copias Snapshot del volumen de origen.
+. *Opcional:* haga clic en *Agregar comentarios* para agregar comentarios adicionales para la política.
+. Para una política de almacén o una política de almacén de reflejos, especifique una etiqueta de SnapMirror y un número de retención de destino.
+. Haga clic en *Crear*.
+
+
+
+
+== Políticas de protección
+
+Puede utilizar la ventana Protection Policies para crear, gestionar y mostrar información sobre las políticas de mirroring, almacén y almacén de reflejos.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create Policy, que permite crear una política de mirroring, almacén o almacén de mirroring.
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit Policy, que permite editar una directiva.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Delete Policy, que permite eliminar una política.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de políticas de protección
+
+* *Nombre*
++
+Muestra el nombre de la política de protección.
+
+* *Tipo*
++
+Muestra el tipo de política que puede ser Vault, almacén de reflejos o reflejo asíncrono.
+
+* *Comentario*
++
+Muestra la descripción especificada para la directiva.
+
+* *Prioridad de transferencia*
++
+Muestra la prioridad de transferencia de datos, como normal o Baja.
+
+
+
+
+
+=== El área Detalles
+
+* *Ficha Detalles de la directiva*
++
+Muestra detalles de la política de protección, como el usuario que creó la política, el número de reglas, el número de retención y el estado de compresión de red.
+
+* *Ficha Reglas de directiva*
++
+Muestra detalles de las reglas que se aplican a la directiva. La ficha Reglas de directiva sólo se muestra si la directiva seleccionada contiene reglas.
+
+

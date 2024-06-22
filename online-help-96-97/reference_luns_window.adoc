@@ -1,0 +1,270 @@
+---
+permalink: online-help-96-97/reference_luns_window.html 
+sidebar: sidebar 
+keywords: online, help, lun, management, window, command, button, initiator, portset, group, online, help 
+summary: Puede utilizar la ventana LUN para crear y administrar LUN, así como para mostrar información acerca de las LUN. También puede agregar, editar o eliminar iGroups e ID de iniciador. 
+---
+= Ventana LUN en el Administrador del sistema: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana LUN en el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar LUN, así como para mostrar información acerca de las LUN. También puede agregar, editar o eliminar iGroups e ID de iniciador.
+
+
+
+== Pestaña Gestión de LUN
+
+Esta pestaña le permite crear, clonar, eliminar, mover o editar la configuración de LUN. También puede asignar LUN a un grupo de políticas de calidad de servicio de almacenamiento (QoS).
+
+
+
+== Botones de comando
+
+* *Crear*
++
+Abre el asistente Crear LUN, que le permite crear LUN.
+
++
+En un clúster de una plataforma AFF que no contiene ningún LUN existente, se abre el cuadro de diálogo Crear LUN optimizadas para FC SAN, que le permite configurar uno o varios LUN optimizados para FC SAN.
+
+* *Clon*
++
+Abre el cuadro de diálogo Clonar LUN, que le permite clonar los LUN seleccionados.
+
+* *Edición*
++
+Se abre el cuadro de diálogo Editar LUN, que permite editar la configuración de la LUN seleccionada.
+
+* *Eliminar*
++
+Elimina la LUN seleccionada.
+
+* *Estado*
++
+Permite cambiar el estado de la LUN seleccionada a en línea o sin conexión.
+
+* *Mover*
++
+Abre el cuadro de diálogo Move LUN, que permite mover el LUN seleccionado a un volumen nuevo o a un volumen o qtree existente en la misma máquina virtual de almacenamiento (SVM).
+
+* *QoS de almacenamiento*
++
+Abre el cuadro de diálogo Detalles de calidad de servicio, que le permite asignar una o más LUN a un grupo de políticas nuevo o existente.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+== Lista de LUN
+
+* *Nombre*
++
+Muestra el nombre de la LUN.
+
+* *SVM*
++
+Muestra el nombre de la máquina virtual de almacenamiento (SVM) en la que se crea el LUN.
+
+* *Ruta del contenedor*
++
+Muestra el nombre del sistema de archivos (volumen o qtree) que contiene la LUN.
+
+* *Reserva espacial*
++
+Especifica si la reserva de espacio está activada o desactivada.
+
+* *Tamaño disponible*
++
+Muestra el espacio disponible en la LUN.
+
+* *Tamaño total*
++
+Muestra el espacio total de la LUN.
+
+* *%usado*
++
+Muestra el espacio total (en porcentaje) que se utiliza.
+
+* *Tipo*
++
+Especifica el tipo de LUN.
+
+* *Estado*
++
+Especifica el estado de la LUN.
+
+* *Grupo de políticas*
++
+Muestra el nombre del grupo de políticas de calidad de servicio de almacenamiento al que se asigna el LUN. De forma predeterminada, esta columna está oculta.
+
+* *Aplicación*
++
+Muestra el nombre de la aplicación asignada a la LUN.
+
+* *Descripción*
++
+Muestra la descripción de la LUN.
+
+
+
+
+
+== El área Detalles
+
+El área debajo de la lista de LUN muestra los detalles relacionados con la LUN seleccionada.
+
+* *Ficha Detalles*
++
+Muestra detalles relacionados con la LUN como el número de serie de la LUN, si la LUN es un clon, descripción de LUN, el grupo de políticas al que está asignado la LUN, el rendimiento mínimo del grupo de políticas, el rendimiento máximo del grupo de políticas, detalles sobre la operación de movimiento de LUN, Y la aplicación asignada a la LUN. También puede ver detalles sobre los iGroups y los iniciadores que están asociados con la LUN seleccionada.
+
+* *Ficha rendimiento*
++
+Muestra gráficos de métricas de rendimiento de las LUN, incluida la tasa de datos, IOPS y el tiempo de respuesta.
+
++
+Si se cambia la zona horaria del cliente o la zona horaria del clúster, se afectan los gráficos de métricas de rendimiento. Actualice el explorador para ver los gráficos actualizados.
+
+
+
+
+
+== Pestaña Initiator Groups
+
+Esta pestaña le permite crear, eliminar o editar la configuración de los iGroups y los ID de iniciador.
+
+
+
+== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Crear iGroup, el cual le permite crear iGroups para controlar el acceso del host a LUN específicas.
+
+* *Edición*
++
+Se abre el cuadro de diálogo Editar iGroup, lo que le permite editar la configuración del iGroup seleccionado.
+
+* *Eliminar*
++
+Elimina el iGroup seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+== Lista de iGroups
+
+* *Nombre*
++
+Muestra el nombre del iGroup.
+
+* *Tipo*
++
+Especifica el tipo de protocolo compatible con el iGroup. Los protocolos compatibles son iSCSI, FC/FCoE o mixto (iSCSI y FC/FCoE).
+
+* *Sistema operativo*
++
+Especifica el sistema operativo del iGroup.
+
+* *Portset*
++
+Muestra el conjunto de puertos asociado con el iGroup.
+
+* *Recuento de iniciadores*
++
+Muestra el número de iniciadores añadidos al iGroup.
+
+
+
+
+
+== El área Detalles
+
+El área debajo de la lista de iGroups muestra detalles sobre los iniciadores que se han agregado al iGroup seleccionado y las LUN que se han asignado al iGroup.
+
+
+
+== Ficha Portsets
+
+Esta ficha permite crear, eliminar o editar la configuración de los conjuntos de puertos.
+
+
+
+== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Crear conjunto de puertos, que le permite crear conjuntos de puertos para limitar el acceso a las LUN.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar conjunto de puertos, que permite seleccionar las interfaces de red que desea asociar al conjunto de puertos.
+
+* *Eliminar*
++
+Elimina el conjunto de puertos seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+== Lista de conjuntos de puertos
+
+* *Nombre del conjunto de puertos*
++
+Muestra el nombre del conjunto de puertos.
+
+* *Tipo*
++
+Especifica el tipo de protocolo admitido por el conjunto de puertos. Los protocolos compatibles son iSCSI, FC/FCoE o mixto (iSCSI y FC/FCoE).
+
+* *Recuento de interfaces*
++
+Muestra el número de interfaces de red asociadas al conjunto de puertos.
+
+* *Recuento de iGroups*
++
+Muestra el número de iGroups asociados al conjunto de puertos.
+
+
+
+
+
+== El área Detalles
+
+El área debajo de la lista de conjuntos de puertos muestra detalles sobre las interfaces de red y los iGroups asociados con el conjunto de puertos seleccionado.
+
+*Información relacionada*
+
+xref:task_creating_luns.adoc[Creando LUN]
+
+xref:task_deleting_luns.adoc[Eliminar LUN]
+
+xref:task_creating_initiator_groups.adoc[Creando iGroups]
+
+xref:task_editing_luns.adoc[Editar las LUN]
+
+xref:task_editing_initiator_groups.adoc[Editando los iGroups]
+
+xref:task_editing_initiators.adoc[Editar iniciadores]
+
+xref:task_bringing_luns_online.adoc[Conectando LUN]
+
+xref:task_taking_luns_offline.adoc[Desconectando LUN]
+
+xref:task_cloning_luns.adoc[Clonar LUN]

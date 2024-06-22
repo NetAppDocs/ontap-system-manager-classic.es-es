@@ -1,0 +1,42 @@
+---
+permalink: peering/reference_where_to_find_additional_information.html 
+sidebar: sidebar 
+keywords: successful, create, cluster, peer, relationship, protect, availability, data, configure, protection, configuration, where to find additional information 
+summary: Una vez que haya creado correctamente una relación de paridad de clústeres, estará listo para proteger la disponibilidad de los datos. 
+---
+= Dónde encontrar información adicional
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una vez que haya creado correctamente una relación de paridad de clústeres, estará listo para proteger la disponibilidad de los datos.
+
+Puede proteger sus datos mediante la siguiente información:
+
+* link:../volume-disaster-prep/index.html["Preparación para la recuperación ante desastres de volúmenes"]
++
+Describe cómo configurar y supervisar rápidamente las relaciones de SnapMirror entre volúmenes en diferentes clústeres.
+
+* link:../volume-backup-snapvault/index.html["Backup de volúmenes mediante SnapVault"]
++
+Describe cómo configurar rápidamente una relación SnapVault entre clústeres.
+
+
+
+Hay más información disponible:
+
+* https://docs.netapp.com/us-en/ontap/data-protection/index.html["Protección de datos"^]
++
+Describe cómo evitar las pérdidas de datos usando copias de snapshots y la replicación de SnapMirror en un sistema remoto
+
+* http://www.netapp.com/us/media/tr-4015.pdf["Informe técnico de NetApp 4015: Configuración de SnapMirror y mejores prácticas para ONTAP 9.1, 9.2"^]
++
+Describe información y prácticas recomendadas sobre la configuración de la replicación, incluida la relación de clústeres entre iguales.
+
+* https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceptos de ONTAP"^]
++
+Proporciona información conceptual acerca de la agrupación en clústeres.
+
+

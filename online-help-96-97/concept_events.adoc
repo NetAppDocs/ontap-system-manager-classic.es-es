@@ -1,0 +1,100 @@
+---
+permalink: online-help-96-97/concept_events.html 
+sidebar: sidebar 
+keywords: event, log, notification, system, manager, online, help, view 
+summary: Puede usar System Manager para ver el registro de eventos y las notificaciones de eventos. 
+---
+= Gestione eventos con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver el registro de eventos y las notificaciones de eventos.
+
+
+
+== Ventana de eventos
+
+Puede usar la ventana Events para ver el registro de eventos y las notificaciones de eventos.
+
+
+
+=== Botones de comando
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista Events
+
+* *Tiempo*
++
+Muestra la hora a la que ocurrió el evento.
+
+* *Nodo*
++
+Muestra el nodo y el clúster en el que se produjo el evento.
+
+* *Gravedad*
++
+Muestra la gravedad del evento. Los niveles de gravedad posibles son:
+
++
+** Emergencia
++
+Especifica que el origen del evento se detuvo de forma inesperada y el sistema sufrió una pérdida de datos irrecuperable. Debe tomar medidas correctivas inmediatamente para evitar tiempos de inactividad ampliados.
+
+** Alerta
++
+Especifica que el origen del evento tiene una alerta y se debe realizar una acción para evitar el tiempo de inactividad.
+
+** Crítico
++
+Especifica que el origen del evento es crítico y podría provocar una interrupción del servicio si no se realiza ninguna acción correctiva de inmediato.
+
+** Error
++
+Especifica que el origen del evento sigue realizándose y es necesaria una acción correctiva para evitar interrupciones en el servicio.
+
+** Advertencia
++
+Especifica que el origen de eventos ha experimentado una incidencia que debe conocer. Los eventos de esta gravedad pueden no causar interrupción del servicio; sin embargo, se puede requerir una acción correctiva.
+
+** Aviso
++
+Especifica que el origen del evento es normal, pero la gravedad es una condición importante que debe conocer.
+
+** Informativo
++
+Especifica que el origen de eventos tiene una incidencia que debe conocer. No es posible que se requiera ninguna acción correctiva.
+
+** Depurar
++
+Especifica que el origen de eventos incluye un mensaje de depuración.
+
+
+
++
+De manera predeterminada, se muestran el tipo de gravedad de alerta, el tipo de gravedad de emergencia y el tipo de gravedad de error.
+
+* *Fuente*
++
+Muestra el origen del evento.
+
+* *Evento*
++
+Muestra la descripción del evento.
+
+
+
+
+
+=== El área Detalles
+
+Muestra los detalles del evento, incluidas la descripción del evento, el nombre del mensaje, el número de secuencia, la descripción del mensaje y la acción correctiva para el evento seleccionado.

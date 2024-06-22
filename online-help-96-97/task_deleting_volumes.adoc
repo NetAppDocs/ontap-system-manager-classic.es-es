@@ -1,0 +1,49 @@
+---
+permalink: online-help-96-97/task_deleting_volumes.html 
+sidebar: sidebar 
+keywords: online, help, delete, volumes, system, manager, flexvol, volume 
+summary: Puede usar System Manager para eliminar un volumen de FlexVol cuando ya no necesite los datos que contiene un volumen o si copió los datos que contiene un volumen en otra ubicación. Cuando se elimina un volumen, se destruyen todos los datos del volumen y no se pueden recuperar. 
+---
+= Elimine volúmenes con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para eliminar un volumen de FlexVol cuando ya no se requieren los datos que contiene un volumen o si se copiaron los datos que contiene un volumen a otra ubicación. Cuando se elimina un volumen, se destruyen todos los datos del volumen y no se pueden recuperar.
+
+.Antes de empezar
+Para eliminar un volumen de FlexVol, deben existir las siguientes condiciones:
+
+* El volumen debe estar desmontado y debe estar en el estado sin conexión.
+* Los volúmenes FlexClone deben estar divididos del volumen principal o destruirse si se clona el volumen FlexVol.
+* Las relaciones de SnapMirror deben eliminarse si el volumen se encuentra en una o varias relaciones de SnapMirror.
+
+
+.Acerca de esta tarea
+Debe tener en cuenta las siguientes limitaciones al eliminar un volumen de FlexVol:
+
+* Puede eliminar un volumen completo de SnapLock Enterprise o un archivo de un volumen de SnapLock Enterprise; no obstante, no puede eliminar solo los datos de un archivo en un volumen de SnapLock Enterprise.
+* No puede eliminar un volumen de SnapLock Compliance si los datos se han comprometido en el volumen.
+* Si el FlexVol contiene qtrees y volúmenes, los qtrees aparecen como directorios. Debe tener cuidado de no eliminar los qtrees accidentalmente al eliminar volúmenes.
+* Si asoció volúmenes FlexCache a un volumen de origen, debe eliminar los volúmenes FlexCache para poder eliminar el volumen de origen.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que reside el volumen que desea eliminar.
+. Seleccione los volúmenes que desea eliminar.
++
+[NOTE]
+====
+Verifique que haya seleccionado los volúmenes correctos que desea eliminar. Cuando se elimina un volumen, se destruyen todos los datos del volumen y no se pueden recuperar.
+
+====
+. Haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

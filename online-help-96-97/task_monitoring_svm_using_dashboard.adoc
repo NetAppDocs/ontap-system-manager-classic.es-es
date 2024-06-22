@@ -1,0 +1,20 @@
+---
+permalink: online-help-96-97/task_monitoring_svm_using_dashboard.html 
+sidebar: sidebar 
+keywords: system, manager, health, performance, monitor, svms, online, help 
+summary: 'La consola de System Manager le permite supervisar el estado y el rendimiento de una máquina virtual de almacenamiento (SVM).' 
+---
+= Supervise SVM con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La consola del clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) le permite supervisar el estado y el rendimiento de una máquina virtual de almacenamiento (SVM).
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione el nombre de la SVM que desea supervisar.
+. Consulte los detalles en los paneles de la consola.
+

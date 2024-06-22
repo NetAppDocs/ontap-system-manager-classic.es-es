@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_starting_or_stopping_nvme_service.html 
+sidebar: sidebar 
+keywords: start, stop, nvme, service, online, help, adaptor, namespace 
+summary: El servicio NVMe permite gestionar adaptadores NVMe para usarlos con espacios de nombres. Puede usar System Manager para iniciar el servicio NVMe a fin de conectar los adaptadores. Es posible detener el servicio NVMe para desconectar los adaptadores NVMe y deshabilitar el acceso a los espacios de nombres. 
+---
+= Inicie y detenga el servicio NVMe con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para iniciar el servicio NVMe y conectar los adaptadores. El servicio NVMe permite gestionar adaptadores NVMe para usarlos con espacios de nombres. Es posible detener el servicio NVMe para desconectar los adaptadores NVMe y deshabilitar el acceso a los espacios de nombres.
+
+.Antes de empezar
+Debe haber adaptadores compatibles con NVMe antes de iniciar el servicio NVMe.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el menú *Protocolos*, haga clic en *NVMe*.
+. Haga clic en *Iniciar* o *Detener* servicio según sea necesario.
+

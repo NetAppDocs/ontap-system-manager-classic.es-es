@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_editing_aggregates.html 
+sidebar: sidebar 
+keywords: online, help, edit, aggregates, raid, type, group, size, online, help 
+summary: Puede usar System Manager para cambiar el nombre de agregado, el tipo de RAID y el tamaño de un grupo RAID de un agregado existente cuando sea necesario. 
+---
+= Editar agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para cambiar el nombre del agregado, el tipo de RAID y el tamaño del grupo RAID de un agregado existente cuando sea necesario.
+
+.Antes de empezar
+Para modificar el tipo de RAID de un agregado de RAID4 a RAID-DP, el agregado debe contener suficientes discos de repuesto compatibles, excepto los repuestos en caliente.
+
+.Acerca de esta tarea
+* No puede cambiar el grupo RAID de sistemas ONTAP que admiten LUN de cabina.
++
+RAID0 es la única opción disponible.
+
+* No es posible cambiar el tipo de RAID de discos con particiones.
++
+RAID-DP es la única opción disponible para los discos con particiones.
+
+* No se puede cambiar el nombre de un agregado de SnapLock Compliance.
+* Si el agregado consta de SSD con pool de almacenamiento, solo se puede modificar el nombre del agregado.
+* Si el tamaño de disco de triple paridad es 10 TB y los otros discos tienen un tamaño inferior a 10 TB, puede seleccionar RAID-DP o RAID-TEC como tipo de RAID.
+* Si el tamaño de disco de triple paridad es de 10 TB, y si incluso uno de los otros discos tiene un tamaño superior a 10 TB, RAID-TEC es la única opción disponible para el tipo de RAID.
+
+
+.Pasos
+. Elija uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento*.
+** Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+
+
+. Seleccione el agregado que desea editar y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar agregado*, modifique el nombre del agregado, el tipo de RAID y el tamaño del grupo RAID, según sea necesario.
+. Haga clic en *Guardar*.
+
+
+*Información relacionada*
+
+xref:reference_aggregates_window.adoc[Ventana Aggregates]
+
+xref:concept_what_compatible_spare_disks_are.adoc[¿Qué discos de repuesto son compatibles]
+
+xref:reference_storage_tiers_window.adoc[Ventana Storage Tiers]

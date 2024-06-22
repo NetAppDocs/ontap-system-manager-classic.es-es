@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_viewing_disk_information.html 
+sidebar: sidebar 
+keywords: view, disk, information, system, manager, name, online, help 
+summary: Puede usar la ventana Disks de System Manager para ver los detalles de nombre, tamaño y contenedor de los discos junto con información gráfica sobre los discos de capacidad y los discos de caché. 
+---
+= Ver información de disco con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana Disks del clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver los detalles de nombre, tamaño y contenedor de discos junto con información gráfica sobre los discos de capacidad y los discos de caché.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *discos*.
+. Seleccione el disco sobre el que desea ver información de la lista de discos que se muestra.
+. Revise los detalles del disco.
+
+
+*Información relacionada*
+
+xref:reference_disks_window.adoc[Ventana discos]

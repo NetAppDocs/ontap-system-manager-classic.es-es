@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/task_updating_cluster_nondisruptively.html 
+sidebar: sidebar 
+keywords: nondisruptive, upgrades, NDU, cluster, system, manager, online, help 
+summary: 'Puede usar System Manager para actualizar un clúster o nodos individuales de parejas \(ha\) de alta disponibilidad que ejecuten ONTAP 8.3.1 o una versión concreta del software ONTAP sin interrumpir el acceso a los datos del cliente.' 
+---
+= Actualice un clúster de forma no disruptiva con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para actualizar un clúster o nodos individuales en parejas de alta disponibilidad (ha) que ejecuten ONTAP 8.3.1 o una versión posterior a una versión concreta del software ONTAP sin interrumpir el acceso a los datos del cliente.
+
+.Antes de empezar
+* Todos los nodos deben estar en parejas de ha.
+* Todos los nodos deben estar en buen estado.
+* Debe haber copiado la imagen de software del sitio de soporte de NetApp en un servidor HTTP o FTP de la red de modo que los nodos puedan acceder a esta.
++
+link:task_obtaining_ontap_software_images.html["Obtención de imágenes de software de ONTAP"]
+
+
+
+.Acerca de esta tarea
+* Si intenta realizar otras tareas desde System Manager al actualizar el nodo que aloja la LIF de gestión del clúster, es posible que se muestre un mensaje de error.
++
+Debe esperar hasta que la actualización finalice antes de realizar cualquier operación.
+
+* Se realiza una actualización gradual para los clústeres con menos de ocho nodos y se realiza una actualización por lotes para los clústeres con más de ocho nodos.
++
+En una actualización gradual, los nodos del clúster se actualizan de uno en uno. En una actualización por lotes, se actualizan varios nodos a la vez.
+
+* Puede actualizar el software ONTAP de forma no disruptiva desde una versión de servicio a largo plazo (LTS) a la siguiente versión de LTS (LTS+1).
++
+Por ejemplo, si ONTAP 9.1 y ONTAP 9.3 son versiones LTS, podrá actualizar el clúster de ONTAP 9.1 a ONTAP 9.3 sin interrupciones.
+
+* A partir de System Manager 9.6, si el protocolo NVMe está configurado en System Manager 9.5 y realiza una actualización de System Manager 9.5 a System Manager 9.6, ya no tendrá un periodo de gracia de 90 días para que el protocolo NVMe esté disponible sin una licencia. Si el período de gracia entra en vigor cuando se actualiza de ONTAP 9.5 a 9.6, debe sustituirse el período de gracia por una licencia nVMeoF válida para poder seguir usando las funciones de NVMe.
++
+Esta función no está disponible en las configuraciones de MetroCluster.
+
+* Si el protocolo NVMe no se configuró en System Manager 9.5 y realiza una actualización desde System Manager 9.5 a System Manager 9.6, no se proporciona el periodo de gracia y debe instalar la licencia NVMe para utilizar el protocolo NVMe.
++
+Esta función no está disponible en las configuraciones de MetroCluster.
+
+* A partir de ONTAP 9.5, debe configurarse al menos una LIF NVMe para cada nodo de una pareja de alta disponibilidad con el protocolo NVMe. También puede crear un máximo de dos LIF NVMe por nodo. Cuando actualice a ONTAP 9.5, debe asegurarse de que se haya definido un mínimo de una LIF NVMe para cada nodo en una pareja de alta disponibilidad mediante el protocolo NVMe.
+
+
+.Pasos
+. Haga clic en *Configuración* > *clúster* > *Actualizar*.
+. En la ficha *Actualizar*, agregue una nueva imagen o seleccione una imagen disponible.
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Añada una nueva imagen de software del cliente local
+ a| 
+.. Haga clic en *Agregar desde el cliente local*.
+.. Busque la imagen del software y, a continuación, haga clic en *Abrir*.
+
+
+
+
+ a| 
+Añada una nueva imagen de software del sitio de soporte de NetApp
+ a| 
+.. Haga clic en *Agregar desde el servidor*.
+.. En el cuadro de diálogo Add a New Software Image, introduzca la URL del servidor HTTP o FTP en el que esté guardada la imagen que se ha descargado del sitio de soporte de NetApp.
++
+Para el FTP anónimo, debe especificar la dirección URL en el `+ftp://anonymous@ftpserver+` formato.
+
+.. Haga clic en *Agregar*.
+
+
+
+
+ a| 
+Seleccione una imagen disponible
+ a| 
+Elija una de las imágenes mostradas.
+
+|===
+. Haga clic en *Validar* para ejecutar las comprobaciones de validación previas a la actualización a fin de verificar si el clúster está listo para una actualización.
++
+La operación de validación comprueba los componentes del clúster para verificar que la actualización se pueda realizar de forma no disruptiva y, a continuación, muestra errores o advertencias. También muestra las acciones necesarias para solucionar las que debe realizar antes de actualizar el software.
+
++
+[NOTE]
+====
+Debe realizar todas las acciones necesarias para solucionar los errores antes de continuar con la actualización. Aunque las acciones para solucionar las advertencias se pueden ignorar, se recomienda realizar todas las acciones para solucionarlo antes de continuar con la actualización.
+
+====
+. Haga clic en *Siguiente*.
+. Haga clic en *Actualizar*.
++
+La validación se realizará de nuevo.
+
++
+** Una vez finalizada la validación, se muestra una tabla con todos los errores y advertencias, junto con las acciones para solucionarlos que se deben llevar a cabo antes de continuar.
+** Si la validación se completa con advertencias, puede seleccionar la casilla de verificación *continuar con la actualización con advertencias* y, a continuación, hacer clic en *continuar*.
+Cuando la validación se completa y la actualización está en curso, la actualización podría detenerse debido a errores. Puede hacer clic en el mensaje de error para ver los detalles y, a continuación, llevar a cabo las acciones para solucionarlo antes de continuar con la actualización.
+
+
++
+Cuando la actualización se haya completado correctamente, el nodo se reiniciará y se le redirigirá a la página de inicio de sesión de System Manager. Si el nodo tarda mucho tiempo en reiniciarse, debe actualizar el navegador.
+
+. Inicie sesión en System Manager y compruebe que el clúster se ha actualizado correctamente a la versión seleccionada haciendo clic en *Configuración* > *clúster* > *Actualizar* > *Historial de actualizaciones* y, a continuación, en la visualización de los detalles.
+
+
+*Información relacionada*
+
+xref:concept_how_you_update_cluster_nondisruptively.adoc[Cómo actualizar un clúster de forma no disruptiva]

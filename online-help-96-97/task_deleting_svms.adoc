@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_deleting_svms.html 
+sidebar: sidebar 
+keywords: system, manager, delete, svm, online, help, storage, virtual, machine 
+summary: 'Puede usar System Manager para eliminar máquinas virtuales de almacenamiento (SVM) que ya no necesite de la configuración del sistema de almacenamiento.' 
+---
+= Elimine SVM con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para eliminar máquinas virtuales de almacenamiento (SVM) que ya no se requieren de la configuración del sistema de almacenamiento.
+
+.Antes de empezar
+Debe haber completado las siguientes tareas:
+
+. Se han deshabilitado las copias snapshot, los duplicados de protección de datos (DP) y los reflejos de uso compartido de carga (LS) de todos los volúmenes
++
+[NOTE]
+====
+Debe utilizar la interfaz de línea de comandos (CLI) para deshabilitar los duplicados LS.
+
+====
+. Se han eliminado todos los iGroups que pertenecen a la SVM manualmente si se eliminan SVM
+. Se han eliminado todos los conjuntos de puertos
+. Se eliminaron todos los volúmenes de la SVM, incluido el volumen raíz
+. Se desasigna la asignación de las LUN, se las desconectó y se las eliminó
+. Se ha eliminado el servidor CIFS si va a eliminar SVM
+. Se eliminaron todas las cuentas de usuario personalizadas y los roles asociados con la SVM
+. Se han eliminado los subsistemas NVMe asociados con la SVM mediante la CLI.
+. Ha detenido la SVM
+
+
+.Acerca de esta tarea
+Al eliminar las SVM, también se eliminan los siguientes objetos asociados con la SVM:
+
+* LIF, grupos de conmutación por error LIF y grupos de enrutamiento LIF
+* Políticas de exportación
+* Políticas de eficiencia
+
+
+Si elimina las SVM que están configuradas para utilizar Kerberos o modifica las SVM para utilizar un nombre principal de servicio (SPN) diferente, el principal de servicio original de la SVM no se elimina ni se deshabilita automáticamente en el dominio de Kerberos. Debe eliminar o deshabilitar manualmente el director. Debe tener el nombre de usuario y la contraseña del administrador del dominio Kerberos para eliminar o deshabilitar el principal.
+
+Si desea mover datos de una SVM a otra SVM antes de eliminar la primera SVM, puede usar la tecnología SnapMirror para ello.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+

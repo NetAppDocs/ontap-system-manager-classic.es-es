@@ -1,0 +1,27 @@
+---
+permalink: peering/task_creating_svm_peers.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, peer, enable, establish, relationship, data, protection, create, create svm peer relationship 
+summary: 'A partir de ONTAP 9.3, hasta ONTAP 9.7, puede utilizar la interfaz "clásica" de System Manager de ONTAP para crear relaciones entre iguales de SVM. El paridad de máquinas virtuales de almacenamiento (SVM) permite establecer una relación entre iguales entre dos SVM para la protección de datos.' 
+---
+= Cree relaciones de paridad de SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de ONTAP 9.3, hasta ONTAP 9.7, puede usar la interfaz _classic_ de ONTAP para crear relaciones entre iguales de SVM. El paridad de máquinas virtuales de almacenamiento (SVM) permite establecer una relación entre iguales entre dos SVM para la protección de datos.
+
+.Pasos
+. Seleccione la SVM del iniciador.
+. Seleccione la SVM de destino de la lista de SVM permitidas.
+. Haga clic en *Iniciar SVM peering*.
+. Haga clic en *continuar*.
+
+
+
+
+== Qué hacer a continuación
+
+Se pueden ver las LIF de interconexión de clústeres, la relación de paridad de los clústeres y la relación entre iguales de SVM en la ventana Summary.

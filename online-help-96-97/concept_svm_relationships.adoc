@@ -1,0 +1,281 @@
+---
+permalink: online-help-96-97/concept_svm_relationships.html 
+sidebar: sidebar 
+keywords: svm, relationship, dr, disaster, recovery, online, storage, virtual, machine, help, create, data, transfer 
+summary: 'La recuperación ante desastres (DR) de la máquina virtual de almacenamiento (SVM) proporciona la funcionalidad de recuperación ante desastres a nivel de SVM al permitir la recuperación de los datos presentes en los volúmenes constituyentes del SVM y la recuperación de la configuración de SVM.' 
+---
+= Relaciones de SVM con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar relaciones de mirroring y relaciones de almacén entre SVM. La recuperación ante desastres (DR) de la máquina virtual de almacenamiento (SVM) proporciona la funcionalidad de recuperación ante desastres a nivel de SVM al permitir la recuperación de los datos presentes en los volúmenes constituyentes del SVM y la recuperación de la configuración de SVM.
+
+
+
+== Crear relaciones de SVM
+
+Puede usar System Manager para crear relaciones de SVM a fin de transferir datos desde la SVM de origen a la SVM de destino. La creación de una relación de SVM permite recuperarse de un desastre a medida que los datos están disponibles en la SVM de origen y en la SVM de destino.
+
+.Antes de empezar
+* El clúster de destino y el de origen deben ejecutar ONTAP 9.5 o una versión posterior.
+* El clúster de destino no debe estar en una configuración de MetroCluster.
+* A partir de System Manager 9.6, Fabric Pool es compatible.
+
+
+.Pasos
+. Haga clic en *Protección* > *relación SVM* > *Crear*.
+. Seleccione el tipo de relación de SVM de la lista *tipo de relación de SVM*.
+. En el panel *Source Storage Virtual Machine*, seleccione el clúster y la SVM.
+. *Opcional:* para ver las SVM que no tienen los permisos necesarios, haga clic en *Navegar hacia el clúster de origen* y proporcione los permisos necesarios.
+. En el panel *máquina virtual de almacenamiento de destino*, especifique el nombre de la SVM que se creará en el clúster de destino.
+. Seleccione la opción para copiar la configuración de SVM de origen.
+. *Opcional:* haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*, actualice la política de protección y el programa de protección, seleccione aggregate y, a continuación, inicialice la relación de protección.
+. Haga clic en *Guardar* para crear la relación de SVM.
++
+Se muestra la ventana SVM Relationships: Resumen.
+
+. Haga clic en *hecho* para completar el proceso.
+
+
+
+
+== Editar las relaciones de SVM
+
+Puede usar System Manager para modificar las propiedades de una relación de SVM.
+
+.Pasos
+. Haga clic en *Protección* > *relación de SVM*.
+. Seleccione la relación de SVM que desea modificar y, a continuación, haga clic en *Editar*.
+. Seleccione el tipo de relación SVM.
++
+Si las relaciones de SVM se crearon antes de ONTAP 9.3, no se permite el cambio del tipo de relación de SVM desde reflejo a reflejo y almacén.
+
+. Modifique la política de protección, la programación de protección y la opción para copiar la configuración de la SVM de origen, según sea necesario.
+. Haga clic en *Guardar* para guardar los cambios.
+
+
+
+
+== Gestionar las relaciones de SVM
+
+Puede usar System Manager para realizar diversas operaciones en las relaciones de SVM, como inicializar las relaciones de SVM, actualizar las relaciones de SVM, activar la SVM de destino, volver a sincronizar datos de la SVM de origen, volver a sincronizar datos de la SVM de destino y volver a activar la SVM de origen.
+
+.Antes de empezar
+* Para inicializar la relación de SVM, los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+* Para actualizar la relación de SVM, la relación de SVM debe inicializarse y en estado de SnapMirrored.
+* Para reactivar la SVM de origen, se deben haber realizado la resincronización de los datos de la SVM de destino (resincronización inversa).
+* Si seleccionó la opción para copiar la configuración de SVM de origen mientras crea la relación de SVM, entonces para activar la relación de SVM, debe detenerse la SVM de origen.
+* La licencia de SnapMirror debe habilitarse en el clúster de origen y el de destino.
+* Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+* El clúster de destino debe tener espacio disponible.
+* La SVM de origen debe tener permiso para la agrupación de SVM.
+* Debe interrumpir la relación de SVM para activar la SVM de destino, volver a realizar la sincronización de la SVM de origen, realizar una resincronización de la SVM de destino (Reverse Resync) y reactivar la SVM de origen.
+* Para reactivar la SVM de origen, debe existir la relación inversa de SVM y estar en estado de SnapMirror.
+
+
+.Pasos
+. Haga clic en *Protección* > *relación de SVM*.
+. Seleccione la relación de SVM y, a continuación, realice la acción adecuada:
++
+|===
+| Si desea... | Haga lo siguiente... 
+
+
+ a| 
+Inicialice la relación de SVM
+ a| 
+.. Haga clic en *Operaciones* > *inicializar*.
++
+Aparecerá el cuadro de diálogo inicializar.
+
+.. Haga clic en *inicializar*.
+
+
+
+
+ a| 
+Actualice la relación de SVM
+ a| 
+.. Haga clic en *Operaciones* > *Actualizar*.
++
+Aparece el cuadro de diálogo Actualizar.
+
+.. Haga clic en *Actualizar*.
+
+
+
+
+ a| 
+Activar la SVM de destino Activar la SVM de destino implica desactivar las transferencias programadas de SnapMirror, cancelar las transferencias continuas de SnapMirror, interrumpir la relación de la SVM e iniciar la SVM de destino.
+ a| 
+.. Haga clic en *Operaciones* > *Activar SVM de destino*.
++
+Se muestra el cuadro de diálogo Activate Destination SVM.
+
+.. Seleccione la casilla de verificación *Aceptar para activar la SVM de destino y romper la relación*.
+.. Haga clic en *Activar*.
+
+
+
+
+ a| 
+Resincronizar datos de la SVM de origen La operación de resincronización ejecuta una base base base de referencia de la configuración de SVM. Puede volver a realizar una sincronización desde la SVM de origen para restablecer una relación rota entre las dos SVM. Cuando finaliza la sincronización, la SVM de destino contiene la misma información que la SVM de origen y está programada para futuras actualizaciones.
+ a| 
+.. Haga clic en *Operaciones* > *Resincronizcar desde la SVM de origen*.
++
+Se muestra el cuadro de diálogo Resync from Source SVM.
+
+.. Seleccione *Aceptar para eliminar los datos más recientes de la casilla de verificación SVM* de destino.
+.. Haga clic en *Resync*.
+
+
+
+
+ a| 
+Resincronizar datos de la SVM (Resincronización inversa) de destino Puede volver a sincronizar desde la SVM de destino para crear una nueva relación entre las dos SVM. Durante esta operación, la SVM de destino sigue sirviendo datos cuando la SVM de origen realiza un backup de la configuración y los datos de la SVM de destino.
+ a| 
+.. Haga clic en *Operaciones* > *Resincronizcar desde la SVM de destino (Reverse Resync)*.
++
+Se muestra el cuadro de diálogo Resync from Destination SVM (Reverse Resync).
+
+.. Si la SVM tiene varias relaciones, active la casilla de verificación *esta SVM tiene varias relaciones, OK para publicar otras relaciones*.
+.. Active la casilla de verificación *Aceptar para eliminar los nuevos datos en la SVM* de origen.
+.. Haga clic en *Reverse Resync*.
+
+
+
+
+ a| 
+Reactivar la SVM de origen Reactivar la SVM de origen implica proteger y volver a crear las relaciones de SVM entre la SVM de origen y la de destino. Si seleccionó la opción para copiar la configuración de SVM de origen mientras se crea la relación de SVM, la SVM de destino dejará de procesar los datos.
+ a| 
+.. Haga clic en *Operaciones* > *reactivar SVM de origen*.
++
+Se muestra el cuadro de diálogo reactivar SVM de origen.
+
+.. Haga clic en *Iniciar reactivación* para iniciar la reactivación de la SVM de destino.
+.. Haga clic en *Listo*.
+
+
+|===
+
+
+
+
+== Ventana SVM Relationships
+
+Puede usar la ventana SVM Relationships para crear y gestionar relaciones de mirroring y relaciones de mirroring y almacén entre las SVM.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre la página SVM Disaster Recovery, que puede usar para crear una relación de mirroring, o una relación de mirroring y almacén a partir de un volumen de destino.
+
+* *Edición*
++
+Permite editar la programación y la política de una relación.
+
++
+Para las relaciones de mirroring y almacén, o una relación de reflejo con versión flexible, puede modificar el tipo de relación modificando el tipo de política.
+
+* *Eliminar*
++
+Permite eliminar una relación.
+
+* *Operaciones*
++
+Proporciona las siguientes opciones:
+
++
+** *Inicializar*
++
+Permite inicializar la relación de SVM para realizar una transferencia básica desde la SVM de origen a la SVM de destino.
+
+** *Actualizar*
++
+Permite actualizar los datos desde la SVM de origen a la SVM de destino.
+
+** *Activar SVM de destino*
++
+Permite activar la SVM de destino.
+
+** *Resincronizcar desde la SVM de origen*
++
+Le permite iniciar la resincronización de una relación rota.
+
+** *Resincronizcar desde la SVM de destino (Resync inversa)*
++
+Permite volver a sincronizar la relación de la SVM de destino con la SVM de origen.
+
+** *Reactivar el SVM de origen*
++
+Permite reactivar la SVM de origen.
+
+
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de relaciones de SVM
+
+* *Máquina virtual de almacenamiento de origen*
++
+Muestra la SVM que contiene el volumen del cual los datos se reflejan y almacenan en una relación.
+
+* *Máquina virtual de almacenamiento de destino*
++
+Muestra la SVM que contiene el volumen al cual se duplican y almacenan los datos en una relación.
+
+* *Es saludable*
++
+Muestra si la relación es correcta o no.
+
+* *Estado de relación*
++
+Muestra el estado de la relación, como SnapMirred, Uninitialized o Broken Off.
+
+* *Estado de transferencia*
++
+Muestra el estado de la relación.
+
+* *Tipo de relación*
++
+Muestra el tipo de relación, como mirroring, o reflejo y almacén.
+
+* *Tiempo de retraso*
++
+El tiempo de desfase es la diferencia entre la hora actual y la Marca de hora de la última copia Snapshot que se ha transferido correctamente al sistema de destino. El tiempo de demora siempre será al menos tanto como la duración de la última transferencia exitosa, a menos que los relojes de los sistemas de origen y destino no estén sincronizados. La diferencia de zona horaria se calcula automáticamente en el tiempo de demora.
+
+* *Nombre de la política*
++
+Muestra el nombre de la directiva que está asignada a la relación.
+
+* *Tipo de política*
++
+Muestra el tipo de directiva que está asignada a la relación. El tipo de política puede ser StrictSync, Sync, Asynchronous Mirror, Asynchronous Vault o Asynchronous Mirror Vault.
+
+
+
+
+
+=== El área Detalles
+
+* *Ficha Detalles*
++
+Muestra información general sobre la relación seleccionada, como el clúster de origen y el clúster de destino, la relación de protección asociada con la SVM, la tasa de transferencia de datos, el estado de la relación, los detalles sobre la relación de compresión de red, el estado de transferencia de datos, el tipo de transferencia de datos actual, el tipo de última transferencia de datos, La última copia de Snapshot, Marca de tiempo de la copia de Snapshot más reciente, el estado de la conservación de identidad y el número de volúmenes protegidos.
+
+* *Ficha Detalles de la directiva*
++
+Muestra detalles sobre la política asignada a la relación de protección seleccionada.
+
+

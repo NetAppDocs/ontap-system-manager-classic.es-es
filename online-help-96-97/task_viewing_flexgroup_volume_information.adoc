@@ -1,0 +1,35 @@
+---
+permalink: online-help-96-97/task_viewing_flexgroup_volume_information.html 
+sidebar: sidebar 
+keywords: flexgroup, volume, graphical, online, help, system, manager 
+summary: Puede usar System Manager para ver información sobre un volumen de FlexGroup. Se puede ver una representación gráfica del espacio asignado, el estado de protección y el rendimiento de un volumen de FlexGroup. 
+---
+= Vea información sobre volúmenes de FlexGroup con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver información acerca de un volumen de FlexGroup. Se puede ver una representación gráfica del espacio asignado, el estado de protección y el rendimiento de un volumen de FlexGroup.
+
+.Acerca de esta tarea
+También puede ver las copias Snapshot disponibles para el volumen FlexGroup, las relaciones de protección de datos para el volumen FlexGroup y las métricas de rendimiento medio, las métricas de rendimiento de lectura y las métricas de rendimiento de escritura del volumen FlexGroup según la latencia, IOPS y el rendimiento.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. En la lista que se muestra de FlexGroup Volumes, seleccione el volumen FlexGroup sobre el que desea ver información.
++
+Se muestra la información sobre el volumen FlexGroup, el espacio asignado al volumen FlexGroup, el estado de protección del volumen FlexGroup y la información de rendimiento sobre el volumen FlexGroup.
+
+. Haga clic en el enlace *Mostrar más detalles* para ver más información sobre el volumen de FlexGroup.
+. Haga clic en la ficha *copias Snapshot* para ver las copias Snapshot del volumen FlexGroup.
+. Haga clic en la ficha *Protección de datos* para ver las relaciones de protección de datos del volumen FlexGroup.
+. Haga clic en la ficha *eficiencia del almacenamiento* para ver la configuración de eficiencia del almacenamiento.
+. Haga clic en la ficha *rendimiento* para ver las métricas de rendimiento promedio, las métricas de rendimiento de lectura y las métricas de rendimiento de escritura del volumen FlexGroup en función de la latencia, IOPS y rendimiento.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

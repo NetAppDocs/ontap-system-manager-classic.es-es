@@ -1,0 +1,177 @@
+---
+permalink: online-help-96-97/concept_schedules.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, manage, schedule, storage 
+summary: Puede usar System Manager para crear y gestionar programaciones en el sistema de almacenamiento. 
+---
+= Gestione programaciones con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar programaciones en el sistema de almacenamiento.
+
+
+
+== Crear programaciones
+
+Puede utilizar System Manager para crear programaciones para ejecutar un trabajo en un momento específico o en periodos normales.
+
+.Acerca de esta tarea
+Cuando crea una programación en una configuración MetroCluster, se recomienda crear una programación equivalente en el clúster también en el sitio superviviente.
+
+.Pasos
+. Haga clic en *Protección* > *programas*.
+. Haga clic en *Crear*.
+. En el cuadro de diálogo *Crear programación*, especifique el nombre de la programación.
+. Cree un programa en función de sus requisitos:
++
+|===
+| Si desea crear... | Realice lo siguiente... 
+
+
+ a| 
+Una programación diaria o específica en determinados días
+ a| 
+Seleccione *básico* y especifique los detalles de la programación y la repetición (en horas y minutos).
+
+
+
+ a| 
+Una programación que se ejecuta en un intervalo específico
+ a| 
+Seleccione *intervalo* y especifique los detalles del programa y la periodicidad (en días, horas y minutos).
+
+
+
+ a| 
+Una programación que se ejecuta en un período específico
+ a| 
+Seleccione *Avanzado* y especifique los detalles de la programación y la repetición (en meses, días, días laborables, horas y minutos).
+
+|===
+. Haga clic en *Crear*.
+
+
+
+
+== Editar programaciones
+
+Puede realizar cambios en una programación de cron creada previamente o en una programación de intervalos si no cumple sus requisitos mediante System Manager. Es posible modificar detalles de la programación, como días y horas recurrentes, opciones de intervalo y opciones avanzadas de cron.
+
+.Acerca de esta tarea
+Cuando edita una programación en una configuración MetroCluster, se recomienda editar la programación equivalente en el clúster del sitio superviviente.
+
+.Pasos
+. Haga clic en *Protección* > *programas*.
+. Seleccione la programación que desea modificar y haga clic en *Editar*.
+. En el cuadro de diálogo *Editar programación*, modifique la programación realizando la acción adecuada:
++
+|===
+| Si selecciona la opción de programación como... | Haga esto. 
+
+
+ a| 
+Básico
+ a| 
+Especifique los detalles de la programación recurrente y los días recurrentes.
+
+
+
+ a| 
+Intervalo
+ a| 
+Especifique las opciones de intervalo en días, horas y minutos.
+
+
+
+ a| 
+Avanzada
+ a| 
+Especifique las opciones avanzadas de cron en meses, días, días semanales (si corresponde), horas y minutos.
+
+|===
+. Haga clic en *Aceptar*.
+
+
+
+
+== Eliminar programaciones
+
+[role="lead"]
+Puede usar System Manager para eliminar las programaciones que ejecutan tareas de gestión de almacenamiento específicas.
+
+.Pasos
+. Haga clic en *Protección* > *programas*.
+. Seleccione la programación que desea eliminar y haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+
+
+== Gestionar programaciones
+
+Puede configurar muchas tareas (por ejemplo, copias Snapshot de volumen y replicaciones de reflejos) para ejecutarse en programaciones especificadas. Los horarios que se ejecutan en horarios especificados se conocen como planificaciones _cron_ debido a su similitud con UNIX `cron` programaciones. Los horarios que se ejecutan a intervalos se conocen como programas _INTERVAL_.
+
+Puede gestionar las programaciones de las siguientes maneras:
+
+* Crear una programación de cron o una programación de intervalo
+* Mostrar información sobre todas las programaciones
+* Modificar una programación de cron o una programación de intervalo
+* Eliminar una programación de cron o una programación de intervalo
++
+No puede eliminar una programación que esté en uso actualmente por un trabajo en ejecución.
+
+
+
+El administrador del clúster puede realizar todas las tareas de gestión de programación.
+
+
+
+== Ventana programas
+
+Puede utilizar la ventana programaciones para administrar tareas programadas, como crear, mostrar información sobre, modificar y eliminar programaciones.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create Schedule, que permite crear programaciones basadas en tiempo e intervalos.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar programación, que permite editar las programaciones seleccionadas.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Eliminar programación, que permite eliminar las programaciones seleccionadas.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Programas
+
+* *Nombre*
++
+Especifica el nombre de la programación.
+
+* *Tipo*
++
+Especifica el tipo de programación, basada en tiempo o en intervalos.
+
+
+
+
+
+=== El área Detalles
+
+El área de detalles muestra información sobre cuándo se ejecuta una programación seleccionada.

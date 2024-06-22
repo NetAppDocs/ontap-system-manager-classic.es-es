@@ -1,0 +1,138 @@
+---
+permalink: online-help-96-97/task_provisioning_cache_by_adding_disks.html 
+sidebar: sidebar 
+keywords: ssd, system, manager, storage, pool, root, aggregate, provision, cache, online, help, ssd, disks, flash, pool 
+summary: Puede usar System Manager para añadir SSD como pools de almacenamiento o SSD dedicados para aprovisionar la caché. Al añadir SSD, se puede convertir un agregado no raíz o un agregado raíz que no contenga discos con particiones en un agregado de Flash Pool, o bien aumentar el tamaño de la caché de un agregado de Flash Pool existente. 
+---
+= Aprovisione la caché mediante la adición de SSD con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para añadir discos SSD como pools de almacenamiento o SSD dedicados para aprovisionar la caché. Al añadir SSD, se puede convertir un agregado no raíz o un agregado raíz que no contenga discos con particiones en un agregado de Flash Pool, o bien aumentar el tamaño de la caché de un agregado de Flash Pool existente.
+
+.Acerca de esta tarea
+* La caché SSD añadida no se añade al tamaño de un agregado, por lo que es posible añadir un grupo RAID de SSD a un agregado aunque esté en el tamaño máximo.
+* No se pueden usar SSD con particiones cuando se añade caché mediante System Manager.
+
+
+
+
+== Aprovisionamiento de caché a agregados mediante la adición de SSD
+
+Puede usar System Manager para añadir pools de almacenamiento o SSD dedicados a fin de aprovisionar la caché mediante la conversión de un agregado de HDD no raíz existente o de un agregado raíz que no contenga discos con particiones en un agregado de Flash Pool.
+
+.Antes de empezar
+* El agregado debe estar en línea.
+* Deben haber suficientes SSD de repuesto o unidades de asignación en el pool de almacenamiento que se puedan asignar como discos de caché.
+* Todos los nodos del clúster deben ejecutar ONTAP 8.3 o una versión posterior.
++
+Si en el clúster hay una mezcla de versiones, use la interfaz de línea de comandos para crear un agregado de Flash Pool y, a continuación, aprovisionar la caché SSD.
+
+* Debe haber identificado un agregado no raíz de 64 bits válido compuesto por discos HDD y que se pueda convertir en un agregado de Flash Pool.
+* Este agregado no debe contener LUN de cabina.
+
+
+.Acerca de esta tarea
+Debe conocer las prácticas recomendadas específicas de la plataforma y la carga de trabajo para el tamaño y la configuración del nivel SSD del agregado de Flash Pool.
+
+.Pasos
+. Elija uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento*.
+** Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+
+
+. En la ventana *niveles de almacenamiento*, seleccione el agregado y, a continuación, haga clic en *más acciones* > *Agregar caché*.
++
+[NOTE]
+====
+No se admite la adición de caché en los agregados habilitados para FabricPool.
+
+====
+. En el cuadro de diálogo *Agregar caché*, realice la acción adecuada:
++
+|===
+| Si estableció el origen de caché como... | Realice lo siguiente... 
+
+
+ a| 
+Pools de almacenamiento
+ a| 
+.. Seleccione el pool de almacenamiento del cual se puede obtener la caché.
+.. Especifique el tamaño de la caché.
+.. Modifique el tipo de RAID, si es necesario.
+
+
+
+
+ a| 
+SSD dedicados
+ a| 
+Seleccione el tamaño de SSD y la cantidad de SSD que se incluirán; si lo desea, puede modificar la configuración de RAID:
+
+.. Haga clic en *Cambiar*.
+.. En el cuadro de diálogo Cambiar configuración de RAID, especifique el tipo de RAID y el tamaño del grupo RAID y, a continuación, haga clic en *Guardar*.
+
+
+|===
+. Haga clic en *Agregar*.
++
+En el caso de los agregados con mirroring, se muestra un cuadro de diálogo *Agregar caché* con la información de que se agregará el doble del número de discos seleccionados.
+
+. En el cuadro de diálogo *Agregar caché*, haga clic en *Sí*.
+
+
+.Resultados
+Los discos de caché se añadirán al agregado seleccionado.
+
+
+
+== Aumento de la caché de agregados de Flash Pool mediante la adición de SSD
+
+Puede añadir discos SSD como pools de almacenamiento o SSD dedicados para aumentar el tamaño de un agregado de Flash Pool mediante System Manager.
+
+.Antes de empezar
+* El agregado de Flash Pool debe estar en línea.
+* Deben haber suficientes SSD de repuesto o unidades de asignación en el pool de almacenamiento que se puedan asignar como discos de caché.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+. En la ventana *agregados*, seleccione el agregado de Flash Pool y, a continuación, haga clic en *Agregar caché*.
+. En el cuadro de diálogo *Agregar caché*, realice la acción adecuada:
++
+|===
+| Si estableció el origen de caché como... | Realice lo siguiente... 
+
+
+ a| 
+Pools de almacenamiento
+ a| 
+Seleccione el pool de almacenamiento del cual se puede obtener la caché y, a continuación, establezca el tamaño de la caché.
+
+
+
+ a| 
+SSD dedicados
+ a| 
+Seleccione el tamaño de SSD y la cantidad de SSD que se incluirán.
+
+|===
+. Haga clic en *Agregar*.
++
+En el caso de los agregados reflejados, se muestra un cuadro de diálogo Añadir caché con la información de que se añadirá dos veces el número de discos seleccionados.
+
+. En el cuadro de diálogo *Agregar caché*, haga clic en *Sí*.
+
+
+.Resultados
+Los discos de caché se añadirán al agregado de Flash Pool seleccionado.
+
+*Información relacionada*
+
+http://www.netapp.com/us/media/tr-4070.pdf["Informe técnico de NetApp 4070: Diseño e implementación de Flash Pool"^]
+
+xref:concept_how_storage_pool_works.adoc[Cómo funciona el pool de almacenamiento]

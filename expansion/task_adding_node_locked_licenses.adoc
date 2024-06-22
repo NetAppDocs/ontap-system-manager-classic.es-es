@@ -1,0 +1,43 @@
+---
+permalink: expansion/task_adding_node_locked_licenses.html 
+sidebar: sidebar 
+keywords: cluster, feature, node-locked, license, entitle, functionality, add, add node-locked licenses 
+summary: Si el clúster tiene funciones que utilizan licencias de bloqueo de nodo, debe asegurarse de que se hayan instalado licencias bloqueadas de nodo para los nuevos nodos. 
+---
+= Añada licencias de bloqueo de nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si el clúster tiene funciones que utilizan licencias de bloqueo de nodo (que solo otorgan autorización a nodos específicos de la funcionalidad de licencia), debe asegurarse de que se hayan instalado licencias de bloqueo de nodo para los nuevos nodos. Debe añadir las licencias antes de que los nodos se unieran al clúster.
+
+Complete esta tarea si utiliza la interfaz de usuario de _Classic_ System Manager con ONTAP 9.7 y versiones anteriores. Si desea utilizar la interfaz de usuario de System Manager con ONTAP 9.7 y versiones posteriores, consulte link:https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Habilite nuevas funciones añadiendo claves de licencia"].
+
+Para obtener más información acerca de la administración de licencias, consulte link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Información general sobre Manage licences"].
+
+.Pasos
+. Para añadir cada clave de licencia, utilice `system license add` comando.
++
+[listing]
+----
+cluster1::> system license add -license-code AAAAAAAAAAAAAA
+----
+. Para ver las licencias existentes, utilice `system license show` comando.
++
+[listing]
+----
+cluster1::> system license show
+
+Serial Number: 9-99-999999
+Owner: cluster1
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+Base              site    Cluster Base License  -
+NFS               license NFS License           -
+CIFS              license CIFS License          -
+...
+----
+. Revise el resultado y compruebe que se muestra una licencia de bloqueo de nodo para todos los números de serie, incluidos los números de serie de los nodos nuevos y existentes.
+

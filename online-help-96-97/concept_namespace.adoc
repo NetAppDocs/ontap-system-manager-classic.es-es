@@ -1,0 +1,125 @@
+---
+permalink: online-help-96-97/concept_namespace.html 
+sidebar: sidebar 
+keywords: junction, path, window, system, manager, mount, unmount, flexvol, volume, svm, namespace, online, help, policies, export 
+summary: Puede usar la ventana Junction Path en System Manager para montar o desmontar volúmenes de FlexVol en una unión en el espacio de nombres de la SVM. 
+---
+= Ventana Junction Path en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana Junction Path en ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para montar o desmontar volúmenes de FlexVol en una unión en el espacio de nombres de SVM.
+
+
+
+== Monte los volúmenes
+
+Puede usar System Manager para montar volúmenes en una unión en el espacio de nombres de la máquina virtual de almacenamiento (SVM).
+
+.Acerca de esta tarea
+* Si monta un volumen en una ruta de unión con una configuración de idioma distinta de la del volumen primario inmediato de la ruta, los clientes NFSv3 no podrán acceder a algunos archivos porque es posible que determinados caracteres no se decodifiquen correctamente.
++
+Este problema no ocurre si el directorio primario inmediato es el volumen raíz.
+
+* Los volúmenes de SnapLock solo se pueden montar en la raíz de la SVM.
+* No se puede montar un volumen normal en un volumen de SnapLock.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *Ruta de unión*.
+. En el menú desplegable del campo *SVM*, seleccione la SVM en la que desea montar un volumen.
+. Haga clic en *Mount* y, a continuación, seleccione el volumen que desea montar.
+. *Opcional:* Si desea cambiar el nombre de unión predeterminado, especifique un nuevo nombre.
+. Haga clic en *Browse* y, a continuación, seleccione la ruta de unión a la que desea montar el volumen.
+. Haga clic en *Aceptar* y, a continuación, en *montar*.
+. Compruebe la nueva ruta de unión en la pestaña *Detalles*.
+
+
+
+
+== Desmonte los volúmenes de FlexVol
+
+Puede utilizar la opción Junction Path del panel Storage de System Manager para desmontar volúmenes de FlexVol de una unión en el espacio de nombres de la máquina virtual de almacenamiento (SVM).
+
+.Pasos
+. Haga clic en *almacenamiento* > *Ruta de unión*.
+. En el menú desplegable del campo *SVM*, seleccione la SVM desde la que desea desmontar un volumen.
+. Seleccione los volúmenes que se deben desmontar y, a continuación, haga clic en *desmontar*.
+. Seleccione la casilla de verificación de confirmación y, a continuación, haga clic en *desmontar*.
+
+
+
+
+== Cambie las políticas de exportación
+
+Cuando se crea un volumen, el volumen hereda automáticamente la política de exportación predeterminada del volumen raíz de la máquina virtual de almacenamiento (SVM). Puede usar System Manager para cambiar la política de exportación predeterminada que está asociada con el volumen a fin de redefinir el acceso de los clientes a los datos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *Ruta de unión*.
+. En el menú desplegable del campo *SVM*, seleccione la SVM en la que reside el volumen que desea modificar.
+. Seleccione el volumen y, a continuación, haga clic en *Cambiar directiva de exportación*.
+. Seleccione la política de exportación y, a continuación, haga clic en *Cambiar*.
+. Compruebe que la columna *Política de exportación* de la ventana *Ruta de unión* muestra la directiva de exportación que ha aplicado al volumen.
+
+
+.Resultados
+La política de exportación predeterminada se reemplaza por la política de exportación seleccionada.
+
+
+
+== Ruta de unión
+
+Puede utilizar el menú Junction Path para gestionar el espacio de nombres NAS de las máquinas virtuales de almacenamiento (SVM).
+
+
+
+=== Botones de comando
+
+* * Monte*
++
+Abre el cuadro de diálogo Mount Volume, que permite montar un volumen en la unión en un espacio de nombres de SVM.
+
+* *Desmontar*
++
+Abre el cuadro de diálogo Unmount Volume, que permite desmontar un volumen de su volumen principal.
+
+* *Cambiar la política de exportación*
++
+Abre el cuadro de diálogo Change Export Policy, que permite cambiar la política de exportación existente asociada con el volumen.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista Ruta de unión
+
+* *Ruta*
++
+Especifica la ruta de unión del volumen montado. Puede hacer clic en la ruta de unión para ver los volúmenes y qtrees relacionados.
+
+* *Objeto de almacenamiento*
++
+Especifica el nombre del volumen montado en la ruta de unión. También puede ver los qtrees que contiene el volumen.
+
+* *Política de exportación*
++
+Especifica la política de exportación del volumen montado.
+
+* *Estilo de seguridad*
++
+Especifica el estilo de seguridad del volumen. Los valores posibles incluyen UNIX (para bits de modo UNIX), NTFS (para ACL de CIFS) y mixtos (para permisos mixtos de NFS y CIFS).
+
+
+
+
+
+=== Ficha Detalles
+
+Muestra información general sobre el volumen o qtree seleccionados, como el nombre, el tipo de objeto de almacenamiento, la ruta de unión del objeto montado y la política de exportación. Si el objeto seleccionado es un qtree, se muestran detalles sobre el límite de espacio en cuestión, el límite de espacio en software y el uso de espacio.

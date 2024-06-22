@@ -1,0 +1,49 @@
+---
+permalink: fc-config-rhel/task_creating_lun_its_containing_volume.html 
+sidebar: sidebar 
+keywords: create, lun, wizard, igroup, map, create a lun 
+summary: Utilice el asistente Crear LUN para crear una LUN. El asistente también crea el igroup y asigna la LUN al igroup, lo que permite que el host especificado acceda a la LUN. 
+---
+= Cree una LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilice el asistente Crear LUN para crear una LUN. El asistente también crea el igroup y asigna la LUN al igroup, lo que permite que el host especificado acceda a la LUN.
+
+.Antes de empezar
+* Debe haber un agregado con espacio libre suficiente para contener la LUN.
+* Debe haber una máquina virtual de almacenamiento (SVM) con el protocolo FC habilitado y las interfaces lógicas (LIF) adecuadas creadas.
+* Debe haber registrado los nombres de puerto WWPN de los puertos FC de host.
+
+
+.Acerca de esta tarea
+Si su organización tiene una convención de nomenclatura, debe usar nombres para el LUN, el volumen, etc., de este modo que se ajusten a su convención. De lo contrario, debe aceptar los nombres predeterminados.
+
+.Pasos
+. Vaya a la ventana *LUN*.
+. Seleccione *Crear.*
+. Examine y seleccione una SVM en la que desea crear las LUN.
++
+Se mostrará el asistente Crear LUN.
+
+. En la página *Propiedades generales*, seleccione el tipo de LUN *Linux* para los LUN utilizados directamente por el host Linux.
++
+Deje sin seleccionar la casilla de verificación *Thin Provisioning*.
+
++
+image::../media/lun_creation_thin_provisioned_linux_fc_rhel.gif[En la ilustración se muestra el cuadro de diálogo con la casilla de comprobación Thin Provisioned sin seleccionar.]
+
+. En la página *contenedor de LUN*, seleccione un volumen de FlexVol existente.
++
+Debe asegurarse de que haya espacio suficiente en el volumen. Si no hay espacio suficiente disponible en los volúmenes existentes, se puede crear un nuevo volumen.
+
+. En la página *asignación de iniciadores*, seleccione *Agregar iGroup*, introduzca la información necesaria en la ficha *General* y, a continuación, en la ficha *iniciadores*, introduzca todos los WWPN de los puertos FC de host que haya grabado.
+. Confirme los detalles y, a continuación, seleccione *Finalizar* para completar el asistente.
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administración del sistema"]

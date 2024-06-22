@@ -1,0 +1,103 @@
+---
+permalink: online-help-96-97/concept_nodes.html 
+sidebar: sidebar 
+keywords: node, system, manager, view, detail, cluster, online, help 
+summary: Puede usar System Manager para ver los detalles de los nodos del clúster. 
+---
+= Gestione los nodos con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver los detalles de los nodos del clúster.
+
+
+
+== Inicialice la hora de la instancia de ComplianceClock
+
+Puede usar System Manager para inicializar la hora de la instancia de ComplianceClock a la hora actual del clúster. Debe inicializar la hora de la instancia de ComplianceClock para crear agregados de SnapLock.
+
+.Antes de empezar
+Debe instalar la licencia de SnapLock.
+
+.Acerca de esta tarea
+No se puede modificar ni detener la hora de ComplianceClock después de que se haya inicializado.
+
+.Pasos
+. Haga clic en *almacenamiento* > *nodos*.
+. Seleccione el nodo y, a continuación, haga clic en *Initialize ComplianceClock*.
+. En el cuadro de diálogo *Initialize ComplianceClock*, haga clic en *Yes* para inicializar la hora de la instancia de ComplianceClock en la hora actual del clúster.
+
+
+
+
+== Ventana nodos
+
+Puede usar la ventana Nodes para ver los detalles de los nodos en un clúster.
+
+
+
+=== Botones de comando
+
+* *Inicializar ComplianceClock*
++
+Inicializa la instancia de ComplianceClock del nodo seleccionado en el valor actual del reloj del sistema.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista Nodes
+
+* *Nombre*
++
+Muestra el nombre del nodo.
+
+* *Estado*
++
+Muestra el estado del nodo (si el nodo está activo o inactivo).
+
+* *Tiempo de subida*
++
+Muestra la duración del nodo activo.
+
+* *Versión de ONTAP*
++
+Muestra la versión de ONTAP que está instalada en el nodo.
+
+* *Modelo*
++
+Muestra el número de modelo de plataforma del nodo.
+
+* *ID del sistema*
++
+Muestra el ID del nodo.
+
+* *Número de serie*
++
+Muestra el número de serie del nodo.
+
+
+
+
+
+=== El área Detalles
+
+Muestra información detallada sobre el nodo seleccionado.
+
+* *Ficha Detalles*
++
+Muestra información relacionada con el nodo seleccionado, como el nombre del nodo, el estado del nodo y la duración del nodo activo.
+
+* *Ficha rendimiento*
++
+Muestra el rendimiento, IOPS y la latencia del nodo seleccionado.
+
++
+Si se cambia la zona horaria del cliente o la zona horaria del clúster, se afectan los gráficos de métricas de rendimiento. Debe actualizar el explorador para ver los gráficos actualizados.
+
+

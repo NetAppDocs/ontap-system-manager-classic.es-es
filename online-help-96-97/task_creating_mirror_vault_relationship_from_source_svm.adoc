@@ -1,0 +1,94 @@
+---
+permalink: online-help-96-97/task_creating_mirror_vault_relationship_from_source_svm.html 
+sidebar: sidebar 
+keywords: create, mirror, vault, relationship, source, svm, online, help, system, manager 
+summary: 'Puede usar System Manager para crear una relación de mirroring y almacén a partir de la máquina virtual de almacenamiento (SVM) de origen. La creación de una relación de este tipo permite mejorar la protección de datos mediante la transferencia periódica de datos del volumen de origen al volumen de destino. Esta relación también permite conservar datos durante períodos prolongados gracias a la creación de backups del volumen de origen.' 
+---
+= Crear una relación de reflejo y almacén a partir de una SVM de origen con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear una relación de mirroring y almacén a partir de la máquina virtual de almacenamiento de origen (SVM). La creación de una relación de este tipo permite mejorar la protección de datos mediante la transferencia periódica de datos del volumen de origen al volumen de destino. Esta relación también permite conservar datos durante períodos prolongados gracias a la creación de backups del volumen de origen.
+
+.Antes de empezar
+* El clúster de origen debe ejecutar ONTAP 8.3.2 o una versión posterior.
+* La licencia de SnapMirror debe habilitarse en el clúster de origen y el de destino.
++
+[NOTE]
+====
+** En algunas plataformas, no es obligatorio que el clúster de origen tenga habilitada la licencia de SnapMirror si el clúster de destino tiene habilitada la licencia de SnapMirror y la licencia de optimización de protección de datos \(DPO\).
+** Una vez que se habilita la licencia DPO en el clúster de destino, debe actualizar el explorador del clúster de origen para habilitar el `Protect` opción.
+
+
+====
+* Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+* La SVM de origen y la SVM de destino deben tener una relación entre iguales en buen estado; o la SVM de destino debe tener permisos para la paridad.
+* El agregado de destino debe tener espacio disponible.
+* Los agregados de origen y destino deben ser agregados de 64 bits.
+* Los volúmenes FlexVol deben estar en línea y del tipo lectura/escritura.
+* El tipo de agregado de SnapLock debe ser el mismo.
+* Se puede proteger un máximo de 25 volúmenes en una selección.
+* Si se conecta de un clúster que ejecuta ONTAP 9.2 o una versión anterior a un clúster remoto donde está habilitada la autenticación del lenguaje de marcado de aserción de seguridad (SAML), la autenticación basada en contraseñas debe estar habilitada en el clúster remoto.
+
+
+.Acerca de esta tarea
+* System Manager no admite relaciones en cascada.
++
+Por ejemplo, el volumen de destino de una relación no puede ser el volumen de origen de otra relación.
+
+* Si el cifrado está habilitado en el volumen de origen y el clúster de destino ejecuta una versión del software ONTAP anterior a ONTAP 9.3, el cifrado se deshabilita de forma predeterminada en el volumen de destino.
+* Las SVM que tienen una relación entre iguales solo para aplicaciones FlexCache y no tienen permisos entre iguales para aplicaciones de SnapMirror no se muestran en la lista de SVM de esta tarea. Puede usar el flujo de trabajo de relación entre iguales mejorada de System Manager 9.6 de ONTAP para otorgar permisos a estas SVM o realizar la paridad. A continuación, puede seleccionarlos en esta tarea para crear una relación de protección.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione los volúmenes para los que desea crear relaciones de réplica y almacén y, a continuación, haga clic en *más acciones* > *proteger*.
++
+La opción *Protect* sólo está disponible para un volumen de lectura/escritura.
+
+. Seleccione el tipo *replicación*:
++
+|===
+| Si seleccionó el tipo de replicación como... | Realice lo siguiente... 
+
+
+ a| 
+Asíncrona
+ a| 
+.. *Opcional:* Si no conoce el tipo de replicación y el tipo de relación, haga clic en *Ayuda elegir*, especifique los valores y, a continuación, haga clic en *aplicar*.
+.. Seleccione el tipo de relación.
++
+El tipo de relación puede ser mirror, vault o mirror y vault.
+
+.. Seleccione un clúster y una SVM.
++
+Si el clúster seleccionado ejecuta una versión del software de ONTAP anterior a ONTAP 9.3, solo se enumeran las SVM con una relación entre iguales. Si el clúster seleccionado ejecuta ONTAP 9.3 o una versión posterior, se enumeran SVM con una relación entre iguales y SVM permitidas.
+
+.. Modifique el sufijo del nombre del volumen, si es necesario.
+
+
+
+
+ a| 
+Síncrona
+ a| 
+.. *Opcional:* Si no conoce el tipo de replicación y el tipo de relación, haga clic en *Ayuda elegir*, especifique los valores y, a continuación, haga clic en *aplicar*.
+.. Seleccione la política de sincronización.
++
+La política de sincronización puede ser StrictSync o Sync.
+
+.. Seleccione un clúster y una SVM.
++
+Si el clúster seleccionado ejecuta una versión del software de ONTAP anterior a ONTAP 9.3, solo se enumeran las SVM con una relación entre iguales. Si el clúster seleccionado ejecuta ONTAP 9.3 o una versión posterior, se enumeran SVM con una relación entre iguales y SVM permitidas.
+
+.. Modifique el sufijo del nombre del volumen, si es necesario.
+
+
+|===
+. *Opcional:* haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*, actualice la política de protección y el programa de protección, seleccione *agregado habilitado para FabricPool* y, a continuación, inicialice la relación de protección.
+. Haga clic en *Guardar*.
+

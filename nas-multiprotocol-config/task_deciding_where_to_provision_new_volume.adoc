@@ -1,0 +1,35 @@
+---
+permalink: nas-multiprotocol-config/task_deciding_where_to_provision_new_volume.html 
+sidebar: sidebar 
+keywords: create, multiprotocol, volume, volume, storage, virtual, machine, svm, configuration, decision, workflow, decide where to provision the new volume 
+summary: Antes de crear un nuevo volumen multiprotocolo, debe decidir si el volumen se colocará en un equipo virtual de almacenamiento existente y, si es así, la configuración necesaria para la SVM. Esta decisión determina su flujo de trabajo. 
+---
+= Decidir dónde se debe aprovisionar el nuevo volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de crear un nuevo volumen multiprotocolo, debe decidir si el volumen se colocará en una máquina virtual de almacenamiento (SVM) existente y, si es así, la configuración necesaria para la SVM. Esta decisión determina su flujo de trabajo.
+
+
+
+== Procedimiento
+
+* Si desea aprovisionar un volumen en una SVM nueva, cree una SVM básica.
++
+link:task_creating_new_svm.html["Creación de una SVM básica"]
+
++
+Debe seleccionar esta opción si CIFS y NFS no están habilitados en una SVM existente.
+
+* Si desea aprovisionar un volumen en una SVM existente con CIFS y NFS habilitado pero no configurado, añada acceso CIFS y NFS en la SVM existente.
++
+link:concept_adding_nas_access_to_existing_svm.html["Se añade acceso de CIFS y NFS en una SVM existente"]
+
+* Si desea aprovisionar un volumen en una SVM existente totalmente configurada para el acceso multiprotocolo CIFS y NFS, puede crear y configurar directamente el volumen.
++
+link:task_creating_configuring_volume.html["Crear y configurar un volumen"]
+
+

@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_viewing_system_manager_log_files.html 
+sidebar: sidebar 
+keywords: view, ontap, system, manager, log, file, online, help 
+summary: Si se encuentra con algún problema al utilizar System Manager, es posible enviar los archivos de registro al soporte técnico para ayudar a resolver los problemas. Los archivos de registro de System Manager se encuentran en el directorio mlog junto con los archivos de registro de ONTAP. 
+---
+= Ver archivos de registro de System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si se encuentra con algún problema al usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores), es posible enviar los archivos de registro para ayudar a resolver los problemas si así lo indica el soporte de NetApp. Los archivos de registro de System Manager se encuentran en la `mlog` directorio junto con los archivos de registro de ONTAP.
+
+.Pasos
+. Identifique el nodo que aloja la LIF de gestión del clúster.
+. Introduzca la siguiente URL en un navegador web: `+https://cluster-mgmt-LIF/spi+`
++
+`cluster-mgmt-LIF` Es la dirección IP de la LIF de gestión del clúster.
+
+. Escriba sus credenciales de administrador del clúster y, a continuación, haga clic en *Aceptar*.
+. En la ventana *Data ONTAP - acceso a archivos de volumen raíz*, haga clic en el enlace *logs* del nodo que aloja la LIF de administración del clúster.
+. Desplácese hasta la `mlog` directorio para acceder a los archivos de registro de System Manager.
++
+Es posible que se necesiten los siguientes archivos de registro, según el tipo de problema que se encuentre:
+
++
+** `sysmgr.log`
++
+Este archivo contiene los registros más recientes de System Manager.
+
+** `mgwd.log`
+** `php.log`
+** `apache_access.log`
+** `messages.log`
+
+
+
+
+
+
+== Cómo funciona el registro del sistema
+
+El registro del sistema es una herramienta esencial para la solución de problemas de aplicaciones. Debe habilitar el registro del sistema para que, si hay un problema con una aplicación, se pueda localizar el problema. Puede habilitar el inicio de sesión de System Manager en tiempo de ejecución sin modificar el binario de la aplicación.
+
+La salida del registro puede ser voluminosa y, por lo tanto, puede resultar difícil de gestionar. System Manager permite afinar la salida de registro seleccionando el tipo de sentencias de registro que se emiten. De forma predeterminada, el registro del sistema se establece en INFO. Se puede seleccionar uno de los siguientes niveles de registro:
+
+* APAGADO
+* ERROR
+* ADVERTIR
+* INFORMACIÓN
+* DEPURAR
+
+
+Estos niveles funcionan jerárquicamente. Un nivel de registro establecido EN OFF indica que no hay registro de mensajes.

@@ -1,0 +1,80 @@
+---
+permalink: online-help-96-97/concept_high_availability.html 
+sidebar: sidebar 
+keywords: high, availability, system, manager, hardware, redundancy, nondisruptive, operations, fault, tolerance 
+summary: 'Puede usar System Manager para crear parejas de alta disponibilidad (ha) que proporcionan la redundancia de hardware necesaria para las operaciones no disruptivas y la tolerancia a fallos.' 
+---
+= Crear pares de alta disponibilidad con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear pares de alta disponibilidad que proporcionan la redundancia de hardware necesaria para las operaciones no disruptivas y la tolerancia a fallos.
+
+
+
+== Ventana de alta disponibilidad
+
+La ventana Alta disponibilidad proporciona una representación gráfica del estado de alta disponibilidad, el estado de interconexión y el estado de toma de control o devolución de todos los pares ha de ONTAP. También puede iniciar manualmente una operación de toma de control o devolución mediante la ventana Alta disponibilidad.
+
+Puede ver detalles como el estado de toma de control o devolución y el estado de interconexión haciendo clic en la imagen de pareja de alta disponibilidad.
+
+El color indica el estado del par de alta disponibilidad:
+
+* Verde: Indica que la pareja de ha y la interconexión están configuradas de forma óptima y están disponibles para toma de control o retorno al nodo primario.
++
+El verde también indica la toma de control en estado en curso, la devolución en estado en curso y la espera del estado de devolución.
+
+* Rojo: Indica un estado de reducción, como un fallo de adquisición.
+* Amarillo: Indica que el estado de la interconexión es inactivo.
+
+
+Cuando varias parejas de alta disponibilidad de un clúster participan simultáneamente en operaciones de conmutación por error del almacenamiento, el estado del clúster que se muestra se basa en el estado y la gravedad de la pareja de alta disponibilidad. Se tiene en cuenta el siguiente orden de gravedad mientras se muestra el estado del clúster: Toma de control en curso, devolución en curso y espera al devolución.
+
+
+
+=== Acciones
+
+Puede realizar tareas como la toma de control o el retorno al nodo primario en función del estado de los nodos de la pareja de ha.
+
+* Respaldo `node_name`
++
+Le permite realizar una operación de toma de control cuando se requiere mantenimiento en el nodo asociado.
+
+* Devolución `node_name`
++
+Le permite realizar una operación de devolución cuando el nodo del partner que se ha tomado está esperando más o está en estado de devolución parcial.
+
+* Activar o desactivar devolución automática
++
+Habilita o deshabilita la operación de devolución automática.
+
++
+[NOTE]
+====
+La devolución automática está habilitada de forma predeterminada.
+
+====
+
+
+
+
+=== Botones de comando
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
++
+[NOTE]
+====
+La información que se muestra en la ventana Alta disponibilidad se actualiza automáticamente cada 60 segundos.
+
+====
+
+
+*Información relacionada*
+
+xref:task_monitoring_ha_pairs.adoc[Supervisión de parejas de alta disponibilidad]

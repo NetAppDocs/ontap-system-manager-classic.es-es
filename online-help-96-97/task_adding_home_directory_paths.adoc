@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_adding_home_directory_paths.html 
+sidebar: sidebar 
+keywords: cifs, system, manager, online, help, storage, add , delete, home, directory 
+summary: Puede usar System Manager para especificar una o varias rutas que el sistema de almacenamiento pueda utilizar para resolver la ubicación de los directorios iniciales CIFS de los usuarios. 
+---
+= Administrar rutas de directorios iniciales: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para especificar una o varias rutas que puede usar el sistema de almacenamiento para resolver la ubicación de los usuarios iniciales de CIFS.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el área *directorios iniciales* de la ficha *Configuración*, haga clic en *Administrar*.
+. En el cuadro de diálogo *Administrar directorios iniciales*, especifique las rutas que el sistema de almacenamiento utilizará para buscar los directorios iniciales CIFS de los usuarios.
+. Haga clic en *Agregar* y, a continuación, haga clic en *Guardar y cerrar*.
+
+
+
+
+== Eliminar rutas de acceso al directorio inicial
+
+Puede usar System Manager para eliminar una ruta de directorio inicial cuando no desea que el sistema de almacenamiento utilice la ruta para resolver la ubicación de los directorios iniciales CIFS de los usuarios.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el área *directorios iniciales* de la ficha *Configuración*, haga clic en *Administrar*.
+. En el cuadro de diálogo *Administrar directorios iniciales*, seleccione la ruta de acceso del directorio principal que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. Haga clic en *Guardar y cerrar*.
+
+
+*Información relacionada*

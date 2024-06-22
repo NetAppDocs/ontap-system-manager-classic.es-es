@@ -1,0 +1,41 @@
+---
+permalink: online-help-96-97/task_specifying_advanced_options_for_flexgroup_volume.html 
+sidebar: sidebar 
+keywords: flexclone, volume, specify, advanced, create, options, online, help 
+summary: Al crear un volumen de FlexGroup, es posible especificar las opciones que se desean asociar al volumen de FlexGroup. 
+---
+= Especifique opciones avanzadas para un volumen FlexGroup con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando se crea un volumen de FlexGroup, se puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para especificar las opciones que se desean asociar al volumen de FlexGroup.
+
+.Pasos
+. *Opcional:* en la ventana *Crear FlexGroup*, haga clic en image:../media/advanced_options.gif[""] para especificar las opciones avanzadas.
++
+Aparece la ventana Opciones avanzadas. Contiene secciones (los encabezados de la columna izquierda), en las que puede especificar varias opciones.
+
+. En la sección *Detalles generales*, seleccione la reserva de espacio y el estilo de seguridad y, a continuación, establezca el permiso UNIX para el volumen.
++
+Debe tener en cuenta las siguientes limitaciones:
+
++
+** La opción de reserva de espacio no está disponible para los agregados de FabricPool.
+** Cuando se habilita thin provisioning, se asigna espacio al volumen desde el agregado solo cuando se escriben datos en el volumen.
+** Para los sistemas de almacenamiento optimizados para all-flash, la tecnología de thin provisioning está activada de forma predeterminada, mientras que, para otros sistemas de almacenamiento, el aprovisionamiento ligero está habilitado de forma predeterminada.
+
+
+. En la sección *agregados*, puede activar el botón *Seleccionar agregados* para anular los valores predeterminados de las mejores prácticas y seleccionar las opciones de una lista de agregados de FabricPool.
+. En la sección *optimizar espacio*, puede activar la deduplicación en el volumen.
++
+System Manager usa la programación de deduplicación predeterminada. Si el tamaño de volumen especificado supera el límite requerido para ejecutar la deduplicación, el volumen se creará, pero la deduplicación no se habilitará.
+
++
+Para sistemas con personalidad de All Flash Optimized, la compresión inline y el `auto` la programación de la deduplicación está habilitada de forma predeterminada.
+
+. En la sección *QoS* (calidad de servicio), especifique el grupo de políticas para controlar el rendimiento de entrada/salida (E/S) del volumen FlexGroup.
+. Haga clic en *aplicar* para actualizar los cambios.
+

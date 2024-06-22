@@ -1,0 +1,99 @@
+---
+permalink: online-help-96-97/concept_roles.html 
+sidebar: sidebar 
+keywords: system, manager, role, create, user, access, control, online, help 
+summary: Es posible usar System Manager para crear roles de usuario controlados por acceso. 
+---
+= Gestione roles con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear roles de usuario con control de acceso.
+
+
+
+== Añadir roles
+
+Puede usar System Manager para añadir un rol de control de acceso y especificar el comando o el directorio de comandos a los que pueden acceder los usuarios del rol. También puede controlar el nivel de acceso que el rol tiene al comando o directorio de comandos, y puede especificar una consulta que se aplique al comando o directorio de comandos.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Administración*, haga clic en *roles*.
+. En la ventana *roles*, haga clic en *Agregar*.
+. En el cuadro de diálogo *Agregar rol*, escriba el nombre de la función y agregue los atributos de la función.
+. Haga clic en *Agregar*.
+
+
+
+
+== Editar roles
+
+Puede usar System Manager para modificar el acceso de un rol de control de acceso a un comando o directorio de comandos y restringir el acceso de un usuario solo a un conjunto de comandos especificado. También puede quitar el acceso de un rol al directorio de comandos predeterminado.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Administración*, haga clic en *roles*.
+. En la ventana *roles*, seleccione la función que desea modificar y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar rol*, modifique los atributos de función y, a continuación, haga clic en *Modificar*.
+. Compruebe los cambios realizados en la ventana *roles*.
+
+
+
+
+== Roles y permisos
+
+El administrador de clúster puede restringir el acceso de un usuario a solo un conjunto de comandos especificado mediante la creación de un rol de control de acceso restringido y la asignación del rol a un usuario.
+
+Puede gestionar los roles de control de acceso de las siguientes maneras:
+
+* Mediante la creación de un rol de control de acceso y la especificación del comando o directorio de comandos al que pueden acceder los usuarios de la función.
+* Controlando el nivel de acceso que tiene la función para el comando o el directorio de comandos y, a continuación, especificando una consulta que se aplica al comando o al directorio de comandos.
+* Mediante la modificación del acceso de un rol de control de acceso a un comando o directorio de comandos.
+* Para mostrar información sobre los roles de control de acceso, como el nombre del rol, el comando o directorio de comandos al que puede acceder un rol, el nivel de acceso y la consulta.
+* Eliminando un rol de control de acceso.
+* Restringiendo el acceso de un usuario a solo un conjunto especificado de comandos.
+* Mostrando las API de ONTAP y sus comandos de interfaz de línea de comandos (CLI) correspondientes.
+
+
+
+
+== Funciones
+
+Puede utilizar la ventana roles para administrar los roles asociados a las cuentas de usuario.
+
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Se abre el cuadro de diálogo Add Role, que permite crear un rol de control de acceso y especificar el comando o directorio de comandos al que pueden acceder los usuarios del rol.
+
+* *Edición*
++
+Se abre el cuadro de diálogo Editar rol, que permite añadir o modificar atributos de rol.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista roles
+
+La lista roles proporciona una lista de funciones que están disponibles para asignarse a los usuarios.
+
+
+
+=== Área Role Attributes
+
+El área de detalles muestra los atributos de función, como el comando o el directorio de comandos al que puede acceder el rol seleccionado, el nivel de acceso y la consulta que se aplica al comando o al directorio de comandos.
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/authentication/index.html["Autenticación de administrador y RBAC"^]

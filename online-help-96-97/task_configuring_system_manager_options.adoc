@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_configuring_system_manager_options.html 
+sidebar: sidebar 
+keywords: system, manager, configure, system, manager, option, online, help 
+summary: Puede habilitar el registro y especificar el valor de tiempo de espera de inactividad para System Manager. 
+---
+= Configure las opciones de System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede habilitar el registro y especificar el valor de tiempo de espera de la inactividad para ONTAP System Manager Classic (disponible en ONTAP 9.7 o anterior).
+
+.Acerca de esta tarea
+Puede configurar las opciones desde la ventana de inicio de sesión de System Manager. Sin embargo, debe iniciar sesión en la aplicación para especificar el valor de tiempo de espera de inactividad.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Configuración*, haga clic en *General*.
+. Especifique un nivel de registro.
+. Especifique el valor de tiempo de espera de inactividad en minutos.
++
+[NOTE]
+====
+Esta opción no está disponible si tiene habilitada la autenticación del lenguaje de marcado de aserción de seguridad (SAML).
+
+====
+. Haga clic en *Aceptar*.
+

@@ -1,0 +1,46 @@
+---
+permalink: volume-disaster-recovery/task_breaking_snapmirror_relationship.html 
+sidebar: sidebar 
+keywords: quiesce, break, snapmirror, relationship, activate, destination, volume, snapmirror, quiescing, transfer, disable, break the snapmirror relationship 
+summary: Debe poner en modo inactivo y romper la relación de SnapMirror para activar el volumen de destino. Tras la ralentización, las futuras transferencias de datos de SnapMirror están deshabilitadas. 
+---
+= Rompa la relación de SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe poner en modo inactivo y romper la relación de SnapMirror para activar el volumen de destino. Tras la ralentización, las futuras transferencias de datos de SnapMirror están deshabilitadas.
+
+.Antes de empezar
+El volumen de destino se debe montar en el espacio de nombres de la SVM de destino.
+
+.Acerca de esta tarea
+Debe realizar esta tarea desde el clúster *destino*.
+
+.Pasos
+. Según la versión de System Manager que esté ejecutando, realice uno de los pasos siguientes:
++
+** ONTAP 9.4 o anterior: Haga clic en *Protección* > *Relaciones*.
+** A partir de ONTAP 9.5: Haga clic en *Protección* > *Relaciones de volumen*.
+
+
+. Seleccione la relación de SnapMirror entre los volúmenes de origen y de destino.
+. Haga clic en *Operaciones* > *Quiesce* para desactivar las futuras transferencias de datos.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Quiesce*.
++
+La operación de inactividad puede llevar algún tiempo, no debe realizar ninguna otra operación en la relación de SnapMirror hasta que el estado de transferencia se muestre como `Quiesced`.
+
+. Haga clic en *Operaciones* > *rotura*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *interrumpir*.
++
+image::../media/break.gif[Pantalla de pausa de SnapMirror]
+
++
+La relación de SnapMirror se encuentra en `Broken Off` estado.
+
++
+image::../media/break_verify.gif[La relación de SnapMirror en estado Broken-off]
+
+

@@ -1,0 +1,22 @@
+---
+permalink: online-help-96-97/concept_disks.html 
+sidebar: sidebar 
+keywords: system, manager, disk, manage, online, help 
+summary: Puede usar System Manager para gestionar discos. 
+---
+= Gestione discos con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar discos.
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestión de discos y agregados"^]
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Referencias y requisitos de instalación de la virtualización FlexArray"^]
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceptos de ONTAP"^]

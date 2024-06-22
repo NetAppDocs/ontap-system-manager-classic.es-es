@@ -1,0 +1,348 @@
+---
+permalink: online-help-96-97/concept_quotas.html 
+sidebar: sidebar 
+keywords: system, manager, quota, online, help, view, activate, deactivate, information, types, targets, default, limits, space, files, manage, tree, group 
+summary: Se puede usar System Manager para crear, editar y eliminar cuotas. 
+---
+= Gestione cuotas con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear, editar y eliminar cuotas.
+
+
+
+== Crear cuotas
+
+Las cuotas le permiten restringir o realizar un seguimiento del espacio en disco y del número de archivos que utilizan un usuario, grupo o qtree. Puede usar el asistente Add quota de System Manager para crear una cuota y aplicar la cuota a un volumen o un qtree específicos.
+
+.Acerca de esta tarea
+Con System Manager, el valor mínimo que se puede especificar para el límite duro y el límite blando del número de archivos que puede poseer la cuota es 1000. Si desea especificar un valor inferior a 1000, debe usar la interfaz de línea de comandos (CLI).
+
+.Pasos
+. Haga clic en *almacenamiento* > *cuotas*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que desea crear una cuota.
+. En la pestaña *cuotas definidas por el usuario*, haga clic en *Crear*.
++
+Aparecerá el Asistente para crear cuota.
+
+. Escriba o seleccione la información que le solicite el asistente.
+. Confirme los detalles y, a continuación, haga clic en *Finalizar* para completar el asistente.
+
+
+
+
+=== Qué hacer a continuación
+
+Puede usar el nombre de usuario local O RID para crear cuotas de usuario. Si crea la cuota de usuario o la cuota de grupo mediante el nombre de usuario o el nombre de grupo, el ``/etc/passwd``y la``/etc/group``el archivo debe actualizarse, respectivamente.
+
+
+
+== Eliminar cuotas
+
+Puede usar System Manager para eliminar una o varias cuotas cuando cambien los usuarios y sus requisitos de almacenamiento y las limitaciones.
+
+.Pasos
+. Haga clic en *almacenamiento* > *cuotas*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que residen las cuotas que desea eliminar.
+. Seleccione una o más cuotas que desee eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+
+
+== Editar los límites de cuota
+
+Puede usar System Manager para editar el umbral de espacio en disco, el límite duro y el límite de software de la cantidad de espacio en disco que puede utilizar el destino de cuota, así como el límite duro y el límite de software del número de archivos que puede tener el destino de cuota.
+
+.Pasos
+. Haga clic en *almacenamiento* > *cuotas*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que reside la cuota que desea editar.
+. Seleccione la cuota que desea editar y haga clic en *Editar límites*.
+. En el cuadro de diálogo *Editar límites*, edite la configuración de cuota según sea necesario.
++
+Cien (100) es el valor mínimo que puede especificar para el límite duro y el límite de software en el número de archivos que puede tener la cuota. Si desea especificar un valor inferior a 100, debe usar la interfaz de línea de comandos (CLI).
+
+. Haga clic en *Guardar y cerrar*.
+. Compruebe los cambios realizados en la cuota seleccionada en la pestaña *cuotas definidas por el usuario*.
+
+
+
+
+== Activar o desactivar cuotas
+
+Puede usar System Manager para activar o desactivar las cuotas de uno o varios volúmenes que seleccione en el sistema de almacenamiento. Puede activar o desactivar las cuotas cuando cambian los usuarios y sus requisitos de almacenamiento y las limitaciones.
+
+.Pasos
+. Haga clic en *almacenamiento* > *cuotas*.
+. En el menú desplegable del campo SVM, seleccione la máquina virtual de almacenamiento (SVM) donde residen las cuotas que desea activar o desactivar.
+. En la pestaña *Estado de cuota en volúmenes*, seleccione uno o más volúmenes para los que desee activar o desactivar cuotas.
+. Haga clic en *Activar* o *Desactivar*, según sea necesario.
+. Si está desactivando una cuota, active la casilla de verificación de confirmación y, a continuación, haga clic en *Aceptar*.
+. Verifique el estado de la cuota en los volúmenes en la columna *Estado*.
+
+
+
+
+== Cambiar el tamaño de las cuotas
+
+Puede usar el cuadro de diálogo Cambiar tamaño de cuota de System Manager para ajustar las cuotas activas en el volumen especificado de modo que reflejen los cambios realizados en una cuota.
+
+.Antes de empezar
+Hay que habilitar las cuotas para los volúmenes en los que se desea cambiar el tamaño de las cuotas.
+
+.Pasos
+. Haga clic en *almacenamiento* > *cuotas*.
+. En la pestaña *Estado de cuota en volúmenes* de la ventana *cuotas*, seleccione uno o más volúmenes para los que desee cambiar el tamaño de las cuotas.
+. Haga clic en *Cambiar tamaño*.
+
+
+
+
+== Ver información de cuota
+
+Puede usar la ventana Quotas de System Manager para ver detalles de cuotas, como el volumen y los qtrees a los que se aplica la cuota, el tipo de cuota, el usuario o el grupo al que se aplica la cuota y el espacio y el uso de archivos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *cuotas*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que reside la cuota sobre la que desea ver información.
+. Ejecute la acción adecuada:
++
+[cols="1a,1a"]
+|===
+| Si... | Realice lo siguiente... 
+
+
+ a| 
+Desea ver detalles de todas las cuotas que ha creado
+ a| 
+Haga clic en la pestaña *cuotas definidas por el usuario*.
+
+
+
+ a| 
+Desea ver detalles de las cuotas que están activas en este momento
+ a| 
+Haga clic en la ficha *Informe de cuota*.
+
+|===
+. Seleccione la cuota sobre la que desea ver información de en la lista de cuotas que se muestra.
+. Revise los detalles de la cuota.
+
+
+
+
+== Tipos de cuotas
+
+Las cuotas pueden clasificarse en función de los objetivos a los que se aplican.
+
+A continuación se muestran los tipos de cuotas basados en los objetivos a los que se aplican:
+
+* *Cuota de usuario*
++
+El destino es un usuario.
+
++
+El usuario puede estar representado por un nombre de usuario de UNIX, un UID de UNIX, un SID de Windows, un archivo o directorio cuyo UID coincida con el usuario, el nombre de usuario de Windows en formato anterior a Windows 2000 y un archivo o directorio con una ACL propiedad del SID del usuario. Puede aplicarlo a un volumen o a un qtree.
+
+* *Cuota de grupo*
++
+El destino es un grupo.
+
++
+El grupo está representado por un nombre de grupo UNIX, un GID o un archivo o directorio cuyo GID coincida con el grupo. ONTAP no aplica cuotas de grupo basadas en un ID de Windows. Puede aplicar una cuota a un volumen o un qtree.
+
+* *Cuota de Qtree*
++
+El destino es un qtree, especificado por el nombre de la ruta al qtree.
+
++
+Puede determinar el tamaño del qtree de destino.
+
+* *Cuota por defecto*
++
+Aplica automáticamente un límite de cuota a un gran conjunto de objetivos de cuota sin crear cuotas separadas para cada destino.
+
++
+Las cuotas predeterminadas se pueden aplicar a los tres tipos de destino de cuota (usuarios, grupos y qtrees). El tipo de cuota está determinado por el valor del campo de tipo.
+
+
+
+
+
+== Límites de cuotas
+
+Puede aplicar un límite de espacio en disco o limitar el número de archivos para cada tipo de cuota. Si no especifica un límite para una cuota, no se aplicará ninguno.
+
+Las cuotas pueden ser suaves o duras. Las cuotas blandas hacen que Data ONTAP envíe una notificación cuando se superen los límites especificados y las cuotas rígidas evitan que una operación de escritura tenga éxito cuando se superen los límites especificados.
+
+Las cuotas estrictas imponen un límite duro a los recursos del sistema; cualquier operación que pueda resultar en superar el límite falla. Los siguientes ajustes crean cuotas rígidas:
+
+* Parámetro límite de discos
+* Parámetro límite de archivos
+
+
+Las cuotas suaves envían un mensaje de advertencia cuando el uso de recursos alcanza un cierto nivel, pero no afectan a las operaciones de acceso a datos, por lo que puede tomar las acciones apropiadas antes de que se supere la cuota. Los siguientes ajustes crean cuotas programables:
+
+* Umbral del parámetro Disk Limit
+* Parámetro límite de disco duro
+* Parámetro límite de archivos de software
+
+
+Las cuotas de umbral y de disco duro permiten a los administradores recibir más de una notificación sobre una cuota. Normalmente, los administradores establecen el umbral del límite de disco en un valor que es sólo ligeramente inferior al límite de disco, de modo que el umbral proporciona una "advertencia final" antes de que las escrituras empiecen a fallar.
+
+* *Límite de espacio en disco duro*
++
+Límite de espacio en disco aplicado a cuotas máximas.
+
+* *Límite de software de espacio en disco*
++
+Límite de espacio en disco aplicado a cuotas blandas.
+
+* *Límite de umbral*
++
+Límite de espacio en disco aplicado a cuotas de umbral.
+
+* *Límite duro de archivos*
++
+Número máximo de archivos en una cuota fija.
+
+* *Límite de software de archivos*
++
+Número máximo de archivos en una cuota de software.
+
+
+
+
+
+== Gestión de cuotas
+
+System Manager incluye varias funciones que ayudan a crear, editar o eliminar cuotas. Puede crear una cuota de usuario, grupo o árbol y especificar límites de cuota en el disco y en los niveles de archivo. Todas las cuotas se establecen por volumen.
+
+Después de crear una cuota, puede realizar las siguientes tareas:
+
+* Habilite y deshabilite cuotas
+* Cambiar el tamaño de las cuotas
+
+
+
+
+== Cuotas
+
+Puede utilizar la ventana Quotas para crear, mostrar y gestionar información acerca de las cuotas.
+
+
+
+=== Pestañas
+
+* *Cuotas definidas por el usuario*
++
+Puede utilizar la pestaña *cuotas definidas por el usuario* para ver detalles de las cuotas que cree y para crear, editar o eliminar cuotas.
+
+* *Informe de cuota*
++
+Puede utilizar la ficha Informe de cuota para ver el uso de espacio y archivos y editar los límites de espacio y archivos de las cuotas activas.
+
+* *Estado de cuota en volúmenes*
++
+Se puede usar la pestaña Quota Status on Volumes para ver el estado de una cuota, activar o desactivar las cuotas y cambiar su tamaño.
+
+
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el asistente de creación de cuotas, que permite crear cuotas.
+
+* *Editar límites*
++
+Abre el cuadro de diálogo Editar límites, que permite editar la configuración de la cuota seleccionada.
+
+* *Eliminar*
++
+Elimina la cuota seleccionada de la lista cuotas.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de cuotas definidas por el usuario
+
+La lista de cuotas muestra el nombre y la información de almacenamiento de cada cuota.
+
+* *Volumen*
++
+Especifica el volumen al que se aplica la cuota.
+
+* *Qtree*
++
+Especifica el qtree asociado a la cuota. "'todos los qtrees'" indica que la cuota está asociada con todos los qtrees.
+
+* *Tipo*
++
+Especifica el tipo de cuota: Usuario, grupo o árbol.
+
+* *Usuario/Grupo*
++
+Especifica un usuario o grupo asociado a la cuota. "Todos los usuarios" indica que la cuota está asociada a todos los usuarios. "Todos los grupos" indica que la cuota está asociada a todos los grupos.
+
+* *Objetivo de cuota*
++
+Especifica el tipo de destino al que está asignada la cuota. El destino puede ser qtree, usuario o grupo.
+
+* *Space Hard Limit*
++
+Especifica el límite de espacio en disco aplicado a las cuotas rígidas.
+
++
+Este campo está oculto de forma predeterminada.
+
+* *Límite de espacio blando*
++
+Especifica el límite de espacio en disco aplicado a las cuotas de software.
+
++
+Este campo está oculto de forma predeterminada.
+
+* *Umbral*
++
+Especifica el límite de espacio en disco aplicado a las cuotas de umbral.
+
++
+Este campo está oculto de forma predeterminada.
+
+* *Límite duro de archivos*
++
+Especifica el número máximo de archivos en una cuota dura.
+
++
+Este campo está oculto de forma predeterminada.
+
+* *Límite de software de archivo*
++
+Especifica el número máximo de archivos en una cuota de software.
+
++
+Este campo está oculto de forma predeterminada.
+
+
+
+
+
+=== El área Detalles
+
+El área situada debajo de la lista de cuotas muestra detalles de cuotas, como el error de cuota, el uso de espacio y los límites y el uso de archivos.
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Gestión de almacenamiento lógico"^]

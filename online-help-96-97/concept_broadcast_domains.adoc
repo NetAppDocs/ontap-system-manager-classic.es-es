@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_broadcast_domains.html 
+sidebar: sidebar 
+keywords: system, manager, create, manage, broadcast, domain, online, help, edit, settings, port, delete 
+summary: Puede usar System Manager para crear y gestionar dominios de retransmisión. 
+---
+= Gestione dominios de retransmisión con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar dominios de retransmisión.
+
+
+
+== Editar la configuración del dominio de retransmisión
+
+Puede usar System Manager para modificar los atributos de un dominio de retransmisión como el nombre, el tamaño de MTU y los puertos asociados con el dominio de retransmisión.
+
+.Acerca de esta tarea
+* No debe modificar el tamaño de MTU del dominio de retransmisión al que se asigna el puerto e0M de gestión.
+* No se puede usar System Manager para editar dominios de retransmisión en el espacio IP del clúster.
++
+En su lugar, debe usar la interfaz de línea de comandos (CLI).
+
+
+
+.Pasos
+. Haga clic en *Red* > *Dominios de difusión*.
+. Seleccione el dominio de difusión que desea modificar y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar dominio de difusión*, modifique los atributos del dominio de difusión según sea necesario.
+. Haga clic en *Guardar y cerrar*.
+
+
+
+
+== Elimine los dominios de retransmisión
+
+Puede eliminar un dominio de retransmisión mediante System Manager cuando ya no se necesita el dominio de retransmisión.
+
+.Antes de empezar
+No se deben asociar subredes al dominio de difusión que desea eliminar.
+
+.Acerca de esta tarea
+* Cuando se elimina un dominio de retransmisión, los puertos asociados al dominio de retransmisión se asignan al espacio IP predeterminado y la configuración de MTU de los puertos no se modifica.
+* No puede usar System Manager para eliminar dominios de retransmisión que están en el espacio IP del clúster.
++
+En su lugar, debe usar la interfaz de línea de comandos (CLI).
+
+
+
+.Pasos
+. Haga clic en *Red* > *Dominios de difusión*.
+. Seleccione el dominio de difusión que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+*Información relacionada*
+
+xref:reference_network_window.adoc[Ventana de red]
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Gestión de redes"]

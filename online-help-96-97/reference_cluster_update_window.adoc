@@ -1,0 +1,117 @@
+---
+permalink: online-help-96-97/reference_cluster_update_window.html 
+sidebar: sidebar 
+keywords: online, help, cluster, update, window, tab, update, command, button, history, tab 
+summary: Puede usar la ventana Cluster Update para realizar una actualización de clúster automatizada de forma no disruptiva, o bien puede actualizar los clústeres de un nodo de manera disruptiva. 
+---
+= Ventana de actualización de clúster con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana Cluster Update para realizar una actualización automatizada del clúster de forma no disruptiva, o bien puede actualizar los clústeres de un solo nodo de manera disruptiva con System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores).
+
+
+
+== Pestañas
+
+* *Cluster Update*
++
+Permite realizar una actualización automatizada del clúster de forma no disruptiva o actualizar los clústeres de nodo individual de manera disruptiva.
+
+* *Historial de actualizaciones*
++
+Muestra los detalles de actualizaciones anteriores del clúster.
+
+
+
+
+
+== Pestaña Cluster Update
+
+La pestaña Cluster Update permite realizar una actualización automatizada del clúster de forma no disruptiva, o bien actualizar los clústeres de nodo individual de manera disruptiva.
+
+
+
+== Botones de comando
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+* *Seleccione*
++
+Puede seleccionar la versión de la imagen de software para la actualización.
+
++
+** Detalles de la versión del clúster: Se muestra la versión actual del clúster en uso y los detalles de la versión de los nodos o de los pares de alta disponibilidad.
+** Imágenes de software disponibles: Permite seleccionar una imagen de software existente para la actualización.
++
+También puede descargar una imagen de software del sitio de soporte de NetApp y añadir la imagen para la actualización.
+
+
+
+* *Validar*
++
+Puede ver y validar el clúster con la versión de la imagen de software de la actualización. Una validación previa a la actualización comprueba si el clúster está en un estado que está listo para la actualización. Si la validación se completa con errores, una tabla muestra el estado de los distintos componentes y la acción correctiva necesaria para los errores.
+
++
+Solo puede realizar la actualización cuando la validación se haya completado correctamente.
+
+* *Actualizar*
++
+Puede actualizar todos los nodos del clúster o una pareja de ha del clúster a la versión seleccionada de la imagen de software. Mientras la actualización está en curso, puede optar por pausar la actualización y luego cancelar o reanudar la actualización.
+
++
+Si se produce un error, la actualización se coloca en pausa y se muestra un mensaje de error con los pasos para solucionarlo. Puede optar por reanudar la actualización después de realizar los pasos para solucionarlo o cancelar la actualización. Puede ver la tabla con el nombre del nodo, el tiempo activo, el estado y la versión de ONTAP cuando la actualización se haya completado correctamente.
+
+
+
+
+
+== Actualizar historial
+
+Muestra detalles sobre el historial de actualizaciones de clúster.
+
+
+
+== Actualizar la lista Historial
+
+* *Versión de imagen*
++
+Especifica la versión de la imagen ONTAP a la que se actualizará el nodo.
+
+* *Actualizaciones de software instaladas el*
++
+Especifica el tipo de disco en el que se instalan las actualizaciones.
+
+* *Estado*
++
+Especifica el estado de la actualización de la imagen de software (si la actualización se ha realizado correctamente o se ha cancelado).
+
+* *Hora de inicio*
++
+Especifica la hora a la que se inició la actualización.
+
+* *Tiempo de finalización*
++
+Especifica la hora a la que se completó la actualización.
+
++
+Este campo está oculto de forma predeterminada.
+
+* *Tiempo necesario para la actualización*
++
+Especifica el tiempo que se tarda en finalizar la actualización.
+
+* *Versión anterior*
++
+Especifica la versión de ONTAP del nodo antes de la actualización.
+
+* *Versión actualizada*
++
+Especifica la versión ONTAP del nodo después de la actualización.
+
+

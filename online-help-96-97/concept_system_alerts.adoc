@@ -1,0 +1,217 @@
+---
+permalink: online-help-96-97/concept_system_alerts.html 
+sidebar: sidebar 
+keywords: system, manager, monitor, cluster, health, alerts, delete, 
+summary: Puede usar System Manager para supervisar diferentes partes de un clúster. 
+---
+= Gestione las alertas del sistema con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para supervisar diferentes partes de un clúster.
+
+
+
+== Reconozca las alertas de estado del sistema
+
+Puede usar System Manager para reconocer y responder a las alertas de estado del sistema para los subsistemas de. Puede utilizar la información que se muestra para realizar la acción recomendada y corregir el problema informado por la alerta.
+
+.Pasos
+. Haga clic en *Eventos y trabajos* > *Alertas del sistema*.
+. En la ventana *Alertas del sistema*, haga clic en el icono de flecha situado junto al nombre del subsistema.
+. Seleccione la alerta que desea reconocer y, a continuación, haga clic en *reconocer*.
+. Escriba su nombre y, a continuación, haga clic en *acuse de recibo*.
+
+
+
+
+== Suprimir las alertas de estado del sistema
+
+Puede usar System Manager para suprimir alertas de estado del sistema que no requieren intervención alguna por parte del usuario.
+
+.Pasos
+. Haga clic en *Eventos y trabajos* > *Alertas del sistema*.
+. En la ventana *Alertas del sistema*, haga clic en el icono de flecha situado junto al nombre del subsistema.
+. Seleccione la alerta que desea suprimir y, a continuación, haga clic en *Suprimir*.
+. Escriba su nombre y, a continuación, haga clic en *Suprimir*.
+
+
+
+
+== Elimine las alertas de estado del sistema
+
+Puede usar System Manager para eliminar alertas de estado del sistema a las que ya respondió.
+
+.Pasos
+. Haga clic en *Eventos y trabajos* > *Alertas del sistema*.
+. En la ventana *Alertas del sistema*, haga clic en el icono de flecha situado junto al nombre del subsistema.
+. Seleccione la alerta que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. Haga clic en *Aceptar*.
+
+
+
+
+== Monitores de estado del clúster disponibles
+
+Existen varios monitores de estado que supervisan diferentes partes de un clúster. Los monitores de estado le ayudan a recuperarse de errores en sistemas ONTAP mediante la detección de eventos, el envío de alertas a usted y la eliminación de eventos según los borre.
+
+[cols="1a,1a,1a"]
+|===
+| Nombre del monitor de estado (identificador) | Nombre del subsistema (identificador) | Específico 
+
+
+ a| 
+Switch de clúster (switch de clúster)
+ a| 
+Switch (Switch-Health)
+ a| 
+Supervisa los switches de red de clúster y los switches de red de gestión para obtener temperatura, utilización, configuración de interfaces, redundancia (solo switches de red de clúster) y funcionamiento de suministro de alimentación y ventilador. El monitor de estado del switch del clúster se comunica con los switches a través de SNMP. SNMPv2c es el valor predeterminado.
+
+[NOTE]
+====
+A partir de ONTAP 9.2, este monitor puede detectar y generar informes cuando se ha reiniciado un switch de clúster desde el último periodo de sondeo.
+
+====
+
+
+ a| 
+Estructura MetroCluster
+ a| 
+Conmutador
+ a| 
+Supervisa la topología de la estructura del back-end de la configuración de MetroCluster y detecta mala configuración como el cableado y la división en zonas incorrectas y los fallos de ISL.
+
+
+
+ a| 
+MetroCluster Salud
+ a| 
+Interconexión, RAID y almacenamiento
+ a| 
+Supervisa los adaptadores FC-VI, los adaptadores del iniciador FC, los agregados y discos subyacentes y los puertos entre clústeres
+
+
+
+ a| 
+Conectividad de nodo (conexión por nodo)
+ a| 
+Operaciones no disruptivas de CIFS (CIFS-NDO)
+ a| 
+Supervisa conexiones SMB para proporcionar operaciones no disruptivas a aplicaciones de Hyper-V.
+
+
+
+ a| 
+Almacenamiento (conexión SAS)
+ a| 
+Supervisa las bandejas, los discos y los adaptadores a nivel de nodo para obtener las rutas y conexiones adecuadas.
+
+
+
+ a| 
+Sistema
+ a| 
+no aplicable
+ a| 
+Agrega información de otros monitores de estado.
+
+
+
+ a| 
+Conectividad del sistema (conexión del sistema)
+ a| 
+Almacenamiento (conexión SAS)
+ a| 
+Supervisa las bandejas a nivel de clúster para conocer las rutas adecuadas a dos nodos en clúster de alta disponibilidad.
+
+|===
+
+
+== Formas de responder a las alertas de estado del sistema
+
+Cuando se produce una alerta de estado del sistema, puede reconocerla, obtener más información sobre él, reparar la condición subyacente y evitar que vuelva a producirse.
+
+Cuando un monitor de estado genera una alerta, puede responder de cualquiera de las siguientes maneras:
+
+* Obtenga información sobre la alerta, que incluye el recurso afectado, la gravedad de la alerta, la causa probable, el posible efecto y las acciones correctivas.
+* Obtenga información detallada sobre la alerta, como el momento en que se planteó la alerta y si alguien más ya ha reconocido dicha alerta.
+* Obtenga información relacionada con el estado del recurso o subsistema afectado, como una bandeja o un disco específicos.
+* Reconozca la alerta para indicar que alguien está trabajando en el problema e identifíquese como el "acusador".
+* Resuelva el problema siguiendo las acciones correctivas proporcionadas en la alerta, como la corrección de cableado para resolver un problema de conectividad.
+* Elimine la alerta si el sistema no la borró automáticamente.
+* Suprime una alerta para evitar que afecte al estado de un subsistema.
++
+La supresión es útil cuando se entiende un problema. Después de suprimir una alerta, todavía puede ocurrir, pero el estado del subsistema se muestra como "'ok-with-suppress""". cuando se produce la alerta suprimida.
+
+
+
+
+
+== Ventana Alertas del sistema
+
+Puede usar la ventana Alertas del sistema para obtener más información sobre las alertas de estado del sistema. También puede reconocer, eliminar y suprimir alertas de la ventana.
+
+
+
+=== Botones de comando
+
+* *Acuse de recibo*
++
+Le permite reconocer la alerta seleccionada para indicar que el problema se está abordando e identificar a la persona que hace clic en el botón como el "'reconocimiento".
+
+* *Suprimir*
++
+Permite suprimir la alerta seleccionada para impedir que el sistema le notifique de nuevo acerca de la misma alerta e identifica como el "supresor".
+
+* *Eliminar*
++
+Elimina la alerta seleccionada.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de alertas
+
+* *Subsistema (no De Alertas)*
++
+Muestra el nombre del subsistema, como la conexión SAS, el estado del switch, LAS OPERACIONES no DISRUPTIVAS CIFS o MetroCluster, para los que se genera la alerta.
+
+* *ID de alerta*
++
+Muestra el ID de alerta.
+
+* *Nodo*
++
+Muestra el nombre del nodo para el que se genera la alerta.
+
+* *Gravedad*
++
+Muestra la gravedad de la alerta como Desconocido, otra, Información, degradado, menor, Grave, crítico o fatal.
+
+* *Recurso*
++
+Muestra el recurso que generó la alerta, como una bandeja o un disco específicos.
+
+* *Tiempo*
++
+Muestra la hora a la que se generó la alerta.
+
+
+
+
+
+=== El área Detalles
+
+El área de detalles muestra información detallada sobre la alerta, como la hora a la que se generó la alerta y si la alerta se ha reconocido. El área también incluye información sobre la causa probable y el posible efecto de la condición generada por la alerta, y las acciones recomendadas para corregir el problema informado por la alerta.
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administración del sistema"]

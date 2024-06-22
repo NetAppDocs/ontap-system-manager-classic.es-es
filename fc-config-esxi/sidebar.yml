@@ -1,0 +1,38 @@
+---
+section: fc-config-esxi
+title: Configuración de FC para ESXi mediante VSC
+entries:
+- title: Descripción general
+  url: "/fc-config-esxi/index.html"
+- title: Flujo de trabajo de configuración de FC
+  url: "/fc-config-esxi/concept_fc_configuration_workflow.html"
+  entries:
+  - title: Compruebe que la configuración de FC es compatible
+    url: "/fc-config-esxi/task_verifying_that_iscsi_fc_configuration_is_supported.html"
+  - title: Complete la hoja de datos para la configuración de FC
+    url: "/fc-config-esxi/reference_completing_iscsi_configuration_worksheet.html"
+  - title: Instale Virtual Storage Console
+    url: "/fc-config-esxi/task_installing_virtual_storage_console_for_vmware_vsphere.html"
+  - title: Añada el clúster de almacenamiento o la SVM a VSC para VMware vSphere
+    url: "/fc-config-esxi/task_adding_storage_cluster_to_virtual_storage_cluster.html"
+  - title: Actualice el controlador HBA, el firmware y el BIOS
+    url: "/fc-config-esxi/task_updating_hba_firmware.html"
+  - title: Configure los ajustes de prácticas recomendadas del host ESXi
+    url: "/fc-config-esxi/task_configuring_esxi_host_best_practice_settings.html"
+  - title: Cree un agregado
+    url: "/fc-config-esxi/task_creating_aggregate.html"
+  - title: Decidir dónde se aprovisionará el volumen
+    url: "/fc-config-esxi/task_deciding_where_to_provision_volume.html"
+    entries:
+    - title: Compruebe que el servicio FC está en ejecución en una SVM existente
+      url: "/fc-config-esxi/task_verifying_that_fc_service_is_running_on_existing_svm.html"
+    - title: Configurar FC en una SVM existente
+      url: "/fc-config-esxi/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html"
+    - title: Cree una SVM nueva
+      url: "/fc-config-esxi/task_creating_svm.html"
+  - title: Dividir en zonas los switches FC por el host y WWPN de LIF
+    url: "/fc-config-esxi/task_zoning_fc_switches_by_host_lif_wwpns.html"
+  - title: Aprovisione un almacén de datos y cree su LUN y volumen que contenga
+    url: "/fc-config-esxi/task_provisioning_datastore_creating_its_containing_lun_volume.html"
+  - title: Compruebe que el host puede escribir y leer desde la LUN
+    url: "/fc-config-esxi/task_verifying_host_can_write_to_read_from_lun.html"

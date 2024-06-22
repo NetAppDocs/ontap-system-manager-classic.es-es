@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_breaking_snapmirror_relationships.html 
+sidebar: sidebar 
+keywords: snapmirror, break, relationship, dp, rw, online, help 
+summary: Debe romper una relación de SnapMirror si un origen de SnapMirror deja de estar disponible y desea que las aplicaciones cliente puedan acceder a los datos del destino de mirroring. 
+---
+= Rompa las relaciones de SnapMirror con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para romper una relación de SnapMirror. Debe romper una relación de SnapMirror si un origen de SnapMirror deja de estar disponible y desea que las aplicaciones cliente puedan acceder a los datos del destino de mirroring. Tras romper la relación de SnapMirror, el tipo de volumen de destino cambia de "data protection" (DP) a "Read/write" (RW).
+
+.Antes de empezar
+* El destino de SnapMirror debe estar en estado inactivo o inactivo.
+* El volumen de destino debe montarse en el espacio de nombres de la máquina virtual de almacenamiento (SVM) de destino.
+
+
+.Acerca de esta tarea
+* El volumen de destino se puede utilizar para suministrar datos mientras se repara o se reemplaza el origen, se actualiza el origen y se establece la configuración original de los sistemas.
+* Es posible interrumpir las relaciones de SnapMirror entre los sistemas de ONTAP y los sistemas de almacenamiento de SolidFire.
+* Si va a interrumpir una relación de volumen de FlexGroup, debe actualizar la página para ver el estado actualizado de la relación.
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de reflejo que desea romper.
+. Haga clic en *Operaciones* > *rotura*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *interrumpir*.
+
+
+.Resultados
+La relación de SnapMirror para la protección de datos está rota. El tipo de volumen de destino cambia de la protección de datos (DP), solo de lectura y de lectura/escritura (RW). El sistema almacena la copia Snapshot básica para la relación de reflejo de protección de datos para usarla más adelante.
+
+*Información relacionada*
+
+xref:reference_protection_window.adoc[Ventana de protección]

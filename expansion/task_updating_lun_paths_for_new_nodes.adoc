@@ -1,0 +1,70 @@
+---
+permalink: expansion/task_updating_lun_paths_for_new_nodes.html 
+sidebar: sidebar 
+keywords: cluster, configure, san, lif, add, update, path, lun, node, update lun paths for the new nodes 
+summary: Si su clúster está configurado para SAN, debe crear LIF SAN en los nodos recién añadidos y, a continuación, actualizar las rutas. 
+---
+= Actualice las rutas de LUN para los nodos nuevos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si su clúster está configurado para SAN, debe crear LIF SAN en los nodos recién añadidos y, a continuación, actualizar las rutas.
+
+.Acerca de esta tarea
+Este procedimiento solo es necesario si el clúster contiene LUN. Si el clúster solo contiene archivos, puede omitir este procedimiento.
+
+.Pasos
+. Para cada máquina virtual de almacenamiento (SVM) del clúster, cree nuevos LIF en los nodos recién agregados:
++
+.. Identifique las SVM que utilizan protocolos FC o iSCSI mediante el `vserver show` con el `-fields allowed-protocols` parámetro y revisión de la salida.
++
+[listing]
+----
+cluster1::> vserver show -fields allowed-protocols
+vserver allowed-protocols
+------- -----------------
+vs1     cifs,ndmp
+vs2     fcp
+vs3     iscsi
+...
+----
+.. Para cada SVM que usa FC o iSCSI, cree al menos dos LIF de datos en cada uno de los nodos recién agregados mediante el uso del `network interface create` con el `-role data` parámetro.
++
+[listing]
+----
+cluster1::> network interface create -vserver vs1 -lif lif5 -role data
+-data-protocol iscsi -home-node cluster1-3 -home-port e0b
+-address 192.168.2.72 -netmask 255.255.255.0
+----
+.. Para cada SVM, compruebe que tiene LIF en todos los nodos del clúster mediante el `network interface show` con el `-vserver` parámetro.
+
+
+. Actualizar conjuntos de puertos:
++
+.. Determine si existen conjuntos de puertos mediante el `lun portset show` comando.
+.. Si desea que las nuevas LIF sean visibles para los hosts existentes, añada cada nueva LIF a los conjuntos de puertos mediante el `lun portset add` Comando: Una vez para cada LIF.
+
+
+. Si utiliza FC o FCoE, actualice la división en zonas:
++
+.. Compruebe que la división en zonas esté configurada correctamente para habilitar los puertos de iniciador existentes en el host para que se conecten a los nuevos puertos de destino en los nuevos nodos.
+.. Actualice la división en zonas de switches para conectar los nodos nuevos a iniciadores existentes.
++
+La configuración de la división en zonas varía en función del conmutador que utilice.
+
+.. Si planea mover LUN a los nodos nuevos, exponga las rutas nuevas a los hosts mediante el `lun mapping add-reporting-nodes` comando.
+
+
+. En todos los sistemas operativos host, vuelva a analizar para detectar las rutas recién añadidas.
+. Según los sistemas operativos host, elimine las rutas obsoletas.
+. Añada o quite rutas a la configuración de MPIO.
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/san-config/index.html["CONFIGURACIÓN DE SAN"^]
+
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["Administración de SAN"^]

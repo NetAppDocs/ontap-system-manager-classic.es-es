@@ -1,0 +1,68 @@
+---
+permalink: online-help-96-97/reference_metrocluster_switchover_switchback_window.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, operations, window, command, button, other, action, online, help, status 
+summary: 'A partir de System Manager 9.6, puede utilizar la ventana Operaciones de conmutación de sitios y de conmutación de sitios de MetroCluster para iniciar una conmutación negociada (planificada) o una conmutación de sitios no planificada de un sitio o clúster (sitio B) a otro sitio o clúster (sitio A). Después de realizar tareas de mantenimiento o reparaciones en el sitio B, puede iniciar una conmutación de regreso desde el sitio A al sitio B y ver el estado de la operación en esta ventana.' 
+---
+= Ventana de operaciones de conmutación de sitios y de conmutación de sitios de MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, puede utilizar la ventana Operaciones de conmutación de sitios y de conmutación de sitios de MetroCluster para iniciar una conmutación negociada (planificada) o una conmutación de sitios no planificada de un sitio o clúster (sitio B) a otro sitio o clúster (sitio A). Después de realizar tareas de mantenimiento o reparaciones en el sitio B, puede iniciar una conmutación de regreso desde el sitio A al sitio B y ver el estado de la operación en esta ventana.
+
+
+
+== Botones de comando
+
+* *Cambio del Sitio B al Sitio A*
++
+Inicia el proceso que cambia el sitio B a Sitio A.
+
+* *Cambio del sitio A al sitio B*
++
+Inicia el proceso que cambia el sitio A al sitio B.
+
+
+
+
+
+== Otras acciones
+
+* *Vaya al clúster del Sitio B*
++
+Introduzca la dirección IP de administración del clúster del sitio B.
+
+* *Casilla de verificación para cambio no planificado*
++
+Si desea iniciar una conmutación no planificada, marque la casilla de verificación *continuar con la conmutación no planificada*.
+
+
+
+
+
+== Áreas de estado
+
+A medida que el sistema avanza durante el proceso de conmutación al respaldo o conmutación de vuelta, System Manager muestra el estado con los siguientes métodos:
+
+* *Línea de progreso gráfica*
++
+Muestra las fases de las operaciones e indica las fases que se han completado. Las fases son Cambio, Operaciones del Sitio B y Cambio.
+
+* ***Mostrar detalles***
++
+Muestra una lista de eventos del sistema con Marca de tiempo como el progreso de las operaciones de MetroCluster.
+
+* * Local: Sitio A*
++
+Muestra un gráfico de la configuración del clúster en el sitio A, incluido el estado de ese sitio a medida que avanza por las fases de la operación.
+
+* *Remoto: Sitio B*
++
+Muestra un gráfico de la configuración del clúster en el sitio B, incluido el estado de ese sitio a medida que avanza por las fases de la operación.
+
+
+
+Si inicia sesión en la planta B y ve la ventana Operaciones de conmutación y conmutación de MetroCluster, el estado de la planta A se muestra como "'INACTIVO'" y el estado de la planta B se muestra como "MODO de conmutación".

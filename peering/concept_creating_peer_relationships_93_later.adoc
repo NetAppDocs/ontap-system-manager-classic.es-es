@@ -1,0 +1,14 @@
+---
+permalink: peering/concept_creating_peer_relationships_93_later.html 
+sidebar: sidebar 
+keywords: peer, relationship, define, network, connection, enable, cluster, svm, exchange, data, secure, ontap, configure, configure peer relationships, Beginning with ontap 9.3 
+summary: 'Una relación de paridad define las conexiones de red que permiten que clústeres y SVM intercambien datos de forma segura. A partir de ONTAP 9.3, hasta ONTAP 9.7, puede utilizar la interfaz "clásica" de System Manager de ONTAP para ejecutar un método simplificado para configurar relaciones entre iguales entre clústeres y entre SVM.' 
+---
+= Configuración de relaciones de paridad (a partir de ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una relación de paridad define las conexiones de red que permiten que clústeres y SVM intercambien datos de forma segura. A partir de ONTAP 9.3, hasta ONTAP 9.7, puede utilizar la interfaz _classic_ de ONTAP para ejecutar un método simplificado a fin de configurar relaciones entre iguales entre clústeres y entre SVM.

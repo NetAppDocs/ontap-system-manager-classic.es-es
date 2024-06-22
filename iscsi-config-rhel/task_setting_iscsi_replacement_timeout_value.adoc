@@ -1,0 +1,26 @@
+---
+permalink: iscsi-config-rhel/task_setting_iscsi_replacement_timeout_value.html 
+sidebar: sidebar 
+keywords: support, multipath, modify, replacement, timeout, value, iscsi, configuration, file, set, set the iscsi replacement timeout value 
+summary: Para admitir la multivía, debe modificar el valor de tiempo de espera de reemplazo en el archivo de configuración de iSCSI. 
+---
+= Configure el valor de tiempo de espera de reemplazo de iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para admitir la multivía, debe modificar el valor de tiempo de espera de reemplazo en el archivo de configuración de iSCSI.
+
+.Paso
+. Cambie el valor de tiempo de espera de sustitución en `/etc/iscsi/iscsid.conf` archivo del valor predeterminado 120 a 5.
++
+El valor del tiempo de espera de reemplazo parece el siguiente en la `iscsid.conf`:
+
++
+[listing]
+----
+node.session.timeo.replacement_timeout = 5
+----
+

@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_hiding_snapshot_copy_directory.html 
+sidebar: sidebar 
+keywords: hide, snapshot, copy, directory, system, manager, online, help 
+summary: 'Puede usar System Manager para ocultar el directorio de copia Snapshot (.snapshot) de modo que el directorio de la copia Snapshot no esté visible al ver los directorios de volúmenes. De forma predeterminada, el directorio .snapshot es visible.' 
+---
+= Oculte el directorio de copia de Snapshot con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar ONTAP System Manager classic (disponible en ONTAP 9,7 y versiones anteriores) para ocultar el directorio de copia de Snapshot  `.snapshot`) Para que el directorio de copias snapshot no sea visible cuando vea los directorios de volúmenes. De forma predeterminada, la `.snapshot` el directorio es visible.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen para el que desea ocultar el directorio de copia Snapshot.
+. Haga clic en *más acciones* > *Administrar instantáneas* > *Configuración*.
+. Asegúrese de que la opción * make snapshot directory (.snapshot) visible* no está seleccionada y, a continuación, haga clic en *Aceptar*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

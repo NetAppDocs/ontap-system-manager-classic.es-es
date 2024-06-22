@@ -1,0 +1,49 @@
+---
+permalink: online-help-96-97/task_preparing_for_switchover_switchback_operations.html 
+sidebar: sidebar 
+keywords: prepare, switchover, switchback, operation, system, manager, online, help 
+summary: Antes de realizar operaciones de conmutación mediante System Manager 9.6, debe verificar que se han realizado los pasos necesarios en el sitio afectado. 
+---
+= Prepárese para las operaciones de conmutación de sitios y conmutación de estado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de realizar operaciones de conmutación con System Manager Classic 9.6 de ONTAP, debe verificar que se han realizado los pasos necesarios en el sitio afectado.
+
+.Pasos
+. Si se está recuperando de un desastre en el sitio B, debe realizar los siguientes pasos:
++
+.. Repare o sustituya los discos o hardware dañados.
+.. Restaure la alimentación.
+.. Rectifique los problemas de error que se produzcan.
+.. Traiga el sitio de recuperación ante desastres.
+
+
+. Compruebe que existen las siguientes condiciones en el clúster:
++
+** Ambos sitios están en estado activo si está realizando una conmutación de sitios planificada.
+** El sistema MetroCluster utiliza el tipo de configuración «'IP_Fabric»».
+** Ambos sitios están funcionando con una configuración de dos nodos (dos nodos en cada clúster). Los sitios con una configuración de un único nodo o de cuatro nodos no son compatibles con las operaciones de conmutación de sitios y conmutación de estado mediante System Manager.
+
+
+. Si va a iniciar el sitio remoto (sitio B) desde el sitio local (sitio A), asegúrese de que el sitio B ejecute System Manager 9.6 o una versión posterior.
+
+
+
+
+== Cambie el nombre del sitio local de MetroCluster (Sitio A) con System Manager - ONTAP 9.7 y versiones anteriores
+
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para cambiar el nombre del sitio local de MetroCluster (sitio A) en un clúster.
+
+.Pasos
+. Haga clic en *Configuración* > *actualizaciones de configuración*.
+. Haga clic en *Actualizar nombre de clúster*.
+. Actualice el nombre en el cuadro de texto y haga clic en *Enviar*.
++
+El nombre actualizado se puede ver cuando se muestra el estado del sitio MetroCluster A.
+
+. Para mostrar el nombre actualizado del sitio A de MetroCluster cuando lo vea desde el sitio remoto (sitio B), ejecute el siguiente comando dentro de la CLI en el sitio remoto (sitio B): `cluster peer modify-local-name`
+

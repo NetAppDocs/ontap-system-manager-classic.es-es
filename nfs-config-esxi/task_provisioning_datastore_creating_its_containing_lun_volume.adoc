@@ -1,0 +1,35 @@
+---
+permalink: nfs-config-esxi/task_provisioning_datastore_creating_its_containing_lun_volume.html 
+sidebar: sidebar 
+keywords: datastore, virtual, machine, vmdk, esxi, host, provision, storage, cluster, provision a datastore and create its containing volume 
+summary: Un almacén de datos contiene máquinas virtuales y sus VMDK en el host ESXi. El almacén de datos en el host ESXi se aprovisiona en un volumen en el clúster de almacenamiento. 
+---
+= Aprovisione un almacén de datos y cree el volumen que lo contiene
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un almacén de datos contiene máquinas virtuales y sus VMDK en el host ESXi. El almacén de datos en el host ESXi se aprovisiona en un volumen en el clúster de almacenamiento.
+
+.Antes de empezar
+Virtual Storage Console para VMware vSphere para (VSC) debe estar instalado y registrado en el vCenter Server que gestiona el host ESXi.
+
+VSC debe tener suficientes credenciales o clúster para crear el volumen en la SVM especificada.
+
+.Acerca de esta tarea
+VSC automatiza el aprovisionamiento del almacén de datos, incluida la creación de un volumen en la SVM especificada.
+
+.Pasos
+. En la página Home* de vSphere Web Client, haga clic en *hosts and Clusters*.
+. En el panel de navegación, expanda el centro de datos donde desea aprovisionar el almacén de datos.
+. Haga clic con el botón derecho en el host ESXi y seleccione *NetApp VSC* > *Provision Datastore*.
++
+Como alternativa, puede hacer clic con el botón derecho en el clúster cuando el aprovisionamiento para que el almacén de datos esté disponible para todos los hosts del clúster.
+
+. Proporcione la información requerida en el asistente:
++
+image::../media/vsc_datastore_provisioning_wizard_nfs.gif[Image muestra la primera página del Asistente de aprovisionamiento de almacenes de datos de VSC.]
+
+

@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_splitting_flexclone_volume_from_its_parent_volume.html 
+sidebar: sidebar 
+keywords: split, flexclone, volume, parent, online, help, disk, space 
+summary: 'Puede usar System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para dividir un volumen FlexClone de su volumen principal. Tras la división, el volumen FlexClone se convierte en un volumen FlexVol normal. Continúa utilizando el espacio en disco de su volumen principal y se mantiene la eficiencia del almacenamiento.' 
+---
+= Divida un volumen FlexClone de su volumen principal con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para dividir un volumen FlexClone de su volumen principal. Tras la división, el volumen FlexClone se convierte en un volumen FlexVol normal. Continúa utilizando el espacio en disco de su volumen principal y se mantiene la eficiencia del almacenamiento.
+
+.Antes de empezar
+El volumen FlexClone debe estar en línea.
+
+.Acerca de esta tarea
+En el caso de los sistemas _not_ AFF, la operación de separación de clones elimina todas las copias Snapshot existentes del clon. También se eliminan las copias Snapshot necesarias para las actualizaciones de SnapMirror. Por tanto, es posible que se produzca un error en todas las actualizaciones posteriores de SnapMirror.
+
+Puede pausar la operación de división de clones si debe realizar cualquier otra operación en el volumen. Es posible reanudar el proceso de división de clones una vez que se completa la otra operación.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen FlexClone que desea dividir del volumen principal.
+. Haga clic en *más acciones* > *Clonar* > *dividir*.
+. Confirme los detalles del volumen FlexClone para la operación de división de clones y, a continuación, haga clic en *Iniciar división* en el cuadro de diálogo de confirmación.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

@@ -1,0 +1,29 @@
+---
+permalink: online-help-96-97/task_aborting_mirror_relationships.html 
+sidebar: sidebar 
+keywords: abort, mirror, transfer, online, help, volume, replication 
+summary: Es posible cancelar una operación de replicación de volumen antes de que se complete la transferencia de datos. Puede cancelar una actualización programada, una actualización manual o una transferencia de datos inicial. 
+---
+= Cancele una transferencia de mirroring con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para anular una operación de replicación de volúmenes antes de que se complete la transferencia de datos. Puede cancelar una actualización programada, una actualización manual o una transferencia de datos inicial.
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación para la que desea detener la transferencia de datos y haga clic en *Operaciones* > *Anular*.
+. Haga clic en la casilla de verificación *Sí, deseo cancelar la transferencia* para confirmar la operación.
+. Haga clic en la casilla de verificación *conservar cualquier dato parcialmente transferido* para conservar los datos que ya se han transferido al volumen de destino.
+. Haga clic en *Anular*.
++
+El estado de la transferencia se muestra como "'aborto'" hasta que la operación se haya completado y aparezca como "'ralentí'" una vez finalizada la operación.
+
+
+
+*Información relacionada*
+
+xref:reference_protection_window.adoc[Ventana de protección]

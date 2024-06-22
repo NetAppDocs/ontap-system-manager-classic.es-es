@@ -1,0 +1,54 @@
+---
+permalink: online-help-96-97/task_performing_negotiated_planned_switchover.html 
+sidebar: sidebar 
+keywords: online, help, perform, negotiated, switchover, system, help 
+summary: 'A partir de System Manager 9.6, puede iniciar una conmutación negociada (planificada) de un sitio de MetroCluster. Esta operación es útil cuando se desean realizar pruebas de recuperación ante desastres o tareas de mantenimiento planificadas en el sitio.' 
+---
+= Realización de una conmutación negociada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, puede iniciar una conmutación negociada (planificada) de un sitio de MetroCluster. Esta operación es útil cuando se desean realizar pruebas de recuperación ante desastres o tareas de mantenimiento planificadas en el sitio.
+
+.Pasos
+. [[step1]]En System Manager, utilice las credenciales de administrador del clúster para iniciar sesión en el sitio MetroCluster local (sitio A).
+. Haga clic en *Configuración* > *MetroCluster*
++
+Se mostrará la ventana MetroCluster Switchover/Switchback Operations.
+
+. Haga clic en *Siguiente*.
++
+La ventana Operaciones de conmutación de sitios y de conmutación de sitios de MetroCluster muestra el estado de las operaciones y System Manager verifica si es posible una conmutación negociada.
+
+. Realice uno de los siguientes subpasos cuando el proceso de validación haya finalizado:
++
+** Si la validación se ha realizado correctamente, vaya al paso link:#step5["5"].
+** Si la validación falla, pero el sitio B está activo, se ha producido un error, como un problema con un subsistema o la duplicación de NVRAM no está sincronizada. Puede realizar cualquiera de los siguientes procesos:
++
+*** Solucione el problema que está causando el error, haga clic en *Cerrar* y, a continuación, vuelva a comenzar en el paso link:#step1["1"].
+*** Detenga los nodos del sitio B, haga clic en *Cerrar* y, a continuación, realice los pasos en xref:task_performing_unplanned_switchover.adoc[Realizar una conmutación de sitios no planificada].
+
+
+** Si la validación falla y el sitio B está inactivo, lo más probable es que haya un problema de conexión. Compruebe que el sitio B está realmente inactivo y, a continuación, realice los pasos de xref:task_performing_unplanned_switchover.adoc[Realizar una conmutación de sitios no planificada].
+
+
+. [[step5]]Haga clic en *Cambio del sitio B al sitio A* para iniciar el proceso de cambio.
++
+Aparece un mensaje de advertencia y advierte que la operación de conmutación de sitios detiene todas las SVM de datos del sitio B y las reinicia en el sitio A.
+
+. Si desea continuar, haga clic en *Sí*.
++
+Se inicia el proceso de cambio. los estados del sitio A y del sitio B se muestran encima de las representaciones gráficas de sus configuraciones. Si la operación de conmutación falla, se muestra un mensaje de error. Haga clic en *Cerrar*. Corrija los errores y vuelva a comenzar en el paso link:#step1["1"]
+
+. Espere hasta que System Manager muestre que se ha completado la reparación.
++
+Una vez finalizada la reparación, el Sitio B está operativo y los sistemas se preparan para el proceso de regreso.
+
++
+Cuando se hayan completado los preparativos para el proceso de regreso, el botón *Cambio del sitio A al sitio B* se activa en la parte inferior de la ventana.
+
+. Para continuar con la operación de regreso, lleve a cabo los pasos de xref:task_performing_switchback.adoc[Realización de una conmutación de regreso].
+

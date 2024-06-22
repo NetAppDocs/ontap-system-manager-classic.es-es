@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/concept_metrocluster_switchover_switchback_workflow.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, workflow, online, help, offline, maintenance 
+summary: 'A partir de System Manager 9.6, puede usar las operaciones de conmutación de sitios y conmutación de estado de MetroCluster después de un desastre que logra que todos los nodos del clúster de origen sean inaccesibles y se apague. También puede usar el flujo de trabajo de conmutación para una conmutación negociada (planificada) en casos como las pruebas de recuperación ante desastres o un sitio que está sin conexión para realizar tareas de mantenimiento.' 
+---
+= Acerca de conmutación de sitios y conmutación de estado de MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6 de ONTAP, puede utilizar las operaciones de conmutación de sitios y conmutación de estado de MetroCluster después de un desastre que logra que todos los nodos del clúster de origen sean inaccesibles y se apague. También puede usar el flujo de trabajo de conmutación para una conmutación negociada (planificada) en casos como las pruebas de recuperación ante desastres o un sitio que está sin conexión para realizar tareas de mantenimiento.
+
+
+
+== Acerca de conmutación de sitios y conmutación de estado de MetroCluster
+
+A partir de System Manager 9.6, puede utilizar operaciones de conmutación de sitios y conmutación de estado de MetroCluster para permitir que un sitio del clúster asuma las tareas de otro sitio del clúster. Esta funcionalidad le permite facilitar el mantenimiento o la recuperación tras siniestros.
+
+Una operación de conmutación de sitios permite que un clúster (Sitio a) asuma las tareas que suele realizar otro clúster (Sitio B). Después de la conmutación, el clúster que se ha retomado (Sitio B) se puede desconectar para realizar tareas de mantenimiento y reparación. Una vez completado el mantenimiento, el sitio B puede aparecer y las tareas de reparación se han completado, luego puede iniciar una operación de conmutación de estado que permite que el clúster reparado (sitio B) reanude las tareas que suele realizar.
+
+System Manager admite dos tipos de operaciones de conmutación, según el estado del sitio de clúster remoto:
+
+* Una conmutación de sitios negociada (planificada): Puede iniciar esta operación cuando necesita realizar mantenimiento planificado en un clúster o probar sus procedimientos de recuperación ante desastres.
+* Una conmutación sin planificar: Inicia esta operación cuando se produce un desastre en un clúster (sitio B) y desea que otro sitio o clúster (sitio A) asuma las tareas del clúster afectado por el desastre (sitio B) mientras realiza reparaciones y mantenimiento.
+
+
+Los mismos pasos en System Manager se realizan en ambas operaciones de conmutación. Cuando se inicia una conmutación de sitios, System Manager determina si la operación es viable y alinea la carga de trabajo según corresponda.
+
+
+
+== Flujo de trabajo de conmutación y conmutación de estado de MetroCluster
+
+El proceso general para el flujo de trabajo de conmutación de sitios y conmutación de estado incluye las siguientes tres fases:
+
+. *Cambio*: El proceso de cambio permite transferir el control del almacenamiento y el acceso de cliente desde un sitio de clúster de origen (Sitio B) a otro sitio de clúster (Sitio A). Esta operación le ayuda a proporcionar operaciones no disruptivas durante las pruebas y el mantenimiento. Además, este proceso también le permite recuperarse de un fallo del sitio. En el caso de las pruebas de recuperación ante desastres o del mantenimiento planificado del sitio, puede realizar una conmutación de sitios MetroCluster para transferir el control a un sitio de recuperación ante desastres (sitio A). Antes de iniciar el proceso, al menos uno de los nodos del sitio supervivientes debe estar activo y en ejecución antes de realizar la conmutación. Si se produjo un error en una operación de conmutación previamente en determinados nodos del sitio de recuperación ante desastres, es posible volver a intentar la operación en todos esos nodos.
+. *Operaciones del Sitio B*: Una vez finalizada la conmutación, el Administrador del sistema completa el proceso de reparación para la configuración IP de MetroCluster. La reparación es un evento planificado, que le ofrece un control completo de cada paso para minimizar el tiempo de inactividad. La reparación es un proceso de dos fases que se produce en los componentes del almacenamiento y de la controladora para preparar los nodos en el sitio reparado para el proceso de conmutación de estado. Durante la primera fase, el proceso cura los agregados mediante la resincronización de los complejos reflejados y, a continuación, recupera los agregados raíz al cambiarlos de nuevo al sitio de recuperación ante desastres.
++
+En la segunda fase, el sitio está listo para el proceso de regreso.
+
+. *Cambio*: Después de realizar el mantenimiento y las reparaciones en el sitio B, usted inicia la operación de regreso para devolver el control del almacenamiento y el acceso del cliente desde el sitio A al sitio B. Para que la conmutación de regreso sea exitosa, deben existir las siguientes condiciones:
++
+** Los nodos de inicio y las bandejas de almacenamiento deben estar encendidos y accesibles con los nodos en el sitio A.
+** System Manager debe haber completado correctamente la fase de reparación antes de que pueda iniciar la operación de conmutación de estado.
+** Todos los agregados del sitio A deben estar en estado de duplicación y no pueden estar en estado degradado o de resincronización.
+** Todos los cambios de configuración anteriores deben completarse antes de ejecutar una operación de conmutación de estado. Esto evita que estos cambios puedan competir con la operación de conmutación de sitios o conmutación de estado negociada.
+
+
+
+
+
+
+== Diagrama de flujo de trabajo de conmutación y conmutación de estado de MetroCluster
+
+El siguiente diagrama de flujo muestra las fases y procesos que ocurren cuando se inician operaciones de conmutación de sitios y conmutación de estado.
+
+image::../media/switchover_switchback_workflow.jpg[flujo de trabajo de conmutación de estado]

@@ -1,0 +1,206 @@
+---
+permalink: online-help-96-97/concept_efficiency_policies.html 
+sidebar: sidebar 
+keywords: efficiency, policy, system, manager, create, edit, delete, online, help, flexvol, window 
+summary: Puede usar System Manager para crear, editar y eliminar políticas de eficiencia. 
+---
+= Gestión de políticas de eficiencia con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear, editar y eliminar políticas de eficiencia.
+
+
+
+== Agregue políticas de eficiencia
+
+Puede usar System Manager para añadir políticas de eficiencia para ejecutar la operación de deduplicación en un volumen con una programación especificada o cuando el cambio de los datos de volumen alcanza un valor de umbral especificado.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *políticas de eficiencia*.
+. Haga clic en *Agregar* y, a continuación, especifique el nombre de la directiva.
+. Especifique cómo se debe ejecutar la política de eficiencia del almacenamiento:
++
+** Seleccione *Programación* y especifique el nombre de la programación y los detalles de la programación.
++
+Si es necesario, puede especificar la duración máxima en tiempo de ejecución de la política de eficiencia.
+
+** Seleccione *ChangeLog Threshold* y especifique el valor de umbral (en porcentaje) para el cambio en los datos de volumen.
+
+
+. *Opcional:* Active la casilla de verificación *establecer directiva QoS en segundo plano* para reducir el impacto en el rendimiento en las operaciones del cliente.
+. Haga clic en *Agregar*.
+
+
+
+
+== Editar políticas de eficiencia
+
+Puede usar System Manager para modificar los atributos de una política de eficiencia, como el nombre de la política, el nombre de la programación y el tiempo de ejecución máximo.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *políticas de eficiencia*.
+. En la ventana *Directivas de eficiencia*, seleccione la directiva que desea editar y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar directiva de eficiencia*, realice los cambios necesarios.
+. Haga clic en *Guardar*.
+
+
+
+
+== Eliminar las políticas de eficiencia
+
+Puede utilizar System Managerto para eliminar una política de eficiencia que ya no sea necesaria.
+
+.Antes de empezar
+La política de eficiencia debe estar desactivada.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *políticas de eficiencia*.
+. Seleccione la política de eficiencia que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+
+
+== Habilite o deshabilite políticas de eficiencia
+
+Puede usar System Manager para habilitar o deshabilitar una política de eficiencia.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *políticas de eficiencia*.
+. Seleccione una o varias políticas de eficiencia que desee habilitar o deshabilitar.
+. Haga clic en *Estado* > *Activar* o *Estado* > *Desactivar*, según sea necesario.
+. Si está desactivando una directiva de eficiencia, active la casilla de verificación de confirmación y, a continuación, haga clic en *Aceptar*.
+
+
+
+
+== Qué es una política de eficiencia
+
+Una política de eficiencia es una programación de tareas para una operación de deduplicación en un volumen de FlexVol.
+
+Puede ejecutar la deduplicación en un volumen de FlexVol programando las operaciones para que se inicien en un momento específico, o bien especificando que las operaciones se activan si se supera un porcentaje de umbral. Puede programar una operación de deduplicación creando programaciones de trabajo incluidas en las políticas de eficiencia. Las políticas de eficiencia de volúmenes admiten únicamente programaciones de tareas de tipo cron. Como alternativa, puede especificar un porcentaje de umbral. Cuando los datos nuevos superan el porcentaje especificado, se inicia la operación de deduplicación.
+
+
+
+== Políticas de eficiencia predefinidas
+
+Se puede configurar un volumen con políticas de eficiencia para lograr un ahorro de espacio adicional. Puede configurar un volumen para ejecutar compresión en línea sin una operación de eficiencia en segundo plano, programada o iniciada manualmente, configurada en el volumen.
+
+Cuando crea una SVM, las siguientes políticas de eficiencia se crean automáticamente y no se pueden eliminar:
+
+* Predeterminado
++
+Puede configurar un volumen con la política de eficiencia para ejecutar las operaciones de deduplicación programadas en el volumen.
+
+* Solo en línea
++
+Puede configurar un volumen con la política de eficiencia solo en línea y habilitar la compresión en línea, para ejecutar compresión en línea en el volumen sin ninguna operación de eficiencia en segundo plano programada o iniciada manualmente.
+
+
+
+Para obtener más información acerca de las políticas de eficiencia predeterminadas y sólo en línea, consulte las páginas de manual.
+
+
+
+== Ventana de políticas de eficiencia
+
+Puede utilizar la ventana Efficiency Policies para crear, mostrar y gestionar información acerca de políticas de eficiencia.
+
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Abre el cuadro de diálogo Add Efficiency Policy, que permite ejecutar una operación de deduplicación en un volumen durante una duración específica (basada en programación) o cuando el cambio en los datos del volumen alcanza un valor de umbral especificado (basado en umbrales).
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit Efficiency Policy, que permite modificar la programación, el valor del umbral, el tipo de calidad de servicio y el tiempo de ejecución máximo en una operación de deduplicación.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Eliminar política de eficiencia, que permite eliminar la política de eficiencia seleccionada.
+
+* *Estado*
++
+Abra un menú desplegable, que proporciona opciones para activar o desactivar la política de eficiencia seleccionada.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de políticas de eficiencia
+
+* *Auto*
++
+Especifica que la deduplicación se ejecuta continuamente en segundo plano. Esta política se establece para todos los volúmenes nuevos y para todos los volúmenes actualizados que no se configuraron manualmente para la deduplicación en segundo plano. Si cambia la política a «default» o a otra política, la política «auto» queda desactivada.
+
++
+Si un volumen pasa de un sistema distinto de AFF a un sistema AFF, la política «'auto'» se habilita de forma predeterminada en el nodo de destino. Si un volumen pasa de un nodo AFF a uno distinto de AFF, la política «'auto'» del nodo de destino se reemplaza de forma predeterminada por la política «'solo en línea'».
+
+* *Política*
++
+Especifica el nombre de una política de eficiencia.
+
+* *Estado*
++
+Especifica el estado de una política de eficiencia. El estado puede ser uno de los siguientes:
+
++
+** Activado
++
+Especifica que la política de eficiencia se puede asignar a una operación de deduplicación.
+
+** Deshabilitado
++
+Especifica que la directiva de eficiencia está desactivada. Puede habilitar la política mediante el menú desplegable de estado y asignarla después a una operación de deduplicación.
+
+
+
+* *Ejecutar por*
++
+Especifica si la política de eficiencia del almacenamiento se ejecuta en función de una programación o de un valor de umbral (umbral de cambio).
+
+* *Política de QoS*
++
+Especifica el tipo de calidad de servicio para la política de eficiencia del almacenamiento. El tipo de calidad de servicio puede ser uno de los siguientes:
+
++
+** Información previa
++
+Especifica que la política de calidad de servicio se ejecuta en segundo plano, lo que reduce el impacto potencial en el rendimiento de las operaciones del cliente.
+
+** El mejor esfuerzo
++
+Especifica que la política de calidad de servicio se ejecuta cuando se realiza el mejor esfuerzo, lo que le permite maximizar la utilización de los recursos del sistema.
+
+
+
+* *Tiempo de ejecución máximo*
++
+Especifica la duración máxima en tiempo de ejecución de una política de eficiencia. Si no se especifica este valor, la política de eficiencia se ejecuta hasta que la operación se completa.
+
+
+
+
+
+=== El área Detalles
+
+El área que se encuentra debajo de la lista de políticas de eficiencia muestra información adicional sobre la política de eficiencia seleccionada, incluidos el nombre de la programación y los detalles de la programación de una política basada en programación, y el valor de umbral de la política basada en umbrales.

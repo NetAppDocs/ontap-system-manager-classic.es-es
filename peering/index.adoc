@@ -1,0 +1,57 @@
+---
+permalink: peering/index.html 
+sidebar: sidebar 
+keywords: cluster, administrator, create, authenticated, peer, relationship, svm, enable, communicate, replicate, data 
+summary: Los administradores de clústeres pueden crear relaciones autenticadas de paridad entre clústeres y SVM para permitir su comunicación y poder así replicar los datos entre volúmenes en clústeres diferentes. 
+---
+= Información general sobre relaciones entre iguales de clústeres y SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los administradores de clústeres pueden crear relaciones autenticadas de paridad entre clústeres y SVM para permitir su comunicación y poder así replicar los datos entre volúmenes en clústeres diferentes.  Puede realizar los procedimientos mediante la interfaz _classic_ de System Manager de ONTAP, que está disponible con ONTAP 9.7 y versiones anteriores de ONTAP 9.
+
+Utilice la interfaz _classic_ de ONTAP para crear relaciones entre iguales de clústeres y relaciones entre iguales de SVM si se aplica lo siguiente:
+
+* Trabaja con clústeres que ejecutan ONTAP 9.7 o versiones anteriores de ONTAP 9.
+* Desea establecer relaciones de paridad de clústeres que se autentiquen.
+* Quiere utilizar las prácticas recomendadas, no explorar todas las opciones disponibles.
+* Desea usar System Manager, no la interfaz de línea de comandos (CLI) de ONTAP ni una herramienta de secuencias de comandos automatizadas.
+
+
+
+
+== Otras maneras de hacerlo en ONTAP
+
+System Manager de ONTAP en ONTAP 9.3 simplifica la forma en la que se configuran relaciones entre iguales entre clústeres y entre SVM. El procedimiento de paridad de clústeres y el procedimiento de paridad de SVM se pueden usar para todas las versiones de ONTAP 9. Debe utilizar el procedimiento adecuado para su versión de ONTAP.
+
+|===
+
+
+| Para ejecutar estas tareas con... | Consulte... 
+
+
+ a| 
+System Manager rediseñado (disponible con ONTAP 9.7 y versiones posteriores)
+ a| 
+* https://docs.netapp.com/us-en/ontap/concept_administration_overview.html["Gestión de clústeres con System Manager"^]
+
+
+
+
+ a| 
+La interfaz de línea de comandos (CLI) de ONTAP
+ a| 
+* https://docs.netapp.com/us-en/ontap/peering/index.html["Información general sobre relaciones entre iguales de clústeres y SVM con la CLI"^]
++
+Use la interfaz de línea de comandos para configurar las relaciones de paridad de clústeres y las relaciones de paridad de SVM.
+
+* https://docs.netapp.com/us-en/ontap/networking/index.html["Gestión de redes"^]
++
+Utilice la interfaz de línea de comandos para configurar subredes, LIF de interconexión de clústeres, rutas, políticas de firewall y otros componentes de red
+
+
+
+|===

@@ -1,0 +1,52 @@
+---
+permalink: snmp-config/index.html 
+sidebar: sidebar 
+keywords: content, configure, snmp, cluster, management, level, add, communities, community, security, user, traphost, communication, snmp configuration overview 
+summary: 'Mediante la interfaz "clásica" de ONTAP System Manager con ONTAP 9.7 o una versión anterior, se puede configurar SNMP en el nivel de gestión del clúster; agregar comunidades, usuarios de seguridad y hosts de capturas; y probar la comunicación SNMP.' 
+---
+= Información general de la configuración de SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mediante la interfaz del administrador del sistema de ONTAP _classic_ con ONTAP 9.7 o una versión anterior, se puede configurar SNMP en el nivel de gestión del clúster, agregar comunidades, usuarios de seguridad y hosts de capturas, y probar la comunicación SNMP.
+
+Debe usar estos procedimientos si desea configurar el acceso SNMP a un clúster de la siguiente manera:
+
+* Trabaja con clústeres que ejecutan ONTAP 9.
+* Quiere utilizar las prácticas recomendadas, no explorar todas las opciones disponibles.
++
+[NOTE]
+====
+Existen algunos pasos en estos procedimientos para los que debe utilizar la interfaz de línea de comandos.
+
+====
+
+
+
+
+== Otras maneras de hacerlo en ONTAP
+
+Es posible configurar el acceso SNMP a un clúster de mediante para todas las versiones de ONTAP 9. Debe utilizar el procedimiento adecuado para su versión de ONTAP.
+
+|===
+
+
+| Para ejecutar estas tareas con... | Consulte... 
+
+
+ a| 
+System Manager rediseñado (disponible con ONTAP 9.7 y versiones posteriores)
+ a| 
+https://docs.netapp.com/us-en/ontap/networking/manage_snmp_on_the_cluster_@cluster_administrators_only@_overview.html["Gestionar SNMP en el clúster (solo para administradores de clúster) > Descripción general"^]
+
+
+
+ a| 
+La interfaz de línea de comandos (CLI) de ONTAP
+ a| 
+https://docs.netapp.com/us-en/ontap/networking/commands_for_managing_snmp.html["Comandos para gestionar SNMP"^]
+
+|===

@@ -1,0 +1,63 @@
+---
+permalink: online-help-96-97/task_moving_flexvol_volumes_between_aggregates_or_nodes.html 
+sidebar: sidebar 
+keywords: move, flexcol, volume, aggregate, node, online, help, system, manager 
+summary: Puede mover un volumen de FlexVol a otro agregado o a un nodo diferente para aprovechar la capacidad y mejorar el rendimiento mediante System Manager. 
+---
+= Mueva volúmenes de FlexVol entre agregados o nodos con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para mover un volumen de FlexVol a un agregado diferente o a un nodo diferente para la utilización de capacidad y mejorar el rendimiento.
+
+.Antes de empezar
+Si va a mover un volumen de protección de datos (DP), se deben inicializar las relaciones de reflejo de protección de datos antes de mover el volumen.
+
+.Acerca de esta tarea
+No se pueden mover volúmenes de SnapLock entre agregados y nodos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen que desea mover.
+. Haga clic en *más acciones* > *mover*.
+. En el cuadro de diálogo *mover volumen*, seleccione el nodo o agregado de destino del volumen y, a continuación, cambie la política de organización en niveles.
++
+[NOTE]
+====
+** No se puede cambiar la política de organización en niveles de un volumen raíz.
+** No se puede mover el volumen raíz a FabricPool.
+** En el caso de los volúmenes de lectura/escritura, es posible configurar la política de organización en niveles como "backup" durante el movimiento del volumen.
++
+La política de organización en niveles cambia a “sólo instantánea” después del cambio.
+
+** Los valores de nivel de capacidad que se muestran en el agregado de origen y el agregado de destino “utilizado después del movimiento” son valores estimados.
++
+Para conocer los valores exactos, debe ir a la ventana de agregado y ver los detalles de un agregado específico.
+
+
+
+====
+. Haga clic en *mover*.
+
+
+
+
+== Activación manual de la transposición para el movimiento de volumen
+
+En el caso de una operación de movimiento de volúmenes, puede usar System Manager para activar manualmente la transición cuando el volumen entra en la fase de transposición diferida. Puede establecer la duración de la transición y la acción de transposición que debe realizar el sistema si la operación falla dentro de esa duración.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. Haga clic en la ficha *Volumes*.
+. Expanda el volumen para el que se ha iniciado la operación de movimiento de volúmenes.
+. Haga clic en el enlace *Mostrar más detalles* para ver más información sobre el volumen.
+. En la ficha *Descripción general*, haga clic en *Corte*.
+. En el cuadro de diálogo *transición*, haga clic en *Opciones avanzadas*.
+. *Opcional:* especifique la acción de transposición y el período de la ventana de transposición.
+. Haga clic en *Aceptar*.
+

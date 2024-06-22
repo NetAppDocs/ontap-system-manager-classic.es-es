@@ -1,0 +1,58 @@
+---
+permalink: online-help-96-97/task_creating_cluster.html 
+sidebar: sidebar 
+keywords: data, center, create, cluster, online, help, system, manager 
+summary: Puede usar System Manager de ONTAP para crear y configurar un clúster en el centro de datos. 
+---
+= Cree un clúster con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y configurar un clúster en el centro de datos.
+
+.Acerca de esta tarea
+Si el clúster admite ONTAP 9.1 o una versión posterior, solo podrá añadir sistemas de almacenamiento que ejecuten ONTAP 9.1 o una versión posterior.
+
+.Pasos
+. Abra el navegador web y escriba la dirección IP de gestión de nodos que haya configurado: `+https://node-management-IP+`
++
+** Si ha configurado las credenciales para el clúster, se mostrará la página Login.
++
+Debe introducir las credenciales para iniciar sesión.
+
+** Si no ha configurado las credenciales para el clúster, se mostrará la ventana Guided Setup.
++
+Haga clic en el icono *Configuración guiada* para configurar un clúster.
+
+
+
+. En la página *Cluster*, escriba un nombre para el clúster.
++
+[NOTE]
+====
+Si no se detectan todos los nodos, haga clic en *Actualizar*.
+
+====
++
+Los nodos de esa red de clúster se mostrarán en el campo Nodes.
+
+. *Opcional:* Si lo desea, actualice los nombres de los nodos en el campo *Nodes*.
+. Introduzca la contraseña del clúster.
+. *Opcional:* Introduzca las claves de licencia de funciones.
+. Haga clic en *Enviar*.
+
+
+
+
+== Qué hacer a continuación
+
+Introduzca los detalles de la red en la página Network para continuar con la configuración del clúster.
+
+*Información relacionada*
+
+xref:reference_licenses_window.adoc[Licencias]
+
+xref:reference_configuration_updates_window.adoc[Ventana actualizaciones de configuración]

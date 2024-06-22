@@ -1,0 +1,52 @@
+---
+permalink: volume-backup-snapvault/task_verify_cluster_peer_relationship.html 
+sidebar: sidebar 
+keywords: set, up, volume, data, protection, snapvault, technology, verify, source, cluster, communicate, communicating, peer, relationship, svm, verify cluster peer relationship and svm peer relationship 
+summary: Antes de configurar un volumen para la protección de datos mediante la tecnología SnapVault, debe verificar que el clúster de origen y los clústeres de destino tienen una relación entre iguales y que se comunican entre sí mediante la relación entre iguales. También debe verificar que la SVM de origen y la SVM de destino tienen una relación entre iguales y que se comunican entre sí mediante la relación entre iguales. 
+---
+= Compruebe la relación de paridad de clústeres y la relación de paridad de SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de configurar un volumen para la protección de datos mediante la tecnología SnapVault, debe verificar que el clúster de origen y los clústeres de destino tienen una relación entre iguales y que se comunican entre sí mediante la relación entre iguales. También debe verificar que la SVM de origen y la SVM de destino tienen una relación entre iguales y que se comunican entre sí mediante la relación entre iguales.
+
+.Acerca de esta tarea
+Debe realizar esta tarea desde el clúster *fuente*.
+
+
+
+== Procedimiento
+
+* Si su sistema funciona con ONTAP 9.3 o una versión posterior, realice los siguientes pasos para verificar la relación entre iguales de clústeres y la relación entre iguales de SVM:
++
+.. Haga clic en *Configuración* > *Cluster peers*.
+.. Compruebe que el clúster con relación entre iguales esté autenticado y esté disponible.
++
+image::../media/cluster_pper_930_backup.gif[respaldo de cluster pper 930]
+
+.. Haga clic en *Configuración* > *SVM peers*.
+.. Compruebe que la SVM de destino tiene una relación entre iguales con la SVM de origen.
+
+
+* Si su sistema utiliza ONTAP 9.2 o una versión anterior, realice los siguientes pasos para verificar la relación entre iguales de clústeres y la relación entre iguales de SVM:
++
+.. Haga clic en la ficha *configuraciones*.
+.. En el panel *Detalles del clúster*, haga clic en *pares de clústeres*.
+.. Verifique que el clúster con relación entre iguales esté autenticado y disponible.
++
+image::../media/cluster_peer_health_backup.gif[backup de estado de conexión entre clústeres y iguales]
+
+.. Haga clic en la ficha *SVMs* y seleccione la SVM de origen.
+.. En el área *Peer Storage Virtual Machines*, compruebe que la SVM de destino tiene una relación entre iguales y la SVM de origen.
++
+Si no ve ninguna SVM con relación entre iguales en esta área, puede crear la relación entre iguales de SVM al crear la relación de SnapVault.
+
+
+
++
+xref:task_creating_snapvault_relationship_92_earlier.adoc[Creación de la relación de SnapVault (ONTAP 9.2 o anterior)]
+
+

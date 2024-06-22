@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_creating_protection_policies.html 
+sidebar: sidebar 
+keywords: create, protection, policies, online, help, system, manager 
+summary: Puede usar System Manager para crear políticas de mirroring asíncrono, políticas de almacén o políticas de mirroring y almacén, así como para aplicar estas políticas a una relación de protección de datos. 
+---
+= Cree políticas de protección
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager para crear políticas de mirroring asíncrono, políticas de almacén o políticas de mirroring y almacén, así como para aplicar estas políticas a una relación de protección de datos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la máquina virtual de almacenamiento (SVM) para la que desea crear una directiva de protección y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Directivas*, haga clic en *Directivas de protección*.
+. Haga clic en *Crear*.
+. En el cuadro de diálogo *Crear directiva*, seleccione el tipo de directiva que desea crear.
+. Escriba el nombre de la política y la prioridad de transferencia.
++
+Low indica que la transferencia tiene la prioridad más baja y la transferencia se suele programar tras transferencias de prioridad normal. De forma predeterminada, la prioridad se establece como normal.
+
+. Para una política de tipo duplicación asíncrona, active la casilla de verificación *transferir todas las copias Snapshot de origen* para incluir la regla "'all_source_snapshots'" en la política de duplicación, que realiza una copia de seguridad de todas las copias Snapshot del volumen de origen.
+. Active la casilla de verificación *Activar compresión de red* para comprimir los datos que se transfieren durante una transferencia de datos.
+. Haga clic en *Agregar comentarios* para agregar comentarios adicionales para la directiva.
+. Para una política de tipo almacén o almacén de reflejos, especifique una etiqueta de SnapMirror y un número de retención de destino.
+. Haga clic en *Crear*.
+

@@ -1,0 +1,103 @@
+---
+permalink: online-help-96-97/task_assigning_luns_to_storage_qos.html 
+sidebar: sidebar 
+keywords: qos, quality, service, assign, lun, storage, system, manager, lun, online, help, policy, group 
+summary: 'Puede usar System Manager para limitar el rendimiento de los LUN asignándolos a grupos de políticas de calidad de servicio (QoS) de almacenamiento. Puede asignar una calidad de servicio de almacenamiento para LUN nuevos o modificar detalles de calidad de servicio de almacenamiento para LUN que ya están asignados a un grupo de políticas.' 
+---
+= Asigne LUN a la calidad de servicio del almacenamiento con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para limitar el rendimiento de los LUN asignando a los grupos de políticas de calidad de servicio de almacenamiento. Puede asignar una calidad de servicio de almacenamiento para LUN nuevos o modificar detalles de calidad de servicio de almacenamiento para LUN que ya están asignados a un grupo de políticas.
+
+.Acerca de esta tarea
+* No puede asignar calidad de servicio de almacenamiento a una LUN si los siguientes objetos de almacenamiento se asignan a un grupo de políticas:
++
+** Volumen principal de la LUN
+** Máquina virtual de almacenamiento principal (SVM) del LUN
+
+
+* Puede asignar la calidad de servicio de almacenamiento o modificar los detalles de calidad de servicio para un máximo de 10 LUN a la vez.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Gestión de LUN*, seleccione uno o más LUN para los que desea asignar la QoS de almacenamiento.
+. Haga clic en *Storage QoS*.
+. En el cuadro de diálogo *Detalles de calidad de servicio*, active la casilla de verificación *gestionar calidad de servicio* si desea administrar el rendimiento de la carga de trabajo del LUN.
++
+Si algunas de las LUN que ha seleccionado ya están asignadas a un grupo de políticas, los cambios que realice pueden afectar al rendimiento de estas LUN.
+
+. Cree un nuevo grupo de políticas de calidad de servicio de almacenamiento o seleccione un grupo de políticas existente para controlar el rendimiento de entrada/salida (I/o) de la LUN:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Crear un nuevo grupo de políticas
+ a| 
+.. Seleccione *Nuevo grupo de políticas*.
+.. Escriba el nombre del grupo de políticas.
+.. Especifique el límite mínimo de rendimiento.
++
+*** En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+*** No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+*** Si no especifica el valor de rendimiento mínimo o si el valor de rendimiento mínimo se establece en 0, el sistema mostrará automáticamente «'Ninguno'» como valor.
++
+Este valor distingue entre mayúsculas y minúsculas.
+
+
+
+.. Especifique el límite máximo de rendimiento para asegurarse de que la carga de trabajo de los objetos del grupo de políticas no supere el límite de rendimiento establecido.
++
+*** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+*** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS y B/s, KB/s, MB/s, etc.
+*** Si no especifica el valor de rendimiento máximo, el sistema mostrará automáticamente "'Unlimited'" como valor y este valor distingue entre mayúsculas y minúsculas.
++
+La unidad que especifique no afecta al rendimiento máximo.
+
+
+
+
+
+
+
+ a| 
+Seleccione un grupo de políticas existente
+ a| 
+.. Seleccione *Grupo de políticas existente* y, a continuación, haga clic en *elegir* para seleccionar un grupo de políticas existente en el cuadro de diálogo Seleccionar grupo de políticas.
+.. Especifique el límite mínimo de rendimiento.
++
+*** En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+*** No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+*** Si no especifica el valor de rendimiento mínimo o si el valor de rendimiento mínimo se establece en 0, el sistema mostrará automáticamente «'Ninguno'» como valor.
++
+Este valor distingue entre mayúsculas y minúsculas.
+
+
+
+.. Especifique el límite máximo de rendimiento para asegurarse de que la carga de trabajo de los objetos del grupo de políticas no supere el límite de rendimiento establecido.
++
+*** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+*** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS y B/s, KB/s, MB/s, etc.
+*** Si no especifica el valor de rendimiento máximo, el sistema mostrará automáticamente "'Unlimited'" como valor y este valor distingue entre mayúsculas y minúsculas.
+ +
+La unidad que especifique no afecta al rendimiento máximo.
+
+
++
+Si el grupo de políticas se ha asignado a más de un objeto, el rendimiento máximo que se configure se compartirá entre todos los objetos.
+
+
+
+|===
+. *Opcional:* haga clic en el vínculo que especifica el número de LUN para revisar la lista de LUN seleccionadas y haga clic en *descartar* si desea eliminar cualquier LUN de la lista.
++
+El enlace solo se muestra cuando se seleccionan varias LUN.
+
+. Haga clic en *Aceptar*.
+

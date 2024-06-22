@@ -1,0 +1,51 @@
+---
+permalink: volume-backup-snapvault/task_monitoring_snapvault_relationship.html 
+sidebar: sidebar 
+keywords: periodically, monitor, status, snapvault, relationship, ensure, data, back, up, volume, schedule, monitor the snapvault relationship 
+summary: Debe supervisar periódicamente el estado de las relaciones de SnapVault a fin de garantizar que se realice un backup de los datos en el volumen de destino según la programación especificada. 
+---
+= Supervise la relación de SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe supervisar periódicamente el estado de las relaciones de SnapVault a fin de garantizar que se realice un backup de los datos en el volumen de destino según la programación especificada.
+
+.Acerca de esta tarea
+Debe realizar esta tarea desde el clúster *destino*.
+
+.Pasos
+. Según la versión de System Manager que esté ejecutando, realice uno de los pasos siguientes:
++
+** ONTAP 9.4 o anterior: Haga clic en *Protección* > *Relaciones*.
+** A partir de ONTAP 9.5: Haga clic en *Protección* > *Relaciones de volumen*.
+
+
+. Seleccione la relación SnapVault entre los volúmenes de origen y destino y, a continuación, compruebe el estado en la ficha inferior * Detalles*.
++
+Se muestra el estado de la relación de SnapVault, los errores de transferencia y el tiempo de desfase:
+
++
+** Debe aparecer el campo es saludable `Yes`.
++
+Si la mayoría de los errores de transferencia de datos se producen, el campo muestra `No`. Sin embargo, en algunos casos de fallo, el campo sigue mostrándose `Yes`. Debe comprobar los errores de transferencia en la sección Detalles para asegurarse de que no se ha producido ningún error de transferencia de datos.
+
+** Debe aparecer el campo Estado de relación `Snapmirrored`.
+** El tiempo de desfase no debe superar el intervalo de programación de transferencia.
++
+Por ejemplo, si la programación de transferencia es diaria, el tiempo de demora no debe ser superior a un día.
+
++
+Debe solucionar cualquier problema en las relaciones de SnapVault. Los procedimientos de solución de problemas para las relaciones de SnapMirror también se aplican a las relaciones de SnapVault.
+
++
+http://www.netapp.com/us/media/tr-4015.pdf["Informe técnico de NetApp 4015: Configuración de SnapMirror y mejores prácticas para ONTAP 9.1, 9.2"^]
+
++
+image::../media/monitor_sv.gif[supervisar sv]
+
+
+
+

@@ -1,0 +1,15 @@
+---
+permalink: online-help-96-97/generic_machine_translation_disclaimer.html 
+sidebar: sidebar 
+keywords: machine, translation, localized, content, online, help 
+summary: Consulte información importante sobre el contenido localizado en netapp.com. 
+---
+= Traducción automática
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+Consulte información importante sobre el contenido localizado en netapp.com.
+
+https://www.netapp.com/company/legal/machine-translation/[]

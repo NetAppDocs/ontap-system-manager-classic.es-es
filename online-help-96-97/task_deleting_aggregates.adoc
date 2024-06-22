@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_deleting_aggregates.html 
+sidebar: sidebar 
+keywords: delete, aggregates, system, manager, online, help, root 
+summary: Puede usar System Manager para eliminar agregados cuando ya no necesite los datos en los agregados. Sin embargo, no se puede eliminar el agregado raíz porque contiene el volumen raíz, que contiene la información de configuración del sistema. 
+---
+= Elimine agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para eliminar agregados cuando ya no se requieren los datos de los agregados. Sin embargo, no se puede eliminar el agregado raíz porque contiene el volumen raíz, que contiene la información de configuración del sistema.
+
+.Antes de empezar
+* Se deben eliminar todos los volúmenes FlexVol y las máquinas virtuales de almacenamiento (SVM) asociadas que contiene el agregado.
+* El agregado debe estar sin conexión.
+
+
+.Pasos
+. Elija uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento*.
+** Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+
+
+. Seleccione uno o más agregados que desee eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+*Información relacionada*
+
+xref:reference_aggregates_window.adoc[Ventana Aggregates]
+
+xref:reference_storage_tiers_window.adoc[Ventana Storage Tiers]

@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_changing_tiering_policy_volume_destination_topic_delete.html 
+sidebar: sidebar 
+keywords: change, tiering, policy, system, manager, volume, online, help 
+summary: Puede usar System Manager para cambiar la política de organización en niveles predeterminada de un volumen a fin de controlar si los datos del volumen se mueven al nivel de cloud cuando los datos quedan inactivos. 
+---
+= Cambie la política de organización en niveles de un volumen con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para cambiar la política de organización en niveles predeterminada de un volumen a fin de controlar si los datos del volumen se mueven al nivel de cloud cuando los datos quedan inactivos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen para el que desea cambiar la política de organización en niveles y, a continuación, haga clic en *más acciones* > *Cambiar política de organización en niveles*.
+. Seleccione la política de organización en niveles necesaria en la lista *Directiva de organización en niveles* y, a continuación, haga clic en *Guardar*.
+

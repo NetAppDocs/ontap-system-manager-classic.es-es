@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_editing_data_protection_volumes.html 
+sidebar: sidebar 
+keywords: edit, data, protection, system, manager, online, help, dp, volume 
+summary: 'Es posible usar System Manager para modificar el nombre de un volumen de protección de datos (DP). Si el volumen de origen no tiene habilitada la eficiencia de almacenamiento, quizás se desee habilitar la eficiencia de almacenamiento solo en el volumen de destino.' 
+---
+= Editar volúmenes de protección de datos con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para modificar el nombre de un volumen de protección de datos (DP). Si el volumen de origen no tiene habilitada la eficiencia de almacenamiento, quizás se desee habilitar la eficiencia de almacenamiento solo en el volumen de destino.
+
+.Acerca de esta tarea
+No se puede modificar la eficiencia del almacenamiento en un volumen de protección de datos reflejado.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione la máquina virtual de almacenamiento (SVM) en la que reside el volumen DP que desea editar.
+. Seleccione el volumen que desea modificar y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar volumen de protección de datos*, modifique el nombre del volumen.
+. Asegúrese de que la opción *Activar eficiencia de almacenamiento* está seleccionada.
++
+Si ya está habilitada la eficiencia del almacenamiento en el volumen, la casilla de comprobación está activada de forma predeterminada.
+
+. *Opcional:* haga clic en la ficha *Avanzado* y realice los pasos siguientes:
++
+.. Seleccione la política de almacenamiento en caché que desea asignar al volumen.
+.. Seleccione la prioridad de retención para los datos en caché del volumen.
+
+
++
+Estas opciones solo están disponibles para protección de datos con volúmenes de FlexVol en un agregado de Flash Pool.
+
+. Haga clic en *Guardar*.
+

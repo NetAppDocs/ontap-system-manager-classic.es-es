@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/task_performing_unplanned_switchover.html 
+sidebar: sidebar 
+keywords: perform, unplanned, switchover, system, manager, metrocluster, site, online, help 
+summary: A partir de System Manager 9.6, puede iniciar una conmutación sin planificar de un sitio de MetroCluster. Esta operación es útil después de un evento de interrupción del servicio o un evento de desastre. 
+---
+= Realizar una conmutación de sitios no planificada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, puede iniciar una conmutación sin planificar de un sitio de MetroCluster. Esta operación es útil después de un evento de interrupción del servicio o un evento de desastre.
+
+.Antes de empezar
+Su MetroCluster se ejecuta en condiciones de funcionamiento normales; sin embargo, los nodos del clúster local (sitio A) están activos, pero los nodos del clúster remoto (sitio B) están inactivos.
+
+.Pasos
+. [[step1]]Verifique que el sitio B está realmente caído.
++
+Un error de conexión puede hacer que el sitio B parezca estar inactivo.
+
++
+[NOTE]
+====
+Iniciar el proceso de conmutación de sitios con el sitio B activo podría provocar resultados desastrosos.
+
+====
+. En System Manager, inicie sesión en el sitio MetroCluster local (sitio A) con las credenciales de administrador del clúster.
+. Haga clic en *Configuración* > *MetroCluster*
++
+Se mostrará la ventana MetroCluster Switchover/Switchback Operations.
+
+. Haga clic en *Siguiente*.
++
+La ventana Operaciones de conmutación de sitios/conmutación de sitios de MetroCluster muestra el estado de las operaciones y System Manager verifica si es posible una conmutación negociada.
+
+. Una vez completado el proceso de validación, haga clic en *Cambio del sitio B al sitio A* para iniciar el proceso de cambio.
++
+Aparece un mensaje de advertencia que le advierte de que la operación de conmutación cambia el control del sitio B al sitio A. El estado del sitio B debe ser "'INALCANZABLE'", y todos los nodos del sitio B se muestran en texto en rojo.
+
++
+[NOTE]
+====
+Como se indica en el paso link:#step1["1"], El Sitio B debe estar apagado y no sólo desconectado. Además, debe tener en cuenta que la operación de conmutación puede provocar la pérdida de datos.
+
+====
+. Si desea continuar, asegúrese de que la casilla de verificación está activada y, a continuación, haga clic en *Sí*.
++
+Se inicia el proceso de cambio. los estados del sitio A y del sitio B se muestran encima de las representaciones gráficas de sus configuraciones. Si la operación de conmutación falla, se muestra un mensaje de error. Haga clic en *Cerrar*. Corrija los errores y vuelva a comenzar en el paso link:task_performing_negotiated_planned_switchover.html#step1["1"]
+
+. Realizar todas las actividades de mantenimiento necesarias para el sitio B.
+. Asegúrese de que el centro B esté activo.
++
+Comienza el proceso de curación. Cuando System Manager muestra que la reparación ha finalizado, el sitio B está operativo y los sistemas se preparan para el proceso de regreso. El botón *Cambio de sitio A a sitio B* aparece en la parte inferior de la ventana.
+
+. Vaya a. xref:task_performing_switchback.adoc[Realización de una conmutación de regreso] para iniciar la operación de regreso.
+

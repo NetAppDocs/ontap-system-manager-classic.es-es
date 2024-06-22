@@ -1,0 +1,50 @@
+---
+permalink: smb-config/task_creating_share_setting_its_permissions.html 
+sidebar: sidebar 
+keywords: windows, user, access, volume, create, cifs, restrict, share, modify, control, list, scl, share, create a share and set its permissions 
+summary: 'Para que los usuarios de Windows puedan acceder a un volumen, debe crear un recurso compartido de CIFS en el volumen y restringir el acceso al recurso compartido. Para ello, modifique la lista de control de acceso (ACL) del recurso compartido.' 
+---
+= Cree un recurso compartido y establezca sus permisos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para que los usuarios de Windows puedan acceder a un volumen, debe crear un recurso compartido de CIFS en el volumen y restringir el acceso al recurso compartido. Para ello, modifique la lista de control de acceso (ACL) del recurso compartido.
+
+.Acerca de esta tarea
+Para pruebas, debe permitir el acceso sólo a los administradores. Más tarde, una vez que haya verificado que el volumen está accesible, podrá permitir el acceso a más clientes.
+
+.Pasos
+. Vaya a la ventana *shares*.
+. Cree un recurso compartido para que los clientes SMB puedan acceder al volumen:
++
+.. Haga clic en *Crear recurso compartido*.
+.. En el cuadro de diálogo *Crear recurso compartido*, haga clic en *examinar*, expanda la jerarquía del espacio de nombres y, a continuación, seleccione el volumen que creó anteriormente.
+.. *Opcional*: Si desea que el nombre del recurso compartido sea diferente del nombre del volumen, cambie el nombre del recurso compartido.
+.. Haga clic en *Crear*.
+
+
++
+El recurso compartido se crea con una ACL predeterminada establecida en Control total para el grupo Everyone.
+
+. *Opcional*: Restringir el acceso al recurso compartido modificando el ACL compartido:
++
+.. Seleccione el recurso compartido y, a continuación, haga clic en *Editar*.
+.. En la ficha *permisos*, seleccione el grupo *todos* y, a continuación, haga clic en *Quitar*.
+.. Haga clic en *Agregar* y, a continuación, escriba el nombre de un grupo de administradores definido en el dominio de Windows Active Directory que incluye la SVM.
+.. Con el nuevo grupo de administrador seleccionado, seleccione todos los permisos para él.
+.. Haga clic en *Guardar y cerrar*.
+
+
++
+Los permisos de acceso al recurso compartido actualizados se muestran en el panel Control de acceso compartido.
+
+
+
+
+
+== Qué hacer a continuación
+
+Debe verificar el acceso como administrador de Windows.

@@ -1,0 +1,16 @@
+---
+permalink: nas-multiprotocol-config/concept_cifs_nfs_configuration_workflow.html 
+sidebar: sidebar 
+keywords: configure, smb, cif, nfs, creating, create, aggregate, volume, share, export, verify, unix, windows, administration, host, nfs, client, multiprotocol, configuration, workflow, multiprotocol configuration workflow 
+summary: La configuración de SMB/CIFS y NFS implica la posibilidad de crear de forma opcional un agregado; opcionalmente, se crea una SVM nueva o se configura una existente; se crea un volumen, un recurso compartido y una exportación, y se verifica el acceso desde hosts de administración UNIX y Windows. A continuación, podrá abrir el acceso a los clientes SMB/CIFS y NFS. 
+---
+= Flujo de trabajo de configuración de varios protocolos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configuración de SMB/CIFS y NFS implica la posibilidad de crear de forma opcional un agregado; opcionalmente, se crea una SVM nueva o se configura una existente; se crea un volumen, un recurso compartido y una exportación, y se verifica el acceso desde hosts de administración UNIX y Windows. A continuación, podrá abrir el acceso a los clientes SMB/CIFS y NFS.
+
+image::../media/cifs_nfs_multiprotocol.gif[Muestra una descripción general de los pasos relacionados con la configuración de NFS y CIFS en ONTAP.]

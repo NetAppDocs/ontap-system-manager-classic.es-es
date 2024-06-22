@@ -1,0 +1,178 @@
+---
+permalink: online-help-96-97/concept_what_nvme_subsystem_is.html 
+sidebar: sidebar 
+keywords: nvme, subsystem, fc, rdma, transport, port, vserver, online, help, controller, cluster, table, settings, manage 
+summary: 'Un subsistema NVMe incluye una o varias controladoras, uno o varios espacios de nombres, uno o varios puertos de subsistema de memoria no volátil (NVM) (puertos de transporte FC-NVMe o RDMA), un medio de almacenamiento NVM y una interfaz entre las controladoras y el medio de almacenamiento NVM. Para la asignación y gestión de controladoras, un subsistema NVM se asigna a un Vserver en ONTAP.' 
+---
+= Gestione subsistemas NVMe con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar un subsistema NVMe. Es posible asociar el subsistema NVMe con diferentes hosts y espacios de nombres en Vserver. Además, cada Vserver admite más de un subsistema NVMe. Sin embargo, no puede configurar un subsistema NVMe para que se utilice en varios servidores vServer.
+
+
+
+== Cree subsistemas NVMe
+
+Puede usar System Manager para crear un subsistema NVMe.
+
+.Pasos
+. Haga clic en *Crear* en la ventana *subsistemas NVMe*.
+. Proporcione entradas en la ventana *sistemas NVMe: Create* para los siguientes campos:
++
+** *SVM*
++
+En el menú desplegable, seleccione la SVM donde desea crear el subsistema.
+
+** *Nombre*
++
+Escriba un nombre para el subsistema. No puede haber el nombre del subsistema en la SVM. El nombre distingue entre mayúsculas y minúsculas y se limita a 96 caracteres. Se permiten caracteres especiales.
+
+** *Sistema operativo del host*
++
+En el menú desplegable, seleccione el tipo de sistema operativo host del subsistema.
+
+** *Host NQN*
++
+Introduzca el NQN del host conectado a la controladora. Puede introducir más de un NQN de host separándolos con comas.
+
+
+
+. Haga clic en *Guardar*.
++
+Se crea el subsistema NVMe y se muestra la ventana Subsystem.swindow de NVMe.
+
+
+
+
+
+== Edite los detalles de los subsistemas NVMe
+
+Puede usar System Manager para editar los detalles de un subsistema NVMe.
+
+.Pasos
+. Busque el subsistema NVMe que desea editar en la ventana *subsistema NVMe*.
+. Seleccione la casilla situada a la izquierda del nombre del subsistema que desea editar.
+. Haga clic en *Editar*.
++
+Los detalles actuales del subsistema NVMe se muestran en los subsistemas de NVMe: Editwindow.
+
+. Sólo puede modificar la información en el campo *NQN del host*.
++
+** *Host NQN*
++
+Modifique el NQN del host conectado a la controladora. Puede introducir más de un NQN de host separándolos con comas.
+
+
+
++
+La tabla *espacios de nombres de NVMe asociados* se muestra debajo del campo NQN del host. Para cada espacio de nombres, en la tabla se enumera la ruta de acceso del espacio de nombres y el identificador de espacio de nombres.
+
+. Haga clic en *Guardar*.
++
+Se actualizan los detalles del subsistema NVMe y se muestra la ventana Subsistemas de NVMe.
+
+
+
+
+
+== Elimine un subsistema NVMe
+
+Puede usar System Manager para eliminar un subsistema NVMe de un clúster.
+
+.Acerca de esta tarea
+Las siguientes acciones ocurren cuando se elimina un subsistema NVMe:
+
+* Si el subsistema NVMe ha configurado hosts, se quitarán los hosts asignados.
+* Si el subsistema NVMe tiene espacios de nombres asignados, se anula la asignación.
+
+
+.Pasos
+. Busque el subsistema NVMe que desea eliminar en la ventana *subsistema NVMe*.
+. Seleccione la casilla situada a la izquierda del nombre del subsistema que desea eliminar.
+. Haga clic en *Eliminar*.
++
+Aparecerá un mensaje de advertencia.
+
+. Haga clic en la casilla de comprobación *Eliminar el subsistema NVMe* para confirmar la eliminación y haga clic en *Sí*.
++
+El subsistema NVMe se elimina del clúster y se muestra la ventana Subsistemas NVMe.
+
+
+
+
+
+== Ventana subsistemas de NVMe
+
+La ventana NVMe Subsystems muestra de forma predeterminada una lista de inventario de subsistemas NVMe en un clúster. Puede filtrar la lista para mostrar solo los subsistemas de que son específicos de una SVM. La ventana también permite crear, editar o eliminar subsistemas de NVMe. Puede acceder a esta ventana seleccionando *almacenamiento* > *NVMe* > *Subsistemas*.
+
+* <<Tabla de subsistemas de NVMe>>
+* <<Barra de herramientas>>
+
+
+
+
+=== Tabla de subsistemas de NVMe
+
+En la tabla Subsistemas NVMe, se muestra el inventario de subsistemas NVMe en un clúster. Puede refinar la lista con el menú desplegable del campo *SVM* para seleccionar una SVM que muestre únicamente los subsistemas de NVMe asociados a esa SVM. El campo *Buscar* y el menú desplegable *filtrado* le permiten personalizar aún más la lista.
+
+La tabla Subsistemas NVMe contiene las siguientes columnas:
+
+* *(casilla de verificación)*
++
+Permite especificar en qué subsistemas desea realizar acciones.
+
++
+Haga clic en la casilla de verificación para seleccionar el subsistema y, a continuación, haga clic en la acción de la barra de herramientas que desea realizar.
+
+* *Nombre*
++
+Muestra el nombre del subsistema.
+
++
+Puede buscar un subsistema introduciendo su nombre en el campo *Buscar*.
+
+* *Sistema operativo del host*
++
+Muestra el nombre del sistema operativo del host asociado al subsistema.
+
+* *Host NQN*
++
+Muestra el nombre completo de NVMe (NQN) conectado a la controladora. Si se muestran varios NQN, se separan por comas.
+
+* *Espacios de nombres NVMe asociados*
++
+Muestra el número de espacios de nombres NVM asociados al subsistema. Puede pasar el ratón sobre el número para mostrar las rutas de espacios de nombres asociadas. Haga clic en una ruta para mostrar la ventana Detalles del espacio de nombres.
+
+
+
+
+
+=== Barra de herramientas
+
+La barra de herramientas está situada encima del encabezado de la columna. Puede utilizar los campos y botones de la barra de herramientas para realizar varias acciones.
+
+* *Buscar*
++
+Permite buscar valores que se pueden encontrar en la columna *Nombre*.
+
+* *Filtrado*
++
+Permite seleccionar entre un menú desplegable que enumera varios métodos de filtrado de la lista.
+
+* *Crear*
++
+Abre el cuadro de diálogo Crear subsistema NVMe, que permite crear un subsistema NVMe.
+
+* *Edición*
++
+Se abre el cuadro de diálogo Editar subsistema NVMe, que permite editar un subsistema NVMe existente.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo de confirmación Delete NVMe Subsystem, que permite eliminar un subsistema NVMe existente.
+
+

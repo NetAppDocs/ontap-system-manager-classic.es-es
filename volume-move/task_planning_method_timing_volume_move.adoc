@@ -1,0 +1,67 @@
+---
+permalink: volume-move/task_planning_method_timing_volume_move.html 
+sidebar: sidebar 
+keywords: system, manager, volume, manual, cutover, lun, report, node, advance, procedure, command-line, interface, cli, plan, plan the method and timing of a volume move 
+summary: 'Puede usar la interfaz "clásica" de System Manager de ONTAP con ONTAP 9.7 o anterior para mover un volumen y decidir si desea realizar una transición manual. Si necesita actualizar los nodos de generación de informes de LUN, debe seguir un procedimiento avanzado en la interfaz de línea de comandos (CLI). Opcionalmente, también se puede planificar la sincronización de un movimiento de volumen.' 
+---
+= Planifique el método y el tiempo de un movimiento de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la interfaz _Classic_ de ONTAP con ONTAP 9.7 o anterior para mover un volumen y decidir si desea realizar una transición manual. Si necesita actualizar los nodos de generación de informes de LUN, debe seguir un procedimiento avanzado en la interfaz de línea de comandos (CLI). Opcionalmente, también se puede planificar la sincronización de un movimiento de volumen.
+
+.Acerca de esta tarea
+El volumen de origen de una relación de SnapMirror o SnapVault se puede mover mientras el volumen se está reflejando. Los servicios de SnapMirror encuentran una breve pausa durante la fase de transposición del trabajo de movimiento de volúmenes.
+
+El volumen de destino también se puede mover. En la fase iterativa, las actualizaciones de SnapMirror o SnapVault y las operaciones de movimiento de volúmenes se ejecutan simultáneamente. Al evaluar si es posible una transición en la fase de transición, la prioridad entre la transición y las actualizaciones de SnapMirror o SnapVault se determina por orden de llegada. Hasta que finalice la primera operación, se bloquearán otras operaciones.
+
+.Pasos
+. Decidir si se requiere una transición manual.
++
+_Cutover_ es el momento en que finaliza la operación de movimiento y ONTAP comienza a servir datos del volumen en el nuevo agregado. La transición puede producirse automáticamente o puede activar la transposición manualmente.
+
++
+Si la práctica estándar de su empresa requiere que controle cuando se produzcan cambios en el sistema de almacenamiento, puede realizar manualmente la transición final de la operación de movimiento durante un periodo de mantenimiento.
+
++
+Una transición no requiere una interrupción del servicio, pero puede utilizar una ventana de mantenimiento para controlar _cuándo se produce.
+
++
+[NOTE]
+====
+La operación de movimiento de volúmenes no es disruptiva, independientemente de si selecciona la transición automática o manual.
+
+====
+. Si el volumen contiene LUN y el clúster contiene cuatro o más nodos, use la interfaz de línea de comandos para actualizar los nodos de generación de informes de la LUN si el volumen se mueve a una pareja de ha diferente.
++
+Si el volumen no contiene LUN o si el clúster solo contiene dos nodos, puede omitir este paso.
+
+. *Opcional:* planificar una vez utilizando las siguientes consideraciones:
++
+** La operación de movimiento de un volumen puede llevar más tiempo de lo esperado porque se diseñan para producir sin interrupciones en segundo plano de una manera que preserva el acceso del cliente y el rendimiento general del sistema.
++
+Por ejemplo, ONTAP limita los recursos que están disponibles para la operación de movimiento de volúmenes.
+
+** Si desea que el movimiento se produzca lo más rápido posible, debe seleccionar un momento con menos actividad de clúster, especialmente las siguientes actividades:
++
+*** Operaciones de I/o en el volumen
+*** Trabajos que utilizan recursos en segundo plano, por ejemplo, cuando el uso de CPU de la controladora es inferior al 50 %
+*** Trabajos que utilizan Cluster Interconnect
+
+
+** No se puede iniciar un movimiento mientras el volumen se ve afectado por las siguientes operaciones: Volumen sin conexión, restricción o destrucción; sincronización, pausa, de SnapMirror O restaurar, y restaurar Snapshot.
++
+Debe esperar a que alguna de estas operaciones específicas se complete para poder iniciar el movimiento.
+
+** Aunque la operación de movimiento de volúmenes tenga lugar, no puede producirse una conmutación de estado de MetroCluster, aunque puede producirse un cambio.
+** Los interruptores de MetroCluster se bloquean cuando las operaciones de movimiento de volúmenes están en curso en volúmenes que pertenecen al sitio de conmutación. Los interruptores de control no se bloquean cuando las operaciones de movimiento de volúmenes están en curso para los volúmenes locales del sitio superviviente.
+** Los interruptores MetroCluster forzados pueden producirse cuando las operaciones de movimiento de volúmenes están en curso.
+
+
+
+
+.Información relacionada
+link:task_verifying_lun_reporting_nodes_after_moving_volume.html["Verificación de los nodos de generación de informes de LUN después de mover un volumen"]

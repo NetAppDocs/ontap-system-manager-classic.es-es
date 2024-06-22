@@ -1,0 +1,66 @@
+---
+permalink: online-help-96-97/task_tracing_file_access_to_diagnose_access_errors_on_svms.html 
+sidebar: sidebar 
+keywords: trace, file, access, diagnost, error, svm, system, manager, online, help 
+summary: 'A partir de System Manager 9.6, es posible diagnosticar errores de acceso a archivos CIFS o NFS en una máquina virtual de almacenamiento (SVM).' 
+---
+= Seguimiento de acceso a archivos para diagnosticar errores de acceso en SVM con System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, es posible diagnosticar errores de acceso a archivos CIFS o NFS en una máquina virtual de almacenamiento (SVM).
+
+.Acerca de esta tarea
+Es probable que se produzcan problemas de acceso a archivos, como un error de "'acceso denegado'", cuando haya problemas con la configuración de un recurso compartido, los permisos o la asignación de usuarios. Puede usar System Manager para ayudar a resolver problemas de acceso a los archivos mediante la visualización de los resultados de seguimiento de acceso del archivo o el recurso compartido al que desea acceder un usuario. System Manager muestra si el archivo o el recurso compartido tiene permisos efectivos de lectura, escritura o ejecución y los motivos por los que el acceso es o no efectivo.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM que contiene los archivos o recursos compartidos para los cuales se recibieron errores de acceso a los archivos.
+. Haga clic en *acceso a archivos de rastreo*.
++
+La ventana Trace File Access para la SVM seleccionada muestra los requisitos previos y pasos necesarios para realizar el seguimiento de los permisos de acceso a los archivos.
+
+. Haga clic en *continuar* para comenzar el proceso de rastreo de archivos.
+. Seleccione el protocolo que se utiliza para acceder a los archivos o recursos compartidos de la SVM seleccionada.
+. En el campo *Nombre de usuario*, introduzca el nombre del usuario que estaba intentando tener acceso al archivo o recurso compartido.
+. *Opcional:* haga clic image:../media/advanced_options.gif[""] para especificar más detalles para restringir el ámbito del trazado.
++
+La ventana de diálogo Opciones avanzadas le permite especificar los siguientes detalles:
+
++
+** *Dirección IP del cliente*: Especifique la dirección IP del cliente.
+** *Archivo*: Especifique el nombre del archivo o la ruta de acceso al archivo que se va a rastrear.
+** *Mostrar en resultados de rastreo*: Especifique si desea ver sólo las entradas denegadas de acceso o todas las entradas.
+Haga clic en *aplicar* para aplicar los detalles especificados y volver a la ventana acceso al archivo de rastreo.
+
+
+. Haga clic en *Iniciar rastreo*.
++
+Se inicia el seguimiento y se muestra una tabla de resultados. La tabla está vacía hasta que los usuarios reciban errores al solicitar acceso a archivos. La tabla de resultados se actualiza cada 15 segundos y muestra los mensajes en orden cronológico inverso.
+
+. Notifique al usuario o usuarios afectados que deben intentar acceder a los archivos en los próximos 60 minutos.
++
+Los detalles de las solicitudes de acceso a archivos denegadas se muestran en la tabla resultados cuando se producen errores para el nombre de usuario especificado durante la traza. La columna razones identifica los problemas que impiden al usuario acceder a los archivos y las razones por las que se produjeron.
+
+. *Opcional:* en la columna *razones* de la tabla de resultados, haga clic en *Ver permisos* para ver los permisos del archivo al que el usuario intenta obtener acceso.
++
+** Cuando el resultado de la traza muestra un mensaje que indica que no se concede acceso a "Sincronizar", "Control de lectura", "Leer atributos", "Ejecutar", "Leer EA", "Escribir", o "Leer", el mensaje indica que el acceso deseado no ha sido concedido para el conjunto de permisos enumerados. Para ver el estado de los permisos reales, debe ver los permisos mediante el vínculo proporcionado.
+** Si especificó el protocolo CIFS, se muestra el cuadro de diálogo efectivo File and Share Permissions, donde se enumeran los permisos de archivo y recurso compartido asociados con el recurso compartido y el archivo al que el usuario intenta acceder.
+** Si ha especificado el protocolo NFS, aparecerá el cuadro de diálogo permisos de archivos efectivos, donde se enumeran los permisos de archivo asociados al archivo al que el usuario intenta acceder.
+Una Marca de verificación indica que se conceden permisos y que una "'X'" indica que no se conceden permisos.
+
+
++
+Haga clic en *Aceptar* para volver a la ventana acceso al archivo de rastreo.
+
+. *Opcional:* la tabla de resultados muestra datos de sólo lectura. Las siguientes acciones se pueden realizar con los resultados del seguimiento:
++
+** Haga clic en *Copiar al Portapapeles* para copiar los resultados en el portapapeles.
+** Haga clic en *Exportar resultados de trazado* para exportar los resultados a un archivo de valores separados por comas (CSV).
+
+
+. Cuando desee finalizar la operación de rastreo, haga clic en *Detener rastreo*.
+

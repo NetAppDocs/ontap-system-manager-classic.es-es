@@ -1,0 +1,14 @@
+---
+permalink: online-help-96-97/concept_setting_up_physical_storage.html 
+sidebar: sidebar 
+keywords: physical, storage, set, up, online, help, disk, node, spare, aggregates 
+summary: La configuración del almacenamiento físico consiste en asignar discos a los nodos, poner a cero los discos de repuesto y crear agregados. 
+---
+= Configurar el almacenamiento físico
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configuración del almacenamiento físico consiste en asignar discos a los nodos, poner a cero los discos de repuesto y crear agregados.

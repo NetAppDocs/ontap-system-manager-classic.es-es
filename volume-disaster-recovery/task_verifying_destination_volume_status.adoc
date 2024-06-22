@@ -1,0 +1,52 @@
+---
+permalink: volume-disaster-recovery/task_verifying_destination_volume_status.html 
+sidebar: sidebar 
+keywords: break, snapmirror, relationship, verify, destination, volume, access, source, verify the destination volume status 
+summary: Después de interrumpir la relación de SnapMirror, debe comprobar que el volumen de destino tiene acceso de lectura/escritura y que la configuración del volumen de destino coincide con la configuración del volumen de origen. 
+---
+= Compruebe el estado del volumen de destino
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de interrumpir la relación de SnapMirror, debe comprobar que el volumen de destino tiene acceso de lectura/escritura y que la configuración del volumen de destino coincide con la configuración del volumen de origen.
+
+.Acerca de esta tarea
+Debe realizar esta tarea desde el clúster *destino*.
+
+.Pasos
+. Vaya a la ventana *Volumes*.
+. Seleccione el volumen de destino en la lista *Volumes* y, a continuación, compruebe que el tipo de volumen de destino es `rw`, que indica acceso de lectura y escritura.
+. Compruebe que la configuración del volumen, como thin provisioning, deduplicación, compresión y crecimiento automático en el volumen de destino coinciden con la configuración del volumen de origen.
++
+Puede utilizar la información de configuración de los volúmenes que anotó después de crear la relación de SnapMirror para verificar la configuración del volumen de destino.
+
+. Si los ajustes del volumen no coinciden, modifique los ajustes del volumen de destino según sea necesario:
++
+.. Haga clic en *Editar*.
+.. Modifique la configuración general, las opciones de eficiencia del almacenamiento y la configuración avanzada del entorno, según sea necesario.
+.. Haga clic en *Guardar y cerrar*.
++
+image::../media/volume_edit_dest_vol_unix.gif[Captura de pantalla del cuadro de diálogo Editar volumen.]
+
+.. Compruebe que las columnas de la lista *Volumes* se actualizan con los valores adecuados.
+
+
+. Habilite la creación de copias Snapshot para el volumen de destino.
++
+.. En función de la versión de ONTAP, desplácese a la página *Configurar copias Snapshot de volumen* de una de las siguientes formas:
++
+A partir de ONTAP 9.3: Seleccione el volumen de destino y, a continuación, haga clic en *acciones* > *Administrar instantáneas* > *Configurar*.
+
++
+ONTAP 9.2 o anterior: Seleccione el volumen de destino y, a continuación, haga clic en *copias Snapshot* > *Configurar*.
+
+.. Active la casilla de verificación *Activar copias Snapshot programadas* y, a continuación, haga clic en *Aceptar*.
+
+
++
+image::../media/configure_snapshot_policy.gif[Configurar copias Snapshot de volúmenes]
+
+

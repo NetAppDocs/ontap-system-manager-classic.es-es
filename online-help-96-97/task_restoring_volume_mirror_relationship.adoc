@@ -1,0 +1,82 @@
+---
+permalink: online-help-96-97/task_restoring_volume_mirror_relationship.html 
+sidebar: sidebar 
+keywords: restore, volume, mirror, relationship, snapmirror, online, help, system, manager 
+summary: En el caso de una relación de mirroring que no depende de versiones, es posible usar System Manager para restaurar copias de Snapshot en un volumen de origen o en otros volúmenes, si los datos de origen están dañados y ya no se pueden utilizar. Puede reemplazar los datos originales por las copias Snapshot en el volumen de destino. 
+---
+= Restaurar un volumen en una relación de reflejo con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En el caso de una relación de mirroring independiente de versiones, puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para restaurar copias de Snapshot en un volumen de origen o en otros volúmenes si los datos de origen están dañados y ya no se pueden utilizar. Puede reemplazar los datos originales por las copias Snapshot en el volumen de destino.
+
+.Antes de empezar
+* Se debe habilitar la licencia de SnapMirror en los clústeres de origen y destino, o en los nodos que contengan los volúmenes de origen y destino.
+* Los clústeres de origen y destino deben tener una relación entre iguales en buen estado.
+* El agregado de origen o cualquier otro agregado que seleccione para la operación de restauración deben ser un agregado de 64 bits.
+* Si se conecta de un clúster que ejecuta ONTAP 9.2 o una versión anterior a un clúster remoto donde está habilitada la autenticación del lenguaje de marcado de aserción de seguridad (SAML), la autenticación basada en contraseñas también debe estar habilitada en el clúster remoto.
+
+
+.Acerca de esta tarea
+* No es posible restaurar un volumen que está en una relación de mirroring entre una máquina virtual de almacenamiento (SVM) de origen y una SVM de destino en una configuración de MetroCluster.
+* No se puede realizar una operación de restauración en volúmenes de SnapLock.
+* Puede restaurar una relación de mirroring entre varias SVM sincronizada en origen en una configuración de MetroCluster.
+* Puede restaurar una relación de mirroring entre un volumen en una SVM sincronizada en origen y una SVM predeterminada.
+* Puede restaurar una relación de mirroring entre un volumen en una SVM predeterminada y un volumen de DP en una SVM sincronizada en origen.
+
+
+.Pasos
+. Haga clic en *Protección* > *Relaciones de volumen*.
+. Seleccione la relación de réplica y, a continuación, haga clic en *Operaciones* > *Restaurar*.
+. En el cuadro de diálogo *Restaurar*, restaure los datos al volumen de origen en la relación de reflejo o seleccione cualquier otro volumen:
++
+|===
+| Si desea restaurar los datos en... | Realice lo siguiente... 
+
+
+ a| 
+El volumen de origen
+ a| 
+.. Seleccione *volumen de origen*.
+.. Vaya al paso 7.
+
+
+
+
+ a| 
+Cualquier otro volumen
+ a| 
+Seleccione *Other volume* y, a continuación, seleccione el clúster y la SVM de la lista.
+
+|===
+. Restaure los datos en un volumen nuevo o en uno existente:
++
+|===
+| Si desea restaurar los datos en... | Realice lo siguiente... 
+
+
+ a| 
+Un volumen nuevo
+ a| 
+Si desea cambiar el nombre predeterminado, aparecerá en el formato `destination_SVM_name_destination_volume_name_` restaure, especifique un nombre nuevo y seleccione el agregado que incluirá el volumen.
+
+
+
+ a| 
+Un volumen existente
+ a| 
+Seleccione la opción *Seleccionar volumen*.
+
+Debe seleccionar un volumen distinto al de origen, o un volumen de lectura/escritura con algunos datos en él y con una copia Snapshot común.
+
+Solo se mostrarán los volúmenes con el mismo atributo de idioma que el volumen de origen.
+
+|===
+. Seleccione la copia de Snapshot más reciente o la copia de Snapshot específica que desea restaurar.
+. Seleccione la casilla de comprobación de confirmación para restaurar el volumen desde la copia Snapshot.
+. *Opcional:* Active la casilla de verificación *Activar compresión de red* para comprimir los datos que se transfieren durante la operación de restauración.
+. Haga clic en *Restaurar*.
+

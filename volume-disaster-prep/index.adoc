@@ -1,0 +1,45 @@
+---
+permalink: volume-disaster-prep/index.html 
+sidebar: sidebar 
+keywords: content, protect, source, volume, peer, ontap, cluster, preparation, disaster, recovery, configure, monitor, snapmirror, relationship, background, task, volume disaster recovery preparation overview 
+summary: Es posible proteger un volumen de origen en un clúster de ONTAP con una relación entre iguales para la preparación para la recuperación de desastres. Se debe usar este contenido si se desean configurar y supervisar relaciones de SnapMirror entre clústeres con una relación entre iguales para la recuperación de desastres de volúmenes y no se necesita un gran fondo conceptual para las tareas. 
+---
+= Información general de preparación para la recuperación ante desastres de volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible proteger un volumen de origen en un clúster de ONTAP con una relación entre iguales para la preparación para la recuperación de desastres. Debe usar este procedimiento si desea configurar y supervisar relaciones de SnapMirror entre clústeres con una relación entre iguales para la recuperación de desastres de volúmenes y no necesita un gran fondo conceptual para las tareas.
+
+SnapMirror proporciona una protección de datos asíncrona programada para bloques. SnapMirror replica copias Snapshot y puede replicar volúmenes NAS o SAN en los que se ejecutan la deduplicación, la compresión de datos o ambos, incluidos los volúmenes que contienen qtrees y LUN. La información de configuración de SnapMirror se almacena en una base de datos que ONTAP replica en todos los nodos del clúster.
+
+Con este procedimiento, cree relaciones SnapMirror para la recuperación ante desastres de nivel de volumen de la siguiente manera:
+
+* Trabaja con clústeres que ejecutan ONTAP 9.
+* Es un administrador de clúster.
+* Configuró la relación de paridad de clústeres y la relación de paridad de SVM.
++
+link:../peering/index.html["Configuración de relaciones entre iguales de clústeres y SVM"]
+
+* Habilitó la licencia de SnapMirror en los clústeres de origen y destino.
+* Desea usar políticas y programaciones predeterminadas, y no crear políticas personalizadas.
+* Desea usar prácticas recomendadas, no explorar todas las opciones disponibles (ONTAP 9.7 y versiones anteriores).
+
+
+
+
+== Otras maneras de hacerlo en ONTAP
+
+|===
+
+
+| Para ejecutar estas tareas con... | Consulte... 
+
+
+| System Manager rediseñado (disponible con ONTAP 9.7 y versiones posteriores) | link:https://docs.netapp.com/us-en/ontap/task_dp_prepare_mirror.html["Prepare el mirroring y el almacenamiento"^] 
+
+
+| La interfaz de línea de comandos de ONTAP | link:https://docs.netapp.com/us-en/ontap/peering/create-cluster-relationship-93-later-task.html["Crear una relación de paridad de clústeres (ONTAP 9.3 y versiones posteriores)"^] 
+|===

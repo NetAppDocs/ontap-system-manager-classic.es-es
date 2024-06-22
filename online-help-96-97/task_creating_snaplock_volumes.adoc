@@ -1,0 +1,194 @@
+---
+permalink: online-help-96-97/task_creating_snaplock_volumes.html 
+sidebar: sidebar 
+keywords: create, snaplock, volume, online, help, system, manager 
+summary: Puede usar System Manager para crear un volumen de cumplimiento de normativas de SnapLock o un volumen de empresa de SnapLock. Al crear un volumen, también se pueden establecer los tiempos de retención y decidir si se automatizará la definición del estado WORM en los datos del volumen. 
+---
+= Cree volúmenes de SnapLock con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear un volumen de cumplimiento de normativas de SnapLock o un volumen empresarial de SnapLock. Al crear un volumen, también se pueden establecer los tiempos de retención y decidir si se automatizará la definición del estado WORM en los datos del volumen.
+
+.Antes de empezar
+* Debe haber instalado la licencia de SnapLock.
+* El agregado de SnapLock debe estar en línea.
+* Para crear un volumen cifrado, debe haber instalado la licencia de cifrado de volúmenes mediante System Manager, y debe haber activado la opción «'key-Manager setup» mediante la interfaz de línea de comandos (CLI).
++
+Debe actualizar el navegador web tras habilitar «'key-Manager setup».
+
+
+
+.Acerca de esta tarea
+* Puede eliminar un volumen completo de SnapLock Enterprise o un archivo de un volumen de SnapLock Enterprise; no obstante, no puede eliminar solo los datos de un archivo en un volumen de SnapLock Enterprise.
+* No puede eliminar un volumen de SnapLock Compliance si los datos se han comprometido en el volumen.
+* No se puede cifrar un volumen en Cloud Volumes ONTAP.
+* Si el cifrado está habilitado en el volumen de origen y si el clúster de destino ejecuta una versión del software ONTAP anterior a ONTAP 9.3, el cifrado se deshabilita de forma predeterminada en el volumen de destino.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. Haga clic en *Crear* > *Crear FlexVol*.
+. Busque y seleccione la máquina virtual de almacenamiento (SVM) en la que desea crear el volumen.
+. En el cuadro de diálogo *Crear volumen*, especifique un nombre nuevo si desea cambiar el nombre predeterminado del volumen.
++
+No se puede cambiar el nombre de un volumen de cumplimiento de SnapLock después de crear el volumen.
+
+. Seleccione el agregado de contenedor para el volumen.
++
+Debe seleccionar un agregado de cumplimiento de normativas para SnapLock o un agregado de empresa de SnapLock a fin de crear un volumen de SnapLock. El volumen heredará el tipo de SnapLock del agregado, el cual no SnapLock se podrá cambiar tras la creación del volumen; por tanto, debe seleccionar el agregado correcto.
+
+. Seleccione la casilla de verificación *cifrado de volumen* para activar el cifrado del volumen.
++
+Esta opción solo estará disponible si habilitó la licencia de cifrado de volúmenes y si la plataforma correspondiente admite el cifrado.
+
+. Seleccione el tipo de almacenamiento para el que va a crear el volumen.
++
+Si crea un volumen de destino de SnapMirror, debe seleccionar *Data Protection*. El acceso de este volumen es de solo lectura.
+
+. Especifique el tamaño del volumen y el porcentaje del tamaño total del volumen que desea reservar para las copias Snapshot.
++
+El espacio predeterminado que se reserva para las copias Snapshot es del 0 % para volúmenes DE SAN y volúmenes de VMware. Para los volúmenes NAS, el valor predeterminado es el 5 %.
+
+. *Opcional:* Seleccione *Thin Provisioned* para habilitar thin provisioning para el volumen.
++
+Cuando se habilita thin provisioning, se asigna espacio al volumen desde el agregado solo cuando se escriben datos en el volumen.
+
+. *Opcional:* realice los cambios necesarios en la ficha *eficiencia del almacenamiento* para activar la deduplicación en el volumen.
++
+System Manager usa la programación de deduplicación predeterminada. Si el tamaño de volumen especificado supera el límite requerido para ejecutar la deduplicación, el volumen se creará, pero la deduplicación no se habilitará.
+
+. Seleccione la ficha *SnapLock* y, a continuación, realice los siguientes pasos:
++
+.. *Opcional:* especifique el período de compromiso automático.
++
+El archivo del volumen no cambia durante el período especificado antes de que el archivo se comprometido con el estado WORM. Para establecer los archivos en el estado WORM manualmente, debe seleccionar *no especificado* como la configuración de confirmación automática.
+
++
+El valor debe estar comprendido entre 5 minutos y 10 años.
+
+.. Especifique los períodos de retención mínimo y máximo.
++
+El valor debe estar comprendido entre 1 día y 70 años, o bien puede definirse como infinito.
+
+.. Seleccione el período de retención predeterminado.
++
+El período de retención predeterminado debe estar comprendido entre los períodos de retención mínimo y máximo especificados.
+
+
+
+. *Opcional:* Active la casilla de verificación *gestionar calidad de servicio del almacenamiento* de la pestaña *calidad de servicio* para habilitar la calidad de servicio del almacenamiento para el volumen FlexVol con el fin de gestionar el rendimiento de la carga de trabajo.
+. Cree un grupo de políticas de calidad de servicio de almacenamiento o seleccione un grupo de políticas existente para controlar el rendimiento de entrada/salida (I/o) del volumen de FlexVol.
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Cree un grupo de políticas de calidad de servicio de almacenamiento
+ a| 
+.. Seleccione *Nuevo grupo de políticas*.
+.. Escriba el nombre del grupo de políticas.
+.. Especifique el límite mínimo de rendimiento.
++
+*** En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+*** No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+*** Si no especifica el valor de rendimiento mínimo o si el valor de rendimiento mínimo se establece en 0, el sistema mostrará automáticamente «'Ninguno'» como valor.
++
+Este valor distingue entre mayúsculas y minúsculas.
+
+
+
+.. Especifique el límite máximo de rendimiento para asegurarse de que la carga de trabajo de los objetos del grupo de políticas no supere el límite de rendimiento establecido.
++
+*** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+*** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS, B/s, KB/s, MB/s, etc.
+*** Si no especifica el valor de rendimiento máximo, el sistema mostrará automáticamente "'Unlimited'" como valor.
++
+Este valor distingue entre mayúsculas y minúsculas. La unidad que especifique no afecta al rendimiento máximo.
+
+
+
+
+
+
+
+ a| 
+Seleccione un grupo de políticas existente
+ a| 
+.. Seleccione *Grupo de políticas existente* y, a continuación, haga clic en *elegir* para seleccionar un grupo de políticas existente en el cuadro de diálogo Seleccionar grupo de políticas.
+.. Especifique el límite mínimo de rendimiento.
++
+*** En System Manager 9.5, puede establecer el límite mínimo de rendimiento solo con una personalidad de All Flash optimizada basada en el rendimiento. En System Manager 9.6, también puede establecer el límite mínimo de rendimiento para los sistemas ONTAP Select Premium.
+*** No puede establecer el límite mínimo de rendimiento para los volúmenes en un agregado habilitado para FabricPool.
+*** Si no especifica el valor de rendimiento mínimo o si el valor de rendimiento mínimo se establece en 0, el sistema mostrará automáticamente «'Ninguno'» como valor.
++
+Este valor distingue entre mayúsculas y minúsculas.
+
+
+
+.. Especifique el límite máximo de rendimiento para asegurarse de que la carga de trabajo de los objetos del grupo de políticas no supere el límite de rendimiento establecido.
++
+*** El límite mínimo de rendimiento y el límite máximo de rendimiento deben expresarse en el mismo tipo de unidad.
+*** Si no especifica el límite mínimo de rendimiento, puede establecer el límite máximo de rendimiento como IOPS, B/s, KB/s, MB/s, etc.
+*** Si no especifica el valor de rendimiento máximo, el sistema mostrará automáticamente "'Unlimited'" como valor.
++
+Este valor distingue entre mayúsculas y minúsculas. La unidad que especifique no afecta al rendimiento máximo.
+
+
+
++
+Si el grupo de políticas se ha asignado a más de un objeto, el rendimiento máximo que se configure se compartirá entre todos los objetos.
+
+
+
+|===
+. Active *Protección de volumen* en la ficha *Protección* para proteger el volumen:
+. En la ficha *Protección*, seleccione el tipo *replicación*:
++
+|===
+| Si seleccionó el tipo de replicación como... | Realice lo siguiente... 
+
+
+ a| 
+Asíncrona
+ a| 
+.. *Opcional:* Si no conoce el tipo de replicación y el tipo de relación, haga clic en *Ayuda elegir*, especifique los valores y, a continuación, haga clic en *aplicar*.
+.. Seleccione el tipo de relación.
++
+El tipo de relación puede ser mirror, vault o mirror y vault.
+
+.. Seleccione un clúster y una SVM para el volumen de destino.
++
+Si el clúster seleccionado ejecuta una versión del software de ONTAP anterior a ONTAP 9.3, solo se enumeran las SVM con una relación entre iguales. Si el clúster seleccionado ejecuta ONTAP 9.3 o una versión posterior, se enumeran SVM con una relación entre iguales y SVM permitidas.
+
+.. Modifique el sufijo del nombre del volumen, si es necesario.
+
+
+
+
+ a| 
+Síncrona
+ a| 
+.. *Opcional:* Si no conoce el tipo de replicación y el tipo de relación, haga clic en *Ayuda elegir*, especifique los valores y, a continuación, haga clic en *aplicar*.
+.. Seleccione la política de sincronización.
++
+La política de sincronización puede ser StrictSync o Sync.
+
+.. Seleccione un clúster y una SVM para el volumen de destino.
++
+Si el clúster seleccionado ejecuta una versión del software de ONTAP anterior a ONTAP 9.3, solo se enumeran las SVM con una relación entre iguales. Si el clúster seleccionado ejecuta ONTAP 9.3 o una versión posterior, se enumeran SVM con una relación entre iguales y SVM permitidas.
+
+.. Modifique el sufijo del nombre del volumen, si es necesario.
+
+
+|===
+. Haga clic en *Crear*.
+. Compruebe que el volumen que ha creado se incluye en la lista de volúmenes de la ventana *volumen*.
+
+
+.Resultados
+El volumen se creará con la seguridad de estilo UNIX y los permisos «RESTad Write execute» de UNIX 700 para el propietario.

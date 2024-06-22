@@ -1,0 +1,115 @@
+---
+permalink: online-help-96-97/task_configuring_cifs_nfs_protocols_on_svms.html 
+sidebar: sidebar 
+keywords: system, manager, configuring, cifs, nfs, protocols, svm, online, help 
+summary: 'Puede usar System Manager para configurar los protocolos CIFS y NFS en una máquina virtual de almacenamiento (SVM) a fin de proporcionar acceso a los datos a nivel de archivos a los clientes NAS. Para habilitar el protocolo CIFS, debe crear LIF de datos y el servidor CIFS. Para habilitar el protocolo NFS, puede especificar los detalles de NIS y las LIF de datos.' 
+---
+= Configuración de los protocolos CIFS y NFS en SVM con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar los protocolos CIFS y NFS en una máquina virtual de almacenamiento (SVM) a fin de proporcionar acceso a los datos a nivel de archivos para clientes NAS. Para habilitar el protocolo CIFS, debe crear LIF de datos y el servidor CIFS. Para habilitar el protocolo NFS, puede especificar los detalles de NIS y las LIF de datos.
+
+.Antes de empezar
+* Debe tener la licencia para los protocolos que desea configurar o habilitar en la SVM.
++
+Si el protocolo que desea configurar no está habilitado en la SVM, puede usar la ventana Edit Storage Virtual Machine para habilitar el protocolo para la SVM.
+
+* Debe tener las credenciales de Active Directory, unidad organizativa y cuenta administrativa para configurar el protocolo CIFS.
+
+
+.Acerca de esta tarea
+No se consideran agregados de SnapLock para la creación automática de volúmenes.
+
+.Pasos
+. Si no ha configurado los protocolos al crear la SVM, haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Protocolos*, haga clic en el protocolo que desea configurar.
+. En la sección *Configuración de LIF de datos*, si desea conservar la misma configuración de LIF de datos para CIFS y NFS, active la casilla de verificación *mantener la configuración de LIF de datos CIFS para cliente NFS*.
++
+Si no mantiene la misma configuración de LIF para CIFS y NFS, debe especificar la dirección IP y los puertos por separado para CIFS y NFS.
+
+. Especifique la dirección IP mediante una de las siguientes opciones:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Especifique la dirección IP con una subred
+ a| 
+.. Seleccione *usando una subred*.
+.. En el cuadro de diálogo Add Details, seleccione la subred desde la que se debe asignar la dirección IP.
++
+Para las LIF entre clústeres, solo se mostrarán las subredes asociadas al espacio IP seleccionado.
+
+.. Si desea asignar una dirección IP específica a la interfaz, seleccione *usar una dirección IP específica* y, a continuación, escriba la dirección IP.
++
+La dirección IP que especifique se añadirá a la subred si la dirección IP no se encuentra en el rango de subredes.
+
+.. Haga clic en *Aceptar*.
+
+
+
+
+ a| 
+Especifique la dirección IP de forma manual sin una subred
+ a| 
+.. Seleccione *sin subred*.
+.. En el cuadro de diálogo Add Details, realice los siguientes pasos:
++
+... Especifique la dirección IP y el prefijo o la máscara de red.
+... Opcional: Especifique la puerta de enlace.
+... Si no desea utilizar el valor predeterminado para el campo destino, especifique un nuevo valor de destino.
++
+Si no especifica un valor de destino, el campo Destination se rellenará con el valor predeterminado en función de la familia de la dirección IP.
+
+
+
++
+Si no existe ninguna ruta, se creará una nueva de forma automática en función de la puerta de enlace y el destino.
+
+.. Haga clic en *Aceptar*.
+
+
+|===
+. Especifique un puerto para crear una LIF de datos:
++
+.. Haga clic en *examinar*.
+.. En el cuadro de diálogo *Seleccionar puerto de red o adaptador*, seleccione un puerto.
+.. Haga clic en *Aceptar*.
+
+
+. Configure el servidor CIFS siguiendo estos pasos:
++
+.. Especifique la siguiente información para crear un servidor CIFS:
++
+*** Nombre del servidor CIFS
+*** Active Directory para asociar con el servidor CIFS
+*** Unidad organizativa (OU) del dominio de Active Directory para asociarla con el servidor CIFS
++
+De forma predeterminada, este parámetro se establece en CN=Computers.
+
+*** Credenciales de una cuenta administrativa que tiene suficientes privilegios para agregar el servidor CIFS a la unidad organizativa
+
+
+.. *Opcional:* Seleccione *cifrar datos mientras accede a todos los recursos compartidos de esta SVM* para habilitar el cifrado SMB 3.0 para todos los recursos compartidos de la SVM.
+.. Aprovisione un volumen para almacenamiento CIFS al configurar el protocolo especificando el nombre del recurso compartido, el tamaño del recurso compartido y los permisos de acceso.
+.. Seleccione *cifrar datos mientras accede a este recurso compartido* para habilitar el cifrado SMB 3.0 para un recurso compartido en particular.
+
+
+. *Opcional:* Configurar servicios NIS:
++
+.. Especifique las direcciones IP de los servidores NIS y el nombre de dominio NIS para configurar los servicios NIS en la SVM.
+.. Seleccione el tipo de base de datos apropiado para el que desea agregar el origen de servicio del nombre "'nis'".
+.. Aprovisione un volumen para almacenamiento NFS especificando el nombre, el tamaño y el permiso de exportación.
+
+
+. Haga clic en *Enviar y continuar*.
+
+
+.Resultados
+El servidor CIFS y el dominio NIS están configurados con la configuración especificada y se crean las LIF de datos. De forma predeterminada, las LIF de datos tienen acceso de administración. Puede ver los detalles de configuración en la página Summary.

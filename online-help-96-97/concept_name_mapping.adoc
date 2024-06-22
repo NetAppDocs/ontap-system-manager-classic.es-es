@@ -1,0 +1,132 @@
+---
+permalink: online-help-96-97/concept_name_mapping.html 
+sidebar: sidebar 
+keywords: name, mapping, system, manager, specify, user, platform, online, help, command, button, rules 
+summary: Puede usar System Manager para especificar las entradas de asignación de nombres a fin de asignar usuarios desde plataformas diferentes. 
+---
+= Asignación de nombres con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para especificar las entradas de asignación de nombres para asignar usuarios de diferentes plataformas.
+
+
+
+== Reglas de conversión de asignación de nombres
+
+Un sistema ONTAP mantiene un conjunto de reglas de conversión para cada SVM. Cada regla consta de dos piezas: Un _pattern_ y un _substitut_. Las conversiones comienzan al principio de la lista apropiada y realizan una sustitución basada en la primera regla de coincidencia. El patrón es una expresión regular de estilo UNIX. El reemplazo es una cadena que contiene secuencias de escape que representan subexpresiones del patrón, como en UNIX `sed` programa.
+
+
+
+== Ventana asignación de nombres
+
+Puede utilizar la ventana asignación de nombres para especificar las entradas de asignación de nombres para asignar usuarios de diferentes plataformas.
+
+
+
+=== Asignaciones de nombres
+
+Puede crear y utilizar asignaciones de nombres para asignar los usuarios de UNIX a usuarios de Windows, usuarios de Windows a usuarios de UNIX o usuarios Kerberos a usuarios de UNIX.
+
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Abre el cuadro de diálogo Add Name Mapping Entry, que permite crear una asignación de nombres en las máquinas virtuales de almacenamiento (SVM).
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar entrada de asignación de nombres, que permite editar una asignación de nombres en las SVM.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Eliminar entradas de asignación de nombres, que permite eliminar una entrada de asignación de nombres.
+
+* *Swap*
++
+Abre el cuadro de diálogo intercambiar entradas de asignación de nombres, que permite intercambiar posiciones de las dos entradas de asignación de nombres seleccionadas.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de asignaciones de nombre
+
+* *Posición*
++
+Especifica la posición de la asignación de nombres en la lista de prioridades. Las asignaciones de nombres se aplican en el orden en el que ocurren en la lista de prioridades.
+
+* *Patrón*
++
+Especifica el patrón de nombre de usuario que debe coincidir.
+
+* *Sustitución*
++
+Especifica el patrón de reemplazo para el nombre de usuario.
+
+* *Dirección*
++
+Especifica la dirección de la asignación de nombres. Los valores posibles son krb_unix para la asignación de nombres de Kerberos a UNIX, win_unix para una asignación de nombres de Windows a UNIX y unix_win para una asignación de nombres de UNIX a Windows.
+
+
+
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Abre el cuadro de diálogo Agregar entrada de asignación de grupo, que permite crear una asignación de grupo en las SVM.
+
+* *Edición*
++
+Abre el cuadro de diálogo Editar entrada de asignación de grupo, que permite editar la asignación de grupos en las SVM.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Eliminar entradas de asignación de grupo, que permite eliminar una entrada de asignación de grupo.
+
+* *Swap*
++
+Abre el cuadro de diálogo intercambiar entradas de asignación de grupos, que permite intercambiar posiciones de las dos entradas de asignación de grupos seleccionadas.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de asignaciones de grupo
+
+* *Posición*
++
+Especifica la posición de la asignación de grupos en la lista de prioridades. Las asignaciones de grupo se aplican en el orden en el que se producen en la lista de prioridades.
+
+* *Patrón*
++
+Especifica el patrón de nombre de usuario que debe coincidir.
+
+* *Sustitución*
++
+Especifica el patrón de reemplazo para los nombres de usuario.
+
+* *Dirección*
++
+Especifica la dirección de la asignación de grupos. Los valores posibles son `krb_unix` Para una asignación de grupos de Kerberos a UNIX, `win_unix` Para la asignación de grupos de Windows a UNIX, y. `unix_win` Para una asignación de grupos de UNIX a Windows.
+
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gestión de SMB/CIFS"]

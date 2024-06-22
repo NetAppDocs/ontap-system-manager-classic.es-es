@@ -1,0 +1,66 @@
+---
+permalink: nas-multiprotocol-config/task_configuring_verifying_client_access_new_svm.html 
+sidebar: sidebar 
+keywords: configure, client, access, unix, ntfs, file, modify, share, acl, add, export, rule, volume, configure and verify cifs and nfs client access 
+summary: Cuando esté listo, puede configurar el acceso de cliente mediante la configuración de permisos de archivo UNIX o NTFS, la modificación de ACL de recurso compartido y la adición de una regla de exportación. A continuación, debe probar que los grupos o usuarios afectados pueden acceder al volumen. 
+---
+= Configurar y comprobar el acceso de clientes CIFS y NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando esté listo, puede configurar el acceso de cliente mediante la configuración de permisos de archivo UNIX o NTFS, la modificación de ACL de recurso compartido y la adición de una regla de exportación. A continuación, debe probar que los grupos o usuarios afectados pueden acceder al volumen.
+
+.Pasos
+. Decida qué clientes, usuarios o grupos tendrán acceso al recurso compartido.
+. Configure los permisos de archivos mediante un método que corresponda al estilo de seguridad del volumen:
++
+|===
+| Si el estilo de seguridad del volumen es este... | Realice lo siguiente... 
+
+
+ a| 
+NTFS
+ a| 
+.. Inicie sesión en un cliente de Windows como administrador que tenga derechos administrativos suficientes para administrar los permisos NTFS.
+.. En el Explorador de Windows, haga clic con el botón secundario del mouse (ratón) en la unidad y, a continuación, seleccione *Propiedades*.
+.. Seleccione la ficha Seguridad y ajuste la configuración de seguridad de los grupos y usuarios según sea necesario.
+
+
+
+
+ a| 
+UNIX
+ a| 
+En un host de administración UNIX, use el usuario raíz para configurar la propiedad de UNIX y los permisos en el volumen.
+
+|===
+. En System Manager, modifique la ACL de recurso compartido para proporcionar acceso a los grupos o usuarios de Windows al recurso compartido.
++
+.. Vaya a la ventana *shares*.
+.. Seleccione el recurso compartido y haga clic en *Editar*.
+.. Seleccione la ficha *permisos* y proporcione a los usuarios o grupos acceso al recurso compartido.
+
+
+. En System Manager, añada reglas a la política de exportación para permitir que los clientes NFS accedan al recurso compartido.
++
+.. Seleccione la máquina virtual de almacenamiento (SVM) y haga clic en *Configuración de SVM*.
+.. En el panel *Directivas*, haga clic en *políticas de exportación*.
+.. Seleccione la política de exportación que se aplicará al volumen.
+.. En la ficha *Reglas de exportación*, haga clic en *Agregar* y especifique un conjunto de clientes.
+.. Seleccione *2* para el *Índice de reglas* para que esta regla se ejecute después de la regla que permite el acceso al host de administración.
+.. Seleccione *CIFS* y *NFSv3*.
+.. Especifique los detalles de acceso que desee y haga clic en *Aceptar.*
++
+Puede proporcionar acceso completo de lectura/escritura a los clientes escribiendo la subred `10.1.1.0/24` Como *especificación del cliente*, y seleccionando todas las casillas de verificación de acceso excepto *permitir acceso de superusuario*.
+
++
+image::../media/export_rule_for_clients_nfs_nas_mp.gif[Esta captura de pantalla se describe con el texto anterior.]
+
+
+
+. En un cliente Windows, inicie sesión como uno de los usuarios que ahora tiene acceso al recurso compartido y a los archivos, y compruebe que puede tener acceso al recurso compartido y crear un archivo.
+. En un cliente UNIX, inicie sesión como uno de los usuarios que ahora tiene acceso al volumen y compruebe que puede montar el volumen y crear un archivo.
+

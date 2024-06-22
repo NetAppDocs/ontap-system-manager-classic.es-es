@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_setting_up_cluster_by_using_oncommand_system_manager.html 
+sidebar: sidebar 
+keywords: set, up, cluster, ontap, system, manager, online, help, management, network 
+summary: A partir de ONTAP 9.1, puede usar System Manager de ONTAP para configurar un clúster. Para ello, cree un clúster, configure la red de gestión de nodos y clústeres, y, por último, configure notificaciones de eventos. 
+---
+= Configure el clúster con ONTAP System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar un clúster. Para ello, cree un clúster, configure la red de gestión de nodos y la red de gestión de clústeres, y, a continuación, configure notificaciones de eventos.
+
+.Antes de empezar
+* Debe haber configurado las direcciones IP de gestión de nodos de al menos un nodo.
+* Los nodos deben tener el modo predeterminado de alta disponibilidad.
+* Los nodos deben ejecutar ONTAP 9.1 o una versión posterior.
+* Los nodos deben tener la misma versión.
+* Todos los nodos deben estar en buen estado y se debe configurar el cableado de los nodos.
+* Se debe establecer el cableado y la conectividad para la configuración del clúster.
+* Debe tener suficientes detalles de gestión del clúster, gestión de nodos, direcciones IP de Service Processor y pasarela y máscara de red.
+* Si la interfaz del clúster se encuentra en un puerto, dicho puerto debe estar en el espacio IP del clúster.
+
+
+.Acerca de esta tarea
+Para crear un clúster, debe iniciar sesión a través de la consola y configurar la dirección IP de gestión de nodos en cualquier nodo de la red de clústeres. Después de configurar la dirección IP de gestión de nodos en un nodo, puede añadir otros nodos y crear un clúster mediante System Manager de ONTAP.
+
+La operación de configuración del clúster no es compatible con las configuraciones MetroCluster para el software ONTAP.
+
+Puede configurar el clúster mediante un archivo de plantilla o de forma manual mediante la introducción de los valores del asistente de configuración del clúster.
+
+image::../media/cluster_setup_workflow.gif[flujo de trabajo de configuración del clúster]

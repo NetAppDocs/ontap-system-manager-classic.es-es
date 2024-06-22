@@ -1,0 +1,24 @@
+---
+permalink: volume-backup-snapvault/concept_snapvault_configuration_workflow.html 
+sidebar: sidebar 
+keywords: configuring, configure, snapvault, backup, relationship, verify, cluster, peer, relationship, snapvault, source, destination, volume, monitor, snapvault backup configuration workflow 
+summary: Configurar una relación de backup de SnapVault incluye comprobar la relación entre iguales de clústeres, crear la relación de SnapVault entre los volúmenes de origen y de destino, y supervisar la relación de SnapVault. 
+---
+= Flujo de trabajo de configuración de backup de SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Configurar una relación de backup de SnapVault incluye comprobar la relación entre iguales de clústeres, crear la relación de SnapVault entre los volúmenes de origen y de destino, y supervisar la relación de SnapVault.
+
+image::../media/snapvault_workflow.gif[Esta ilustración es un diagrama de flujo de trabajo de configuración de backup de SnapVault. Los pasos del flujo de trabajo coinciden con los temas.]
+
+Hay documentación adicional disponible que ayuda a restaurar datos desde un volumen de destino para probar los datos en los que se ha realizado un backup o cuando se ha perdido el volumen de origen.
+
+* xref:../volume-restore-snapvault/index.html[Gestión de la restauración de volúmenes mediante SnapVault]
++
+Describe cómo restaurar rápidamente un volumen a partir de un backup de SnapVault en ONTAP
+
+

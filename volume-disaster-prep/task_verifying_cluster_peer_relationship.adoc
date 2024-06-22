@@ -1,0 +1,49 @@
+---
+permalink: volume-disaster-prep/task_verifying_cluster_peer_relationship.html 
+sidebar: sidebar 
+keywords: set, up, volume, disaster, recovery, verify, source, destination, cluster, communicate, peer, relationship, verify the cluster peer relationship and svm peer relationship 
+summary: Antes de configurar un volumen para la recuperación de desastres, debe verificar que los clústeres de origen y destino tienen una relación entre iguales y que se comunican entre sí mediante la relación de paridad. 
+---
+= Compruebe las relaciones de paridad de clústeres y las relaciones de paridad de SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de configurar un volumen para la recuperación de desastres, debe verificar que los clústeres de origen y destino tienen una relación entre iguales y que se comunican entre sí mediante la relación de paridad.
+
+
+
+== Procedimiento
+
+* Si su sistema funciona con ONTAP 9.3 o una versión posterior, realice los siguientes pasos para verificar la relación entre iguales de clústeres y la relación entre iguales de SVM:
++
+.. Haga clic en *Configuración* > *Cluster peers*.
+.. Compruebe que el clúster con relación entre iguales esté autenticado y esté disponible.
++
+image::../media/cluster_pper_930_disaster.gif[desastre de cluster pper 930]
+
+.. Haga clic en *Configuración* > *SVM peers*.
+.. Compruebe que la SVM de destino tiene una relación entre iguales con la SVM de origen.
+
+
+* Si su sistema utiliza ONTAP 9.2 o una versión anterior, realice los siguientes pasos para verificar la relación entre iguales de clústeres y la relación entre iguales de SVM:
++
+.. Haga clic en la ficha *configuraciones*.
+.. En el panel *Detalles del clúster*, haga clic en *pares de clústeres*.
+.. Verifique que el clúster con relación entre iguales esté autenticado y disponible.
++
+image::../media/cluster_peer_health_disaster.gif[desastre de estado de la conexión de clústeres entre iguales]
+
+.. Haga clic en la ficha *SVMs* y seleccione la SVM de origen.
+.. En el área *Peer Storage Virtual Machines*, compruebe que la SVM de destino tiene una relación entre iguales y la SVM de origen.
++
+Si no ve ninguna SVM con relación entre iguales en esta área, puede crear la relación entre iguales de SVM al crear la relación de SnapMirror.
+
+
+
++
+xref:task_creating_snapmirror_relationships_92_earlier.adoc[Creación de la relación de SnapMirror (ONTAP 9.2 o anterior)]
+
+

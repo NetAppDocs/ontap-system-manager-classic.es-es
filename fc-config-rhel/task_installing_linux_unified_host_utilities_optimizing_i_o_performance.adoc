@@ -1,0 +1,31 @@
+---
+permalink: fc-config-rhel/task_installing_linux_unified_host_utilities_optimizing_i_o_performance.html 
+sidebar: sidebar 
+keywords: linux, unified, host, utilities, software, sanlun, utility, netapp, lun, report, tool, display, information, storage, cluster, node, bus, adapter, hba, correct, server, profile, linux, optimize, performance, install linux unified host utilities and optimize i/o performance 
+summary: El software Unified Host Utilities de Linux incluye la utilidad sanlun, una herramienta de generación de informes de LUN de NetApp que puede utilizar para mostrar información sobre los nodos del clúster de almacenamiento y los adaptadores de bus de host que están en el host Linux. 
+---
+= Instale Linux Unified Host Utilities y optimice el rendimiento de I/O.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El software Linux Unified Host Utilities incluye lo siguiente `sanlun` Utilidad, una herramienta de generación de informes de LUN de NetApp que puede utilizar para mostrar información sobre el nodo del clúster de almacenamiento y los adaptadores de bus de host (HBA) que están en el host Linux. También debe habilitar el perfil correcto del servidor en el host Linux a fin de optimizar el rendimiento del almacenamiento de NetApp.
+
+.Antes de empezar
+Debe haber identificado la versión compatible de Linux Unified Host Utilities para la configuración mediante la matriz de interoperabilidad. También debe tener el `tuned` Paquete, que forma parte de su distribución del sistema operativo Linux y contiene el `tuned-adm` comando, que se utiliza para establecer el perfil de servidor en el host.
+
+.Pasos
+. Descargue la versión compatible de Linux Unified Host Utilities desde el sitio de soporte de NetApp.
++
+http://mysupport.netapp.com/NOW/cgi-bin/software["Descargas de NetApp: Software"]
+
+. Instale el software Linux Unified Host Utilities siguiendo las instrucciones que se describen en la documentación de instalación.
+. Si la `tuned` el paquete no está instalado, introduzca el siguiente comando:``yum install tuned``
+. Para un host físico, asegúrese de haber configurado el `enterprise-storage` perfil: `tuned-adm profile enterprise-storage`
+. Para un host virtual, asegúrese de haber configurado el `virtual-guest` perfil: `tuned-adm profile virtual-guest`
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2547936["Instalación de Linux Unified Host Utilities 7.1"]
+
+

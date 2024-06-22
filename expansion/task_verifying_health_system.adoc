@@ -1,0 +1,66 @@
+---
+permalink: expansion/task_verifying_health_system.html 
+sidebar: sidebar 
+keywords: expand, cluster, verify, component, healthy, config, advisor, tool, run, ontap, cli, command, verify the health of the system 
+summary: Antes de expandir un clúster, debe verificar que todos los componentes del clúster estén en buen estado. Para ello, ejecute la herramienta Config Advisor y ejecute varios comandos de la CLI de ONTAP. 
+---
+= Compruebe el estado del sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de expandir un clúster, debe verificar que todos los componentes del clúster estén en buen estado. Para ello, ejecute la herramienta Config Advisor y ejecute varios comandos de la CLI de ONTAP.
+
+.Pasos
+. Compruebe que tiene la última versión de Config Advisor:
++
+** Si no tiene Config Advisor en su portátil, descárguelo.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["Descargas de NetApp: Config Advisor"]
+
+** Si tiene Config Advisor, inícielo, haga clic en *Ayuda* > *Buscar actualizaciones* y siga las indicaciones para actualizarla si es necesario.
++
+[NOTE]
+====
+No desinstale la versión anterior de la herramienta ni elimine la carpeta de datos durante la actualización. La herramienta desinstala la versión anterior y la reemplaza con la última versión. Cambia el nombre de la carpeta de datos como la carpeta más reciente y conserva todo el contenido de la carpeta.
+
+====
+
+
+. Verifique el cableado y la configuración ejecutando Config Advisor:
++
+.. Conecte el portátil a la red de gestión del clúster.
+.. Haga clic en *recopilar datos*.
++
+Config Advisor muestra los problemas encontrados.
+
+.. Si se detectan problemas, corríjalos y vuelva a ejecutar la herramienta.
+
+
+. Compruebe el estado del sistema con los siguientes comandos:
++
+.. Compruebe que el clúster esté en buen estado mediante el `system health status show` Y comprobar que el estado es `ok`.
++
+[listing]
+----
+cluster1::> system health status show
+Status
+---------------
+ok
+----
+.. Compruebe que todos los nodos del clúster estén en estado correcto mediante el `cluster show` Y verificar que el estado de cada nodo sea `true`.
++
+[listing]
+----
+cluster1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+2 entries were displayed.
+----
+
+
+

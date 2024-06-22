@@ -1,0 +1,20 @@
+---
+permalink: online-help-96-97/task_viewing_lun_information.html 
+sidebar: sidebar 
+keywords: view, lun, information, manangement, online, help 
+summary: Puede utilizar la pestaña Gestión de LUN en System Manager para ver detalles sobre una LUN, como su nombre, estado, tamaño y tipo. 
+---
+= Vea la información de LUN con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar la ficha *Administración de LUN* del clásico del Administrador del sistema de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver detalles sobre una LUN, como su nombre, estado, tamaño y tipo.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Administración de LUN*, seleccione la LUN sobre la que desea ver información de la lista de LUN que se muestra.
+. Revise los detalles de la LUN en la ventana *LUN*.
+

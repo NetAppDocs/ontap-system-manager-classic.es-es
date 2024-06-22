@@ -1,0 +1,27 @@
+---
+permalink: iscsi-config-rhel/task_configuring_logical_volumes_on_multipath_devices_creating_file_system.html 
+sidebar: sidebar 
+keywords: linux, host, access, iscsi, device, lun, partition, file, system, multipath, volume, file, system, configure, logical, creating, create, configure logical volumes on multipath devices and creating a file system 
+summary: 'Cuando el host Linux accede por primera vez a un nuevo dispositivo SCSI (LUN), no hay partición ni sistema de archivos. Si desea utilizar un dispositivo multivía particionado, primero debe particionar los dispositivos SCSI subyacentes. También puede ser conveniente crear volúmenes lógicos en dispositivos multivía y, opcionalmente, crear un sistema de archivos.' 
+---
+= Configurar volúmenes lógicos en dispositivos multivía y crear un sistema de archivos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando el host Linux accede por primera vez a un nuevo dispositivo SCSI (LUN), no hay partición ni sistema de archivos. Si desea utilizar un dispositivo multivía particionado, primero debe particionar los dispositivos SCSI subyacentes. También puede ser conveniente crear volúmenes lógicos en dispositivos multivía y, opcionalmente, crear un sistema de archivos.
+
+.Antes de empezar
+El host Linux debe haber detectado los dispositivos SCSI y los dispositivos multivía correspondientes.
+
+.Acerca de esta tarea
+Como mínimo, DM-Multipath debe configurarse en los dispositivos SCSI. Cualquier configuración más allá de DM-Multipath es opcional. Los siguientes pasos son pautas generales si desea realizar una configuración adicional, como la partición, la configuración de volúmenes lógicos en dispositivos multivía y la creación de un sistema de archivos. Para obtener más información sobre los comandos Linux, consulte la documentación de Red Hat Enterprise Linux y las páginas de manual.
+
+.Pasos
+. Para utilizar un dispositivo multipath particionado, primero cree una partición en los dispositivos SCSI subyacentes que utilizan `fdisk` o. `parted` utilidad.
+. Cree las particiones multivía correspondientes utilizando `kpartx` utilidad.
+. Cree volúmenes lógicos en dispositivos multivía correspondientes mediante los comandos de Logical Volume Manager (LVM).
+. Cree un sistema de archivos, como Ext4 o XFS, en volúmenes lógicos o en dispositivos multirruta mediante `mkfs` utilidad.
+

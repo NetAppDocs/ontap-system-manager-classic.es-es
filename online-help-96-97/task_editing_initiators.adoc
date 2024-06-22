@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_editing_initiators.html 
+sidebar: sidebar 
+keywords: edit, initiator, online, help, group, dialog, system, manager 
+summary: Puede usar el cuadro de diálogo Editar iGroup en System Manager para cambiar el nombre de un iniciador existente en un iGroup. 
+---
+= Edite iniciadores con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar el cuadro de diálogo *Editar iGroup* del Administrador del sistema de ONTAP clásico (disponible en ONTAP 9.7 y versiones anteriores) para cambiar el nombre de un iniciador existente en un iGroup.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la pestaña *iGroups*, seleccione el iGroup al que pertenece el iniciador y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar iGroup*, haga clic en *iniciadores*.
+. Seleccione el iniciador que desea editar y haga clic en *Editar*.
+. Cambie el nombre y haga clic en *Aceptar*.
+. Haga clic en *Guardar y cerrar*.
+
+
+*Información relacionada*
+
+xref:reference_luns_window.adoc[Ventana de LUN]

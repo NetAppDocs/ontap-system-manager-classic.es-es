@@ -1,0 +1,146 @@
+---
+permalink: online-help-96-97/task_setting_up_network.html 
+sidebar: sidebar 
+keywords: set, up, network, cluster, node, service, processor, dns, ntp, online, help 
+summary: Al configurar una red, puede gestionar el clúster, los nodos y las instancias de Service Processor. También puede configurar los detalles de DNS y NTP en la ventana de red. 
+---
+= Configure una red con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar el clúster, los nodos y las instancias de Service Processor al configurar una red. También puede configurar los detalles de DNS y NTP en la ventana de red.
+
+.Antes de empezar
+Debe haber configurado el clúster.
+
+.Acerca de esta tarea
+* Para la creación del clúster, solo se enumerarán los nodos que estén en funcionamiento.
++
+Puede crear LIF para esos nodos.
+
+* Puede deshabilitar un rango de direcciones IP e introducir direcciones IP individuales para las redes de gestión de clústeres, nodos e instancias de Service Processor.
+
+
+
+
+== Configure una red cuando se habilite un rango de direcciones IP
+
+Puede configurar una red mediante la habilitación de un rango de direcciones IP. El rango de direcciones IP permite introducir direcciones IP que están en el mismo rango de máscaras de red o en un rango de máscaras de red diferente.
+
+.Pasos
+. Introduzca un rango de direcciones IP en el campo *intervalo de direcciones IP* y, a continuación, haga clic en *aplicar*.
++
+|===
+| Opción | Descripción 
+
+
+ a| 
+Hay un rango de direcciones IP en la misma máscara de red
+ a| 
+Introduzca el rango de direcciones IP y, a continuación, haga clic en *aplicar*.
+
+Las direcciones IP se aplicarán a las redes de gestión del clúster, nodos e instancias de Service Processor de forma secuencial.
+
+
+
+ a| 
+Dispone de un rango de direcciones IP en distintas máscaras de red
+ a| 
+Introduzca cada intervalo de direcciones IP en una línea independiente y, a continuación, haga clic en *aplicar*.
+
+La primera dirección IP se aplicará a la red de gestión del clúster y las demás se aplicarán a las redes de gestión de nodos y gestión de Service Processor de forma secuencial.
+
+|===
++
+[NOTE]
+====
+Tras introducir el rango de direcciones IP para la gestión del clúster, nodos e instancias de Service Processor, no modifique los valores de las direcciones IP de estos campos de forma manual. Asegúrese de que todas las direcciones IP sean direcciones IPv4.
+
+====
+. Introduzca los detalles de la máscara de red y la puerta de enlace.
+. Seleccione el puerto para la administración del clúster en el campo *Puerto*.
+. Si el campo *Puerto* de la administración de nodos no se rellena con *e0M*, introduzca los detalles del puerto.
++
+[NOTE]
+====
+De forma predeterminada, el campo Port muestra e0M.
+
+====
+. Para la gestión de Service Processor, si va a reemplazar los valores predeterminados, asegúrese de introducir los detalles obligatorios de la puerta de enlace.
+. Si ha habilitado el campo *Detalles de DNS*, introduzca los detalles del servidor DNS.
+. Si ha habilitado el campo *Detalles NTP*, introduzca los detalles del servidor NTP.
++
+[NOTE]
+====
+De manera opcional, puede proporcionar otros detalles del servidor NTP.
+
+====
+. Haga clic en *Enviar*.
+
+
+
+
+=== Qué hacer a continuación
+
+Introduzca notificaciones de eventos en la página Support para continuar con la configuración del clúster.
+
+
+
+== Configure una red cuando se deshabilite un rango de direcciones IP
+
+Puede configurar una red mediante la deshabilitación de un rango de direcciones IP y la introducción de direcciones IP individuales para las redes de gestión del clúster, nodos e instancias de Service Processor.
+
+.Acerca de esta tarea
+En la página Networks (redes), si la opción *IP Address Range* está deshabilitada, introduzca direcciones IP individuales para las redes de administración de clústeres, administración de nodos y procesador de servicio.
+
+.Pasos
+. Introduzca la dirección IP de administración del clúster en el campo *Dirección IP de administración de clúster*.
+. Introduzca los detalles de la máscara de red para la gestión del clúster.
+. *Opcional:* Introduzca los detalles de la puerta de enlace para la administración del clúster.
+. Seleccione el puerto para la administración del clúster en el campo *Puerto*.
+. Si desea proporcionar los detalles de la máscara de red y la puerta de enlace para administrar los nodos, desactive la casilla de verificación *mantener la configuración de Netmask y la puerta de enlace de Cluster Management* y, a continuación, introduzca los detalles de la máscara de red y la puerta de enlace.
+. Introduzca las direcciones IP de administración de nodos en el campo *Gestión de nodos*.
+. Si el campo *Puerto* de la administración de nodos no se rellena con *e0M*, introduzca los detalles del puerto.
++
+[NOTE]
+====
+De forma predeterminada, el campo Port muestra e0M.
+
+====
+. Introduzca los detalles de la máscara de red y la puerta de enlace de gestión de Service Processor.
+. Introduzca las direcciones IP de administración del procesador de servicios en el campo *Gestión del procesador de servicios*.
+. Si ha habilitado el campo *Detalles de DNS*, introduzca los detalles del servidor DNS.
+. Si ha habilitado el campo *Detalles NTP*, introduzca los detalles del servidor NTP.
++
+[NOTE]
+====
+De manera opcional, puede proporcionar otros detalles del servidor NTP.
+
+====
+. Haga clic en *Enviar*.
+
+
+
+
+=== Qué hacer a continuación
+
+Introduzca notificaciones de eventos en la página Support para continuar con la configuración del clúster.
+
+*Información relacionada*
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/What_is_a_Service_Processor_and_how_do_I_use_it%3F["¿Qué es un procesador de servicio y cómo se utiliza?"]
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_configure_and_troubleshoot_NTP_on_clustered_Data_ONTAP_8.2_and_later_using_CLI["Cómo configurar NTP y solucionar sus problemas en Clustered Data ONTAP 8.2 y versiones posteriores mediante la interfaz de línea de comandos"]
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de documentación de ONTAP 9"]
+
+xref:reference_network_window.adoc[Ventana de red]
+
+xref:reference_configuration_updates_window.adoc[Ventana actualizaciones de configuración]
+
+xref:reference_date_time_window.adoc[Fecha y hora]
+
+xref:reference_service_processors_window.adoc[Ventana Service Processor]

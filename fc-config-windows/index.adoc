@@ -1,0 +1,47 @@
+---
+permalink: fc-config-windows/index.html 
+sidebar: sidebar 
+keywords: describe, fc, service, storage virtual machine, svm, provision, lun, hba, windows, host 
+summary: Puede configurar rápidamente el servicio FC en un equipo virtual de almacenamiento, aprovisionar un LUN y hacer que el LUN esté disponible mediante un HBA de FC en un equipo host de Windows. 
+---
+= Información general sobre la configuración de FC para Windows
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede configurar rápidamente el servicio FC en una máquina virtual de almacenamiento (SVM), aprovisionar un LUN y hacer que el LUN esté disponible mediante un HBA FC en un equipo host de Windows con la interfaz clásica de System Manager de ONTAP (ONTAP 9.7 y versiones anteriores).
+
+Utilice este procedimiento para configurar el servicio FC en una SVM si:
+
+* Utiliza switches y HBA de FC tradicionales.
+
+
+Este procedimiento no cubre situaciones en las que:
+
+* Tiene al menos dos puertos de destino FC disponibles en cada nodo del clúster.
+FC y UTA2 integrados (también llamados `CNA`) los puertos, así como algunos adaptadores, son configurables. La configuración de esos puertos se realiza en la CLI de ONTAP y no se incluye en este procedimiento.
+* No está configurando el arranque SAN FC.
+* No se utiliza Fibre Channel virtual (VFC) con invitados de Hyper-V o ESX.
+
+
+
+
+== Otras maneras de hacerlo en ONTAP
+
+|===
+
+
+| Para ejecutar estas tareas con... | Consulte... 
+
+
+| System Manager rediseñado (disponible con ONTAP 9.7 y versiones posteriores) | link:https://docs.netapp.com/us-en/ontap/task_san_provision_windows.html["Aprovisionar almacenamiento SAN para servidores de Windows"^] 
+
+
+| La interfaz de línea de comandos (CLI) de ONTAP | link:https://docs.netapp.com/us-en/ontap/san-admin/lun-setup-workflow-concept.html["Flujo de trabajo de configuración de LUN con la CLI"^] 
+|===
+.Recursos adicionales
+* https://docs.netapp.com/us-en/ontap-sanhost/index.html["Documentación de NetApp: Utilidades de host"^]
+

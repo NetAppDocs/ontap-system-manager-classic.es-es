@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_restoring_volume_from_snapshot_copy.html 
+sidebar: sidebar 
+keywords: restore, volume, snapshot, copy, system, manager, online, help 
+summary: Puede usar System Manager para restaurar un volumen a un estado que se haya registrado en una copia de Snapshot creada previamente para recuperar información perdida. Si se restaura un volumen de una copia Snapshot, la operación de restauración sobrescribe la configuración de volúmenes existente. Se perderán todos los cambios que se hayan realizado en los datos del volumen después de crear la copia Snapshot. 
+---
+= Restaure un volumen a partir de una copia Snapshot con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para restaurar un volumen a un estado que se registre en una copia Snapshot creada previamente para recuperar información perdida. Si se restaura un volumen de una copia Snapshot, la operación de restauración sobrescribe la configuración de volúmenes existente. Se perderán todos los cambios que se hayan realizado en los datos del volumen después de crear la copia Snapshot.
+
+.Antes de empezar
+* Debe tener instalada la licencia de SnapRestore en el sistema.
+* Si el volumen FlexVol que desea restaurar contiene una LUN, se debe desmontar o quitar la asignación de la LUN.
+* Debe haber suficiente espacio disponible para el volumen restaurado.
+* Los usuarios que acceden al volumen deben recibir una notificación de que va a revertir un volumen y que los datos de la copia Snapshot seleccionada sustituyen los datos actuales del volumen.
+
+
+.Acerca de esta tarea
+* Si el volumen que restaura contiene puntos de unión en otros volúmenes, los volúmenes que se montan en estos puntos de unión no se restauran.
+* No puede restaurar copias de Snapshot para volúmenes de cumplimiento de normativas de SnapLock.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen que desea restaurar desde una copia Snapshot.
+. Haga clic en *más acciones* > *Administrar instantáneas* > *Restaurar*.
+. Seleccione la copia Snapshot adecuada y, a continuación, haga clic en *Restaurar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Restaurar*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

@@ -1,0 +1,147 @@
+---
+permalink: online-help-96-97/concept_lun_multiprotocol_type_guidelines.html 
+sidebar: sidebar 
+keywords: guidelines, lun, multiprotocol, type, operating, system, host, layout, data, minimum, maximum, size, online, help 
+summary: El tipo multiprotocolo de LUN o el tipo de sistema operativo especifica el sistema operativo del host que accede a la LUN. También determina la distribución de datos en la LUN, y el tamaño mínimo y máximo de la LUN. 
+---
+= Directrices para utilizar el tipo de multiprotocolo de LUN en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores), el tipo de multiprotocolo de LUN o el tipo de sistema operativo, especifica el sistema operativo del host que accede a la LUN. También determina la distribución de datos en la LUN, y el tamaño mínimo y máximo de la LUN.
+
+[NOTE]
+====
+No todas las versiones de ONTAP admiten todos los tipos de multiprotocolo de LUN. Para obtener la información más reciente, consulte herramienta de matriz de interoperabilidad.
+
+====
+En la siguiente tabla se describen los valores de tipo multiprotocolo de LUN y las directrices para usar cada tipo:
+
+|===
+| Tipo multiprotocolo de LUN | Cuándo utilizarlo 
+
+
+ a| 
+AIX
+ a| 
+Si el sistema operativo del host es AIX.
+
+
+
+ a| 
+HP-UX
+ a| 
+Si el sistema operativo de su host es HP-UX.
+
+
+
+ a| 
+Hyper-V.
+ a| 
+Si utiliza Hyper-V de Windows Server 2008 o Windows Server 2012 y sus LUN contienen discos duros virtuales (VHD). Si utiliza Hyper_v para su tipo de LUN, también debe utilizar Hyper_v para su tipo de SO igroup.
+
+[NOTE]
+====
+Para las LUN sin configurar, puede utilizar el tipo de sistema operativo secundario que utiliza el tipo multiprotocolo de LUN.
+
+====
+
+
+ a| 
+Linux
+ a| 
+Si el sistema operativo del host es Linux.
+
+
+
+ a| 
+NetWare
+ a| 
+Si el sistema operativo host es NetWare.
+
+
+
+ a| 
+OpenVMS
+ a| 
+Si el sistema operativo del host es OpenVMS.
+
+
+
+ a| 
+Solaris
+ a| 
+Si el sistema operativo host es Solaris y no utiliza etiquetas EFI de Solaris.
+
+
+
+ a| 
+EFI de Solaris
+ a| 
+Si utiliza etiquetas EFI de Solaris.
+
+[NOTE]
+====
+El uso de cualquier otro tipo multiprotocolo de LUN con etiquetas EFI de Solaris puede provocar problemas de alineación incorrecta de la LUN.
+
+====
+
+
+ a| 
+VMware
+ a| 
+Si usa un servidor ESX y sus LUN se configurarán con VMFS.
+
+[NOTE]
+====
+Si configura las LUN con RDM, puede utilizar el sistema operativo invitado como tipo multiprotocolo de LUN.
+
+====
+
+
+ a| 
+Windows 2003 MBR
+ a| 
+Si el sistema operativo del host es Windows Server 2003 mediante el método de partición MBR.
+
+
+
+ a| 
+Windows 2003 GPT
+ a| 
+Si desea utilizar el método de partición GPT y su host puede utilizarlo. Windows Server 2003, Service Pack 1 y versiones posteriores pueden utilizar el método de partición GPT y todas las versiones de 64 bits de Windows lo admiten.
+
+
+
+ a| 
+Windows 2008 o posterior
+ a| 
+Si el sistema operativo host es Windows Server 2008 o posterior; se admiten los métodos de partición MBR y GPT.
+
+
+
+ a| 
+Xen
+ a| 
+Si utiliza Xen y sus LUN se configurarán con LVM de Linux con dom0.
+
+[NOTE]
+====
+Para las LUN sin configurar, puede utilizar el tipo de sistema operativo invitado que utiliza el tipo multiprotocolo de LUN.
+
+====
+|===
+*Información relacionada*
+
+xref:task_creating_luns.adoc[Creando LUN]
+
+https://mysupport.netapp.com/NOW/products/interoperability["Interoperabilidad de NetApp"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1148981["Guía de instalación y configuración de Solaris Host Utilities 6,1"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1148983["Referencia de comandos rápida de Solaris Host Utilities 6.1"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1148982["Notas de la versión de Solaris Host Utilities 6.1"]

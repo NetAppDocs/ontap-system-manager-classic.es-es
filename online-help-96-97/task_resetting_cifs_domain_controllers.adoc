@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_resetting_cifs_domain_controllers.html 
+sidebar: sidebar 
+keywords: reset, cifs, domain, controller, system, manager, online, help 
+summary: Puede usar System Manager para restablecer la conexión CIFS a las controladoras de dominio del dominio especificado. Si no se restablece la información del controlador de dominio, se puede producir un fallo de conexión. 
+---
+= Restablezca los controladores de dominio CIFS con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para restablecer la conexión CIFS con los controladores de dominio del dominio especificado. Si no se restablece la información del controlador de dominio, se puede producir un fallo de conexión.
+
+.Acerca de esta tarea
+Debe actualizar la información de detección del controlador de dominio disponible del sistema de almacenamiento después de añadir o eliminar un dominio de la lista de controladoras de dominio preferidos. Puede actualizar la información de detección de la controladora de dominio disponible del sistema de almacenamiento en ONTAP a través de la interfaz de línea de comandos (CLI).
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En la ficha *dominio*, haga clic en *Restablecer*.
+
+
+*Información relacionada*
+
+xref:reference_cifs_window.adoc[Ventana CIFS]

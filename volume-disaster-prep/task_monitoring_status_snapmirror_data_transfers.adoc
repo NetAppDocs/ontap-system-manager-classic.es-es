@@ -1,0 +1,51 @@
+---
+permalink: volume-disaster-prep/task_monitoring_status_snapmirror_data_transfers.html 
+sidebar: sidebar 
+keywords: periodical, monitor, status, snapmirror, relationship, ensure, data, schedule, monitor the status of snapmirror data transfers 
+summary: Debe supervisar periódicamente el estado de las relaciones de SnapMirror con el fin de garantizar que las transferencias de datos de SnapMirror se realicen según la programación especificada. 
+---
+= Supervisar el estado de las transferencias de datos de SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe supervisar periódicamente el estado de las relaciones de SnapMirror con el fin de garantizar que las transferencias de datos de SnapMirror se realicen según la programación especificada.
+
+.Acerca de esta tarea
+Debe realizar esta tarea desde el clúster *destino*.
+
+.Pasos
+. Según la versión de System Manager que esté ejecutando, realice uno de los pasos siguientes:
++
+** ONTAP 9.4 o anterior: Haga clic en *Protección* > *Relaciones*.
+** A partir de ONTAP 9.5: Haga clic en *Protección* > *Relaciones de volumen*.
+
+
+. Seleccione la relación de SnapMirror entre los volúmenes de origen y destino y, a continuación, compruebe el estado en la ficha inferior * Details*.
++
+La pestaña Details muestra el estado de la relación de SnapMirror, y muestra los errores de transferencia y el tiempo de desfase.
+
++
+** Debe aparecer el campo es saludable `Yes`.
++
+Si la mayoría de los errores de transferencia de datos de SnapMirror, el campo muestra `No`. Sin embargo, en algunos casos de fallo, el campo sigue mostrándose `Yes`. Debe comprobar los errores de transferencia en la sección Detalles para asegurarse de que no se ha producido ningún error de transferencia de datos.
+
+** Debe aparecer el campo Estado de relación `Snapmirrored`.
+** El tiempo de desfase no debe superar el intervalo de programación de transferencia.
++
+Por ejemplo, si la programación de transferencia es por hora, el tiempo de demora no debe ser superior a una hora.
+
++
+Debe solucionar cualquier problema en las relaciones de SnapMirror.
+
++
+http://www.netapp.com/us/media/tr-4015.pdf["Informe técnico de NetApp 4015: Configuración de SnapMirror y mejores prácticas para ONTAP 9.1, 9.2"^]
+
++
+image::../media/snapmirror_monitor_3_health_state_lag.gif[desfase de estado de snapmirror 3]
+
+
+
+

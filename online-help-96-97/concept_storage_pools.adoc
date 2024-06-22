@@ -1,0 +1,288 @@
+---
+permalink: online-help-96-97/concept_storage_pools.html 
+sidebar: sidebar 
+keywords: system, manager, storage, pools, ssd, flash, pool, aggregates, online, help, create, 
+summary: Puede usar System Manager para crear pools de almacenamiento a fin de habilitar el uso compartido de SSD por varios agregados de Flash Pool. 
+---
+= Gestione pools de almacenamiento con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear pools de almacenamiento con el fin de permitir que varios agregados de Flash Pool compartan los SSD.
+
+
+
+== Cree un pool de almacenamiento
+
+Un pool de almacenamiento es una colección de SSD (discos de caché). Puede usar System Manager para combinar varios SSD a fin de crear un pool de almacenamiento. Esto permitirá compartir los SSD y los repuestos de SSD entre una pareja de ha para su asignación a dos o más agregados de Flash Pool a la vez.
+
+.Antes de empezar
+* Los dos nodos de la pareja de ha deben estar en funcionamiento para asignar los SSD y los repuestos de SSD mediante un pool de almacenamiento.
+* Los pools de almacenamiento deben tener al menos 3 SSD.
+* La misma pareja de ha debe ser la propietaria de todos los SSD de un pool de almacenamiento.
+
+
+.Acerca de esta tarea
+System Manager aplica la regla de pieza de repuesto para los grupos RAID de SSD cuando se usan SSD para añadir discos a un pool de almacenamiento. Por ejemplo, si hay 10 SSD en el grupo RAID de SSD y la opción `raid.min_spare_count` se establece en `1` En el nivel de nodo, System Manager deja 1 SSD como pieza de repuesto y utiliza los otros 9 SSD para las operaciones relacionadas con SSD.
+
+No se pueden usar SSD con particiones al crear un pool de almacenamiento mediante System Manager.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *agrupaciones de almacenamiento*.
+. En la ventana *agrupaciones de almacenamiento*, haga clic en *Crear*.
+. En el cuadro de diálogo *Crear grupo de almacenamiento*, especifique el nombre del grupo de almacenamiento, el tamaño del disco y el número de discos.
+. Haga clic en *Crear*.
+
+
+
+
+== Añada discos a una agrupación de almacenamiento
+
+Puede añadir SSD a un pool de almacenamiento existente y aumentar el tamaño de caché mediante System Manager.
+
+.Antes de empezar
+Los dos nodos de la pareja de ha deben estar en funcionamiento para asignar los SSD y los repuestos de SSD mediante un pool de almacenamiento.
+
+.Acerca de esta tarea
+* Los SSD que añade a un pool de almacenamiento se distribuyen proporcionalmente entre los agregados que utilizan la caché del pool de almacenamiento y el espacio libre del pool de almacenamiento.
+* System Manager aplica la regla de pieza de repuesto para los grupos RAID de SSD cuando se usan SSD para añadir discos a un pool de almacenamiento.
++
+Por ejemplo, si hay 10 SSD en el grupo RAID de SSD y la opción `raid.min_spare_count` se establece en `1` En el nivel de nodo, System Manager deja 1 SSD como pieza de repuesto y utiliza los otros 9 SSD para las operaciones relacionadas con SSD.
+
+* No se pueden usar SSD con particiones al añadir discos a un pool de almacenamiento mediante System Manager.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *agrupaciones de almacenamiento*.
+. En la ventana *agrupaciones de almacenamiento*, seleccione la agrupación de almacenamiento y, a continuación, haga clic en *Agregar discos*.
+. En el cuadro de diálogo *Agregar discos*, especifique el número de discos que desea agregar.
+. Haga clic en *Siguiente*.
+. En el cuadro de diálogo *Resumen*, revise cómo se distribuye la memoria caché entre varios agregados y el espacio libre de la agrupación de almacenamiento.
+. Haga clic en *Agregar*.
+
+
+
+
+== Elimine pools de almacenamiento
+
+Puede ser conveniente eliminar un pool de almacenamiento cuando la caché del pool de almacenamiento no es óptima o cuando ningún agregado o agregado de Flash Pool ya no lo utiliza. Se puede eliminar un pool de almacenamiento mediante el cuadro de diálogo Eliminar pool de almacenamiento de System Manager.
+
+.Antes de empezar
+Ningún agregado debe usar el pool de almacenamiento.
+
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *agrupaciones de almacenamiento*.
+. En la ventana *agrupaciones de almacenamiento*, seleccione la agrupación de almacenamiento que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. En el cuadro de diálogo *Eliminar grupo de almacenamiento*, haga clic en *Eliminar*.
+
+
+
+
+== Utilice los pools de almacenamiento SSD
+
+Para habilitar el uso compartido de los SSD por varios agregados de Flash Pool, puede añadir los SSD a un _pool de almacenamiento_. Después de añadir un SSD a un pool de almacenamiento, ya no es posible gestionar el SSD como una entidad independiente. Se debe usar el pool de almacenamiento para asignar o asignar el almacenamiento que proporciona el SSD.
+
+Es posible crear pools de almacenamiento para una pareja de alta disponibilidad (ha) específica. Después, puede añadir unidades de asignación de ese pool de almacenamiento a uno o varios agregados de Flash Pool que sean propiedad del mismo par de alta disponibilidad. Del mismo modo que los discos deben ser propiedad del mismo nodo que posee un agregado antes de que los discos se puedan asignar a él, los pools de almacenamiento solo pueden proporcionar almacenamiento a los agregados de Flash Pool que son propiedad de uno de los nodos propietario del pool de almacenamiento.
+
+Si necesita aumentar la cantidad de caché Flash Pool en el sistema, puede añadir más SSD a un pool de almacenamiento, hasta el tamaño máximo del grupo RAID para el tipo de RAID de las cachés Flash Pool que usan el pool de almacenamiento. Cuando se añade un SSD a un pool de almacenamiento existente, se aumenta el tamaño de las unidades de asignación del pool de almacenamiento, incluidas las unidades de asignación que ya se hayan asignado a un agregado de Flash Pool.
+
+Solo es posible usar un SSD de repuesto para un pool de almacenamiento, de modo que si un SSD de ese pool de almacenamiento deja de estar disponible, ONTAP puede utilizar el SSD de repuesto para reconstruir las particiones del SSD que no funciona correctamente. No es necesario reservar ninguna unidad de asignación como capacidad de reserva; ONTAP solo puede usar un SSD completo sin particiones como pieza de repuesto para los SSD de un pool de almacenamiento.
+
+Después de añadir un SSD a un pool de almacenamiento, no se puede quitar el SSD, tal como no se pueden quitar los discos de un agregado. Si desea utilizar los SSD en un pool de almacenamiento como unidades discretas nuevamente, debe destruir todos los agregados de Flash Pool a los que se asignaron las unidades de asignación del pool de almacenamiento y, posteriormente, destruir el pool de almacenamiento.
+
+
+
+== Requisitos y prácticas recomendadas para usar pools de almacenamiento SSD
+
+Algunas tecnologías no pueden combinarse con agregados de Flash Pool que utilizan pools de almacenamiento SSD.
+
+No se pueden usar las siguientes tecnologías con agregados de Flash Pool que utilizan pools de almacenamiento SSD para su almacenamiento en caché:
+
+* MetroCluster
+* Funcionalidad de SyncMirror
++
+Los agregados reflejados pueden coexistir con los agregados de Flash Pool que utilizan pools de almacenamiento; sin embargo, los agregados de Flash Pool no se pueden reflejar.
+
+* SSD físicos
++
+Los agregados de Flash Pool pueden utilizar pools de almacenamiento SSD o SSD físicos, pero no ambos.
+
+
+
+Los pools de almacenamiento SSD deben cumplir las siguientes reglas:
+
+* Los pools de almacenamiento SSD solo pueden contener SSD; no es posible añadir HDD a un pool de almacenamiento SSD.
+* Todos los SSD de un pool de almacenamiento SSD deben ser propiedad de la misma pareja de alta disponibilidad (ha).
+* No se pueden usar SSD que se particionaran para la partición de datos raíz en un pool de almacenamiento.
+
+
+Si proporciona almacenamiento desde un único pool de almacenamiento a dos cachés con distintos tipos de RAID y expande el tamaño del bloque de almacenamiento por encima del tamaño máximo del grupo RAID para RAID4, las particiones adicionales de las unidades de asignación RAID4 no se utilizan. Por lo tanto, una mejor práctica es mantener los tipos de RAID de la memoria caché homogéneos para un pool de almacenamiento.
+
+No es posible cambiar el tipo de RAID de los grupos RAID de caché asignados desde un pool de almacenamiento. Puede configurar el tipo de RAID para la caché antes de añadir las primeras unidades de asignación y no puede cambiar el tipo de RAID más adelante.
+
+Cuando crea un pool de almacenamiento o añade SSD a un pool de almacenamiento existente, debe usar los SSD del mismo tamaño. Si se produce un fallo y no existe ningún SSD de repuesto con el tamaño correcto, ONTAP puede utilizar un SSD de mayor tamaño para sustituir el SSD que ha fallado. Sin embargo, el tamaño de la SSD de mayor tamaño es adecuado para coincidir con el tamaño de las otras SSD del pool de almacenamiento, lo que provoca una pérdida de capacidad de la SSD.
+
+Solo se puede usar un SSD de repuesto para un pool de almacenamiento. Si el pool de almacenamiento proporciona unidades de asignación a los agregados de Flash Pool que son propiedad de ambos nodos del par de alta disponibilidad, cualquiera de los nodos puede tener la propiedad del SSD de reserva. Sin embargo, si el pool de almacenamiento proporciona unidades de asignación solo a los agregados de Flash Pool que son propiedad de uno de los nodos de la pareja de ha, la pieza de repuesto de SSD debe ser propiedad de ese mismo nodo.
+
+
+
+== Consideraciones sobre el momento de utilizar pools de almacenamiento SSD
+
+Los pools de almacenamiento SSD ofrecen muchas ventajas, pero también introducen algunas restricciones que debe tener en cuenta al decidir si se deben usar pools de almacenamiento SSD o SSD dedicados.
+
+Los pools de almacenamiento SSD solo tienen sentido cuando se proporciona caché a dos o más agregados de Flash Pool. Los pools de almacenamiento SSD ofrecen las siguientes ventajas:
+
+* Mayor utilización del almacenamiento para SSD utilizado en agregados de Flash Pool
++
+Los pools de almacenamiento SSD reducen el porcentaje general de SSD necesarios para la paridad al permitirle compartir SSD de paridad entre dos o más agregados de Flash Pool.
+
+* Capacidad de compartir repuestos entre partners de alta disponibilidad
++
+Dado que el pool de almacenamiento es propiedad de la pareja de alta disponibilidad, una pieza de repuesto, propiedad de uno de los partners de alta disponibilidad, puede funcionar como reserva para todo el pool de almacenamiento SSD, en caso necesario.
+
+* Mejor utilización del rendimiento de SSD
++
+El alto rendimiento que ofrecen los SSD puede admitir el acceso de ambas controladoras en una pareja de alta disponibilidad.
+
+
+
+Estas ventajas deben sopesarse frente a los costes que supone el uso de pools de almacenamiento SSD, que incluyen los siguientes elementos:
+
+* Menos aislamiento de fallos
++
+La pérdida de un SSD único afecta a todos los grupos RAID que incluyen una de sus particiones. En este caso, cada agregado de Flash Pool que tiene asignada caché desde el pool de almacenamiento SSD que contiene el SSD afectado tiene uno o más grupos RAID en reconstrucción.
+
+* Aislamiento del rendimiento reducido
++
+Si la caché de Flash Pool no tiene el tamaño correcto, puede haber contención de la caché entre los agregados de Flash Pool que la comparten. Este riesgo se puede mitigar con el ajuste de tamaño de caché y los controles de calidad de servicio adecuados.
+
+* Flexibilidad de gestión reducida
++
+Cuando se añade almacenamiento a un pool de almacenamiento, aumenta el tamaño de las caché All Flash Pool que incluyen una o varias unidades de asignación de ese pool de almacenamiento, no se puede determinar cómo se distribuye la capacidad adicional.
+
+
+
+
+
+== Consideraciones que tener en cuenta para añadir SSD a un pool de almacenamiento existente en lugar de crear uno nuevo
+
+Es posible aumentar el tamaño de la caché SSD de dos maneras: Mediante la adición de SSD a un pool de almacenamiento SSD existente o mediante la creación de un nuevo pool de almacenamiento SSD. El mejor método para usted depende de la configuración y los planes para el almacenamiento.
+
+La opción entre crear un nuevo pool de almacenamiento y añadir capacidad de almacenamiento a uno existente es similar a decidir si se debe crear un nuevo grupo de RAID o añadir almacenamiento a uno existente:
+
+* Si va a añadir un gran número de SSD, la creación de un nuevo pool de almacenamiento proporciona más flexibilidad, ya que puede asignar el nuevo pool de almacenamiento de forma diferente al existente.
+* Si solo va a añadir unos pocos SSD y aumentar el tamaño del grupo RAID de las cachés existentes de Flash Pool no supone ningún problema, al añadir SSD al pool de almacenamiento existente se reducen los costes de reserva y paridad y se asigna automáticamente el nuevo almacenamiento.
+
+
+Si su pool de almacenamiento está proporcionando unidades de asignación a agregados de Flash Pool cuyas cachés tienen tipos de RAID diferentes y expande el tamaño del pool de almacenamiento por encima del tamaño máximo del grupo de RAID RAID4, las particiones recién agregadas en las unidades de asignación RAID4 no se utilizan.
+
+
+
+== Por qué se añaden discos a los pools de almacenamiento
+
+Es posible añadir SSD a un pool de almacenamiento existente y aumentar el tamaño de la caché. Cuando se añaden SSD a un pool de almacenamiento que tiene unidades de asignación ya asignadas a agregados de Flash Pool, se aumenta el tamaño de caché de cada uno de esos agregados y la caché total del pool de almacenamiento.
+
+Si las unidades de asignación del pool de almacenamiento aún no se asignan, el agregado de SSD a ese pool de almacenamiento no afecta al tamaño de la caché SSD.
+
+Cuando se añaden SSD a un pool de almacenamiento existente, la propiedad de los SSD debe ser propiedad de un nodo o la otra de la misma pareja de alta disponibilidad que ya poseía los SSD existentes en el pool de almacenamiento. Puede añadir los SSD que pertenecen a cualquier nodo de la pareja de ha.
+
+
+
+== Cómo funciona el pool de almacenamiento
+
+Un _pool de almacenamiento_ es una colección de SSD. Puede combinar SSD para crear un pool de almacenamiento, lo que permite compartir los SSD y los repuestos de SSD en varios agregados de Flash Pool, al mismo tiempo.
+
+Los pools de almacenamiento constan de unidades de asignación, que se pueden usar para proporcionar SSD y repuestos de SSD a agregados o para aumentar el tamaño de SSD existente.
+
+Después de añadir un SSD a un pool de almacenamiento, ya no es posible usar dicho SSD como un disco individual. Se debe usar el pool de almacenamiento para asignar o asignar el almacenamiento proporcionado por el SSD.
+
+
+
+== Ventana de pools de almacenamiento
+
+Puede utilizar la ventana Storage Pools para crear, mostrar y gestionar una caché dedicada de SSD, también conocida como _pools de almacenamiento_. Estos pools de almacenamiento se pueden asociar con un agregado no raíz para proporcionar caché SSD y con un agregado de Flash Pool para aumentar su tamaño.
+
+Esta página no está disponible para un clúster que contenga nodos con personalidad de All Flash Optimized.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Se abre el cuadro de diálogo Crear pool de almacenamiento, el cual permite crear un pool de almacenamiento.
+
+* *Agregar discos*
++
+Se abre el cuadro de diálogo Add Disks, que permite añadir discos de caché a un pool de almacenamiento.
+
+* *Eliminar*
++
+Elimina el pool de almacenamiento seleccionado.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de pools de almacenamiento
+
+* *Nombre*
++
+Muestra el nombre del pool de almacenamiento.
+
+* *Caché total*
++
+Muestra el tamaño total de la caché del pool de almacenamiento.
+
+* *Caché de repuesto*
++
+Muestra el tamaño de la caché de repuesto disponible del pool de almacenamiento.
+
+* *Caché usada (%)*
++
+Muestra el porcentaje de tamaño de caché usado del pool de almacenamiento.
+
+* *Unidad de asignación*
++
+Muestra la unidad de asignación mínima del tamaño total de caché que se puede usar para aumentar el tamaño del pool de almacenamiento.
+
+* *Dueño*
++
+Muestra el nombre de la pareja de ha o el nodo con el que está asociado el pool de almacenamiento.
+
+* *Estado*
++
+Muestra el estado del pool de almacenamiento, que puede ser normal, degradado, creación, eliminación, reasignación O creciendo.
+
+* *Es saludable*
++
+Muestra si el estado del pool de almacenamiento es correcto o no.
+
+
+
+
+
+=== Ficha Detalles
+
+Muestra información detallada sobre el pool de almacenamiento seleccionado, como el nombre, el estado, el tipo de almacenamiento, el número de discos, la caché total, caché de repuesto, tamaño de caché usado (en porcentaje) y unidad de asignación. En la pestaña también se muestran los nombres de los agregados que aprovisiona el pool de almacenamiento.
+
+
+
+=== Pestaña Disks
+
+Muestra información detallada sobre los discos del pool de almacenamiento seleccionado, como los nombres, los tipos de disco, el tamaño utilizable y el tamaño total.
+
+*Información relacionada*
+
+xref:task_provisioning_storage_by_creating_flash_pool_aggregate_manually.adoc[Aprovisionamiento de almacenamiento mediante la creación manual de un agregado de Flash Pool]
+
+xref:task_provisioning_cache_by_adding_disks.adoc[Aprovisionamiento de caché mediante la adición de SSD]
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestión de discos y agregados"]

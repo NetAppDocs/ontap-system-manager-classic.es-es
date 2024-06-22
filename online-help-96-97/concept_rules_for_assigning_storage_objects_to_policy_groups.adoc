@@ -1,0 +1,65 @@
+---
+permalink: online-help-96-97/concept_rules_for_assigning_storage_objects_to_policy_groups.html 
+sidebar: sidebar 
+keywords: rulw, assign, storage, object, policy, group, svm, nested, online, help 
+summary: Debe tener en cuenta las reglas que dictan la forma de asignar objetos de almacenamiento a grupos de políticas de calidad de servicio del almacenamiento. 
+---
+= Reglas para la asignación de objetos de almacenamiento a grupos de políticas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe tener en cuenta las reglas que dictan la forma de asignar objetos de almacenamiento a grupos de políticas de calidad de servicio del almacenamiento.
+
+
+
+== Los objetos de almacenamiento y los grupos de políticas deben pertenecer a la misma SVM
+
+La SVM a la que pertenece el grupo de políticas debe contener un objeto de almacenamiento. Al crear el grupo de políticas, debe especificar la SVM a la que pertenece el grupo de políticas. Pueden pertenecer varios grupos de políticas a la misma SVM.
+
+En la siguiente ilustración, el grupo de políticas pg1 pertenece a SVM vs1. No puede asignar volúmenes vol2 o vol3 al grupo de políticas pg1, ya que dichos volúmenes están contenidos por una SVM diferente.
+
+image::../media/qos_rule_same_vserver.gif[Este gráfico se describe con el texto circundante.]
+
+
+
+== Los objetos de almacenamiento anidados no pueden pertenecer a grupos de políticas
+
+No puede asignar un objeto de almacenamiento a un grupo de políticas si su objeto que contiene o sus objetos secundarios pertenecen a un grupo de políticas. En la siguiente tabla se enumeran las restricciones.
+
+|===
+| Si asigna... | No puede asignar... 
+
+
+ a| 
+SVM a un grupo de políticas
+ a| 
+Todos los objetos de almacenamiento que contiene la SVM a un grupo de políticas
+
+
+
+ a| 
+Del volumen a un grupo de políticas
+ a| 
+El volumen que contiene la SVM o cualquier LUN secundario a un grupo de políticas
+
+
+
+ a| 
+LUN a un grupo de políticas
+ a| 
+El volumen o la SVM que contiene el LUN a un grupo de políticas
+
+
+
+ a| 
+Archivo a un grupo de políticas
+ a| 
+El volumen o la SVM del archivo a un grupo de políticas
+
+|===
+En la siguiente ilustración, la SVM vs3 se asigna al grupo de políticas pg2. No puede asignar volúmenes vol4 o vol5 a un grupo de políticas porque se asigna un objeto de la jerarquía de almacenamiento (SVM vs3) a un grupo de políticas.
+
+image::../media/qos_rule_one_object.gif[Este gráfico se describe con el texto circundante.]

@@ -1,0 +1,90 @@
+---
+permalink: online-help-96-97/concept_hardware_cache.html 
+sidebar: sidebar 
+keywords: hardware, cache, system, manager, manage, online, help, flash, 
+summary: Puede usar System Manager para gestionar los módulos de caché de hardware. 
+---
+= Gestione la caché de hardware con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar módulos de caché de hardware.
+
+[NOTE]
+====
+Flash Cache se conoce como caché de hardware en System Manager.
+
+====
+
+
+== Habilite o deshabilite los módulos de Flash Cache
+
+Puede habilitar o deshabilitar la funcionalidad de caché externa para un sistema de almacenamiento que tiene un módulo Flash Cache instalado mediante System Manager. Puede activar los módulos Flash Cache en función de los requisitos de carga de trabajo de su sistema de almacenamiento.
+
+.Pasos
+. Haga clic en *Configuración* > *caché de hardware*
+. Si desea modificar un módulo o módulos, mueva el botón deslizante para activar o desactivar cada módulo, según sea necesario.
+
+
+
+
+== Cómo funcionan los módulos Flash Cache
+
+El uso de módulos Flash Cache mejora el rendimiento de un sistema de almacenamiento. El impacto de usar módulos Flash Cache se muestra en la ventana hardware Cache.
+
+Puede configurar los módulos y discos Flash Cache en función de los requisitos de carga de trabajo de un sistema de almacenamiento. Para determinar la carga de trabajo de lectura (número de operaciones de lectura) que ofrecen los módulos y discos de Flash Cache, puede analizar el rendimiento del sistema de almacenamiento.
+
+Los módulos Flash Cache no contienen datos durante el arranque del sistema de almacenamiento ni cuando se devuelve el control al sistema de almacenamiento después de un evento de toma de control. Por lo tanto, los discos sirven a todas las solicitudes de lectura de datos del sistema de almacenamiento.
+
+El módulo Flash Cache se rellena lentamente con los datos cuando se sirven solicitudes de lectura de datos. Dado que las solicitudes de lectura de datos que ofrecen los módulos Flash Cache son más rápidas que las solicitudes a las que dan servicio los discos, el rendimiento del sistema de almacenamiento mejora.
+
+Las solicitudes de lectura de datos que ofrece el módulo Flash Cache sustituyen a las solicitudes de lectura de datos servidas por los discos y, por lo tanto, la mejora del rendimiento del sistema de almacenamiento está directamente relacionada con las lecturas de disco sustituidas. Para comprender el impacto que tienen los módulos Flash Cache en el rendimiento del sistema de almacenamiento, debe ver el gráfico de carga de trabajo de lectura en la ventana hardware Cache cuando el módulo Flash Cache contiene datos.
+
+
+
+== Caché de hardware
+
+Puede utilizar la ventana hardware Cache para habilitar o deshabilitar los módulos Flash Cache para un sistema de almacenamiento que tiene un módulo Flash Cache instalado. También es posible ver las estadísticas de carga de trabajo de lectura.
+
+
+
+=== Información del módulo
+
+* *Nombre del sistema de almacenamiento*
++
+El nombre del sistema de almacenamiento que tiene instalado un módulo Flash Cache aparece bajo el gráfico.
+
+* *Botón de alternar Activar/Desactivar*
++
+Mueva el botón de alternar para activar o desactivar el módulo.
+
+* *Tamaño*
++
+El tamaño del módulo en gigabytes. Si hay varias tarjetas de módulo Flash Cache, se muestra el tamaño total de caché de todas las tarjetas.
+
++
+[NOTE]
+====
+El tamaño del módulo de Flash Cache que se muestra difiere del tamaño real por los siguientes motivos:
+    - System Manager informa únicamente de la capacidad utilizable que proporciona ONTAP.
+    - Una parte de la capacidad total está reservada para almacenar metadatos.
+
+====
+* *Nombres de modelos*
++
+Los nombres de modelos de los módulos.
+
+* *Latencia de lectura del sistema*
++
+Muestra la latencia media de lectura en milisegundos.
+
+
+
+
+
+=== Carga de trabajo de lectura de caché
+
+Indica el rendimiento del sistema de almacenamiento mostrando un gráfico que especifica la tasa de carga de trabajo de lectura que sirven los discos y el módulo Flash Cache.

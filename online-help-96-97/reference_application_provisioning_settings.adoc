@@ -1,0 +1,405 @@
+---
+permalink: online-help-96-97/reference_application_provisioning_settings.html 
+sidebar: sidebar 
+keywords: application, provisioning, setting, microsoft, sql, database, applications, san, mongodb, oracle, host, access, initiator, sap, hana, smb 
+summary: 'Al configurar una plantilla básica o mejorada para una base de datos, un servidor o un escritorio virtual, debe proporcionar detalles a System Manager. Después de aprovisionar una aplicación, puede editar los detalles y especificar un cambio de tamaño (solo con el tamaño aumentado). En esta sección se describen los campos de cada plantilla. Sólo se muestran los campos necesarios para aprovisionar o editar la configuración de la aplicación específica.' 
+---
+= Configuración de aprovisionamiento de aplicaciones en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe proporcionar detalles al configurar una plantilla básica o mejorada para una base de datos, un servidor o un escritorio virtual en ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores). Después de aprovisionar una aplicación, puede editar los detalles y especificar un cambio de tamaño (solo con el tamaño aumentado). En esta sección se describen los campos de cada plantilla. Sólo se muestran los campos necesarios para aprovisionar o editar la configuración de la aplicación específica.
+
+
+
+== Detalles para aplicaciones de bases de datos de Microsoft SQL sobre SAN
+
+Introduzca la siguiente información para aprovisionar aplicaciones de base de datos de Microsoft SQL a través DE SAN o editar la configuración:
+
+* *Nombre de la base de datos*
++
+Obligatorio: El nombre de la base de datos que está configurando; esta cadena se utiliza como prefijo al aprovisionar almacenamiento para cada base de datos.
+
+* *Tamaño de la base de datos*
++
+Obligatorio: El tamaño de la base de datos, en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio ONTAP para base de datos*
++
+Obligatorio: Nivel de servicio de la base de datos.
+
+* *Tamaño del registro*
++
+Obligatorio: El tamaño del registro de la base de datos en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio ONTAP para registro*
++
+Obligatorio: Nivel de servicio del registro.
+
+* *Tempdb*
++
+Obligatorio: El tamaño de la base de datos tempdb en unidades de MB, GB, TB o PB.
+
+* *Protocolo de exportación*
++
+Obligatorio: El protocolo de exportación es SAN
+
+* *Número de núcleos de servidor (en el servidor SQL)*
++
+Indica el número de núcleos de CPU en el servidor de bases de datos en incrementos de 2.
+
+* *Nodos del controlador de Span ha*
++
+Especifica si se deben crear objetos de almacenamiento en un par de nodos de alta disponibilidad.
+
+
+
+
+
+== Detalles para aprovisionar una base de datos SAP HANA
+
+* *Nodos SAP HANA activos*
++
+El número de nodos SAP HANA activos. El número máximo de nodos es 16.
+
+* *Tamaño de memoria por nodo HANA*
++
+El tamaño de la memoria de un único nodo SAP HANA.
+
+* *Tamaño del disco de datos por nodo HANA*
++
+El tamaño del disco de datos para cada nodo.
+
++
+[NOTE]
+====
+Si se establece en 0, el campo de tamaño de memoria anterior se utiliza para calcular el tamaño del área de datos.
+
+====
+
+
+
+
+== Detalles de Aplicaciones de bases de datos Microsoft SQL sobre SMB
+
+Para aprovisionar aplicaciones de base de datos de Microsoft SQL mediante SMB o editar la configuración:
+
+* *Nombre de la base de datos*
++
+Obligatorio: El nombre de la base de datos que está configurando; esta cadena se utiliza como prefijo al aprovisionar almacenamiento para cada base de datos.
+
+* *Tamaño de la base de datos*
++
+Obligatorio: El tamaño de la base de datos, en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio de base de datos*
++
+Obligatorio: Nivel de servicio de la base de datos.
+
+* *Número de núcleos de servidor (en el servidor SQL)*
++
+Indica el número de núcleos de CPU en el servidor de bases de datos en incrementos de 2.
+
+* *Tamaño del registro*
++
+Obligatorio: El tamaño del registro de la base de datos en unidades de MB, GB, TB o PB.
+
+* *Registrar nivel de servicio*
++
+Obligatorio: Nivel de servicio del registro.
+
+* *Provisión para Tempdb*
++
+Obligatorio: Indica si tempdb está aprovisionado.
+
+* *Protocolo de exportación*
++
+Obligatorio: El protocolo de exportación es SMB o SAN.
+
++
+SMB solo se puede elegir cuando el clúster tiene licencia para CIFS, que se ha configurado para SVM.
+
+* *Conceder acceso al usuario*
++
+Obligatorio: Nivel de acceso de la aplicación.
+
+* *Permiso*
++
+Obligatorio: Nivel de permiso para la aplicación.
+
+
+
+
+
+== Detalles de una cuenta de SQL Server
+
+Introduzca la siguiente información para proporcionar acceso de control completo a las cuentas de SQL Server:
+
+[NOTE]
+====
+Se concede la cuenta de instalación `SeSecurityPrivilege`.
+
+====
+* *Cuenta de servicio de SQL Server*
++
+Obligatorio: Se trata de una cuenta de dominio existente; especifique como `domain\user`.
+
+* *Cuenta de servicio del Agente SQL Server*
++
+Opcional: Esta es esta cuenta de dominio si el servicio de agente de servidor SQL está configurado, especifique el formato domain\user.
+
+
+
+
+
+== Información detallada de las aplicaciones de base de datos de Oracle
+
+Introduzca la siguiente información para aprovisionar las aplicaciones de la base de datos Oracle o editar la configuración:
+
+* *Nombre de la base de datos*
++
+Obligatorio: El nombre de la base de datos que está configurando; esta cadena se utiliza como prefijo al aprovisionar almacenamiento para cada base de datos.
+
+* *Tamaño del archivo de datos*
++
+Obligatorio: El tamaño del archivo de datos, en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio ONTAP para archivo de datos*
++
+Obligatorio: Nivel de servicio del archivo de datos.
+
+* *Redo Log Group Size*
++
+Obligatorio: El tamaño del grupo de registros de recuperación, en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio de ONTAP para Grupo de registros de redo*
++
+Obligatorio: Nivel de servicio del grupo redo log.
+
+* *Tamaño del registro de archivo*
++
+Obligatorio: El tamaño del registro de archivo, en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio ONTAP para el registro de archivo*
++
+Obligatorio: Nivel de servicio del grupo de archivado.
+
+* *Protocolo de exportación*
++
+Protocolo de exportación: SAN o NFS
+
+* *Iniciadores*
++
+Una lista de los iniciadores (WWPN o IQN) separados por comas en el iGroup.
+
+* *Conceder acceso al host*
++
+El nombre de host al que se va a dar acceso a la aplicación.
+
+
+
+
+
+== Detalles para aplicaciones MongoDB
+
+Debe introducir la siguiente información para aprovisionar aplicaciones MongoDB o editar la configuración:
+
+* *Nombre de la base de datos*
++
+Obligatorio: El nombre de la base de datos que está configurando; esta cadena se utiliza como prefijo al aprovisionar almacenamiento para cada base de datos.
+
+* *Tamaño del conjunto de datos*
++
+Obligatorio: El tamaño del archivo de datos, en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio ONTAP para conjunto de datos*
++
+Obligatorio: Nivel de servicio del archivo de datos.
+
+* *Factor de replicación*
++
+Obligatorio: El número de réplicas.
+
+* *Asignación para host primario*
++
+Obligatorio: Nombre del host primario.
+
+* *Asignación para el host de réplica 1*
++
+Obligatorio: El nombre de la primera réplica del host.
+
+* *Mapeo para Replica Host 2*
++
+Obligatorio: Nombre de la segunda réplica de host.
+
+
+
+
+
+== Detalles de las aplicaciones de escritorio virtual
+
+Para aprovisionar las infraestructuras de puestos de trabajo virtuales (VDI) o editar la configuración, debe introducir la siguiente información:
+
+* *Tamaño medio del escritorio (utilizado para el escritorio virtual SAN)*
++
+Esto se utiliza para determinar el tamaño aprovisionado por thin-provisioning de cada volumen en unidades de MB, GB, TB o PB.
+
+* *Tamaño del escritorio*
++
+Esta opción se utiliza para determinar el tamaño de los volúmenes que se deben aprovisionar en unidades de MB, GB, TB o PB.
+
+* *Nivel de servicio ONTAP para escritorios*
++
+Obligatorio: Nivel de servicio del archivo de datos.
+
+* *Número de escritorios*
++
+Este número se utiliza para determinar el número de volúmenes que se han creado.
+
++
+[NOTE]
+====
+Esto no se utiliza para aprovisionar los equipos virtuales.
+
+====
+* *Seleccione Hypervisor*
++
+El hipervisor que se utiliza para estos volúmenes; el hipervisor determina el protocolo de almacén de datos correcto. Las opciones son VMware, Hyper-V o XenServer/KVM.
+
+* *Persistencia de escritorio*
++
+Determina si el puesto de trabajo tiene persistencia o no. Al seleccionar la persistencia de escritorios, se establecen los valores predeterminados del volumen, como las programaciones de Snapshot y las políticas de deduplicación de posproceso. Las eficiencias inline están habilitadas de forma predeterminada para todos los volúmenes.
+
++
+[NOTE]
+====
+Estas políticas se pueden modificar manualmente después del aprovisionamiento.
+
+====
+* *Prefijo de Datastore*
++
+El valor introducido se utiliza para generar los nombres de los almacenes de datos y, si corresponde, el nombre de la política de exportación o el nombre del recurso compartido.
+
+* *Protocolo de exportación*
++
+Protocolo de exportación: SAN o NFS
+
+* *Iniciadores*
++
+Una lista de los iniciadores (WWPN o IQN) separados por comas en el iGroup.
+
+* *Conceder acceso al host*
++
+El nombre de host al que se va a dar acceso a la aplicación.
+
+
+
+
+
+== Detalles del iniciador
+
+Introduzca la siguiente información para configurar el iniciador:
+
+* *IGroup*
++
+Puede seleccionar un grupo existente o crear uno nuevo.
+
+* *Nombre del iGroup*
++
+El nombre del nuevo iGroup.
+
+* *Iniciadores*
++
+Una lista de los iniciadores (WWPN o IQN) separados por comas en el iGroup.
+
+
+
+Los siguientes campos sólo se aplican al aprovisionamiento _SAP HANA_:
+
+* *Tipo de SO del iniciador*
++
+El tipo de sistema operativo del nuevo iGroup.
+
+* *Portset FCP*
++
+El conjunto de puertos FCP al que está vinculado el iGroup.
+
+
+
+
+
+== Configuración de acceso a host
+
+Debe introducir la siguiente información para configurar el acceso del host a los volúmenes:
+
+* *Configuración de exportación de volumen*
++
+Seleccione la política de exportación que se aplicará a los volúmenes durante la creación. Las opciones son:
+
++
+** Permitir todo
++
+Esta opción implica que se crea una regla de exportación que permite el acceso de lectura y escritura a cualquier cliente.
+
+** Crear directiva personalizada
++
+Esta opción permite especificar una lista de direcciones IP de host para recibir acceso de lectura/escritura.
+
+
+
++
+[NOTE]
+====
+Puede modificar la política de exportación de volúmenes posteriormente mediante los flujos de trabajo de System Manager.
+
+====
+* *Direcciones IP del host*
++
+Esta es una lista de direcciones IP separadas por comas.
+
++
+[NOTE]
+====
+Para los sistemas basados en NFS, se crea una nueva política de exportación mediante el prefijo del almacén de datos y se crea una regla en ella para dar acceso a la lista de IP.
+
+====
+
+
+
+
+== Detalles de la aplicación
+
+Cuando se agrega la aplicación, puede ver los ajustes de configuración en la pestaña *Descripción general* de la ventana Detalles de la aplicación. En función del tipo de aplicación que se haya configurado, se muestran otros detalles, como NFS o CIFS Access y Permissions.
+
+* *Tipo*
++
+Este es el tipo de aplicación general, base de datos o infraestructura virtual que se ha creado.
+
+* *SVM*
++
+El nombre de la máquina virtual de servidor en la que se creó la aplicación.
+
+* *Tamaño*
++
+El tamaño total del volumen.
+
+* *Disponible*
++
+La cantidad de espacio disponible actualmente en el volumen.
+
+* *Protección*
++
+El tipo de protección de datos configurado.
+
+
+
+Puede expandir los paneles *componentes* y *volúmenes* para obtener detalles de rendimiento sobre el espacio utilizado, IOPS y latencia.
+
+[NOTE]
+====
+El tamaño utilizado que se muestra en el panel componentes es diferente del tamaño utilizado que se muestra en la CLI.
+
+====

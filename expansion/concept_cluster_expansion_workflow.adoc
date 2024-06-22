@@ -1,0 +1,16 @@
+---
+permalink: expansion/concept_cluster_expansion_workflow.html 
+sidebar: sidebar 
+keywords: cluster, expansion, workflow 
+summary: Flujo de trabajo de ampliación de clústeres 
+---
+= Flujo de trabajo de ampliación de clústeres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Añadir dos nodos a un clúster existente implica verificar que el clúster está listo para la expansión, preparar el clúster, instalar los nodos nuevos y completar la expansión.
+
+image::../media/cluster_expansion_workflow.gif[Esta imagen se explica por el texto circundante.]

@@ -1,0 +1,45 @@
+---
+permalink: online-help-96-97/task_performing_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, perform, switchback, system, manager, online, help 
+summary: 'A partir de System Manager 9.6, puede realizar una operación de conmutación de estado que restaura el control del sitio MetroCluster original (sitio B) una vez que el sistema haya completado correctamente la operación de conmutación.' 
+---
+= Realización de una conmutación de regreso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, puede realizar una operación de conmutación de estado que restaura el control del sitio MetroCluster original (sitio B) una vez que el sistema haya completado correctamente la operación de conmutación.
+
+.Antes de empezar
+Antes de llevar a cabo una operación de conmutación de estado, debe completar las siguientes tareas:
+
+* Debe preparar los sitios MetroCluster mediante xref:task_performing_negotiated_planned_switchover.adoc[Realizar una conmutación negociada (planificada)] o. xref:task_performing_unplanned_switchover.adoc[Realizar una conmutación de sitios no planificada].
+* Si se han producido errores durante la operación de reparación, debe seguir las instrucciones que se muestran para solucionarlos.
+* Si el estado del sitio remoto se muestra como "'primeros pasos para regresar'", los agregados se están sincronizando de nuevo. Debería esperar hasta que el estado del sitio remoto indique que está listo para regresar.
+
+
+.Acerca de esta tarea
+Si una operación de conmutación de sitios se realiza correctamente, se muestra la ventana de operaciones de conmutación de sitios y conmutación de sitios de MetroCluster. La ventana muestra el estado de ambos sitios y proporciona un mensaje que le indica que la operación se ha realizado correctamente.
+
+.Pasos
+. Haga clic en *Volver desde el sitio A al sitio B* para iniciar la operación de regreso.
++
+Un mensaje de advertencia le indica que la operación de conmutación de estado devuelve el control MetroCluster al sitio B y que el proceso puede tardar algún tiempo.
+
+. Si desea continuar, haga clic en *Sí*.
+. Lleve a cabo uno de los siguientes subpasos cuando el proceso de regreso haya finalizado:
++
+** Si la operación de regreso se realiza correctamente, haga clic en *hecho* para confirmar la finalización de las operaciones de MetroCluster.
++
+[NOTE]
+====
+Hasta que reconozca la finalización de la operación de conmutación de estado, System Manager sigue mostrando un mensaje de que la operación ha finalizado. No podrá iniciar otra operación ni supervisar posteriores operaciones de conmutación de sitios o conmutación de estado hasta que reconozca la finalización de la operación de conmutación de estado.
+
+====
+** Si la operación de conmutación de estado no se realiza correctamente, se muestran mensajes de error en la parte superior del área de estado. Haga las correcciones necesarias y haga clic en *Volver desde el sitio A al sitio B* para volver a intentar el proceso.
+
+
+

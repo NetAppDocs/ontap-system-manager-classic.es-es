@@ -1,0 +1,53 @@
+---
+permalink: online-help-96-97/task_updating_cifs_group_policy_configuration.html 
+sidebar: sidebar 
+keywords: update, cifs, group, policy, configuration, online, help, enable, disable, modify, reload, set, up 
+summary: 'Debe actualizar la política de grupo después de que se cambie la configuración de la política por medio de la interfaz de línea de comandos (CLI). Puede utilizar la ventana CIFS en System Manager para actualizar la política de grupo.' 
+---
+= Gestione la configuración de políticas de grupo CIFS con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana CIFS en el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para actualizar y gestionar la política de grupo.
+
+
+
+== Actualice la configuración de la política de grupo CIFS
+
+Debe actualizar la política de grupo después de que se cambie la configuración de la política por medio de la interfaz de línea de comandos (CLI).
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. Haga clic en la ficha *dominio*.
+. En el área *Directiva de grupo*, seleccione la configuración de directiva de grupo que desea actualizar y, a continuación, haga clic en *Actualizar*.
+
+
+
+
+== Habilitar o deshabilitar una configuración de políticas de grupo CIFS
+
+Puede habilitar o deshabilitar la configuración de políticas de grupo CIFS desde la ventana CIFS en System Manager.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. Haga clic en la ficha *dominio*.
+. En el área *Directiva de grupo*, seleccione la configuración de directiva de grupo que desea habilitar o deshabilitar y, a continuación, haga clic en *Activar* o *Desactivar*, según sea necesario.
+
+
+
+
+== Vuelva a cargar la política de grupo CIFS
+
+Debe volver a cargar una política de grupo CIFS si se cambia el estado de la política. Puede usar la ventana CIFS en System Manager para volver a cargar la política de grupo.
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. Haga clic en la ficha *dominio*.
+. En el área *Directiva de grupo*, seleccione la configuración de directiva de grupo que desea volver a cargar y, a continuación, haga clic en *Volver a cargar*.
+

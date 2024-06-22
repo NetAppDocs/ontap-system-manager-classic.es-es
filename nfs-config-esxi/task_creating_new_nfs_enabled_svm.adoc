@@ -1,0 +1,103 @@
+---
+permalink: nfs-config-esxi/task_creating_new_nfs_enabled_svm.html 
+sidebar: sidebar 
+keywords: set, up, creating, create, enable, enabling, nfs, esxi, create a new nfs-enabled SVM 
+summary: La configuración de una SVM nueva implica la creación del nuevo y el habilitación de NFS. A continuación, puede configurar el acceso NFS en el host ESXi y verificar que NFS esté habilitado para ESXi mediante Virtual Storage Console. 
+---
+= Cree una nueva SVM habilitada para NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configuración de una SVM nueva implica la creación del nuevo y el habilitación de NFS. A continuación, puede configurar el acceso NFS en el host ESXi y verificar que NFS esté habilitado para ESXi mediante Virtual Storage Console.
+
+.Antes de empezar
+* La red debe estar configurada y los puertos físicos correspondientes deben estar conectados a la red.
+* Debe saber cuáles de los siguientes componentes de red utilizará el:
++
+** El nodo y el puerto específico en ese nodo en el que se creará la interfaz lógica de datos (LIF)
+** Subred desde la que se aprovisionará la dirección IP de la LIF de datos o, si lo desea, la dirección IP específica que desea asignar a la LIF de datos
+
+
+* Todos los firewalls externos deben estar configurados correctamente para permitir el acceso a los servicios de red.
+
+
+.Acerca de esta tarea
+Puede usar un asistente que le guíe en el proceso de creación de la SVM, configurar DNS, crear una LIF de datos y habilitar NFS.
+
+.Pasos
+. Vaya a la ventana *SVMs*.
+. Haga clic en *Crear*.
+. En la ventana *Storage Virtual Machine (SVM) Setup* (Configuración de la máquina virtual de almacenamiento), cree la SVM:
++
+.. Especifique un nombre único para la SVM.
++
+El nombre debe ser un nombre de dominio completo (FQDN) o seguir otra convención que garantice nombres únicos en un clúster.
+
+.. Seleccione *NFS* para el protocolo de datos.
++
+Si tiene pensado utilizar otros protocolos en la misma SVM, debe seleccionarlos incluso si no quiere configurarlos de inmediato.
+
+.. Mantenga la configuración de idioma predeterminada, C.UTF-8.
++
+El volumen que se crea más tarde hereda este idioma y el idioma de un volumen no se puede cambiar.
+
+.. *Opcional*: Si ha activado el protocolo CIFS, cambie el estilo de seguridad a *UNIX*.
++
+Al seleccionar el protocolo CIFS, se establece el estilo de seguridad en NTFS de forma predeterminada.
+
+.. *Opcional*: Seleccione el agregado raíz para contener el volumen raíz.
++
+El agregado que seleccione para el volumen raíz no determina la ubicación del volumen de datos.
+
++
+image::../media/svm_setup_details_unix_selected_nfs_esxi.gif[Configuración de SVM]
+
+.. *Opcional*: En el área *Configuración DNS*, asegúrese de que el dominio de búsqueda DNS predeterminado y los servidores de nombres son los que desea utilizar para esta SVM.
++
+image::../media/svm_setup_details_dns_nfs_esxi.gif[Este gráfico se explica por el texto circundante.]
+
+.. Haga clic en *Enviar y continuar*.
+
+
++
+Se ha creado, pero los protocolos aún no están configurados.
+
+. En la sección *Configuración de LIF de datos* de la página *Configurar protocolo CIFS/NFS* , especifique los detalles de la primera LIF de datos del primer almacén de datos.
++
+.. Asigne una dirección IP a la LIF de forma automática desde una subred que especifique o introduzca manualmente la dirección.
+.. Haga clic en *examinar* y seleccione un nodo y un puerto que se asociarán a la LIF.
++
+image::../media/svm_setup_cifs_nfs_page_lif_multi_nas_nfs_esxi.gif[Este gráfico se describe con el texto circundante.]
+
+
+
++
+No introduzca ninguna información para aprovisionar un volumen. Es posible aprovisionar almacenes de datos posteriormente mediante
+
+. Haga clic en *Enviar y continuar*.
++
+Se crean los objetos siguientes:
+
++
+** Una LIF de datos denominada después del con el sufijo "'_nfs_lif1'"
+** Un servidor NFS
+
+
+. Para todas las demás páginas de configuración de protocolo que se muestran, haga clic en *Omitir* y, a continuación, configure el protocolo más adelante.
+. Cuando aparezca la página *Administración de SVM*, configure o aplace la configuración de un administrador independiente para esta SVM:
++
+** Haga clic en *Omitir* y, a continuación, configure un administrador más tarde si es necesario.
+** Introduzca la información solicitada y, a continuación, haga clic en *Enviar y continuar*.
+
+
+. Revise la página *Resumen*, registre cualquier información que necesite más tarde y, a continuación, haga clic en *Aceptar*.
++
+Los clientes NFS deben conocer la dirección IP de la LIF de datos.
+
+
+
+.Resultados
+Se crea una SVM nueva con NFS habilitado.

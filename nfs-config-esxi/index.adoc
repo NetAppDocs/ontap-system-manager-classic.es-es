@@ -1,0 +1,38 @@
+---
+permalink: nfs-config-esxi/index.html 
+sidebar: sidebar 
+keywords: nfs, access, esxi, host, datastores, ontap, volume, configuration, overview, vsc 
+summary: 'Con la interfaz clásica de ONTAP System Manager (ONTAP 9.7 y versiones anteriores), es posible configurar rápidamente el acceso NFS para hosts ESXi a almacenes de datos mediante volúmenes ONTAP.' 
+---
+= Configuración de NFS para ESXi mediante información general de VSC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Con la interfaz clásica de ONTAP System Manager (ONTAP 9.7 y versiones anteriores), es posible configurar rápidamente el acceso NFS para hosts ESXi a almacenes de datos mediante volúmenes ONTAP.
+
+Utilice este procedimiento si:
+
+* Está usando una versión compatible de Virtual Storage Console para VMware vSphere (VSC) con el fin de aprovisionar un almacén de datos y crear un volumen.
++
+** A partir de VSC 7.0, VSC forma parte del https://docs.netapp.com/us-en/ontap-tools-vmware-vsphere/index.html["Herramientas de ONTAP para VMware vSphere"^] El dispositivo virtual, que incluye VSC, API de vStorage para el proveedor de conocimiento del almacenamiento (VASA) y las funcionalidades del adaptador de replicación de almacenamiento (SRA) para VMware vSphere.
+** Asegúrese de comprobar el https://imt.netapp.com/matrix/["Herramienta de matriz de interoperabilidad de NetApp"^] Para confirmar la compatibilidad entre sus versiones actuales de ONTAP y VSC.
+
+
+* La red de datos utiliza el espacio IP predeterminado, el dominio de retransmisión predeterminado y el grupo de conmutación por error predeterminado.
++
+Si su red de datos es plana, estos objetos predeterminados prescriben que las LIF conmutarán al nodo de respaldo correctamente en caso de error de enlace. Si no está utilizando los objetos predeterminados, debe hacer referencia a https://docs.netapp.com/us-en/ontap/networking/index.html["Gestión de redes"^] Para obtener información acerca de cómo configurar la conmutación al nodo de respaldo de la ruta de LIF.
+
+* Desea usar el plugin para VMware VAAI.
++
+** Las API de VMware vStorage para la integración de cabinas (VAAI) le permiten realizar reservas de espacio y descarga de copias. El plugin para VMware VAAI utiliza esto para mejorar el rendimiento del host, ya que las operaciones no tienen que pasar por el host ESXi, lo que permite aprovechar las ventajas del clonado con gestión eficiente del espacio y el tiempo en ONTAP.
+** Se recomienda usar VMware VAAI para el aprovisionamiento de almacenes de datos.
+** El plugin de NFS para VMware VAAI está disponible en la https://mysupport.netapp.com/site/global/dashboard["Soporte de NetApp"^] sitio.
+
+
+* El acceso NFS se realizará a través de NFSv3 y NFSv4 para utilizarlo con VMware VAAI.
+
+
+Para obtener más información, consulte https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597: VMware vSphere para ONTAP"^] Y la documentación de su versión de VSC.

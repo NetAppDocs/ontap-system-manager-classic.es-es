@@ -1,0 +1,33 @@
+---
+permalink: online-help-96-97/concept_how_to_determine_when_safe_to_remove_multi_disk_carrier.html 
+sidebar: sidebar 
+keywords: remove, multidisk, carrier, system, manager, storage, disruption, raid 
+summary: La retirada de un operador de varios discos antes de que sea seguro hacerlo puede provocar que uno o más grupos RAID se degraden, o incluso, una interrupción del almacenamiento. System Manager le permite determinar cuándo es seguro quitar un portador de varios discos. 
+---
+= Determine cuándo es seguro retirar un portador de varios discos con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La retirada de un operador de varios discos antes de que sea seguro hacerlo puede provocar que uno o más grupos RAID se degraden, o incluso, una interrupción del almacenamiento. El clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) permite determinar cuándo es seguro retirar un portador de varios discos.
+
+Cuando es necesario sustituir un portador de varios discos, deben producirse los siguientes eventos antes de poder retirar el operador de forma segura:
+
+* Se debe haber registrado un mensaje AutoSupport que indica que la aerolínea está lista para ser retirada.
+* Se debe haber registrado un mensaje de EMS para indicar que la aerolínea está lista para quitarse.
+* El estado de ambos discos en la portadora debe aparecer como `broken` En la ventana Disks (discos).
++
+Debe quitar los discos solo una vez que se haya evacuado la relación de posición de portador de un disco con fallos. Puede hacer clic en Detalles para ver el estado de evacuación del disco en la pestaña Propiedades de la ventana discos.
+
+* El LED de fallo (ámbar) del soporte se debe encender continuamente para indicar que está listo para su extracción.
+* El LED de actividad (verde) debe estar apagado para indicar que no hay actividad en el disco.
+* La pantalla digital de la bandeja solo muestra el número de ID de bandeja.
+
+
+[NOTE]
+====
+No se puede reutilizar la relación de posición portadora de un disco con error. Cuando quite un portador de varios discos que contiene un disco con fallo, debe reemplazarlo por un nuevo portador.
+
+====

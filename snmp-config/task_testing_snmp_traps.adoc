@@ -1,0 +1,23 @@
+---
+permalink: snmp-config/task_testing_snmp_traps.html 
+sidebar: sidebar 
+keywords: communication, traphost, automatic, validate, add, snmp, traphost, correct, trap, test, test snmp traps 
+summary: 'Es posible usar la interfaz "clásica" de System Manager de ONTAP con ONTAP 9.7 o versiones anteriores para probar las capturas de SNMP. Dado que la comunicación con un host de capturas no se valida automáticamente al agregarla, debe comprobar que el host de capturas de SNMP puede recibir correctamente las capturas.' 
+---
+= Probar capturas SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la interfaz _Classic_ de ONTAP con ONTAP 9.7 o anterior para probar las capturas de SNMP. Dado que la comunicación con un host de capturas no se valida automáticamente al agregarla, debe comprobar que el host de capturas de SNMP puede recibir correctamente las capturas.
+
+.Pasos
+. Vaya a la pantalla *SNMP*.
+. Haga clic en *probar host de captura* para generar una captura desde el clúster en el que agregó un host de capturas.
+. Desde la ubicación del host de capturas, compruebe que se ha recibido la captura.
++
+Utilice cualquier software que utilice normalmente para administrar el host de capturas de SNMP.
+
+

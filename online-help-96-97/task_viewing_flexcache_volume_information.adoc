@@ -1,0 +1,92 @@
+---
+permalink: online-help-96-97/task_viewing_flexcache_volume_information.html 
+sidebar: sidebar 
+keywords: system, manager, flexcache, volume, information, online, help 
+summary: A partir de System Manager 9.6, se puede ver información acerca de un volumen de FlexCache. Se puede ver una representación gráfica del espacio asignado y del rendimiento de un volumen de FlexCache. 
+---
+= Visualización de la información de un volumen FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6, se puede ver información acerca de un volumen de FlexCache. Se puede ver una representación gráfica del espacio asignado y del rendimiento de un volumen de FlexCache.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. En la lista de volúmenes que se muestra, seleccione el volumen FlexCache sobre el que desea ver información.
++
+La columna *estilo* muestra "FlexCache" para un volumen FlexCache.
+
++
+Cuando hace una selección, se muestra la ventana Volume para el volumen de FlexCache seleccionado.
+
+. Inicialmente, la ventana *volumen* muestra la ficha *Descripción general*. Haga clic en las pestañas para ver detalles adicionales sobre el volumen de FlexCache:
++
+|===
+| Haga clic en esta pestaña... | Para ver estos detalles... 
+
+
+ a| 
+*Descripción general*
+ a| 
+Información general sobre el volumen FlexCache, el espacio asignado al volumen FlexCache e información de rendimiento acerca del volumen FlexCache.
+
+
+
+ a| 
+*Eficiencia del almacenamiento*
+ a| 
+La configuración de eficiencia del almacenamiento del volumen FlexCache.
+
+
+
+ a| 
+*Rendimiento*
+ a| 
+Las métricas de rendimiento medio, métricas de rendimiento de lectura y métricas de rendimiento de escritura del volumen FlexCache en función de la latencia, las IOPS y el rendimiento. Además, se muestra el porcentaje de aciertos en caché o de omisiones en caché.
+
+|===
+. *Opcional:* haga clic en *más acciones* para ver información adicional y realizar acciones en las selecciones del menú desplegable:
++
+|===
+| Acción | Descripción 
+
+
+ a| 
+Cambiar estado
+ a| 
+Permite cambiar el estado del volumen FlexCache. Consulte link:task_changing_status_flexcache_volume.html["Cambiar el estado de un volumen de FlexCache"].
+
+
+
+ a| 
+Cambie el tamaño
+ a| 
+Permite cambiar el tamaño del volumen de FlexCache. Consulte link:task_resizing_flexcache_volumes.html["Cambio de tamaño de volúmenes de FlexCache"].
+
+
+
+ a| 
+Eficiencia del almacenamiento
+ a| 
+Permite ajustar parámetros para mejorar la eficiencia del almacenamiento del volumen de FlexCache.
+
+
+
+ a| 
+Calidad de servicio del almacenamiento
+ a| 
+Permite ajustar los límites de almacenamiento mínimo y máximo del volumen de FlexCache.
+
+
+
+ a| 
+Reclave de cifrado
+ a| 
+Permite restablecer la clave de cifrado (solo si habilitó el cifrado en el clúster de varios iguales que incluye el volumen FlexCache).
+
+|===
+

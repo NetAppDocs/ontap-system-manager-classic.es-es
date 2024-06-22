@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_reviewing_storage_recommendations.html 
+sidebar: sidebar 
+keywords: review, storage, recommendation, window, online, help, create, aggregate 
+summary: En la ventana Storage, puede consultar las recomendaciones de almacenamiento que se ofrecen para la creación de agregados. 
+---
+= Revise las recomendaciones de almacenamiento con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede revisar las recomendaciones de almacenamiento proporcionadas para la creación de agregados mediante la ventana de almacenamiento del clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores).
+
+.Antes de empezar
+Debe haber configurado el clúster, la red y los detalles de soporte.
+
+.Acerca de esta tarea
+Puede crear agregados de datos según las recomendaciones de almacenamiento, o bien puede omitir este paso y crear agregados de datos más tarde mediante System Manager.
+
+
+
+== Procedimiento
+
+* Para crear agregados de datos según las recomendaciones de almacenamiento, haga clic en *Enviar y continuar*.
+* Para crear agregados de datos más tarde mediante System Manager, haga clic en *Omitir este paso*.
+
+
+
+
+== Qué hacer a continuación
+
+Si ha decidido crear agregados según las recomendaciones de almacenamiento, debe crear una máquina virtual de almacenamiento (SVM) para continuar con la configuración del clúster.

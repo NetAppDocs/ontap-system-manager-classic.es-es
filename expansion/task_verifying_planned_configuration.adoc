@@ -1,0 +1,92 @@
+---
+permalink: expansion/task_verifying_planned_configuration.html 
+sidebar: sidebar 
+keywords: expand, cluster, ensure, follow, plan, configuration, support, require, license, exist, ontap, verify, verify the planned configuration 
+summary: 'Antes de expandir un clúster, debe asegurarse de lo siguiente: La configuración planificada es compatible, existen las licencias requeridas, el sitio está listo, los switches de clúster admiten la ampliación y los nodos existentes utilizan la misma versión de ONTAP 9.' 
+---
+= Verifique la configuración planificada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de expandir un clúster, debe asegurarse de lo siguiente: La configuración planificada es compatible, existen las licencias requeridas, el sitio está listo, los switches de clúster admiten la ampliación y los nodos existentes utilizan la misma versión de ONTAP 9.
+
+.Antes de empezar
+Debe tener dos conjuntos de credenciales: El nombre de usuario y la contraseña necesarios para iniciar sesión en el clúster como administrador, y el nombre de usuario y la contraseña necesarios para iniciar sesión en el sitio de soporte de NetApp.
+
+.Pasos
+. Verifique la configuración planificada:
++
+.. Compruebe que la plataforma de las nuevas controladoras puede combinarse con las controladoras existentes del clúster.
+.. Compruebe que el clúster ampliado no supera los límites del sistema para las plataformas.
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
+.. Si su clúster está configurado para SAN, compruebe que el clúster ampliado no supere los límites de configuración para FC, FCoE e iSCSI.
++
+https://docs.netapp.com/us-en/ontap/san-config/index.html["CONFIGURACIÓN DE SAN"^]
+
+
+
++
+Si no se cumplen estos requisitos, no puede continuar con la ampliación.
+
+. Asegúrese de que las licencias cubren los nuevos nodos:
++
+.. En el clúster existente, consulte las licencias mediante el `system license show` comando.
++
+[listing]
+----
+cluster1::> system license show
+
+Serial Number: 9-99-999999
+Owner: cluster1
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+Base              site    Cluster Base License  -
+NFS               license NFS License           -
+CIFS              license CIFS License          -
+...
+----
+.. Revise el resultado para identificar las licencias de bloqueo de nodo (identificadas por el tipo) `license`) que será necesario para los nodos adicionales.
+.. Asegúrese de que las licencias incluidas con los nodos adicionales sean coherentes con las licencias existentes de bloqueo de nodo del clúster.
++
+http://mysupport.netapp.com/licenses["Búsqueda de licencias de software de NetApp"^]
+
+
+
++
+Si no tiene las licencias necesarias para los nodos adicionales, debe adquirir licencias adicionales antes de continuar.
+
+. Verifique que la planta esté lista para todos los equipos nuevos.
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
++
+Si el sitio no está listo, debe preparar el sitio antes de continuar con la expansión.
+
+. Compruebe que los switches existentes admiten las controladoras adicionales.
++
+https://hwu.netapp.com["Hardware Universe de NetApp"^]
+
++
+Si el clúster no tiene switch o si los switches existentes no admiten los nodos adicionales, deberá obtener switches de clúster, que se podrán instalar más adelante en el proceso de ampliación.
+
+. Verifique que todos los nodos del clúster existente estén ejecutando la misma versión de ONTAP 9, incluida la misma versión secundaria y la misma revisión, si corresponde, mediante el uso de `cluster image show` comando.
++
+[listing]
+----
+cluster1::> cluster image show
+                 Current                 Installation
+Node             Version                 Date
+---------------- ----------------------- ------------
+cluster1-1       8.3RC1                  12/15/2014 17:37:26
+cluster1-2       8.3RC1                  12/15/2014 17:37:42
+2 entries were displayed.
+----
++
+Debe tomar nota de la versión del software ONTAP como referencia más adelante en este flujo de trabajo.
+
+

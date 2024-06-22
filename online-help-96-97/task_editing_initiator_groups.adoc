@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_editing_initiator_groups.html 
+sidebar: sidebar 
+keywords: edit, initiator, group, system, manager, online, help, port, set, dialog, box 
+summary: Puede usar el cuadro de diálogo Editar iGroup de System Manager para cambiar el nombre de un iGroup existente y su sistema operativo. Puede agregar o quitar iniciadores del iGroup. También puede cambiar el conjunto de puertos asociado con el iGroup. 
+---
+= Edite los iGroups con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar el cuadro de diálogo *Editar iGroup* del Administrador del sistema de ONTAP Classic (disponible en ONTAP 9.7 y versiones anteriores) para cambiar el nombre de un iGroup existente y su sistema operativo. Puede agregar o quitar iniciadores del iGroup. También puede cambiar el conjunto de puertos asociado con el iGroup.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la pestaña *iGroups*, seleccione el iGroup que desea modificar y haga clic en *Editar*.
+. Realice los cambios necesarios.
+. Haga clic en *Guardar y cerrar*.
+. Compruebe los cambios realizados en el iGroup en la pestaña *iGroups*.
+
+
+*Información relacionada*
+
+xref:reference_luns_window.adoc[Ventana de LUN]

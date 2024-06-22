@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/concept_what_compatible_spare_disks_are.html 
+sidebar: sidebar 
+keywords: system, manager, compatible, spare, disk, hdd, compacity, raid, online, help 
+summary: 'En System Manager, los discos de repuesto compatibles son discos que coinciden con las propiedades de otros discos del agregado. Cuando desee aumentar el tamaño de un agregado existente añadiendo discos duros (discos de capacidad) o cambie el tipo de RAID de un agregado de RAID4 a RAID-DP, el agregado debe contener suficientes discos de reserva compatibles.' 
+---
+= Discos de repuesto compatibles en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores), los discos de repuesto compatibles son discos que cumplen con las propiedades de otros discos del agregado. Cuando desee aumentar el tamaño de un agregado existente añadiendo discos duros (discos de capacidad) o cambie el tipo de RAID de un agregado de RAID4 a RAID-DP, el agregado debe contener suficientes discos de reserva compatibles.
+
+Las propiedades de disco que deben coincidir son el tipo de disco, el tamaño de disco (puede ser un disco de mayor tamaño en caso de que no esté disponible el mismo tamaño de disco), RPM de disco, suma de comprobación, propietario del nodo, pool, y las propiedades del disco compartido. Si utiliza discos de mayor tamaño, debe tener en cuenta que se produce la reducción de tamaño de disco y el tamaño de todos los discos se reduce al tamaño de disco más bajo. Los discos compartidos existentes coinciden con los discos no compartidos de mayor tamaño y los discos no compartidos se convierten en discos compartidos y se añaden como repuestos.
+
+Si se habilitan las opciones de mezcla de RAID, como la mezcla del tipo de disco y la mezcla de RPM de disco, para el grupo RAID, El tipo de disco y las RPM del disco de los discos existentes del agregado coinciden con el tipo de disco efectivo y el RPM del disco efectivo de los discos de repuesto para obtener repuestos compatibles.
+
+*Información relacionada*
+
+xref:task_adding_capacity_disks.adoc[Adición de discos de capacidad]
+
+xref:task_editing_aggregates.adoc[Editar agregados]

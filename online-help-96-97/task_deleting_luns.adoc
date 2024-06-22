@@ -1,0 +1,29 @@
+---
+permalink: online-help-96-97/task_deleting_luns.html 
+sidebar: sidebar 
+keywords: delete, lun, system, manager, online, help, aggregate 
+summary: Puede usar System Manager para eliminar las LUN y devolver el espacio utilizado por las LUN a sus agregados o volúmenes que contienen. 
+---
+= Elimine las LUN con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para eliminar LUN y devolver el espacio utilizado por las LUN a sus agregados o volúmenes que contengan.
+
+.Antes de empezar
+* La LUN debe estar desactivada.
+* Debe quitar la asignación de la LUN de todos los hosts iniciadores.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Administración de LUN*, seleccione una o más LUN que desee eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+*Información relacionada*
+
+xref:reference_luns_window.adoc[Ventana de LUN]

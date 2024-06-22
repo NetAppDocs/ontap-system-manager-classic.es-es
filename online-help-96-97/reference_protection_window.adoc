@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/reference_protection_window.html 
+sidebar: sidebar 
+keywords: command, buttons, protection, window, relationship, vault, mirror, online, help, ls 
+summary: 'Puede usar la ventana Protection para crear y gestionar relaciones de mirroring, relaciones de almacén y relaciones de mirroring y almacén, así como para mostrar detalles sobre estas relaciones. La ventana Protection no muestra las relaciones de uso compartido de carga (LS) ni las relaciones de protección de datos de transición (TDP).' 
+---
+= Ventana de protección con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar la ventana Protection con ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar relaciones de mirroring, relaciones de almacén y relaciones de mirroring y almacén, así como para mostrar detalles sobre estas relaciones. La ventana Protection no muestra las relaciones de uso compartido de carga (LS) ni las relaciones de protección de datos de transición (TDP).
+
+
+
+== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create Protection Relationship, que puede usar para crear una relación de mirroring, una relación de almacén o una relación de mirroring y almacén a partir de un volumen de destino.
+
++
+System Manager no muestra ninguna máquina virtual de almacenamiento (SVM) configurada para la recuperación ante desastres (DR) en el cuadro de diálogo Create Protection Relationship.
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit Protection Relationship, que se puede usar para editar la programación y la política de una relación.
+
++
+En el caso de una relación de almacén, de mirroring y almacén, o una relación de reflejo de versión flexible, puede modificar el tipo de relación modificando el tipo de política.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Delete Protection Relationship, que se puede usar para eliminar una relación.
+
+* *Operaciones*
++
+Muestra las operaciones que se pueden realizar en una relación de protección.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+== Lista de relaciones de protección
+
+* *Máquina virtual de almacenamiento de origen*
++
+Muestra la SVM que contiene el volumen del cual los datos se reflejan o se almacenan en una relación.
+
+* *Volumen de origen*
++
+Muestra el volumen del cual se duplican o almacenan los datos en una relación.
+
+* *Volumen de destino*
++
+Muestra el volumen al cual se duplican o almacenan los datos en una relación.
+
+* *Es saludable*
++
+Muestra si la relación es correcta o no.
+
+* *Tipo de objeto*
++
+Muestra el tipo de objeto de la relación, como volumen, FlexGroup o SVM.
+
+* *Estado de relación*
++
+Muestra el estado de la relación, como SnapMirred, Uninitialized o Broken Off.
+
+* *Estado de transferencia*
++
+Muestra el estado de la relación.
+
+* *Tipo de relación*
++
+Muestra el tipo de relación, como mirroring, almacén o reflejo y almacén.
+
+* *Tiempo de retraso*
++
+El tiempo de desfase es la diferencia entre la hora actual y la Marca de hora de la última copia Snapshot que se ha transferido correctamente al sistema de destino. El tiempo de demora siempre será al menos tanto como la duración de la última transferencia exitosa, a menos que los relojes de los sistemas de origen y destino no estén sincronizados. La diferencia de zona horaria se calcula automáticamente en el tiempo de demora.
+
+* *Nombre de la política*
++
+Muestra el nombre de la directiva que está asignada a la relación.
+
+* *Tipo de política*
++
+Muestra el tipo de directiva que está asignada a la relación. El tipo de política puede ser StrictSync, Sync, Asynchronous Mirror, Asynchronous Vault o Asynchronous Mirror Vault.
+
+
+
+
+
+== El área Detalles
+
+* *Ficha Detalles*
++
+Muestra información general sobre la relación seleccionada, como el clúster de origen y el clúster de destino, la tasa de transferencia de datos, el estado de la relación, los detalles sobre la relación de compresión de red, el estado de transferencia de datos, el tipo de transferencia de datos actual, el tipo de última transferencia de datos, la copia de Snapshot más reciente, Y la Marca de hora de la copia Snapshot más reciente.
+
+* *Ficha Detalles de la directiva*
++
+Muestra detalles sobre la política asignada a la relación de protección seleccionada. En esta pestaña, también se muestran la etiqueta de SnapMirror y las programaciones de copias Snapshot en el volumen de origen que coinciden con la etiqueta especificada.
+
+* *Ficha copias snapshot*
++
+Muestra el número de copias de Snapshot con el atributo de etiqueta de SnapMirror para la relación de protección seleccionada y la Marca de hora de la última copia de Snapshot.
+
+

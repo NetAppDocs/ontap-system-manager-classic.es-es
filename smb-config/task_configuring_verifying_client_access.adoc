@@ -1,0 +1,33 @@
+---
+permalink: smb-config/task_configuring_verifying_client_access.html 
+sidebar: sidebar 
+keywords: client, access, share, setting, ntfs, file, permission, windows, explorer, modify, share, acl, system, manager, affect, group, volume, configure, verify, vonfigure and verify cifs client access 
+summary: Una vez que esté listo, puede conceder a los clientes seleccionados acceso al recurso compartido estableciendo permisos de archivo NTFS en el Explorador de Windows y modificando la ACL de recurso compartido en System Manager. A continuación, debe probar que los grupos o usuarios afectados pueden acceder al volumen. 
+---
+= Configurar y comprobar el acceso del cliente CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una vez que esté listo, puede conceder a los clientes seleccionados acceso al recurso compartido estableciendo permisos de archivo NTFS en el Explorador de Windows y modificando la ACL de recurso compartido en System Manager. A continuación, debe probar que los grupos o usuarios afectados pueden acceder al volumen.
+
+.Pasos
+. Decida qué clientes, usuarios o grupos tendrán acceso al recurso compartido.
+. En un cliente de Windows, utilice una función de administrador para otorgar permisos a los usuarios o grupos a los archivos y carpetas.
++
+.. Inicie sesión en un cliente de Windows como administrador que tenga derechos administrativos suficientes para administrar los permisos NTFS.
+.. En el Explorador de Windows, haga clic con el botón secundario del mouse (ratón) en la unidad y, a continuación, seleccione *Propiedades*.
+.. Seleccione la ficha *Seguridad* y ajuste la configuración de seguridad para los grupos y usuarios según sea necesario.
+
+
+. En System Manager, modifique la ACL de recurso compartido para proporcionar acceso a los grupos o usuarios de Windows al recurso compartido.
++
+.. Vaya a la ventana *shares*.
+.. Seleccione el recurso compartido y haga clic en *Editar*.
+.. Seleccione la ficha *permisos* y proporcione a los usuarios o grupos acceso al recurso compartido.
+
+
+. En un cliente Windows, inicie sesión como uno de los usuarios que ahora tiene acceso al recurso compartido y a los archivos, y compruebe que puede tener acceso al recurso compartido y crear un archivo.
+

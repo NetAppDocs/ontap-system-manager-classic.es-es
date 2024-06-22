@@ -1,0 +1,44 @@
+---
+permalink: nfs-config/index.html 
+sidebar: sidebar 
+keywords: nfs, access, volume, exist, storage, virtual, machine, svm, system manager classic 
+summary: 'Puede configurar rápidamente el acceso de NFS a un volumen nuevo en una máquina virtual de almacenamiento (SVM) nueva o existente mediante la interfaz clásica de System Manager de ONTAP (ONTAP 9.7 y versiones anteriores).' 
+---
+= Información general de la configuración de NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede configurar rápidamente el acceso de NFS a un volumen nuevo en una máquina virtual de almacenamiento (SVM) nueva o existente mediante la interfaz clásica de System Manager de ONTAP (ONTAP 9.7 y versiones anteriores).
+
+Utilice este procedimiento si desea configurar el acceso a un volumen de la siguiente manera:
+
+* El acceso NFS se hará mediante NFSv3, no con NFSv4 ni NFSv4.1.
+* Quiere utilizar las prácticas recomendadas, no explorar todas las opciones disponibles.
+* La red de datos utiliza el espacio IP predeterminado, el dominio de retransmisión predeterminado y el grupo de conmutación por error predeterminado.
++
+Si la red de datos es fija, el uso de estos objetos predeterminados garantiza que las LIF se conmutarán al nodo de respaldo en caso de que falle el enlace. Si no está utilizando los objetos predeterminados, debe hacer referencia a https://docs.netapp.com/us-en/ontap/networking/index.html["Documentación de gestión de redes"^] Para obtener información sobre cómo configurar la conmutación al nodo de respaldo de la ruta de LIF.
+
+* Se utilizarán permisos de archivos UNIX para proteger el nuevo volumen.
+* Active Directory proporciona el LDAP, si se utiliza.
+
+
+Si desea obtener detalles acerca del rango de funcionalidades del protocolo NFS de ONTAP, consulte link:https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["Información general de referencia de NFS"^].
+
+
+
+== Otras maneras de hacerlo en ONTAP
+
+|===
+
+
+| Para ejecutar estas tareas con... | Consulte... 
+
+
+| System Manager rediseñado (disponible con ONTAP 9.7 y versiones posteriores) | link:https://docs.netapp.com/us-en/ontap/task_nas_provision_linux_nfs.html["Aprovisionar almacenamiento NAS para servidores Linux mediante NFS"^] 
+
+
+| La interfaz de línea de comandos de ONTAP | link:https://docs.netapp.com/us-en/ontap/nfs-config/index.html["Información general de la configuración de NFS con la interfaz de línea de comandos"^] 
+|===

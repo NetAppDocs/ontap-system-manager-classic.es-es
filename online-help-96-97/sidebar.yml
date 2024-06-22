@@ -1,0 +1,499 @@
+---
+section: online-help-96-97
+title: Gestión de clústeres mediante System Manager 9.6 y 9.7
+entries:
+- title: Comprender System Manager
+  url: "/online-help-96-97/index.html"
+- title: Configure el clúster mediante System Manager de ONTAP
+  entries:
+  - title: Configure un clúster mediante el archivo de plantilla
+    url: "/online-help-96-97/task_setting_up_cluster_using_template_file.html"
+    entries:
+    - title: Cree un clúster
+      url: "/online-help-96-97/task_creating_cluster.html"
+    - title: Configurar una red
+      url: "/online-help-96-97/task_setting_up_network.html"
+    - title: Configure una página de soporte
+      url: "/online-help-96-97/task_setting_up_support_page.html"
+    - title: Revisar las recomendaciones de almacenamiento
+      url: "/online-help-96-97/task_reviewing_storage_recommendations.html"
+    - title: Cree una SVM
+      url: "/online-help-96-97/task_creating_svm.html"
+- title: Acceder a un clúster mediante la interfaz gráfica de usuario basada en navegador
+    de ONTAP System Manager
+  url: "/online-help-96-97/task_accessing_cluster_using_system_manager.html"
+- title: Configure las opciones de System Manager
+  url: "/online-help-96-97/task_configuring_system_manager_options.html"
+- title: Ver los archivos de registro de ONTAP System Manager
+  url: "/online-help-96-97/task_viewing_system_manager_log_files.html"
+- title: Configure el clúster
+  entries:
+  - title: Configure el clúster
+    url: "/online-help-96-97/task_updating_cluster_name.html"
+  - title: Añada licencias
+    url: "/online-help-96-97/task_adding_licenses.html"
+  - title: Configurar la zona horaria de un clúster
+    url: "/online-help-96-97/task_setting_time_zone_for_cluster.html"
+  - title: Supervisar los pares de alta disponibilidad
+    url: "/online-help-96-97/task_monitoring_ha_pairs.html"
+- title: Configure la red
+  url: "/online-help-96-97/concept_setting_up_network.html"
+- title: Configurar el almacenamiento físico
+  entries:
+  - title: Asignación de discos a los nodos
+    url: "/online-help-96-97/task_assigning_disks_to_nodes.html"
+  - title: Puesta a cero de los discos de repuesto
+    url: "/online-help-96-97/task_zeroing_disks.html"
+  - title: Aprovisionamiento de almacenamiento mediante agregados
+    url: "/online-help-96-97/task_provisioning_storage_through_aggregates.html"
+- title: Cree SVM
+  url: "/online-help-96-97/task_creating_svms.html"
+  entries:
+  - title: Configure los protocolos CIFS y NFS en las SVM
+    url: "/online-help-96-97/task_configuring_cifs_nfs_protocols_on_svms.html"
+  - title: Configurar el protocolo iSCSI en las SVM
+    url: "/online-help-96-97/task_configuring_iscsi_protocol_on_svms.html"
+  - title: Configure el protocolo FC y el protocolo FCoE en las SVM
+    url: "/online-help-96-97/task_configuring_fc_fcoe_protocol_on_svms.html"
+  - title: Configure el protocolo NVMe en las SVM
+    url: "/online-help-96-97/task_configuring_nvme_protocol_on_svms.html"
+  - title: Delegar la administración a los administradores de SVM
+    url: "/online-help-96-97/task_delegating_administration_to_svm_administrators.html"
+  - title: Cree volúmenes de FlexVol
+    url: "/online-help-96-97/task_creating_flexvol_volumes.html"
+  - title: Cree volúmenes de SnapLock
+    url: "/online-help-96-97/task_creating_snaplock_volumes.html"
+- title: Configure la autenticación SAML
+  url: "/online-help-96-97/task_setting_up_saml_authentication.html"
+- title: Configurar la relación de paridad
+  url: "/online-help-96-97/task_setting_up_peering.html"
+- title: Gestione clústeres
+  entries:
+  - title: Ventana Consola
+    url: "/online-help-96-97/reference_dashboard_window.html"
+  - title: Conmutación de sitios y conmutación de estado de MetroCluster
+    entries:
+    - title: Flujo de trabajo de conmutación y conmutación de estado de MetroCluster
+      url: "/online-help-96-97/concept_metrocluster_switchover_switchback_workflow.html"
+    - title: Preparación para operaciones de conmutación de sitios y conmutación de
+        estado
+      url: "/online-help-96-97/task_preparing_for_switchover_switchback_operations.html"
+    - title: Realización de una conmutación negociada
+      url: "/online-help-96-97/task_performing_negotiated_planned_switchover.html"
+    - title: Realizar una conmutación de sitios no planificada
+      url: "/online-help-96-97/task_performing_unplanned_switchover.html"
+    - title: Realización de una conmutación de regreso
+      url: "/online-help-96-97/task_performing_switchback.html"
+    - title: Ventana de operaciones de conmutación de sitios y de conmutación de sitios
+        de MetroCluster
+      url: "/online-help-96-97/reference_metrocluster_switchover_switchback_window.html"
+- title: Más grandes
+  url: "/online-help-96-97/concept_applications.html"
+  entries:
+  - title: Provisión de una plantilla básica
+    url: "/online-help-96-97/task_provisioning_basic_template.html"
+  - title: Definiciones de servicios de almacenamiento
+    url: "/online-help-96-97/reference_storage_service_definitions.html"
+  - title: Añada Microsoft SQL Server sobre SAN a System Manager
+    url: "/online-help-96-97/task_adding_microsoft_sql_server_over_san_to_system_manager.html"
+  - title: Configuración de aprovisionamiento de aplicaciones
+    url: "/online-help-96-97/reference_application_provisioning_settings.html"
+  - title: Editar una aplicación
+    url: "/online-help-96-97/task_editing_application.html"
+  - title: Eliminar una aplicación
+    url: "/online-help-96-97/task_deleting_application.html"
+  - title: Aplicaciones
+    url: "/online-help-96-97/reference_applications_window.html"
+- title: Actualización de la configuración
+  url: "/online-help-96-97/concept_configuration_update.html"
+- title: Instancias de Service Processor
+  url: "/online-help-96-97/concept_service_processors.html"
+- title: Clústeres en relación de paridad
+  url: "/online-help-96-97/concept_cluster_peers.html"
+- title: Alta disponibilidad
+  url: "/online-help-96-97/concept_high_availability.html"
+- title: Licencias
+  url: "/online-help-96-97/concept_licenses.html"
+- title: Ampliación del clúster
+  url: "/online-help-96-97/concept_cluster_expansion.html"
+- title: Actualice los clústeres
+  url: "/online-help-96-97/concept_updating_clusters.html"
+  entries:
+  - title: Actualizar los clústeres en una configuración que no sea de MetroCluster
+    url: "/online-help-96-97/concept_updating_clusters_non_metrocluster_configuration.html"
+  - title: Actualizar los clústeres en una configuración de MetroCluster
+    url: "/online-help-96-97/concept_updating_clusters_metrocluster_configuration.html"
+  - title: Obtención de imágenes de software de ONTAP
+    url: "/online-help-96-97/task_obtaining_ontap_software_images.html"
+  - title: Actualice los clústeres de un solo nodo
+    url: "/online-help-96-97/task_updating_single_node_clusters.html"
+  - title: Actualice un clúster de forma no disruptiva
+    url: "/online-help-96-97/task_updating_cluster_nondisruptively.html"
+  - title: Ventana Cluster Update
+    url: "/online-help-96-97/reference_cluster_update_window.html"
+- title: Configuración de la fecha y la hora de un clúster de
+  url: "/online-help-96-97/concept_date_time.html"
+- title: SNMP
+  url: "/online-help-96-97/concept_snmp.html"
+- title: LDAP
+  url: "/online-help-96-97/concept_ldap.html"
+- title: Usuarios
+  url: "/online-help-96-97/concept_cluster_user_accounts.html"
+- title: Funciones
+  url: "/online-help-96-97/concept_roles.html"
+- title: Administrar la red
+  url: "/online-help-96-97/concept_managing_network.html"
+- title: Espacios IP
+  url: "/online-help-96-97/concept_ipspaces.html"
+- title: Dominios de retransmisión
+  url: "/online-help-96-97/concept_broadcast_domains.html"
+- title: Subredes
+  url: "/online-help-96-97/concept_subnets.html"
+- title: Interfaces de red
+  url: "/online-help-96-97/concept_network_interfaces.html"
+- title: Puertos Ethernet
+  url: "/online-help-96-97/concept_ethernet_ports.html"
+- title: Adaptadores FC/FCoE y NVMe
+  url: "/online-help-96-97/concept_fc_fcoe_nvme_adapters.html"
+- title: Niveles de almacenamiento
+  entries:
+  - title: Editar agregados
+    url: "/online-help-96-97/task_editing_aggregates.html"
+  - title: Elimine los agregados
+    url: "/online-help-96-97/task_deleting_aggregates.html"
+  - title: Cambie la configuración de RAID al crear un agregado
+    url: "/online-help-96-97/task_changing_raid_configuration_when_creating_aggregate.html"
+  - title: Aprovisionamiento de caché mediante la adición de SSD
+    url: "/online-help-96-97/task_provisioning_cache_by_adding_disks.html"
+  - title: Añadir discos de capacidad
+    url: "/online-help-96-97/task_adding_capacity_disks.html"
+  - title: Cambie el grupo RAID al añadir discos de capacidad
+    url: "/online-help-96-97/task_changing_raid_group_when_adding_capacity_disks.html"
+  - title: Mover volúmenes de FlexVol
+    url: "/online-help-96-97/task_moving_flexvol_volumes.html"
+  - title: Mirroring de agregados
+    url: "/online-help-96-97/task_mirroring_aggregates.html"
+  - title: Ver la información del agregado
+    url: "/online-help-96-97/task_viewing_aggregate_information.html"
+  - title: Instalar un certificado de CA si utiliza StorageGRID
+    url: "/online-help-96-97/task_installing_ca_certificate_if_you_use_storagegrid_webscale.html"
+  - title: Cómo se puede utilizar un tipo de disco ONTAP efectivo para combinar HDD
+    url: "/online-help-96-97/reference_effective_data_ontap_disk_types.html"
+  - title: "¿Qué discos de repuesto son compatibles"
+    url: "/online-help-96-97/concept_what_compatible_spare_disks_are.html"
+  - title: Cómo funciona System Manager con piezas de repuesto
+    url: "/online-help-96-97/concept_how_system_manager_calculates_hot_spares.html"
+  - title: Reglas para mostrar tipos de disco y RPM de disco
+    url: "/online-help-96-97/concept_rules_for_mixing_disk_types_disk_rpms.html"
+  - title: Recomendaciones de almacenamiento para la creación de agregados
+    url: "/online-help-96-97/concept_storage_recommendations_for_creating_aggregates.html"
+  - title: Ventana Storage Tiers
+    url: "/online-help-96-97/reference_storage_tiers_window.html"
+- title: Configure y gestione niveles de cloud
+  url: "/online-help-96-97/task_configuring_managing_cloud_tiers.html"
+- title: Agregados
+  url: "/online-help-96-97/concept_aggregates.html"
+- title: Pools de almacenamiento
+  url: "/online-help-96-97/concept_storage_pools.html"
+- title: Volver a asignar discos a los nodos
+  url: "/online-help-96-97/task_reassigning_disks_to_nodes.html"
+- title: Discos
+  entries:
+  - title: Ver la información del disco
+    url: "/online-help-96-97/task_viewing_disk_information.html"
+  - title: Cómo informa ONTAP sobre los tipos de discos
+    url: "/online-help-96-97/concept_how_ontap_reports_drive_types.html"
+  - title: Determine cuándo es seguro retirar un portador de varios discos
+    url: "/online-help-96-97/concept_how_to_determine_when_safe_to_remove_multi_disk_carrier.html"
+  - title: Ventana discos
+    url: "/online-help-96-97/reference_disks_window.html"
+- title: LUN de cabina
+  url: "/online-help-96-97/concept_array_luns.html"
+- title: Nodos
+  url: "/online-help-96-97/concept_nodes.html"
+- title: Caché de hardware
+  url: "/online-help-96-97/concept_hardware_cache.html"
+- title: Eventos
+  url: "/online-help-96-97/concept_events.html"
+- title: Alertas del sistema
+  url: "/online-help-96-97/concept_system_alerts.html"
+- title: Notificaciones de AutoSupport
+  url: "/online-help-96-97/concept_autosupport.html"
+- title: Trabajos
+  url: "/online-help-96-97/concept_jobs.html"
+- title: Estadísticas de Flash Pool
+  url: "/online-help-96-97/concept_flash_pool_statistics.html"
+- title: Ventana Consola de SVM
+  url: "/online-help-96-97/reference_svm_dashboard_window.html"
+  entries:
+  - title: Supervisar las SVM
+    url: "/online-help-96-97/task_monitoring_svm_using_dashboard.html"
+  - title: Editar la configuración de SVM
+    url: "/online-help-96-97/task_editing_svm_settings.html"
+  - title: Elimine las SVM
+    url: "/online-help-96-97/task_deleting_svms.html"
+  - title: Inicie SVM
+    url: "/online-help-96-97/task_starting_svms.html"
+  - title: Detenga las SVM
+    url: "/online-help-96-97/task_stopping_svms.html"
+  - title: Gestione las SVM
+    url: "/online-help-96-97/reference_managing_svms.html"
+  - title: Seguimiento del acceso a archivos para diagnosticar errores de acceso en
+      SVM
+    url: "/online-help-96-97/task_tracing_file_access_to_diagnose_access_errors_on_svms.html"
+  - title: Acerca de las SVM
+    url: "/online-help-96-97/concept_why_you_use_svms.html"
+  - title: Acerca de la configuración de switch de servicio de nombres ONTAP
+    url: "/online-help-96-97/concept_how_data_ontap_name_service_switch_configuration_works.html"
+  - title: Ventana Storage Virtual Machines
+    url: "/online-help-96-97/reference_svm_window.html"
+  - title: Acceso a archivos de rastreo
+    url: "/online-help-96-97/reference_trace_file_access_window.html"
+- title: Volúmenes
+  entries:
+  - title: Editar propiedades de volumen
+    url: "/online-help-96-97/task_editing_volume_properties.html"
+  - title: Editar los volúmenes de protección de datos
+    url: "/online-help-96-97/task_editing_data_protection_volumes.html"
+  - title: Elimine volúmenes
+    url: "/online-help-96-97/task_deleting_volumes.html"
+  - title: Crear volúmenes FlexClone
+    url: "/online-help-96-97/task_creating_flexclone_volumes.html"
+  - title: Crear archivos FlexClone
+    url: "/online-help-96-97/task_creating_flexclone_files.html"
+  - title: Separación de un volumen FlexClone de su volumen principal
+    url: "/online-help-96-97/task_splitting_flexclone_volume_from_its_parent_volume.html"
+  - title: Consulte la jerarquía de volúmenes de FlexClone
+    url: "/online-help-96-97/task_viewing_flexclone_volumes_hierarchy.html"
+  - title: Cambiar el estado de un volumen
+    url: "/online-help-96-97/task_changing_status_volume.html"
+  - title: Consulte la lista de copias Snapshot guardadas
+    url: "/online-help-96-97/task_viewing_list_saved_snapshot_copies.html"
+  - title: Cree copias Snapshot con un calendario definido
+    url: "/online-help-96-97/task_creating_snapshot_copies_outside_defined_schedule.html"
+  - title: Configurar la reserva de copias Snapshot
+    url: "/online-help-96-97/task_setting_snapshot_copy_reserve.html"
+  - title: Ocultando el directorio de copias snapshot
+    url: "/online-help-96-97/task_hiding_snapshot_copy_directory.html"
+  - title: Programar la creación automática de copias Snapshot
+    url: "/online-help-96-97/task_scheduling_automatic_creation_snapshot_copies.html"
+  - title: Restaurar un volumen de una copia Snapshot
+    url: "/online-help-96-97/task_restoring_volume_from_snapshot_copy.html"
+  - title: Amplíe la fecha de caducidad de las copias snapshot
+    url: "/online-help-96-97/task_extending_expiry_date_snapshot_copies.html"
+  - title: Cambie el nombre de las copias Snapshot
+    url: "/online-help-96-97/task_renaming_snapshot_copies.html"
+  - title: Elimine las copias Snapshot
+    url: "/online-help-96-97/task_deleting_snapshot_copies.html"
+  - title: Cambie el tamaño de los volúmenes
+    url: "/online-help-96-97/task_resizing_volumes.html"
+  - title: Habilite la eficiencia del almacenamiento en un volumen
+    url: "/online-help-96-97/task_enabling_storage_efficiency_on_volume.html"
+  - title: Cambie la programación de la deduplicación
+    url: "/online-help-96-97/task_changing_deduplication_schedule.html"
+  - title: Ejecute las operaciones de deduplicación
+    url: "/online-help-96-97/task_running_deduplication_operations.html"
+  - title: Mover volúmenes de FlexVol entre agregados o nodos
+    url: "/online-help-96-97/task_moving_flexvol_volumes_between_aggregates_or_nodes.html"
+  - title: Asignar volúmenes a la calidad de servicio de almacenamiento
+    url: "/online-help-96-97/task_assigning_volumes_to_storage_qos.html"
+  - title: Crear una relación de mirroring a partir de una SVM de origen
+    url: "/online-help-96-97/task_creating_mirror_relationship_from_source_volume.html"
+  - title: Cree una relación de almacén a partir de una SVM de origen
+    url: "/online-help-96-97/task_creating_vault_relationship_from_source_svm.html"
+  - title: Crear una relación de mirroring y almacén a partir de una SVM de origen
+    url: "/online-help-96-97/task_creating_mirror_vault_relationship_from_source_svm.html"
+  - title: Cree un almacén de datos NFS para VMware
+    url: "/online-help-96-97/task_creating_nfs_datastore_for_vmware.html"
+  - title: Cambiar la política de organización en niveles de un volumen
+    url: "/online-help-96-97/task_changing_tiering_policy_volume_destination_topic_delete.html"
+  - title: Cree volúmenes de FlexGroup
+    url: "/online-help-96-97/task_creating_flexgroup_volumes.html"
+  - title: Vea la información sobre el volumen FlexGroup
+    url: "/online-help-96-97/task_viewing_flexgroup_volume_information.html"
+  - title: Editar volúmenes de FlexGroup
+    url: "/online-help-96-97/task_editing_flexgroup_volumes.html"
+  - title: Especificar las opciones avanzadas para un volumen de FlexGroup
+    url: "/online-help-96-97/task_specifying_advanced_options_for_flexgroup_volume.html"
+  - title: Cambie el tamaño de los volúmenes de FlexGroup
+    url: "/online-help-96-97/task_resizing_flexgroup_volumes.html"
+  - title: Cambiar el estado de un volumen de FlexGroup
+    url: "/online-help-96-97/task_changing_status_flexgroup_volume.html"
+  - title: Elimine volúmenes FlexGroup
+    url: "/online-help-96-97/task_deleting_flexgroup_volumes.html"
+  - title: Cree volúmenes de FlexCache
+    url: "/online-help-96-97/task_creating_flexcache_volumes.html"
+  - title: Vea la información sobre el volumen FlexCache
+    url: "/online-help-96-97/task_viewing_flexcache_volume_information.html"
+  - title: Editar volúmenes de FlexCache
+    url: "/online-help-96-97/task_editing_flexcache_volumes.html"
+  - title: Especificar las opciones avanzadas para un volumen de FlexCache
+    url: "/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html"
+  - title: Cambie el tamaño de los volúmenes de FlexCache
+    url: "/online-help-96-97/task_resizing_flexcache_volumes.html"
+  - title: Cambiar el estado de un volumen de FlexCache
+    url: "/online-help-96-97/task_changing_status_flexcache_volume.html"
+  - title: Elimine volúmenes FlexCache
+    url: "/online-help-96-97/task_deleting_flexcache_volumes.html"
+  - title: Cómo funcionan las garantías de volumen en los volúmenes FlexVol
+    url: "/online-help-96-97/concept_how_volume_guarantees_work_for_flexvol_volumes.html"
+  - title: Uso de reservas de espacio con volúmenes de FlexVol
+    url: "/online-help-96-97/concept_using_space_reservation_with_flexvol_volumes.html"
+  - title: Opciones para ajustar el tamaño de los volúmenes
+    url: "/online-help-96-97/concept_options_for_resizing_volumes.html"
+  - title: Ventana Volumes
+    url: "/online-help-96-97/reference_volumes_window.html"
+- title: Ruta de unión
+  url: "/online-help-96-97/concept_namespace.html"
+- title: Recursos compartidos
+  url: "/online-help-96-97/concept_shares.html"
+- title: LUN
+  url: "/online-help-96-97/concept_luns.html"
+  entries:
+  - title: Creación de LUN optimizadas para FC SAN
+    url: "/online-help-96-97/task_creating_fc_san_optimized_luns.html"
+  - title: Configuración de LUN específica de una aplicación
+    url: "/online-help-96-97/reference_application_specific_lun_settings.html"
+  - title: Cree las LUN
+    url: "/online-help-96-97/task_creating_luns.html"
+  - title: Eliminar las LUN
+    url: "/online-help-96-97/task_deleting_luns.html"
+  - title: Gestione los iGroups
+    url: "/online-help-96-97/task_creating_initiator_groups.html"
+  - title: Cree conjuntos de puertos
+    url: "/online-help-96-97/task_creating_portsets.html"
+  - title: Clonar LUN
+    url: "/online-help-96-97/task_cloning_luns.html"
+  - title: Editar LUN
+    url: "/online-help-96-97/task_editing_luns.html"
+  - title: Conectando LUN
+    url: "/online-help-96-97/task_bringing_luns_online.html"
+  - title: Desconectar las LUN
+    url: "/online-help-96-97/task_taking_luns_offline.html"
+  - title: Moviendo las LUN
+    url: "/online-help-96-97/task_moving_luns.html"
+  - title: Asignar LUN a la calidad de servicio de almacenamiento
+    url: "/online-help-96-97/task_assigning_luns_to_storage_qos.html"
+  - title: Edite los iGroups
+    url: "/online-help-96-97/task_editing_initiator_groups.html"
+  - title: Edite los iniciadores
+    url: "/online-help-96-97/task_editing_initiators.html"
+  - title: Ver la información de la LUN
+    url: "/online-help-96-97/task_viewing_lun_information.html"
+  - title: Ver los iGroups
+    url: "/online-help-96-97/task_viewing_initiator_groups.html"
+  - title: Directrices para trabajar con volúmenes de FlexVol que contienen LUN
+    url: "/online-help-96-97/concept_guidelines_working_with_volumes_that_contain_luns.html"
+  - title: Comprender las reservas de espacio para las LUN
+    url: "/online-help-96-97/concept_using_space_reservation_for_luns.html"
+  - title: Directrices para usar el tipo multiprotocolo de LUN
+    url: "/online-help-96-97/concept_lun_multiprotocol_type_guidelines.html"
+  - title: Ventana de LUN
+    url: "/online-help-96-97/reference_luns_window.html"
+- title: Qtrees
+  url: "/online-help-96-97/concept_qtrees.html"
+- title: Cuotas
+  url: "/online-help-96-97/concept_quotas.html"
+- title: Protocolo CIFS
+  url: "/online-help-96-97/concept_cifs_protocol.html"
+  entries:
+  - title: Agregar rutas de acceso al directorio inicial
+    url: "/online-help-96-97/task_adding_home_directory_paths.html"
+  - title: Restablecer controladoras de dominio CIFS
+    url: "/online-help-96-97/task_resetting_cifs_domain_controllers.html"
+  - title: Actualice la configuración de la política de grupo CIFS
+    url: "/online-help-96-97/task_updating_cifs_group_policy_configuration.html"
+  - title: Configure BranchCache
+    url: "/online-help-96-97/task_setting_up_branchcache.html"
+  - title: Añada controladores de dominio preferidos
+    url: "/online-help-96-97/task_adding_preferred_domain_controllers.html"
+  - title: Ver la información del dominio CIFS
+    url: "/online-help-96-97/task_viewing_cifs_domain_information.html"
+  - title: Ventana CIFS
+    url: "/online-help-96-97/reference_cifs_window.html"
+- title: Protocolo NFS
+  url: "/online-help-96-97/concept_nfs_protocol.html"
+- title: Configure NVMe
+  url: "/online-help-96-97/concept_setting_up_nvme.html"
+  entries:
+  - title: Cree un espacio de nombres NVMe
+    url: "/online-help-96-97/task_creating_nvme_namespace.html"
+  - title: Edite un espacio de nombres NVMe
+    url: "/online-help-96-97/task_editing_nvme_namespace.html"
+  - title: Clonar un espacio de nombres NVMe
+    url: "/online-help-96-97/task_cloning_nvme_namespace.html"
+  - title: Inicie y detenga el servicio NVMe
+    url: "/online-help-96-97/task_starting_or_stopping_nvme_service.html"
+  - title: Qué es un subsistema NVMe
+    url: "/online-help-96-97/concept_what_nvme_subsystem_is.html"
+- title: Protocolo iSCSI
+  url: "/online-help-96-97/concept_iscsi_protocol.html"
+- title: Protocolo FC/FCoE
+  url: "/online-help-96-97/concept_fc_fcoe_protocol.html"
+- title: Políticas de exportación
+  url: "/online-help-96-97/concept_export_policies.html"
+- title: Políticas de eficiencia
+  url: "/online-help-96-97/concept_efficiency_policies.html"
+- title: Gestione los grupos de políticas de calidad de servicio
+  url: "/online-help-96-97/task_creating_qos_policy_groups.html"
+  entries:
+  - title: Reglas para la asignación de objetos de almacenamiento a grupos de políticas
+    url: "/online-help-96-97/concept_rules_for_assigning_storage_objects_to_policy_groups.html"
+- title: Servicios NIS
+  url: "/online-help-96-97/concept_nis_services.html"
+- title: Servicios de cliente LDAP
+  url: "/online-help-96-97/concept_ldap_client_services.html"
+- title: Servicios de configuración de LDAP
+  url: "/online-help-96-97/concept_ldap_configuration_services.html"
+- title: Servicios de dominio Kerberos
+  url: "/online-help-96-97/concept_kerberos_realm_services.html"
+- title: Servicios DNS/DDNS
+  url: "/online-help-96-97/concept_dns_ddns_services.html"
+- title: Usuarios de SVM
+  url: "/online-help-96-97/concept_svm_user_accounts.html"
+- title: UNIX
+  url: "/online-help-96-97/concept_unix.html"
+- title: Grupo de ventanas locales
+  entries:
+  - title: Administrar grupos locales de Windows
+    url: "/online-help-96-97/task_editing_local_windows_group_properties.html"
+- title: Asignación de nombres
+  url: "/online-help-96-97/concept_name_mapping.html"
+- title: Relaciones de mirroring
+  entries:
+  - title: Gestionar las relaciones de reflejo
+    url: "/online-help-96-97/task_editing_mirror_relationships.html"
+  - title: Interrumpir las relaciones de SnapMirror
+    url: "/online-help-96-97/task_breaking_snapmirror_relationships.html"
+  - title: Volver a sincronizar las relaciones de reflejos
+    url: "/online-help-96-97/task_reverse_resynchronizing_snapmirror_relationships.html"
+  - title: Cancele una transferencia de mirroring
+    url: "/online-help-96-97/task_aborting_mirror_relationships.html"
+  - title: Restaurar un volumen en una relación de reflejo
+    url: "/online-help-96-97/task_restoring_volume_mirror_relationship.html"
+- title: Relaciones de almacén
+  entries:
+  - title: Gestione las relaciones de almacén
+    url: "/online-help-96-97/task_editing_vault_relationships.html"
+  - title: Cancele una transferencia de copia snapshot
+    url: "/online-help-96-97/task_aborting_vault_relationships.html"
+  - title: Restaurar un volumen en una relación de almacén
+    url: "/online-help-96-97/task_restoring_volume_vault_relationship.html"
+- title: Relaciones de mirroring y almacén
+  entries:
+  - title: Gestionar relaciones de mirroring y almacén
+    url: "/online-help-96-97/task_editing_mirror_vault_relationships.html"
+  - title: Anule las relaciones de mirroring y almacén
+    url: "/online-help-96-97/task_aborting_mirror_vault_relationships.html"
+  - title: Restaurar un volumen en una relación de mirroring y almacén
+    url: "/online-help-96-97/task_restoring_volume_mirror_vault_relationship.html"
+- title: Ventana de protección
+  url: "/online-help-96-97/reference_protection_window.html"
+- title: Relaciones de SVM
+  url: "/online-help-96-97/concept_svm_relationships.html"
+- title: Gestione las políticas de protección
+  url: "/online-help-96-97/concept_protection_policies.html"
+- title: Gestione las políticas de Snapshot
+  url: "/online-help-96-97/concept_snapshot_policies.html"
+- title: Gestionar programaciones
+  url: "/online-help-96-97/concept_schedules.html"

@@ -1,0 +1,25 @@
+---
+permalink: online-help-96-97/concept_luns.html 
+sidebar: sidebar 
+keywords: system, manager, manager, lun, access, cluster, tab, online, help 
+summary: Puede usar System Manager para gestionar las LUN. 
+---
+= Gestione las LUN con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible utilizar ONTAP System Manager classic (disponible en ONTAP 9,7 y versiones anteriores) para gestionar los LUN.
+
+Puede acceder a todas las LUN del clúster mediante la pestaña LUN o puede acceder a las LUN específicas del SVM mediante *SVM* > *LUN*.
+
+[NOTE]
+====
+La pestaña LUN se muestra solo si se han habilitado las licencias FC/FCoE e iSCSI.
+
+====
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["Administración de SAN"^]

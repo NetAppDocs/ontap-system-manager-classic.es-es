@@ -1,0 +1,306 @@
+---
+permalink: online-help-96-97/concept_cluster_peers.html 
+sidebar: sidebar 
+keywords: cluster, peer, data, replication, snapmirror, snapvault, flexcache, syncmirror, configuration, system, manager, modify, passphrase, lif, configure, remote, change, encryption, status, online, help 
+summary: Se necesitan clústeres con una relación entre iguales para la replicación de datos mediante la tecnología SnapMirror y la tecnología SnapVault, y para la replicación de datos mediante volúmenes de FlexCache y la tecnología SyncMirror en configuraciones de MetroCluster. Es posible usar System Manager para conectar dos clústeres de manera que los clústeres con una relación entre iguales puedan coordinar y compartir recursos entre ellos. 
+---
+= Paridad de clústeres con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar dos clústeres de manera que los clústeres con una relación entre iguales puedan coordinar y compartir recursos entre ellos. Se necesitan clústeres con una relación entre iguales para la replicación de datos mediante la tecnología SnapMirror y la tecnología SnapVault, y para la replicación de datos mediante volúmenes de FlexCache y la tecnología SyncMirror en configuraciones de MetroCluster.
+
+
+
+== Generar una frase de contraseña entre iguales
+
+A partir de System Manager 9.6, puede generar una clave de acceso para el espacio IP del clúster local y usar la misma clave de acceso en el clúster remoto al crear relaciones de paridad.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster peers*.
+. Haga clic en *Generate peering Passphrase*.
++
+Aparecerá la ventana de diálogo generar frase de paso entre iguales.
+
+. Complete los siguientes campos:
++
+** *IPspace*: Seleccione el espacio IP en el menú desplegable.
+** *Passphrase validity*: Seleccione en el menú desplegable la duración de la frase de paso que desea que sea válida.
+** *Permisos de SVM*: Seleccione una de las siguientes opciones:
++
+*** *Todas las SVM* para indicar que todas las SVM pueden acceder al clúster.
+*** *SVM* seleccionadas para indicar SVM específicas que pueden acceder al clúster. Destaque los nombres de SVM en el campo que desea especificar.
+
+
+
+
+. *Opcional:* Seleccione la casilla de verificación si la versión efectiva del clúster remoto es anterior a ONTAP 9.6. De lo contrario, la relación de clústeres entre iguales no se puede generar.
+. Haga clic en *generar* para generar la frase de contraseña.
++
+Para una generación correcta, aparece un mensaje que identifica la contraseña.
+
+. Si desea enviar por correo electrónico o copiar la frase de contraseña, realice una de las acciones siguientes:
++
+** Haga clic en *Detalles de la contraseña de correo electrónico*.
+** Haga clic en *Copiar contraseña*.
+
+
+
+
+
+
+== Modifique la clave de acceso del mismo nivel del clúster
+
+Puede modificar la clave de acceso que se proporciona durante la creación de pares de clústeres.
+
+.Pasos
+. [[step1]]Haga clic en *Configuración* > *Compañeros de cluster*.
+. Seleccione el clúster con relación entre iguales y haga clic en *Editar*
++
+Aparece el menú desplegable.
+
+. Haga clic en *frase de paso de clúster local*.
++
+Se muestra la ventana de diálogo Edit local Cluster Passphrase.
+
+. [[step4]]En el campo *Introducir contraseña*, ingrese una nueva frase de contraseña y luego haga clic en *Aplicar*.
++
+[NOTE]
+====
+La longitud mínima requerida de la clave de acceso es de ocho caracteres.
+
+====
++
+La frase de contraseña se modifica inmediatamente. Sin embargo, es posible que haya un retraso antes de que se muestre el estado de autenticación correcto.
+
+. Inicie sesión en el clúster remoto y realice los pasos que desee link:#step1["1"] por link:#step4["4"] para modificar la clave de acceso en el clúster remoto.
++
+El estado de autenticación del clúster local se muestra como `ok_and_offer` hasta que se modifique la clave de acceso en el clúster remoto.
+
+
+
+
+
+== Modifique las LIF que están configuradas para el clúster remoto
+
+Puede usar System Manager para modificar el espacio IP y las interfaces lógicas de interconexión de clústeres (LIF) configuradas para el clúster remoto. Es posible añadir nuevas direcciones IP de interconexión de clústeres o eliminar las direcciones IP existentes.
+
+.Antes de empezar
+Debe tener al menos una dirección IP de interconexión de clústeres para crear la relación de paridad de los clústeres.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. Seleccione el clúster con relación entre iguales y haga clic en *Editar*
++
+Aparece el menú desplegable.
+
+. Haga clic en *parámetros de red de clúster par*.
++
+Aparece la ventana de diálogo Editar parámetros de red de interlocutor.
+
+. Si es necesario, modifique los siguientes campos:
++
+** *IPspace*: Seleccione el espacio IP en el menú desplegable.
+** *LIF de interconexión de clústeres*: Agregue o elimine direcciones IP de interconexión de clústeres. Puede añadir varias direcciones IP separándolas con comas.
+
+
+. Haga clic en *Modificar*.
+. Compruebe los cambios realizados en la ventana * Cluster peers*.
+
+
+
+
+== Cambie el estado del cifrado de relaciones entre iguales
+
+Puede usar System Manager para cambiar el estado de cifrado de relaciones entre iguales del clúster seleccionado.
+
+.Acerca de esta tarea
+El estado del cifrado puede habilitarse o deshabilitarse. Puede cambiar el estado de Activado a Desactivado o Desactivado a Activado seleccionando *Cambiar cifrado*.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster peers*.
+. Seleccione el clúster con relación entre iguales y haga clic en *Editar*
++
+Aparece el menú desplegable.
+
+. Haga clic en *Cambiar cifrado*.
++
+Esta acción no está disponible si el estado del cifrado es «'N/A'».
+
++
+Aparecerá la ventana Cambiar cifrado. El botón de alternar indica el estado de cifrado actual.
+
+. Deslice el botón de alternar para cambiar el estado de cifrado de peering y proceda.
++
+** Si el estado de cifrado actual es "'none'", puede habilitar el cifrado deslizando el botón de alternar para cambiar el estado a "'tls_psk'".
+** Si el estado de cifrado actual es "'tls_psk'", puede desactivar el cifrado deslizando el botón de alternar para cambiar el estado a "'none'".
+
+
+. Después de habilitar o deshabilitar el cifrado entre iguales, se puede generar una nueva clave de acceso y proporcionarla en el clúster con una relación entre iguales, o bien aplicar una clave de acceso existente que ya se haya generado en el clúster con una relación entre iguales.
++
+[NOTE]
+====
+Si la frase de acceso usada en el sitio local no coincide con la contraseña usada en el sitio remoto, la relación de paridad del clúster no funcionará correctamente.
+
+====
++
+Seleccione una de las siguientes opciones:
+
++
+** *Generar una frase de contraseña*: Proceder a. link:#step6["paso 6"].
+** *Ya tiene una frase de contraseña*: Proceda a. link:#step9["paso 9"].
+
+
+. [[step6]]Si elige *Generar una frase de contraseña*, complete los campos necesarios:
++
+** *IPspace*: Seleccione el espacio IP en el menú desplegable.
+** *Passphrase validity*: Seleccione en el menú desplegable la duración de la frase de paso que desea que sea válida.
+** *Permisos de SVM*: Seleccione una de las siguientes opciones:
++
+*** *Todas las SVM* para indicar que todas las SVM pueden acceder al clúster.
+*** *SVM* seleccionadas para indicar SVM específicas que pueden acceder al clúster. Destaque los nombres de SVM en el campo que desea especificar.
+
+
+
+
+. *Opcional:* Seleccione la casilla de verificación si la versión efectiva del clúster remoto es anterior a ONTAP 9.6. De lo contrario, la frase de contraseña no se generará.
+. Haga clic en *aplicar*.
++
+La frase de acceso se genera para la relación y se muestra. Puede copiar la frase de contraseña o escribirla por correo electrónico.
+
++
+El estado de autenticación del clúster local se muestra como `ok_and_offer` para el período de validez de la clave de acceso seleccionada hasta que se proporciona la clave de acceso en el clúster remoto.
+
+. [[step9]]Si ya ha generado una nueva frase de acceso en el clúster remoto, realice los siguientes subpasos:
++
+.. Haga clic en *ya tiene una frase de contraseña*.
+.. Introduzca en el campo *Passphrase* la misma que se generó en el clúster remoto.
+.. Haga clic en *aplicar*.
+
+
+
+
+
+
+== Elimine las relaciones de paridad entre clústeres
+
+Puede usar System Manager para eliminar una relación de paridad de clústeres si ya no se necesita la relación. Debe eliminar la relación de paridad de clústeres de cada uno de los clústeres de la relación de paridad.
+
+.Pasos
+. [[step1]]Haga clic en *Configuración* > *Compañeros de cluster*.
+. Seleccione el par de clústeres para el que desea eliminar la relación y, a continuación, haga clic en *Eliminar*.
+. [[step3]]Seleccione la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+. Inicie sesión en el clúster remoto y realice los pasos que desee link:#step1["1"] por link:#step3["3"] para eliminar la relación entre iguales entre el clúster local y el clúster remoto.
++
+El estado de la relación entre iguales se muestra como "'insalubre'" hasta que la relación se elimina tanto del clúster local como del clúster remoto.
+
+
+
+
+
+== Ventana Cluster peers
+
+Puede usar la ventana Cluster peer para gestionar las relaciones de clústeres entre iguales, lo cual le permite mover datos de un clúster a otro.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create Cluster peering, que le permite crear una relación con un clúster remoto.
+
+* *Edición*
++
+Muestra un menú desplegable con las siguientes opciones:
+
++
+** *Frase de paso de cluster local*
++
+Abre el cuadro de diálogo Edit local Cluster Passphrase, que permite introducir una nueva clave de acceso para validar el clúster local.
+
+** *Parámetros de red de clúster par*
++
+Abre el cuadro de diálogo Edit Peer Cluster Network Parameters, que permite modificar el espacio IP y agregar o quitar direcciones IP de LIF entre clústeres.
+
++
+Puede añadir varias direcciones IP, separadas por comas.
+
+** *Cambiar cifrado*
++
+Abre el cuadro de diálogo Cambiar cifrado del clúster de pares seleccionado. Mientras cambia el cifrado de la relación entre iguales, puede generar una nueva clave de acceso o proporcionar una clave de acceso que ya se haya generado en el clúster remoto con una relación entre iguales.
+
++
+Esta acción no está disponible si el estado del cifrado es «'N/A'».
+
+
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Delete Cluster peer Relationship, que permite eliminar la relación de clústeres entre iguales seleccionada.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+* *Administrar permisos de SVM*
++
+Permite que las SVM acepten automáticamente solicitudes de paridad de SVM.
+
+* *Generar frase de paso de interconexión*
++
+Permite generar una clave de acceso para el espacio IP del clúster local mediante la especificación del espacio IP, el establecimiento de la duración de la validez de la clave de acceso y la especificación del permiso para las SVM.
+
++
+La misma clave de acceso se utiliza en el clúster remoto de paridad.
+
+
+
+
+
+=== Lista de clústeres del mismo nivel
+
+* *Grupo de compañeros*
++
+Especifica el nombre del clúster de paridad en la relación.
+
+* *Disponibilidad*
++
+Especifica si el clúster del mismo nivel está disponible para la comunicación.
+
+* *Estado de autenticación*
++
+Especifica si el clúster del mismo nivel se autentica o no.
+
+* *Espacio IP del clúster local*
++
+Muestra el espacio IP asociado a la relación de paridad del clúster local.
+
+* *Direcciones IP de interconexión de clústeres entre iguales*
++
+Muestra las direcciones IP asociadas con la relación entre iguales de clústeres.
+
+* *Última actualización*
++
+Muestra la hora en la que se modificó por última vez el clúster del mismo nivel.
+
+* *Cifrado*
++
+Muestra el estado del cifrado de la relación de paridad.
+
++
+[NOTE]
+====
+A partir de System Manager 9.6, el establecimiento de relaciones entre iguales se cifra de forma predeterminada al establecer una relación entre iguales entre dos clústeres
+
+====
++
+** *N/A*: El cifrado no es aplicable a la relación.
+** *Ninguno*: La relación de asociación no está cifrada.
+** *tls_psk*: La relación de asociación está cifrada.
+
+
+

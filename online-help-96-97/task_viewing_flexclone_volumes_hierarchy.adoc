@@ -1,0 +1,28 @@
+---
+permalink: online-help-96-97/task_viewing_flexclone_volumes_hierarchy.html 
+sidebar: sidebar 
+keywords: flexclone, volume, system, manager, parent, volume, online, help 
+summary: Puede usar System Manager para ver la jerarquía de los volúmenes FlexClone y sus volúmenes principales. 
+---
+= Vea la jerarquía de volumen de FlexClone: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver la jerarquía de los volúmenes FlexClone y sus volúmenes principales.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen requerido de la lista de volúmenes.
+. Haga clic en *más acciones* > *Clonar* > *Ver jerarquía*.
+
+
+.Resultados
+Se muestran los volúmenes que tienen al menos un volumen FlexClone secundario. Los volúmenes FlexClone se muestran como secundarios de sus volúmenes principales respectivos.
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

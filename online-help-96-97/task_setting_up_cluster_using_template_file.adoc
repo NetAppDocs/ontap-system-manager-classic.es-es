@@ -1,0 +1,106 @@
+---
+permalink: online-help-96-97/task_setting_up_cluster_using_template_file.html 
+sidebar: sidebar 
+keywords: set, up, cluster, template, file, system, manager, online, help, autosupport 
+summary: 'Puede usar el archivo de plantilla incluido en System Manager para configurar un clúster. Para ello, cree un clúster, configure las redes de gestión de nodos y clústeres, y, por último, configure notificaciones de eventos. (A partir de System Manager 9.6 de ONTAP, AutoSupport no es compatible). Puede descargar el archivo de plantilla en formato .xlsx o .csv.' 
+---
+= Configure un clúster mediante el archivo de plantilla en System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el archivo de plantilla incluido en el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar un clúster. Para ello, cree un clúster, configure las redes de gestión de nodos y clústeres, y, posteriormente, configure notificaciones de eventos. (A partir de System Manager 9.6 de ONTAP, AutoSupport no es compatible). Puede descargar el archivo de plantilla en `.xlsx` formatear o. `.csv` formato.
+
+.Acerca de esta tarea
+* Si el clúster admite ONTAP 9.1 o una versión posterior, solo podrá añadir sistemas de almacenamiento que ejecuten ONTAP 9.1 o una versión posterior.
+* Al cargar el archivo, no se rellenan automáticamente todos los campos.
++
+Para algunos campos, como la contraseña y el puerto de gestión del clúster, debe introducir los valores de forma manual.
+
+
+
+.Pasos
+. Abra el navegador web y escriba la dirección IP de gestión de nodos que haya configurado: `+https://node-management-IP+`
++
+** Si ha configurado las credenciales para el clúster, se mostrará la página Login.
++
+Debe introducir las credenciales para iniciar sesión.
+
+** Si no ha configurado las credenciales para el clúster, se mostrará la ventana Guided Setup.
+
+
+. Descargue el `.xlsx` archivo de plantilla o la `.csv` archivo de plantilla.
+. Proporcione los valores requeridos en el archivo de plantilla y guárdelo.
++
+[NOTE]
+====
+** No edite ninguna columna de la plantilla, salvo la de valores.
+** No cambie la versión del archivo de plantilla.
+
+
+====
+. Haga clic en *examinar* y seleccione el archivo de plantilla actualizado.
++
+** Solo se puede cargar el archivo de plantilla en la `.csv` formato. Si ha descargado el archivo de plantilla en `.xlsx` con el formato, debe guardar el archivo como un `.csv` y, a continuación, cargue el archivo.
+** Debe asegurarse de que la codificación utilizada para este archivo es `UTF8`. De lo contrario, no se podrán leer los valores.
+
+
+. Haga clic en *cargar*.
++
+Los detalles que ha proporcionado en el archivo de plantilla se usarán para completar el proceso de configuración del clúster.
+
+. Haga clic en el icono *Guided Setup* para ver los detalles del clúster.
+. Compruebe los detalles en la ventana *Cluster* y, a continuación, haga clic en *Enviar y continuar*.
++
+Puede modificar los detalles del clúster si es necesario.
+
++
+Si inicia sesión en la ventana Cluster por segunda vez, el campo *licencias de funciones* está activado de forma predeterminada. Puede añadir nuevas claves de licencia de funciones o conservar las claves de licencia que se ofrecen de forma predeterminada.
+
+. Compruebe los detalles en la ventana *Red* y, a continuación, haga clic en *Enviar y continuar*.
++
+Puede modificar los detalles de la red si es necesario.
+
+. Compruebe los detalles en la ventana *Soporte* y, a continuación, haga clic en *Enviar y continuar*.
++
+Puede modificar los detalles de soporte si es necesario.
+
+. Compruebe los detalles en la ventana *almacenamiento* y, a continuación, cree agregados o salga de la configuración del clúster:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Salga de la configuración del clúster sin aprovisionar el almacenamiento ni crear una SVM
+ a| 
+Haga clic en *Omitir este paso*.
+
+
+
+ a| 
+Aprovisione el almacenamiento mediante agregados y cree una SVM
+ a| 
+Haga clic en *Enviar y continuar*.
+
+|===
++
+Puede modificar los detalles de soporte si es necesario.
+
+. Compruebe los detalles en la ventana *Crear máquina virtual de almacenamiento (SVM)* y, a continuación, haga clic en *Enviar y continuar*.
++
+Puede editar el nombre de la SVM, seleccionar un protocolo de datos diferente y modificar los detalles del adaptador y la interfaz de red, si es necesario.
+
+. Si ha hecho clic en *Omitir este paso* en la ventana *almacenamiento*, consulte los detalles en la ventana *Resumen* y, a continuación, haga clic en *Administrar su clúster* para iniciar System Manager.
+. Si ha hecho clic en *Enviar y continuar* en la ventana *almacenamiento*, compruebe los detalles en la ventana de SVM y, a continuación, haga clic en *Enviar y continuar*.
++
+Puede modificar los detalles de la SVM si es necesario.
+
+. Compruebe todos los detalles en la ventana *Resumen* y, a continuación, haga clic en *aprovisionar una aplicación* para aprovisionar almacenamiento para aplicaciones, o haga clic en *Administrar su clúster* para completar el proceso de configuración del clúster e iniciar System Manager, o bien haga clic en *Exportar configuración* para descargar el archivo de configuración.
+
+
+*Información relacionada*
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/System_Manager_Cluster_Guided_Setup_Templates["Plantillas de configuración guiadas por clústeres de System Manager"]

@@ -1,0 +1,40 @@
+---
+permalink: iscsi-config-esxi/task_testing_iscsi_paths.html 
+sidebar: sidebar 
+keywords: storage, failover, data, mobility, path, host, node, cluster, advertise, iscsi, ping, host, test, test iscsi paths from the host to the storage cluster 
+summary: Para garantizar una correcta conmutación al nodo de respaldo del almacenamiento y la movilidad de datos, debe asegurarse de tener dos rutas desde el host a cada nodo del clúster de almacenamiento. Dado que el número de rutas anunciadas por el destino iSCSI es limitado, debe hacer ping a los puertos del clúster de almacenamiento desde el host. 
+---
+= Pruebe las rutas iSCSI desde el host al clúster de almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para garantizar una correcta conmutación al nodo de respaldo del almacenamiento y la movilidad de datos, debe asegurarse de tener dos rutas desde el host a cada nodo del clúster de almacenamiento. Dado que el número de rutas anunciadas por el destino iSCSI es limitado, debe hacer ping a los puertos del clúster de almacenamiento desde el host.
+
+.Antes de empezar
+Debe conocer la dirección IP o el nombre de host de todas las interfaces lógicas (LIF) que se usarán para las rutas iSCSI.
+
+.Acerca de esta tarea
+Las LUN se asignan a un subconjunto de los iniciadores del igroup para limitar el número de rutas desde el host a la LUN.
+
+* De forma predeterminada, solo las rutas del host al nodo que contiene la máquina virtual de almacenamiento (SVM) donde se creó la LUN, y las rutas al partner de alta disponibilidad de ese nodo son visibles para el host.
+* Aún debe crear y probar las rutas desde el host a cada nodo del clúster, pero el host solo puede acceder a esas rutas en el nodo propietario y su partner de alta disponibilidad.
+* Debe utilizar el comportamiento de asignación de LUN predeterminado.
++
+Añada solo nodos en otras parejas de ha al mapa de LUN como preparación para mover la LUN a un nodo diferente.
+
+
+
+.Pasos
+. Desde el host ESXi, utilice `ping` Comando para verificar la ruta a la primera LIF.
++
+La `ping` El comando está disponible en la consola de servicios de ESXi.
+
+. Repita el `ping` Comando para verificar la conectividad de cada LIF iSCSI en cada nodo del clúster.
+
+
+*Información relacionada*
+
+http://kb.vmware.com/kb/1003486["Artículo de la base de conocimientos de VMware 1003486: Prueba de la conectividad de red con el comando ping"]

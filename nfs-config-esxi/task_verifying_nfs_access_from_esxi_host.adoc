@@ -1,0 +1,27 @@
+---
+permalink: nfs-config-esxi/task_verifying_nfs_access_from_esxi_host.html 
+sidebar: sidebar 
+keywords: provision, datastore, esxi, verify, nfs, access, creating, create, virtual, machine, power, verify nfs access from an esxi host 
+summary: Después de aprovisionar un almacén de datos, puede verificar que el host ESXi tenga acceso NFS creando una máquina virtual en el almacén de datos y encendiéndolo. 
+---
+= Compruebe el acceso NFS desde un host ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de aprovisionar un almacén de datos, puede verificar que el host ESXi tenga acceso NFS creando una máquina virtual en el almacén de datos y encendiéndolo.
+
+.Pasos
+. En la página Home* de vSphere Web Client, haga clic en *hosts and Clusters*.
+. En el panel de navegación, expanda el centro de datos para ubicar el almacén de datos que creó anteriormente.
+. Haga clic en *Crear una nueva máquina virtual* y proporcione la información necesaria en el asistente.
++
+Para verificar el acceso a NFS, debe seleccionar el centro de datos, el host ESXi y el almacén de datos que ha creado previamente.
+
++
+La máquina virtual se muestra en el inventario de vSphere Web Client.
+
+. Encienda la máquina virtual.
+

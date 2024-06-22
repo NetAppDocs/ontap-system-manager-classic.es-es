@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_reassigning_disks_to_nodes.html 
+sidebar: sidebar 
+keywords: system, manager, reassign, disks, node, online, help, node, aggregate, storage, pool 
+summary: Puede usar System Manager para reasignar la propiedad de discos de repuesto de un nodo a otro nodo a fin de aumentar la capacidad de un agregado o un pool de almacenamiento. 
+---
+= Reasignar discos a nodos con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para reasignar la propiedad de los discos de repuesto de un nodo a otro a fin de aumentar la capacidad de un agregado o un pool de almacenamiento.
+
+.Acerca de esta tarea
+* Puede reasignar discos si se cumplen las siguientes condiciones:
++
+** El tipo de contenedor de los discos seleccionados debe ser «pare» o «sharad».
+** Los discos deben estar conectados a nodos de una configuración de alta disponibilidad.
+** Los discos deben ser visibles para el nodo.
+
+
+* _Cannot_ reasigna un disco si se cumplen las siguientes condiciones:
++
+** El tipo de contenedor del disco seleccionado es "rojo", y la partición de datos no está disponible.
+** El disco está asociado a un pool de almacenamiento.
+
+
+* No puede reasignar la partición de datos de los discos compartidos si la recuperación tras fallos de almacenamiento no está activada en los nodos asociados a los discos compartidos.
+* Para los discos de partición, sólo puede reasignar la partición de datos de los discos.
+* En las configuraciones de MetroCluster, no se puede usar System Manager para reasignar discos.
++
+Debe usar la interfaz de línea de comandos para reasignar discos para las configuraciones MetroCluster.
+
+
+
+[NOTE]
+====
+En versiones posteriores de ONTAP, se utiliza la interfaz de línea de comandos de ONTAP para quitar la propiedad del disco y asignar un nuevo propietario.
+
+====
+.Pasos
+. Haga clic en *almacenamiento* > *agregados y discos* > *discos*.
+. En la ventana *discos*, seleccione la pestaña *Inventario*.
+. Seleccione los discos que desea reasignar y haga clic en *asignar*.
+. En el cuadro de diálogo *Advertencia*, haga clic en *continuar*.
+. En el cuadro de diálogo *asignar discos*, seleccione el nodo al que desea reasignar los discos.
+. Haga clic en *asignar*.
+
+
+.Información relacionada
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["Eliminar la propiedad de los discos mediante la interfaz de línea de comandos de ONTAP (ONTAP 9,3 y versiones posteriores)"]
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/disk-autoassignment-policy-concept.html["Asignar discos automáticamente mediante la interfaz de línea de comandos de ONTAP (ONTAP 9,3 y versiones posteriores)"]
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/manual-assign-disks-ownership-manage-task.html["Asignar discos manualmente mediante la interfaz de línea de comandos de ONTAP (ONTAP 9,3 y posterior)"]
+

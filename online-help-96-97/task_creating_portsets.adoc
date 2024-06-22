@@ -1,0 +1,57 @@
+---
+permalink: online-help-96-97/task_creating_portsets.html 
+sidebar: sidebar 
+keywords: system, manager, port, set, create, online, help, lun, delete, edit, manage 
+summary: Se puede usar la opción clásica de System Manager de ONTAP para crear, eliminar y editar conjuntos de puertos. 
+---
+= Gestione conjuntos de puertos con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear, eliminar y editar conjuntos de puertos.
+
+
+
+== Cree conjuntos de puertos
+
+Puede usar el clásico de System Manager de ONTAP para crear conjuntos de puertos con el fin de limitar el acceso a las LUN.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Portsets*, haga clic en *Crear*.
+. En el cuadro de diálogo *Crear conjunto de puertos*, seleccione el tipo de protocolo.
+. Seleccione la interfaz de red que desea asociar al conjunto de puertos.
+. Haga clic en *Crear*.
+
+
+
+
+== Eliminar conjuntos de puertos
+
+Puede usar System Manager para eliminar un conjunto de puertos cuando ya no se necesite.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Portsets*, seleccione uno o varios conjuntos de puertos y haga clic en *Eliminar*.
+. Confirme la eliminación haciendo clic en *Eliminar*.
+
+
+
+
+== Editar conjuntos de puertos
+
+Puede utilizar la ficha Portsets en System Manager para editar la configuración relacionada con los conjuntos de puertos.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Portsets*, seleccione el conjunto de puertos que desea editar y haga clic en *Editar*.
+. En el cuadro de diálogo *Editar Portset*, realice los cambios necesarios.
+. Haga clic en *Guardar y cerrar*.
+
+
+*Información relacionada*
+
+xref:task_configuring_iscsi_protocol_on_svms.adoc[Configurar el protocolo iSCSI en SVM]

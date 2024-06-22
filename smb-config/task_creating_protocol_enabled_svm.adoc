@@ -1,0 +1,14 @@
+---
+permalink: smb-config/task_creating_protocol_enabled_svm.html 
+sidebar: sidebar 
+keywords: cifs-enabled, svm, involve, cifs, volume, share, add, map, dns, server, verify, windows, administration, host, configure, cifs, client, access, create a new cifs-enabled svm 
+summary: La configuración de una SVM nueva habilitada para CIFS implica crear una SVM nueva con un volumen y un recurso compartido de CIFS, añadir una asignación en el servidor DNS y verificar el acceso CIFS desde un host de administración de Windows. A continuación, puede configurar el acceso de cliente CIFS. 
+---
+= Cree una SVM nueva habilitada para CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configuración de una SVM nueva habilitada para CIFS implica crear una SVM nueva con un volumen y un recurso compartido de CIFS, añadir una asignación en el servidor DNS y verificar el acceso CIFS desde un host de administración de Windows. A continuación, puede configurar el acceso de cliente CIFS.

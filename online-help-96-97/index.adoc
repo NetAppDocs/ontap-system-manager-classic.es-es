@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/index.html 
+sidebar: sidebar 
+keywords: system, manager, online, help, management, interface, understand, cluster 
+summary: 'System Manager es una interfaz gráfica de gestión que le permite gestionar sistemas de almacenamiento y objetos de almacenamiento (como discos, volúmenes y agregados) y realizar tareas de gestión comunes relacionadas con los sistemas de almacenamiento desde un navegador web. Como administrador de clúster, puede usar System Manager para administrar todo el clúster y sus recursos.' 
+---
+= Administración de clústeres mediante OnCommand® System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+System Manager es una interfaz de gestión gráfica basada en HTML5 que permite gestionar sistemas de almacenamiento y objetos de almacenamiento (como discos, volúmenes y agregados) y realizar tareas de gestión comunes relacionadas con los sistemas de almacenamiento desde un navegador web. System Manager se incluye con el software ONTAP como servicio web, habilitado de forma predeterminada, accesible mediante un navegador. Como administrador de clúster, puede usar System Manager para administrar todo el clúster y sus recursos.
+
+[NOTE]
+====
+El nombre de System Manager cambió de las versiones anteriores. Las versiones 9.5 y anteriores se denominaron System Manager de OnCommand. Las versiones 9.6 y posteriores se denominan Administrador del sistema ONTAP.
+
+====
+System Manager le permite realizar muchas tareas comunes como las siguientes:
+
+* Cree un clúster, configure una red y configure detalles de soporte para el clúster.
+* Configuración y gestión de objetos de almacenamiento, como discos, agregados, volúmenes, qtrees y cuotas.
+* Configurar protocolos como CIFS y NFS, y aprovisionar el uso compartido de archivos.
+* Configure protocolos como FC, FCoE, NVMe e iSCSI para el acceso en bloque.
+* Cree y configure componentes de red como subredes, dominios de retransmisión, interfaces de datos y gestión, y grupos de interfaces.
+* Configurar y gestionar las relaciones de mirroring y almacenamiento remoto.
+* Realizar operaciones de gestión de clústeres, nodos de almacenamiento y gestión de máquinas virtuales de almacenamiento (SVM).
+* Cree y configure SVM, gestione objetos de almacenamiento asociados con las SVM y gestione servicios de SVM.
+* Supervisar y gestionar las configuraciones de alta disponibilidad en un clúster.
+* Configure Service Processor para que inicie sesión, gestione, supervise y administre el nodo de forma remota, independientemente del estado del nodo.
+
+
+
+
+== Iconos de la ventana Consola
+
+Puede ver los siguientes iconos al ver la consola del sistema de almacenamiento:
+
+|===
+| . | Nombre | Descripción 
+
+
+ a| 
+image:../media/statuswarning.gif["Imagen para advertencia en el panel de System Manager"]
+ a| 
+Advertencia
+ a| 
+Hay cuestiones menores, pero ninguna que requiera atención inmediata.
+
+
+
+ a| 
+image:../media/statuserror.gif["Imagen para generar el error en la consola de System Manager"]
+ a| 
+Error
+ a| 
+Problemas que en algún momento podrían provocar tiempos de inactividad y, por consiguiente, requieren atención.
+
+
+
+ a| 
+image:../media/statuscritical.gif["Imagen para crucial en el panel de System Manager"]
+ a| 
+Crítico
+ a| 
+El sistema de almacenamiento no ofrece datos o no puede contactarse. Se requiere atención inmediata.
+
+
+
+ a| 
+image:../media/arrowright.gif["Imagen para navegar en el panel de System Manager"]
+ a| 
+Flecha de enlace
+ a| 
+Si se muestra junto a un elemento de línea en un panel de control, al hacer clic en él se vincula a otra página desde la que puede obtener más información sobre el elemento de línea o realizar cambios en el elemento de línea.
+
+|===

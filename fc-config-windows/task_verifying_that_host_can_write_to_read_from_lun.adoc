@@ -1,0 +1,36 @@
+---
+permalink: fc-config-windows/task_verifying_that_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, host, write, data, verify that the host can write to and read from the lun 
+summary: Antes de utilizar la LUN, debe verificar que el host puede escribir datos en la LUN y leerlos nuevamente. 
+---
+= Compruebe que el host puede escribir y leer desde la LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de utilizar la LUN, debe verificar que el host puede escribir datos en la LUN y leerlos nuevamente.
+
+.Antes de empezar
+La LUN debe inicializarse y formatearse con un sistema de archivos.
+
+.Acerca de esta tarea
+Si el nodo del clúster de almacenamiento en el que se crea la LUN puede realizar una conmutación al nodo del compañero de respaldo, debe verificar la lectura de los datos mientras el nodo se ha conmutación al nodo de respaldo. Esta prueba podría no ser posible si el clúster de almacenamiento se está utilizando en producción.
+
+Si alguna de las pruebas da error, debe verificar que el servicio de FC esté en ejecución y comprobar las rutas de FC a la LUN.
+
+.Pasos
+. En el host, copie uno o más archivos en el LUN.
+. Vuelva a copiar los archivos en una carpeta diferente del disco original.
+. Compare los archivos copiados con el original.
++
+Puede utilizar el `comp` En el símbolo del sistema de Windows para comparar dos archivos.
+
+. *Opcional:* conmutar por error el nodo del clúster de almacenamiento que contiene el LUN y verificar que todavía puede tener acceso a los archivos del LUN.
+. Utilice el DSM nativo para ver las rutas a la LUN y verificar que tiene el número esperado de rutas.
++
+Debe ver dos rutas al nodo del clúster de almacenamiento en el que se crea la LUN y dos rutas al nodo compañero.
+
+

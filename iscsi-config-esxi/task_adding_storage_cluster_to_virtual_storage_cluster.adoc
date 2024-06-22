@@ -1,0 +1,27 @@
+---
+permalink: iscsi-config-esxi/task_adding_storage_cluster_to_virtual_storage_cluster.html 
+sidebar: sidebar 
+keywords: provision, datastore, esxi, host, datacenter, cluster, storage, virtual, machine, svm, console, vmware, vsphere, provision, add, add the storage cluster or svm to vsc for vmware vsphere 
+summary: 'Para poder aprovisionar el primer almacén de datos en un host ESXi en el centro de datos, debe añadir el clúster o una máquina virtual de almacenamiento (SVM) específica a Virtual Storage Console para VMware vSphere. Al añadir el clúster, usted puede aprovisionar almacenamiento en cualquier SVM del clúster.' 
+---
+= Añada el clúster de almacenamiento o la SVM a VSC para VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para poder aprovisionar el primer almacén de datos en un host ESXi en el centro de datos, debe añadir el clúster o una máquina virtual de almacenamiento (SVM) específica a Virtual Storage Console para VMware vSphere. Al añadir el clúster, usted puede aprovisionar almacenamiento en cualquier SVM del clúster.
+
+.Antes de empezar
+Debe tener credenciales de administrador para el clúster de almacenamiento o la SVM que se añadirá.
+
+.Acerca de esta tarea
+Según la configuración existente, es posible que el clúster se haya detectado automáticamente o que ya se haya agregado.
+
+.Pasos
+. Inicie sesión en vSphere Web Client.
+. Seleccione *Virtual Storage Console*.
+. Seleccione *sistemas de almacenamiento* y, a continuación, haga clic en el icono *Agregar*.
+. En el cuadro de diálogo *Add Storage System*, introduzca el nombre de host y las credenciales de administrador del clúster de almacenamiento o SVM y, a continuación, haga clic en *Aceptar*.
+

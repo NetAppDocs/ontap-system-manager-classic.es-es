@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/task_creating_svm.html 
+sidebar: sidebar 
+keywords: svm, create, storage, virtual, machine, online, help 
+summary: 'Puede usar la ventana Storage Virtual Machine (SVM) para crear SVM totalmente configuradas. Las SVM sirven datos tras la creación de objetos de almacenamiento en dichas SVM.' 
+---
+= Cree una SVM con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores), puede usar la ventana Storage Virtual Machine (SVM) para crear SVM totalmente configuradas. Las SVM sirven datos tras la creación de objetos de almacenamiento en dichas SVM.
+
+.Antes de empezar
+* Debe haber creado un agregado y este debe estar en línea.
+* Debe haberse asegurado de que el agregado tiene suficiente espacio para el volumen raíz de la SVM.
+
+
+.Pasos
+. Escriba un nombre para la SVM.
+. Seleccione protocolos de datos para la SVM:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Habilitar el protocolo CIFS mediante la configuración del servidor CIFS con Active Directory
+ a| 
+.. Seleccione el cuadro *Active Directory*.
+.. Escriba el nombre del administrador de Active Directory.
+.. Escriba la contraseña del administrador de Active Directory.
+.. Escriba un nombre para el servidor CIFS.
+.. Escriba un nombre para el dominio de Active Directory.
+.. En función de sus requisitos, seleccione la *una LIF de datos en esta máquina virtual SVM* o *una LIF de datos por nodo en esta caja SVM*.
+.. Proporciona detalles de LIF de datos, como la dirección IP, la máscara de red, la puerta de enlace y el puerto.
+.. Proporcione los detalles de DNS.
+
+
+
+
+ a| 
+Habilite el protocolo CIFS mediante la configuración del servidor CIFS con un grupo de trabajo
+ a| 
+.. Seleccione el cuadro *Grupo de trabajo*.
+.. Escriba un nombre para el grupo de trabajo.
+.. Escriba un nombre para el servidor CIFS.
+.. En función de sus requisitos, active la casilla de verificación *una LIF de datos en esta SVM* o *una LIF de datos por nodo en esta SVM* .
+.. Proporciona detalles de LIF de datos, como la dirección IP, la máscara de red, la puerta de enlace y el puerto.
+
+
+
+
+ a| 
+Habilite el protocolo NFS
+ a| 
+.. Seleccione el cuadro *NFS*.
+.. En función de sus requisitos, active la casilla de verificación *una LIF de datos en esta SVM* o *una LIF de datos por nodo en esta SVM* .
+.. Proporciona detalles de LIF de datos, como la dirección IP, la máscara de red, la puerta de enlace y el puerto.
+
+
+
+
+ a| 
+Habilitar el protocolo iSCSI
+ a| 
+.. Seleccione la casilla *iSCSI*.
+.. Proporciona detalles de LIF de datos, como la dirección IP, la máscara de red, la puerta de enlace y el puerto.
+
+
+
+
+ a| 
+Habilitar el protocolo FC/FCoE
+ a| 
+.. Seleccione la casilla *FC/FCoE*.
+.. Seleccione los puertos FC/FCoE para los protocolos FC o FCoE.
++
+[NOTE]
+====
+Cada nodo debe tener al menos un puerto configurado correctamente para cada protocolo (FC y FCoE).
+
+====
+
+
+
+
+ a| 
+Habilite el protocolo NVMe
+ a| 
+.. Seleccione la casilla *NVMe*.
+.. Seleccione los puertos NVMe para los protocolos NVMe.
++
+[NOTE]
+====
+Debe haber al menos un adaptador compatible con NVMe en uno de los nodos para configurar NVMe.        Además, a partir de ONTAP 9.5, debe configurarse al menos un LIF NVMe para cada nodo de una pareja de alta disponibilidad asociada con la SVM. Puede crear un máximo de dos LIF NVMe por cada nodo de la pareja.
+
+====
+
+
+|===
+. *Opcional:* haga clic en el icono *Opciones avanzadas* y proporcione detalles para configurar opciones avanzadas como el idioma predeterminado, el estilo de seguridad, los detalles del servidor CIFS y los detalles de NFS.
+. Haga clic en *Enviar y continuar* para crear la SVM.
+
+
+
+
+== Qué hacer a continuación
+
+Si ha hecho clic en *Enviar y continuar*, debe comprobar los detalles que ha proporcionado en la ventana Resumen y, a continuación, hacer clic en *Administrar su clúster* para iniciar System Manager, o en *aprovisionar una aplicación* para aprovisionar aplicaciones de almacenamiento, o en *Exportar configuración* para descargar el archivo de configuración.

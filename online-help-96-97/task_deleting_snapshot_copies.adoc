@@ -1,0 +1,50 @@
+---
+permalink: online-help-96-97/task_deleting_snapshot_copies.html 
+sidebar: sidebar 
+keywords: delete, snapshot, copy, online, help, system, manager 
+summary: Puede eliminar una copia Snapshot para conservar espacio en disco o para liberar espacio en disco mediante System Manager. También puede eliminar una copia Snapshot si ya no se necesita. 
+---
+= Elimine las copias Snapshot con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede eliminar una copia de Snapshot para conservar espacio en disco o liberar espacio en disco mediante System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores). También puede eliminar una copia Snapshot si ya no se necesita.
+
+.Antes de empezar
+Si desea eliminar una copia snapshot que esté ocupada o bloqueada, debe haber liberado la copia snapshot de la aplicación que estaba utilizando la copia snapshot.
+
+.Acerca de esta tarea
+* No puede eliminar la copia snapshot básica de un volumen principal si un volumen FlexClone está utilizando esa copia snapshot.
++
+La copia snapshot básica es la copia snapshot que se utiliza para crear un volumen FlexClone. La copia Snapshot básica siempre muestra el estado `busy` Y Dependencia de aplicaciones como `busy,vclone` en el volumen principal.
+
+* No se puede eliminar una copia snapshot bloqueada que se haya utilizado en una relación de SnapMirror.
++
+La copia snapshot está bloqueada y es necesaria para la siguiente actualización.
+
+* No se puede eliminar una copia snapshot de un volumen de SnapLock DP que se utilice en una relación de SnapVault antes de que caduque la copia snapshot.
+* No puede eliminar las copias Snapshot no vencidas (que están comprometidas con el estado WORM) de un volumen de SnapLock DP que está en una relación de SnapVault.
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Expanda el volumen requerido.
+. Haga clic en el enlace *Mostrar más detalles* para ver más información sobre el volumen.
+. Haga clic en la ficha *copias Snapshot*.
++
+Se muestra la lista de copias Snapshot disponibles para el volumen seleccionado.
+
+. Seleccione la copia Snapshot que desea eliminar.
+. Haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de documentación de ONTAP 9"]

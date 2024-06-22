@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_installing_new_nodes.html 
+sidebar: sidebar 
+keywords: cluster, install, controller, configure, node-management, run, ontap, repurpose, hardware-level, ha, address, maintenance, mode, join, install the new node 
+summary: Cuando el clúster esté preparado, debe instalar las controladoras y configurar los LIF de gestión de nodos. 
+---
+= Instale los nodos nuevos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando el clúster esté preparado, debe instalar las controladoras y configurar los LIF de gestión de nodos. Si las controladoras no ejecutan la misma versión de ONTAP que el clúster existente, o se reasignan y carecen de alta disponibilidad a nivel de hardware, debe resolver estos problemas en modo de mantenimiento. Por último, puede unir los nodos al clúster.

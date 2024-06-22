@@ -1,0 +1,94 @@
+---
+permalink: peering/task_preparing_for_cluster_peering.html 
+sidebar: sidebar 
+keywords: create, creating, cluster, peer, relationship, verify, time, synchronized, external, network, procotol, ntp, server, subnet, port, passphrase, prepare, prepare for cluster peering 
+summary: 'Antes de crear una relación de paridad de clústeres mediante la interfaz "clásica" de System Manager de ONTAP con ONTAP 9.7 o una versión anterior, debe verificar que la hora de cada clúster esté sincronizada con un servidor de protocolo de tiempo de redes (NTP) externo y determinar las subredes, puertos y passhrases que desea utilizar.' 
+---
+= Prepare la relación de clústeres entre iguales
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de crear una relación de paridad de clústeres mediante la interfaz _Classic_ de ONTAP con ONTAP 9.7 o una versión anterior, debe verificar que la hora de cada clúster esté sincronizada con un servidor de protocolo de tiempo de redes (NTP) externo y determinar las subredes, puertos y passhrases que desea utilizar.
+
+.Pasos
+. Si ejecuta ONTAP 9.2 o una versión anterior, determine la clave de acceso que desea usar para cada relación de paridad de clúster.
++
+La clave de acceso debe incluir al menos ocho caracteres.
+
++
+|===
+
+
+| Para la relación entre... | La frase de contraseña es... 
+
+
+ a| 
+Clúster A y clúster B
+ a| 
+
+|===
++
+A partir de ONTAP 9.3, se puede generar la clave de acceso desde el clúster remoto al crear la relación de paridad del clúster.
+
++
+link:task_creating_cluster_peer_relationship_starting_with_ontap_9_3.html["Crear una relación de paridad de clústeres (a partir de ONTAP 9.3)"]
+
+. Identifique las subredes, direcciones IP y puertos que usará para las LIF de interconexión de clústeres.
++
+De forma predeterminada, la dirección IP se selecciona automáticamente desde la subred. Si desea especificar la dirección IP de forma manual, debe asegurarse de que la dirección IP ya esté disponible en la subred o de que pueda añadirse a la subred más tarde. La información sobre las subredes está disponible en la ficha Red.
+
++
+Cree una tabla similar a la siguiente tabla para registrar información acerca de los clústeres.  En la siguiente tabla se supone que cada clúster tiene cuatro nodos. Si un clúster tiene más de cuatro nodos, añada filas para obtener la información adicional.
+
++
+|===
+
+
+|  | Clúster a | Clúster B 
+
+
+ a| 
+Subred (ONTAP 9.2 o anterior)
+ a| 
+ a| 
+
+
+
+ a| 
+Dirección IP (empezando por ONTAP 9.3, opcional para ONTAP 9.2 o anterior)
+ a| 
+ a| 
+
+
+
+ a| 
+Puerto del nodo 1
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 2, puerto
+ a| 
+ a| 
+
+
+
+ a| 
+Puerto 3 del nodo
+ a| 
+ a| 
+
+
+
+ a| 
+Puerto 4 del nodo
+ a| 
+ a| 
+
+|===
+

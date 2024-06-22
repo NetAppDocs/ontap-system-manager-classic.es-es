@@ -1,0 +1,47 @@
+---
+permalink: fc-config-windows/task_verifying_that_iscsi_fc_configuration_is_supported.html 
+sidebar: sidebar 
+keywords: reliable, operation, verify, entire, fc, configuration, support, verify that the fc configuration is support 
+summary: Para lograr un funcionamiento fiable, es necesario comprobar que toda la configuración de FC sea compatible. 
+---
+= Compruebe que la configuración de FC es compatible
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para lograr un funcionamiento fiable, es necesario comprobar que toda la configuración de FC sea compatible.
+
+.Pasos
+. Vaya a la matriz de interoperabilidad para verificar que cuenta con una combinación compatible de los siguientes componentes:
++
+** Software ONTAP
+** Arquitectura de CPU de ordenador host (para servidores de bastidor estándar)
+** Modelo blade de procesador específico (para servidores blade)
+** Modelos y versiones de controlador, firmware y BIOS del adaptador de bus de host (HBA) de FC
+** Protocolo de almacenamiento (FC)
+** Versión del sistema operativo Windows
+** Utilidades unificadas de host de Windows
+
+
+. Haga clic en el nombre de la configuración seleccionada.
++
+Los detalles de esa configuración se muestran en la ventana Detalles de configuración.
+
+. Revise la información en las siguientes pestañas:
++
+** Notas
++
+Enumera las alertas e información importantes que son específicas de su configuración.
+
++
+Revise las alertas para identificar las correcciones urgentes que se requieren para el sistema operativo.
+
+** Políticas y directrices
++
+Proporciona directrices generales para todas las configuraciones DE SAN.
+
+
+
+

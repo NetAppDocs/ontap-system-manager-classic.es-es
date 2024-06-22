@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/concept_how_system_manager_calculates_hot_spares.html 
+sidebar: sidebar 
+keywords: system, manager, hot, spares, disk, storage, raid, online, help 
+summary: Una pieza de repuesto es un disco asignado a un sistema de almacenamiento pero no utilizado por ningún grupo RAID. Las piezas de repuesto no contienen datos y se asignan a un grupo RAID cuando se produce un fallo de disco en el grupo RAID. System Manager utiliza el disco más grande como pieza de repuesto. 
+---
+= Cómo funciona System Manager con piezas de repuesto: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una pieza de repuesto es un disco asignado a un sistema de almacenamiento pero no utilizado por ningún grupo RAID. Las piezas de repuesto no contienen datos y se asignan a un grupo RAID cuando se produce un fallo de disco en el grupo RAID. System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) utiliza el disco más grande como pieza de repuesto.
+
+Cuando hay diferentes tipos de disco en el grupo RAID, el disco de mayor tamaño de cada tipo de disco se deja como pieza de repuesto. Por ejemplo, si hay 10 discos SATA y 10 discos SAS en el grupo RAID, los discos SATA de mayor tamaño y los discos SAS de mayor tamaño sirven como piezas de repuesto.
+
+Si se crean particiones en el disco de mayor tamaño, las piezas de repuesto se proporcionan por separado para los grupos RAID con particiones y sin particiones. Si el disco de mayor tamaño no tiene particiones, se proporciona un único disco de repuesto.
+
+El disco no particionado de mayor tamaño se deja como repuesto activo si hay particiones raíz en el grupo de discos. Cuando no hay disponible un disco no particionado del mismo tamaño, las particiones raíz de repuesto se dejan como repuestos activos para el grupo particionado raíz.
+
+Un único disco de repuesto puede actuar como pieza de repuesto para varios grupos RAID. System Manager calcula las piezas de repuesto en función del valor configurado en la opción `raid.min_spare_count` en el nivel del nodo. Por ejemplo, si hay 10 SSD en un grupo RAID SSD y la opción `raid.min_spare_count` se establece en `1` En el nivel de nodo, System Manager deja 1 SSD como pieza de repuesto y utiliza los otros 9 SSD para las operaciones relacionadas con SSD. Del mismo modo, si hay 10 HDD en un grupo RAID de HDD y la opción correspondiente `raid.min_spare_count` se establece en `2` En el nivel de nodo, System Manager deja 2 unidades de disco duro como piezas de repuesto y utiliza los otros 8 discos duros para las operaciones relacionadas con unidades de disco duro.
+
+System Manager aplica la regla de pieza de repuesto para los grupos RAID cuando se crea un agregado, se edita un agregado y cuando se añaden HDD o SSD a un agregado. La regla de pieza de repuesto también se utiliza cuando se crea un pool de almacenamiento o se agregan discos a un pool de almacenamiento existente.
+
+Existen excepciones a la regla de pieza de repuesto en System Manager:
+
+* Para MSATA o discos en un portadiscos múltiple, la cantidad de piezas de repuesto será el doble del valor configurado a nivel de nodo y el número no debe ser menor a 2 en ningún momento.
+* Las piezas de repuesto no se utilizan si los discos forman parte de los LUN de cabina o los dispositivos de almacenamiento virtual.
+

@@ -1,0 +1,41 @@
+---
+permalink: online-help-96-97/task_configuring_nvme_protocol_on_svms.html 
+sidebar: sidebar 
+keywords: configure, nvme, protocol, svm, system, manager, namespaces, online, help 
+summary: 'Puede configurar el protocolo NVMe en una máquina virtual de almacenamiento (SVM) mediante System Manager. Luego, puede crear espacios de nombres y asignarles un subsistema NVMe y un host.' 
+---
+= Configure el protocolo NVMe en SVM con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar el protocolo NVMe en una máquina virtual de almacenamiento (SVM). Luego, puede crear espacios de nombres y asignarles un subsistema NVMe y un host.
+
+.Acerca de esta tarea
+La SVM con NVMe no debe tener ningún otro protocolo. Si selecciona NVMe, se deshabilitará el resto de protocolos. También puede configurar NVMe mientras se crea la SVM.
+
+.Pasos
+. Si no configuró el protocolo NVMe al crear la SVM, haga clic en *Storage* > *SVM*
+. Seleccione la SVM y, a continuación, haga clic en *Configuración de SVM*.
+. En el panel *Protocolos*, haga clic en *NVMe*.
+. Haga clic en el vínculo para configurar el protocolo, según sea necesario.
++
+[NOTE]
+====
+Si hay otros protocolos habilitados, debe anular la selección de los cuales para hacer que NVMe esté disponible para seleccionar. NVMe no se puede combinar con ningún otro protocolo.
+
+====
+. En el panel *Edit Storage Virtual Machine*, haga clic en *asignación de recursos*.
+. En la ficha *asignación de recursos*, puede elegir no delegar la creación de volúmenes o seleccionar un agregado para aprovisionar los volúmenes automáticamente.
+. Haga clic en la ficha *Servicios* para configurar los detalles del conmutador de servicio de nombres.
+. Haga clic en *Guardar y cerrar*
++
+El protocolo NVMe está configurado en la SVM. Una vez configurado el protocolo, puede iniciar o detener el servicio utilizando *Configuración de SVM*
+
+
+
+*Información relacionada*
+
+xref:concept_setting_up_nvme.adoc[Configure NVMe]

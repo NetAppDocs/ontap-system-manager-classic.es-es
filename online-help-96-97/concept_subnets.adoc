@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_subnets.html 
+sidebar: sidebar 
+keywords: system, manager, manage, subnet, online, help, edit, settings, modify, delete, ip, address 
+summary: Puede usar System Manager para gestionar las subredes. 
+---
+= Gestione subredes con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar las subredes.
+
+
+
+== Editar la configuración de la subred
+
+[role="lead"]
+Puede usar System Manager para modificar atributos de subred, como el nombre, la dirección de subred, el rango de direcciones IP y la dirección de puerta de enlace de la subred.
+
+.Acerca de esta tarea
+* No se puede usar System Manager para editar las subredes en el espacio IP del clúster.
++
+En su lugar, debe usar la interfaz de línea de comandos (CLI).
+
+* La modificación de la dirección de puerta de enlace no actualiza la ruta.
++
+Debe utilizar la CLI para actualizar la ruta.
+
+
+
+.Pasos
+. Haga clic en *Red* > *subredes*.
+. Seleccione la subred que desea modificar y, a continuación, haga clic en *Editar*.
++
+Puede modificar la subred incluso si aún está en uso la LIF de esa subred.
+
+. En el cuadro de diálogo *Editar subred*, modifique los atributos de subred según sea necesario.
+. Haga clic en *Guardar y cerrar*.
+
+
+
+
+== Eliminar subredes
+
+Puede usar System Manager para eliminar una subred cuando ya no necesite la subred y desee reasignar las direcciones IP asignadas a la subred.
+
+.Antes de empezar
+La subred que desea eliminar no debe tener ninguna LIF que esté utilizando las direcciones IP de la subred.
+
+.Acerca de esta tarea
+No se puede usar System Manager para eliminar subredes en el espacio IP de clúster. En su lugar, debe usar la interfaz de línea de comandos (CLI).
+
+.Pasos
+. Haga clic en *Red* > *subredes*.
+. Seleccione la subred que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+*Información relacionada*
+
+xref:reference_network_window.adoc[Ventana de red]

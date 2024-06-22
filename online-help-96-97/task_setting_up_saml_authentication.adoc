@@ -1,0 +1,106 @@
+---
+permalink: online-help-96-97/task_setting_up_saml_authentication.html 
+sidebar: sidebar 
+keywords: set, up, saml, authentication, security, assertion, markup, idp, online, help, system, manager,  language, secure, identity, provide, 
+summary: 'Puede configurar la autenticación del lenguaje de marcado de aserción de seguridad (SAML) para que los usuarios remotos se autentiquen a través de un proveedor de identidad seguro (IDP) antes de iniciar sesión en System Manager.' 
+---
+= Configure la autenticación SAML con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar la autenticación del lenguaje de marcado de aserción de seguridad (SAML). Los usuarios remotos se autentican a través de un proveedor de identidad seguro (IDP) antes de iniciar sesión en System Manager.
+
+image::../media/mfa_workflow.gif[flujo de trabajo de mfa]
+
+
+
+== Habilite la autenticación SAML
+
+Puede usar System Manager para configurar la autenticación del lenguaje de marcado de aserción de seguridad (SAML) de modo que los usuarios remotos puedan iniciar sesión con un proveedor de identidades (IDP) seguro.
+
+.Antes de empezar
+* Se debe configurar el IDP que se planea usar para la autenticación remota.
++
+[NOTE]
+====
+Consulte la documentación proporcionada por el IDP que se configuró.
+
+====
+* Debe tener el URI del IDP.
+
+
+.Acerca de esta tarea
+Los siguientes IDP se han validado con System Manager:
+
+* Servicios de federación de Active Directory
+* Cisco DUO (validado con las siguientes versiones de ONTAP:)
++
+** 9.7P21 y versiones posteriores de 9,7
+** 9.8P17 y versiones posteriores de 9,8
+** 9,9.1P13 y versiones posteriores de 9,9
+** 9.10.1P9 y versiones posteriores de 9,10
+** 9.11.1P4 y versiones posteriores de 9,11
+** 9.12.1 y versiones posteriores
+
+
+* Shibboleth
+
+
+[NOTE]
+====
+Después de habilitar la autenticación SAML, solo los usuarios remotos pueden acceder a la interfaz gráfica de usuario de System Manager. Los usuarios locales no pueden acceder a la interfaz gráfica de usuario de System Manager después de habilitar la autenticación de SAML.
+
+====
+.Pasos
+. Haga clic en *Configuración* > *clúster* > *autenticación*.
+. Active la casilla de verificación *Habilitar autenticación SAML*.
+. Configure System Manager para usar la autenticación SAML:
++
+.. Introduzca el URI del IDP.
+.. Introduzca la dirección IP del sistema host.
+.. *Opcional:* Si es necesario, cambie el certificado del sistema principal.
+
+
+. Haga clic en *recuperar metadatos del host* para recuperar la información de metadatos del host y el URI del host.
+. Copie los detalles de los metadatos del host o del URI, acceda a IDP y, a continuación, especifique los detalles de los metadatos del host o del URI del host y las reglas de confianza en la ventana IDP.
++
+[NOTE]
+====
+Consulte la documentación proporcionada por el IDP que se configuró.
+
+====
+. Haga clic en *Guardar*.
++
+Aparece la ventana de inicio de sesión del IDP.
+
+. Inicie sesión en System Manager con la ventana de inicio de sesión de IDP.
++
+Una vez configurado el IDP, si el usuario intenta iniciar sesión con el nombre de dominio completo (FQDN), IPv6 o una LIF de gestión de clústeres, el sistema cambia automáticamente la dirección IP a la dirección IP del sistema host que se especificó durante la configuración de IDP.
+
+
+
+
+
+== Deshabilite la autenticación SAML
+
+Puede deshabilitar la autenticación del lenguaje de marcado de aserción de seguridad (SAML) si desea deshabilitar el acceso remoto a System Manager o editar la configuración de SAML.
+
+.Acerca de esta tarea
+Al deshabilitar la autenticación SAML no se elimina la configuración de SAML.
+
+.Pasos
+. Haga clic en *Configuración* > *clúster* > *autenticación*.
+. Desactive la casilla de verificación *Habilitar autenticación SAML*.
+. Haga clic en *Guardar*.
++
+Se reinicia System Manager.
+
+. Inicie sesión en System Manager con las credenciales del clúster.
+
+
+*Información relacionada*
+
+xref:task_accessing_cluster_by_using_system_manager_brower_based_gui.adoc[Obtener acceso a un clúster mediante la interfaz gráfica basada en navegador de ONTAP System Manager]

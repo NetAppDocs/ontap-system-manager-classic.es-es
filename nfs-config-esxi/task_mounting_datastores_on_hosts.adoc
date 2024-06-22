@@ -1,0 +1,25 @@
+---
+permalink: nfs-config-esxi/task_mounting_datastores_on_hosts.html 
+sidebar: sidebar 
+keywords: mount, datastore, host, access, storage, provision, automatic, add, vmware, environment, mount datastores on hosts 
+summary: El montaje de un almacén de datos da acceso de host al almacenamiento. Cuando los almacenes de datos se aprovisionan mediante , se montan automáticamente en el host o clúster. Es posible que deba montar un almacén de datos en un host después de añadir el host al entorno de VMware. 
+---
+= Montar almacenes de datos en hosts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El montaje de un almacén de datos da acceso de host al almacenamiento. Cuando los almacenes de datos se aprovisionan mediante , se montan automáticamente en el host o clúster. Es posible que deba montar un almacén de datos en un host después de añadir el host al entorno de VMware.
+
+.Pasos
+. En la página Home* de vSphere Web Client, haga clic en *hosts and Clusters*:
+. En el panel de navegación, expanda el centro de datos que contiene el host:
+. Haga clic con el botón derecho en el host y seleccione *NetApp VSC* > *Mount datastores*.
+. Seleccione los almacenes de datos que desea montar y, a continuación, haga clic en *Aceptar*.
+
+
+*Información relacionada*
+
+https://docs.netapp.com/vapp-96/topic/com.netapp.doc.vsc-iag/home.html["Administración de Virtual Storage Console, proveedor VASA y Storage Replication Adapter para VMware vSphere para la versión 9.6"]

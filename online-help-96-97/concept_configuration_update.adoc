@@ -1,0 +1,143 @@
+---
+permalink: online-help-96-97/concept_configuration_update.html 
+sidebar: sidebar 
+keywords: configuration, update, system, manager, administration, detail, storage, virtual, machine, svm, online, help, window, tab, node, command, button 
+summary: 'Puede usar System Manager para configurar los detalles de administración de las máquinas virtuales de almacenamiento (SVM).' 
+---
+= Actualización de configuración con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar los detalles de administración de las máquinas virtuales de almacenamiento (SVM).
+
+
+
+== Configure los detalles de administración de una SVM
+
+Puede usar System Manager para configurar rápidamente los detalles de administración de una máquina virtual de almacenamiento (SVM). De manera opcional, puede delegar la administración de la SVM en los administradores de la SVM.
+
+.Acerca de esta tarea
+Como administrador de SVM, no puede usar System Manager para gestionar las SVM delegadas. Puede administrar elSVMsonly utilizando la interfaz de línea de comandos (CLI).
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. En la ficha *SVM*, seleccione el nodo y, a continuación, haga clic en *Configurar detalles de administración*.
+. En la sección *Detalles del administrador*, configure una contraseña para `vsadmin` cuenta de usuario.
+. Si desea una LIF dedicada para la gestión de SVM, seleccione *Crear una LIF para la gestión de SVM* y, a continuación, especifique los detalles de la red.
++
+Es necesario un LIF de gestión SVM dedicado para los protocolos SAN, donde los protocolos de datos y gestión no pueden compartir el mismo LIF. Las LIF de gestión de SVM solo se pueden crear en puertos de datos.
+
+. Especifique los detalles de la red:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Especifique la dirección IP con una subred
+ a| 
+.. Seleccione *usando una subred*.
+.. En el cuadro de diálogo Add Details, seleccione la subred desde la que se debe asignar la dirección IP.
++
+Para las LIF entre clústeres, solo se mostrarán las subredes asociadas al espacio IP seleccionado.
+
+.. Si desea asignar una dirección IP específica a la interfaz, seleccione *usar una dirección IP específica* y, a continuación, escriba la dirección IP.
++
+La dirección IP que especifique se añadirá a la subred si esa dirección IP no se encuentra en el rango de subredes.
+
+.. Haga clic en *Aceptar*.
+
+
+
+
+ a| 
+Especifique la dirección IP de forma manual sin una subred
+ a| 
+.. Seleccione *sin subred*.
+.. En el cuadro de diálogo Add Details, realice los siguientes pasos:
++
+... Especifique la dirección IP y el prefijo o la máscara de red.
+... Opcional: Especifique la puerta de enlace.
++
+El campo de destino se rellenará con el valor predeterminado en función de la familia de la dirección IP.
+
+... Si no desea usar el valor predeterminado, especifique un nuevo valor de destino.
+Si no existe ninguna ruta, se creará una nueva de forma automática en función de la puerta de enlace y el destino.
+
+
+.. Haga clic en *Aceptar*.
+
+
+|===
+. Especifique un puerto para crear una LIF de datos:
++
+.. Haga clic en *examinar*.
+.. En el cuadro de diálogo *Seleccionar puerto de red o adaptador*, seleccione un puerto y, a continuación, haga clic en *Aceptar*.
+
+
+
+
+
+
+== Ventana de actualizaciones de configuración
+
+Puede usar la ventana Configuration Updates para actualizar los detalles de configuración del clúster, la máquina virtual de almacenamiento (SVM) y los nodos.
+
+
+
+=== Pestañas
+
+* *Nodos*
++
+Le permite configurar detalles del nodo.
+
+* *SVMs*
++
+Permite configurar detalles de la SVM.
+
+
+
+
+
+=== Pestaña Nodes
+
+
+
+=== Botones de comando
+
+* *Editar nombre de nodo*
++
+Abre el cuadro de diálogo Edit Node Name, que le permite modificar el nombre del nodo.
+
+* *Crear LIF de gestión de nodos*
++
+Abre el cuadro de diálogo Create Node-Management LIF, el cual le permite crear una LIF de gestión de nodos para gestionar un nodo concreto.
+
+* *Editar AutoSupport*
++
+Abre el cuadro de diálogo Editar configuración de AutoSupport, que permite especificar una dirección de correo electrónico desde la cual se envían las notificaciones por correo electrónico y añadir varias direcciones de correo electrónico de los nombres de host.
+
+
+
+
+
+=== Pestaña SVM
+
+
+
+=== Botón de comando
+
+* *Configurar detalles de administración*
++
+Se abre el cuadro de diálogo Configure Administration Details, lo que permite configurar los detalles de administración de la SVM.
+
+
+
+*Información relacionada*
+
+xref:task_creating_cluster.adoc[Crear un clúster]
+
+xref:task_setting_up_network_when_ip_address_range_is_disabled.adoc[Configuración de una red cuando se deshabilita un rango de direcciones IP]

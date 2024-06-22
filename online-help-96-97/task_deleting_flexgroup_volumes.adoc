@@ -1,0 +1,33 @@
+---
+permalink: online-help-96-97/task_deleting_flexgroup_volumes.html 
+sidebar: sidebar 
+keywords: delete, flexgroup, volumes, online, help, system, manager 
+summary: Puede usar System Manager para eliminar un volumen de FlexGroup cuando ya no se requiere el volumen de FlexGroup. 
+---
+= Elimine volúmenes de FlexGroup con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para eliminar un volumen de FlexGroup cuando ya no se requiere el volumen de FlexGroup.
+
+.Antes de empezar
+* La ruta de unión del volumen FlexGroup debe estar desmontada.
+* El volumen FlexGroup debe estar sin conexión.
+
+
+.Acerca de esta tarea
+System Manager no admite nivel de componentes de gestión para volúmenes de FlexGroup.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen FlexGroup que desea eliminar y, a continuación, haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Aceptar*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

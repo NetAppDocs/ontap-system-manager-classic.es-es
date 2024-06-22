@@ -1,0 +1,51 @@
+---
+permalink: online-help-96-97/task_creating_nvme_namespace.html 
+sidebar: sidebar 
+keywords: system, manager, create, nvme, namespace, svm, logical, blocks, online, help 
+summary: 'Es posible usar System Manager para crear uno o más espacios de nombres NVMe y conectarlos a un host o un conjunto de hosts de una máquina virtual de almacenamiento (SVM). El espacio de nombres NVMe es una cantidad de memoria que se puede formatear en bloques lógicos. Cada espacio de nombres se puede asignar a un subsistema NVMe.' 
+---
+= Cree un espacio de nombres NVMe con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para crear uno o más espacios de nombres NVMe y conectar cada uno a un host o conjunto de hosts en una máquina virtual de almacenamiento (SVM). El espacio de nombres NVMe es una cantidad de memoria que se puede formatear en bloques lógicos. Cada espacio de nombres se puede asignar a un subsistema NVMe.
+
+.Antes de empezar
+La SVM ya debe configurarse con el protocolo NVMe. Para asignar un espacio de nombres, debe existir al menos una LIF con el protocolo de datos NVMe en el nodo propietario del espacio de nombres.
+
+.Pasos
+. Haga clic en *almacenamiento* > *NVMe* > *espacios de nombres NVMe*.
+. Seleccione la SVM que contendrá el espacio de nombres.
+. Compruebe que se haya configurado al menos un LIF NVMe para cada nodo de la pareja de alta disponibilidad. Puede crear un máximo de dos LIF NVMe por nodo.
+. Configurar el tamaño del espacio de nombres (entre 1 MB y 16 TB).
+. Introduzca el tamaño del bloque.
++
+En System Manager 9.5, el tamaño de bloque se establece de forma predeterminada en 4 KB, y este campo no se muestra.
+
++
+Para System Manager 9.6, es posible especificar un tamaño de bloque de 4 KB o 512 bytes.
+
+. Seleccione el volumen existente o elija el agregado para crear un volumen nuevo.
++
+Haga clic en el símbolo + para configurar espacios de nombres adicionales (máx. 250) dentro de la SVM.
+
+. Seleccione el subsistema NVMe que se asociará con este espacio de nombres.
++
+Es posible elegir entre las siguientes opciones:
+
++
+** None: No hay subsistemas asignados.
+** Utilice un subsistema existente: Los subsistemas enumerados se basan en la SVM seleccionada.
+** Crear un subsistema nuevo: Puede elegir crear un subsistema nuevo y asignar a todos los espacios de nombres nuevos.
+
+
+. Seleccione el sistema operativo del host.
+. Haga clic en *Enviar*.
+
+
+*Información relacionada*
+
+xref:reference_nvme_namespaces_window.adoc[Ventana de espacios de nombres de NVMe]

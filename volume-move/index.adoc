@@ -1,0 +1,80 @@
+---
+permalink: volume-move/index.html 
+sidebar: sidebar 
+keywords: nondisruptive, data, volume, node, storage, virtual, machine, svm, ontap, cluster, volume move overview, move, overview 
+summary: 'Con la interfaz clásica de System Manager de ONTAP con ONTAP 9.7 o anterior, es posible mover un volumen de datos de un nodo a otro dentro de la misma máquina virtual de almacenamiento (SVM) en un clúster de ONTAP 9 sin interrupciones.' 
+---
+= Información general sobre movimiento de volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Con la interfaz clásica de System Manager de ONTAP con ONTAP 9.7 o anterior, es posible mover un volumen de datos de un nodo a otro dentro de la misma máquina virtual de almacenamiento (SVM) en un clúster de ONTAP 9 sin interrupciones.
+
+
+
+== Requisitos para el uso de estos procedimientos
+
+Antes de realizar estos procedimientos, asegúrese de que se cumplan las siguientes condiciones:
+
+* El clúster ejecuta ONTAP 9.
+* Tiene privilegios de administrador del clúster.
+* Quiere utilizar las prácticas recomendadas, no explorar todas las opciones disponibles.
+* Desea utilizar la interfaz de usuario de _Classic_ System Manager para ONTAP 9.7 y versiones anteriores, no la interfaz de usuario de ONTAP System Manager para ONTAP 9.7 y posteriores.
++
+Para algunas tareas, es necesario usar la interfaz de línea de comandos (CLI) de ONTAP.
+
+* Conoce el volumen que desea mover.
++
+Para obtener ayuda a la hora de decidir qué volúmenes se moverán, puede usar Active IQ Unified Manager (anteriormente Unified Manager de OnCommand).
+
+* El volumen que se moverá es un volumen de datos.
+* Cualquier hardware nuevo o reutilizado se instala por completo y ya tiene agregados.
+* Si el clúster tiene LUN, todos los nodos tienen dos rutas por LUN.
+* El control de flujo no está habilitado en los puertos de red del clúster.
+* Para los volúmenes que contienen espacios de nombres, el clúster ejecuta ONTAP 9.6 o una versión posterior.
++
+La transferencia de volúmenes no es compatible con configuraciones de NVMe que ejecuten ONTAP 9.5.
+
+
+
+
+
+== Otras maneras de hacerlo en ONTAP
+
+|===
+
+
+| Para completar esta tarea mediante... | Consulte... 
+
+
+ a| 
+System Manager rediseñado (disponible con ONTAP 9.7 y versiones posteriores)
+ a| 
+https://docs.netapp.com/us-en/ontap/volumes/manage-volumes-task.html["Gestione los volúmenes"^]
+
+
+
+ a| 
+La interfaz de línea de comandos de ONTAP
+ a| 
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Gestión de almacenamiento lógico"^]
+
+|===
+
+
+== Las alternativas para mover volúmenes
+
+Antes de mover volúmenes, debe evaluar si los siguientes enfoques se ajustan mejor a su situación:
+
+* Si desea actualizar una controladora in situ de forma no disruptiva, puede considerar utilizar la reubicación de agregados (ARL), que no requiere el movimiento de datos físicos.
++
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["Alta disponibilidad"^]
+
+* Si desea mover solo una LUN sin su volumen que lo contenga, puede utilizar el proceso de movimiento de LUN.
++
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["Administración de SAN"^]
+
+

@@ -1,0 +1,113 @@
+---
+permalink: online-help-96-97/reference_trace_file_access_window.html 
+sidebar: sidebar 
+keywords: system, manager, commnd, button, trace, file, access, window, online, help, cif, entry, list 
+summary: A partir de System Manager 9.6, puede utilizar la ventana de acceso de seguimiento de archivos para diagnosticar problemas cuando tiene problemas para acceder a archivos y recursos compartidos en una SVM mediante el protocolo CIFS o NFS. 
+---
+= Ventana acceso a archivos de seguimiento en System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de System Manager 9.6 de ONTAP, puede utilizar la ventana de acceso de seguimiento de archivos para diagnosticar problemas cuando tiene problemas al acceso a archivos y recursos compartidos en una SVM con el protocolo CIFS o NFS.
+
+
+
+== Botones de comando
+
+* *Continuar*
++
+Inicia el proceso de configuración e inicio de un seguimiento de acceso a archivos en la SVM seleccionada.
+
+* *Protocolos*
++
+Permite seleccionar el protocolo que se usa para acceder a los archivos y recursos compartidos de la SVM seleccionada, CIFS o NFS.
+
+* *Icono Opciones avanzadas*
++
+Permite especificar detalles adicionales para restringir el ámbito del seguimiento.
+
+* *Mostrar en resultados de rastreo*
++
+Permite especificar en el cuadro de diálogo Opciones avanzadas si desea que los resultados de la traza muestren sólo las solicitudes de acceso a archivos denegadas o todas las solicitudes de acceso a archivos, las que se han realizado correctamente y las que se han denegado.
+
+* *Iniciar rastreo*
++
+Permite iniciar el seguimiento. Los resultados muestran problemas de acceso para las solicitudes de acceso a los archivos enviadas en los próximos 60 minutos.
+
+* *Detener rastreo*
++
+Permite detener la traza.
+
+* *Ver permisos*
++
+Permite mostrar permisos. Cuando utiliza el protocolo CIFS, puede mostrar permisos efectivos de archivos y recursos compartidos. Cuando utiliza el protocolo NFS, puede mostrar los permisos de archivo efectivos.
+
+* *Copiar al Portapapeles*
++
+Permite copiar la tabla de resultados en el portapapeles.
+
+* *Exportar resultados de rastreo*
++
+Permite exportar los resultados del seguimiento a un archivo en formato de valores separados por comas (.csv).
+
+
+
+
+
+== Campos de entrada
+
+* *Nombre de usuario*
++
+Introduzca el nombre del usuario que recibió errores de solicitud de acceso a archivos que desea rastrear.
+
+* *Resultados de la búsqueda de rastreo*
++
+Introduzca la información específica que desea encontrar en los resultados de la búsqueda y, a continuación, haga clic en *Intro*.
+
+* *Dirección IP del cliente*
++
+En el cuadro de diálogo Opciones avanzadas, puede especificar la dirección IP del cliente como detalle adicional para limitar el alcance de la traza.
+
+* *Archivo*
++
+En el cuadro de diálogo Opciones avanzadas, puede especificar la ruta de acceso al archivo o archivo a la que desea acceder como detalle adicional para limitar el alcance de la traza.
+
+
+
+.Lista de resultados para el seguimiento del protocolo CIFS
+Cuando especifique el protocolo CIFS, la lista de resultados muestra los siguientes datos para el seguimiento según los parámetros especificados. Los datos se muestran en orden cronológico inverso. Si detiene el rastreo, los resultados permanecerán en la lista hasta que inicie otra traza.
+
+* Share: El nombre del recurso compartido al que intentó acceder el sistema, ya sea correcto o no.
+* Path: La ruta del archivo al que el sistema intentó acceder, ya sea correcta o no.
+* Dirección IP del cliente: Dirección IP del cliente desde el que se iniciaron las solicitudes de acceso.
+* Razones: Las razones por las que el intento de acceder al archivo o recurso compartido fue correcto o no.
++
+[NOTE]
+====
+Cuando el resultado de la traza muestra un mensaje que indica que no se concede acceso a "Sincronizar", "Control de lectura", "Leer atributos", "Ejecutar", "Leer EA", "Escribir", o "Leer", el mensaje indica que el acceso deseado no ha sido concedido para el conjunto de permisos que se muestra. Para ver el estado de los permisos reales, debe ver los permisos mediante el vínculo proporcionado.
+
+====
+
+
+.Lista de resultados para el rastreo de protocolo NFS
+Al especificar el protocolo NFS, la lista de resultados muestra los siguientes datos para el rastreo según los parámetros especificados. Los datos se muestran en orden cronológico inverso. Si detiene el rastreo, los resultados permanecerán en la lista hasta que inicie otra traza.
+
+* Path: La ruta del archivo al que el sistema intentó acceder, ya sea correcta o no.
+* Dirección IP del cliente: Dirección IP del cliente desde el que se iniciaron las solicitudes de acceso.
+* Razones: Las razones por las que el intento de acceder al archivo o recurso compartido fue correcto o no.
++
+[NOTE]
+====
+Cuando el resultado de la traza muestra un mensaje que indica que no se concede acceso a "Sincronizar", "Control de lectura", "Leer atributos", "Ejecutar", "Leer EA", "Escribir", o "Leer", el mensaje indica que el acceso deseado no ha sido concedido para el conjunto de permisos que se muestra. Para ver el estado de los permisos reales, debe ver los permisos mediante el vínculo proporcionado.
+
+====
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gestión de SMB/CIFS"]
+
+xref:../nas-multiprotocol-config/index.html[Configuración de varios protocolos de SMB/CIFS y NFS]

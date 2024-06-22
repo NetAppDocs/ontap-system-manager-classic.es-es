@@ -1,0 +1,56 @@
+---
+permalink: iscsi-config-windows/task_creating_lun_its_containing_volume.html 
+sidebar: sidebar 
+keywords: create, lun, wizard, igroup, enable, host, access, create a lun 
+summary: Utilice el asistente Crear LUN para crear una LUN. El asistente también crea el igroup y asigna la LUN al igroup, lo que permite que el host especificado acceda a la LUN. 
+---
+= Cree una LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilice el asistente Crear LUN para crear una LUN. El asistente también crea el igroup y asigna la LUN al igroup, lo que permite que el host especificado acceda a la LUN.
+
+.Antes de empezar
+* Debe haber un agregado con espacio libre suficiente para contener la LUN.
+* Debe haber una máquina virtual de almacenamiento (SVM) con el protocolo iSCSI habilitado y las interfaces lógicas (LIF) adecuadas creadas.
+* Debe haber registrado el nombre de nodo del iniciador de iSCSI del host.
+
+
+Las LUN se asignan a un subconjunto de los iniciadores del igroup para limitar el número de rutas desde el host a la LUN.
+
+* De forma predeterminada, ONTAP utiliza la asignación de LUN selectiva (SLM) para hacer que el LUN solo sea accesible a través de las rutas del nodo al que pertenece la LUN y su partner de alta disponibilidad (ha).
+* Aún debe configurar todos los LIF iSCSI en cada nodo para la movilidad de LUN en caso de que la LUN se mueva a otro nodo del clúster.
+* A la hora de mover un volumen o un LUN, debe modificar la lista de nodos de informes de SLM antes de mover.
+
+
+.Acerca de esta tarea
+Si su organización tiene una convención de nomenclatura, debe usar nombres para el LUN, el volumen, etc., de este modo que se ajusten a su convención. De lo contrario, debe aceptar los nombres predeterminados.
+
+.Pasos
+. Vaya a la ventana *LUN*.
+. Haga clic en *Crear.*
+. Examine y seleccione una SVM en la que desea crear las LUN.
++
+Se mostrará el asistente Crear LUN.
+
+. En la página *Propiedades generales*, seleccione el tipo de LUN *Windows 2008 o posterior* para los LUN utilizados directamente por el host de Windows, o seleccione *Hyper-V* para los LUN que contienen discos duros virtuales (VHD) para los equipos virtuales Hyper-V.
++
+Deje sin seleccionar la casilla de verificación *Thin Provisioning*.
+
++
+image::../media/lun_creation_thin_provisioned_windows_iscsi_windows.gif[En la ilustración se muestra el cuadro de diálogo con la casilla de comprobación Thin Provisioned sin seleccionar.]
+
+. En la página *contenedor de LUN*, seleccione un volumen de FlexVol existente.
++
+Debe asegurarse de que haya espacio suficiente en el volumen. Si no hay espacio suficiente disponible en los volúmenes existentes, se puede crear un nuevo volumen.
+
+. En la página *asignación de iniciadores*, haga clic en *Agregar iGroup*, introduzca la información necesaria en la ficha *General* y, a continuación, en la ficha *iniciadores*, introduzca el nombre del nodo iniciador iSCSI del host que ha grabado.
+. Confirme los detalles y, a continuación, haga clic en *Finalizar* para completar el asistente.
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administración del sistema"]

@@ -1,0 +1,62 @@
+---
+section: expansion
+title: Administración de clústeres
+entries:
+- title: Administración de ampliación de clúster
+  entries:
+  - title: Descripción general
+    url: "/expansion/index.html"
+  - title: Flujo de trabajo de ampliación de clústeres
+    url: "/expansion/concept_cluster_expansion_workflow.html"
+    entries:
+    - title: Compruebe que el clúster esté listo para la expansión
+      url: "/expansion/task_verifying_cluster_is_ready_for_expansion.html"
+      entries:
+      - title: Verifique la configuración planificada
+        url: "/expansion/task_verifying_planned_configuration.html"
+      - title: Recopile la información de la red necesaria
+        url: "/expansion/task_gathering_required_information.html"
+      - title: Agregar o sustituir interruptores
+        url: "/expansion/task_adding_or_replacing_switches.html"
+    - title: Prepare el clúster para la ampliación
+      url: "/expansion/task_preparing_cluster_for_expansion.html"
+      entries:
+      - title: Añada licencias de bloqueo de nodo
+        url: "/expansion/task_adding_node_locked_licenses.html"
+      - title: Compruebe el estado del sistema
+        url: "/expansion/task_verifying_health_system.html"
+      - title: Realice un backup de la configuración del clúster
+        url: "/expansion/task_backing_up_cluster_configuration.html"
+      - title: Genere un mensaje de AutoSupport acerca del inicio de la expansión
+        url: "/expansion/task_generating_autosupport_message_about_starting_expansion.html"
+    - title: Instale los nodos nuevos
+      url: "/expansion/task_installing_new_nodes.html"
+      entries:
+      - title: Instale las controladoras
+        url: "/expansion/task_installing_controllers.html"
+      - title: Configure los LIF de gestión de nodos
+        url: "/expansion/concept_configuring_node_management_lifs.html"
+      - title: Actualice o degrade los nodos
+        url: "/expansion/task_upgrading_or_downgrading_nodes.html"
+      - title: Asegúrese de que la alta disponibilidad en el nivel de hardware está
+          habilitada
+        url: "/expansion/task_ensuring_hardware_level_ha_is_enabled.html"
+      - title: Añada nodos a un clúster mediante System Manager
+        url: "/expansion/task_adding_nodes_to_cluster_using_system_manager.html"
+      - title: Una los nodos al clúster mediante la CLI
+        url: "/expansion/concept_joining_nodes_to_cluster_using_cli.html"
+    - title: Complete la expansión
+      url: "/expansion/task_completing_expansion.html"
+      entries:
+      - title: Configure los detalles del nodo en System Manager
+        url: "/expansion/task_configuring_node_details_system_manager.html"
+      - title: Configure AutoSupport en los nodos nuevos
+        url: "/expansion/task_configuring_autosupport_on_new_nodes_using_cli.html"
+      - title: Configure la red de Service Processor
+        url: "/expansion/task_configuring_service_processor_network_cli.html"
+      - title: Valide la configuración del clúster ampliado
+        url: "/expansion/task_validating_configuration_expanded_cluster.html"
+      - title: Genere un mensaje de AutoSupport acerca de cómo completar la expansión
+        url: "/expansion/task_generating_autosupport_message_about_completing_expansion.html"
+      - title: Actualice las rutas de LUN para los nodos nuevos
+        url: "/expansion/task_updating_lun_paths_for_new_nodes.html"

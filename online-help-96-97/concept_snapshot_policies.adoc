@@ -1,0 +1,130 @@
+---
+permalink: online-help-96-97/concept_snapshot_policies.html 
+sidebar: sidebar 
+keywords: snapshot, manager, system, create, manage, policy, storage, online, help 
+summary: Puede usar System Manager para crear y gestionar políticas de Snapshot en el sistema de almacenamiento. 
+---
+= Gestione políticas de Snapshot con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear y gestionar políticas de Snapshot en su sistema de almacenamiento.
+
+
+
+== Acerca de las políticas de Snapshot
+
+Cuando se aplica a un volumen, una política de Snapshot especifica una programación o programaciones según las cuales se crean las copias de Snapshot, y especifica el número máximo de copias de Snapshot que puede crear cada programación. Una política de Snapshot puede incluir hasta cinco programaciones.
+
+Para las relaciones de almacén, el atributo etiqueta de SnapMirror se utiliza para seleccionar copias de Snapshot en los volúmenes de origen. Solo se replican las copias Snapshot con las etiquetas configuradas en las reglas de la política de almacén en operaciones de almacén de backup. La política Snapshot asignada al volumen de origen debe incluir el atributo SnapMirror Label.
+
+
+
+== Crear políticas de Snapshot
+
+Puede crear una política de Snapshot en System Manager para especificar el número máximo de copias de Snapshot que se pueden crear automáticamente y la frecuencia de las copias de Snapshot.
+
+.Pasos
+. Haga clic en *Protección* > *políticas de Snapshot*.
+. Haga clic en *Crear*.
+. En el cuadro de diálogo *Crear directiva de instantánea*, especifique el nombre de la directiva.
+. Haga clic en *Agregar* y, a continuación, especifique el nombre de la programación, el número máximo de copias Snapshot que desea retener y el nombre de la etiqueta de SnapMirror.
++
+El número máximo de copias de Snapshot que se pueden conservar en los programas especificados no debe ser superior a 254.
+
+. Haga clic en *Aceptar* y, a continuación, en *Crear*.
+
+
+
+
+== Editar políticas de Snapshot
+
+Puede modificar los detalles de una política de Snapshot existente, como el nombre de la programación, la etiqueta de SnapMirror o la cantidad máxima de copias de Snapshot que se crean, mediante el cuadro de diálogo Edit Snapshot Policy en System Manager.
+
+.Pasos
+. Haga clic en *Protección* > *políticas de Snapshot*.
+. En la ventana *políticas de Snapshot*, seleccione la política de Snapshot que desea modificar y haga clic en *Editar*.
+. En el cuadro de diálogo *Editar directiva de instantánea*, seleccione la programación que desea modificar y haga clic en *Editar*.
+. Haga clic en *Aceptar*.
+. Compruebe los cambios realizados en la directiva de instantánea seleccionada en el cuadro de diálogo *Editar directiva de instantánea* y haga clic en *Guardar*.
+
+
+
+
+== Eliminar políticas de Snapshot
+
+Puede usar System Manager para eliminar políticas de Snapshot. Si elimina una política de Snapshot que usa uno o varios volúmenes, las copias de Snapshot del volumen o los volúmenes ya no se crean de acuerdo con la política eliminada.
+
+.Antes de empezar
+Debe haber disociado la política de Snapshot de cada volumen que la usa.
+
+.Pasos
+. Haga clic en *Protección* > *políticas de Snapshot*.
+. Seleccione la política de Snapshot y haga clic en *Eliminar*.
+. Active la casilla de verificación de confirmación y, a continuación, haga clic en *Eliminar*.
+
+
+
+
+== Ventana Snapshot Policies
+
+Puede usar la ventana Snapshot Policies para gestionar las tareas de políticas de Snapshot, como adición, edición y eliminación de políticas de Snapshot.
+
+
+
+=== Botones de comando
+
+* *Crear*
++
+Abre el cuadro de diálogo Create Snapshot Policy, que permite añadir programaciones de backup y especificar el número máximo de copias de Snapshot que se deben conservar en una política.
+
+* *Edición*
++
+Abre el cuadro de diálogo Edit Snapshot Policy, que permite modificar la frecuencia con la que se deben crear las copias Snapshot y el número máximo de copias Snapshot que se deben conservar.
+
+* *Eliminar*
++
+Abre el cuadro de diálogo Eliminar, que permite eliminar la política de Snapshot seleccionada.
+
+* *Ver como*
++
+Le permite ver las políticas de Snapshot como una lista o como un árbol.
+
+* *Estado*
++
+Abre el menú, que puede utilizar para habilitar o deshabilitar la política de Snapshot seleccionada.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de políticas de Snapshot
+
+* *Nombre de la política/horario*
++
+Especifica el nombre de la política de Snapshot y las programaciones de la política.
+
+* *Máquina virtual de almacenamiento*
++
+Especifica el nombre de la máquina virtual de almacenamiento (SVM) a la que pertenecen las copias de Snapshot.
+
+* *Estado*
++
+Especifica el estado de la política de Snapshot, que se puede habilitar o Deshabilitar.
+
+* *Máximo de instantáneas a retener*
++
+Especifica la cantidad máxima de copias de Snapshot que se retendrán.
+
+* *Etiqueta de SnapMirror*
++
+Especifica el nombre del atributo de etiqueta de SnapMirror de la copia de Snapshot generada por la programación de backups.
+
+

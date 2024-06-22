@@ -1,0 +1,93 @@
+---
+permalink: online-help-96-97/task_delegating_administration_to_svm_administrators.html 
+sidebar: sidebar 
+keywords: online, help, delegate, administration, svm, administrator 
+summary: 'Después de configurar una máquina virtual de almacenamiento (SVM) funcional o una SVM con la configuración de red básica, puede delegar opcionalmente la administración de la SVM a los administradores de la SVM.' 
+---
+= Delegue la administración a los administradores de SVM con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para delegar de forma opcional la administración de la SVM a los administradores de SVM después de configurar una máquina virtual de almacenamiento funcional (SVM) o SVM con la configuración de red básica.
+
+.Acerca de esta tarea
+Los administradores de SVM no pueden usar System Manager para gestionar SVM delegadas. Los administradores solo pueden gestionarlos mediante la interfaz de línea de comandos (CLI).
+
+.Pasos
+. En la sección *Detalles del administrador*, configure una contraseña para `vsadmin` cuenta de usuario.
+. Si desea una LIF dedicada para la gestión de SVM, seleccione *Crear una LIF para la gestión de SVM* y, a continuación, especifique los detalles de la red.
++
+Es necesario un LIF de gestión SVM dedicado para los protocolos SAN, donde los protocolos de datos y gestión no pueden compartir el mismo LIF. Las LIF de gestión de SVM solo se pueden crear en puertos de datos.
+
+. Especifique los detalles de la red, incluidos los detalles de la subred, para crear las LIF de iSCSI:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Especifique la dirección IP con una subred
+ a| 
+.. Seleccione *usando una subred*.
+.. En el cuadro de diálogo Add Details, seleccione la subred desde la que se debe asignar la dirección IP.
++
+Para las LIF entre clústeres, solo se mostrarán las subredes asociadas al espacio IP seleccionado.
+
+.. Si desea asignar una dirección IP específica a la interfaz, seleccione *usar una dirección IP específica* y, a continuación, escriba la dirección IP.
++
+La dirección IP que especifique se añadirá a la subred si la dirección IP no se encuentra en el rango de subredes.
+
+.. Haga clic en *Aceptar*.
+
+
+
+
+ a| 
+Especifique la dirección IP de forma manual sin una subred
+ a| 
+.. Seleccione *sin subred*.
+.. En el cuadro de diálogo Add Details, realice los siguientes pasos:
++
+... Especifique la dirección IP y el prefijo o la máscara de red.
+... Opcional: Especifique la puerta de enlace.
+... Si no desea utilizar el valor predeterminado para el campo destino, especifique un nuevo valor de destino.
++
+Si no especifica un valor personalizado, el campo destino se rellenará con el valor predeterminado en función de la familia de la dirección IP.
+
++
+Si no existe ninguna ruta, se creará una nueva de forma automática en función de la puerta de enlace y el destino.
+
+
+
+.. Haga clic en *Aceptar*.
+
+
+|===
+. Especifique un puerto para crear una LIF de datos:
++
+.. Haga clic en *examinar*.
+.. Seleccione un puerto del cuadro de diálogo Seleccionar puerto de red o adaptador.
+.. Haga clic en *Aceptar*.
+
+
+
+
+.Resultados
+La `vsadmin` la cuenta se desbloquea y se configura con la contraseña.
+
+Los métodos de acceso predeterminados para `vsadmin` La cuenta es API de ONTAP `(ontapi)` Y SSH `(ssh)`. El administrador de SVM puede iniciar sesión en el sistema de almacenamiento con la dirección IP de administración.
+
+
+
+== Qué hacer a continuación
+
+Debe asignar agregados a la SVM mediante el cuadro de diálogo Edit Storage Virtual Machine.
+
+[NOTE]
+====
+Si la SVM no tiene ningún agregado asignado, el administrador de SVM no puede crear volúmenes.
+
+====

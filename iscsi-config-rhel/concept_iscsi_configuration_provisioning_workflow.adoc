@@ -1,0 +1,16 @@
+---
+permalink: iscsi-config-rhel/concept_iscsi_configuration_provisioning_workflow.html 
+sidebar: sidebar 
+keywords: storage, host, iscsi, provision, lun, virtual, machine, svm, iscsi configuration and provisioning workflow 
+summary: 'Cuando se hace que el almacenamiento esté disponible para un host mediante iSCSI, se aprovisiona un volumen y un LUN en la máquina virtual de almacenamiento (SVM) y, luego, se conecta al LUN desde el host.' 
+---
+= Flujo de trabajo de configuración y aprovisionamiento iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando se hace que el almacenamiento esté disponible para un host mediante iSCSI, se aprovisiona un volumen y un LUN en la máquina virtual de almacenamiento (SVM) y, luego, se conecta al LUN desde el host.
+
+image::../media/iscsi_red_hat_linux_workflow.gif[Esta imagen se explica por el texto circundante]

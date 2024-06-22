@@ -1,0 +1,48 @@
+---
+permalink: expansion/index.html 
+sidebar: sidebar 
+keywords: nondisruptive, expand, exist, cluster, ha, pair, expansion, overview 
+summary: Puede expandir un clúster existente de forma rápida y no disruptiva añadiendo una pareja de alta disponibilidad. Un clúster más grande aumenta el rendimiento y la capacidad de almacenamiento disponibles en el clúster. 
+---
+= Información general de ampliación de clústeres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede expandir un clúster existente de forma rápida y no disruptiva añadiendo una pareja de alta disponibilidad. Un clúster más grande aumenta el rendimiento y la capacidad de almacenamiento disponibles en el clúster.
+
+Debe utilizar este procedimiento sólo si se cumple lo siguiente:
+
+* El clúster existente cumple los siguientes requisitos:
++
+** Utiliza ONTAP 9.
+** Contiene al menos dos nodos.
++
+Si bien los ejemplos de este procedimiento utilizan un clúster de dos nodos, también se aplica a los clústeres con más de dos nodos.
+
++
+Si desea añadir un nodo a un clúster de un solo nodo, debe seguir un procedimiento diferente.
+
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-controller-add/home.html["Al agregar una segunda controladora para crear un par de alta disponibilidad"]
+
+** No utiliza direccionamiento IPv6 ni cifrado de almacenamiento.
+** No es una configuración MetroCluster.
+
+
+* Los módulos del controlador que planea añadir cumplen los siguientes requisitos:
++
+** Si no son nuevos, se han limpiado con limpieza, ya no forman parte de un clúster y están listos para añadirse al nuevo clúster.
+** Admiten ONTAP 9.
+** Ejecutan una versión de la familia de versiones ONTAP 9.
+
+
+* Al completar las tareas de configuración de ONTAP con System Manager, desea utilizar la interfaz de usuario de _Classic_ System Manager para ONTAP 9.7 y versiones anteriores, no la interfaz de usuario de ONTAP System Manager para ONTAP 9.7 y versiones posteriores.
++
+https://docs.netapp.com/us-en/ontap/["Documentación de ONTAP System Manager"]
+
+* Quiere utilizar las prácticas recomendadas, no explorar todas las opciones disponibles.
+* No desea leer muchos antecedentes conceptuales.
+

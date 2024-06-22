@@ -1,0 +1,205 @@
+---
+permalink: online-help-96-97/task_updating_cluster_name.html 
+sidebar: sidebar 
+keywords: system, manager, update, cluster, name, online, help 
+summary: Puede usar System Manager para modificar el nombre de un clúster cuando sea necesario. 
+---
+= Configure el clúster con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar ONTAP System Manager Classic (disponible en ONTAP 9.7 y versiones anteriores) para configurar el clúster.
+
+La configuración del clúster implica recopilar la información de configuración, crear interfaces de gestión del clúster y del nodo, añadir licencias, configurar la hora del clúster y supervisar parejas de alta disponibilidad.
+
+
+
+== Actualice el nombre del clúster
+
+Puede usar System Manager para modificar el nombre de un clúster cuando sea necesario.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. En el panel *Detalles del clúster*, haga clic en *Actualizar nombre del clúster*.
+. En el cuadro de diálogo *Actualizar nombre de clúster*, especifique un nuevo nombre para el clúster y, a continuación, haga clic en *Enviar*.
+
+
+
+
+== Cambie la contraseña del clúster
+
+Puede usar System Manager para restablecer la contraseña de un clúster.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. En el panel *Detalles del clúster*, haga clic en *Cambiar contraseña*.
+. En el cuadro de diálogo *Cambiar contraseña*, especifique una nueva contraseña, confirme la nueva contraseña y haga clic en *Cambiar*.
+
+
+
+
+== Editar configuraciones de DNS
+
+Puede usar System Manager para añadir información del host a fin de gestionar de manera centralizada las configuraciones de DNS. Puede modificar los detalles de DNS cuando desee cambiar los nombres de dominio o las direcciones IP.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. En el panel *Detalles del clúster*, haga clic en *Editar configuración DNS*.
+. En el área *dominios DNS*, agregue o modifique los nombres de dominio DNS.
+. En el área *servidores de nombres*, agregue o modifique las direcciones IP.
+. Haga clic en *Aceptar*.
+
+
+
+
+== Cree una interfaz lógica de gestión de clústeres
+
+Puede usar System Manager para crear una interfaz lógica de gestión de clústeres (LIF) a fin de proporcionar una única interfaz de gestión para un clúster de. Puede utilizar esta LIF para gestionar todas las actividades del clúster.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. En el panel *Detalles del clúster*, haga clic en *Crear LIF de administración de clústeres*.
+. En el cuadro de diálogo *Crear LIF de administración de clúster*, especifique un nombre para la LIF de administración de clúster.
+. Asigne una dirección IP a la LIF de administración del clúster:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Especifique la dirección IP con una subred
+ a| 
+.. Seleccione *usando una subred*.
+.. En el cuadro de diálogo Add Details, seleccione la subred desde la que se debe asignar la dirección IP.
++
+Para una LIF entre clústeres, solo se mostrarán las subredes asociadas al espacio IP seleccionado.
+
+.. Si desea asignar una dirección IP específica a la LIF, seleccione *usar una dirección IP específica* y, a continuación, escriba la dirección IP.
++
+La dirección IP que especifique se añadirá a la subred si la dirección IP no se encuentra en el rango de subredes.
+
+.. Haga clic en *Aceptar*.
+
+
+
+
+ a| 
+Especifique la dirección IP de forma manual sin una subred
+ a| 
+.. Seleccione *sin subred*.
+.. En el cuadro de diálogo Add Details, realice los siguientes pasos:
++
+... Especifique la dirección IP y el prefijo o la máscara de red.
+... Opcional: Especifique la puerta de enlace.
+... Si no desea utilizar el valor predeterminado para el campo destino, especifique un nuevo valor de destino.
++
+Si no especifica un valor, el campo destino se rellenará con el valor predeterminado en función de la familia de la dirección IP.
+
+
+
++
+Si no existe ninguna ruta, se creará una nueva de forma automática en función de la puerta de enlace y el destino.
+
+.. Haga clic en *Aceptar*.
+
+
+|===
+. Seleccione los puertos necesarios en el área *Detalles del puerto*.
+. Haga clic en *Crear*.
+
+
+
+
+== Edite el nombre del nodo
+
+Puede usar System Manager para modificar el nombre de un nodo cuando sea necesario.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. En la ficha *Nodes*, seleccione el nodo cuyo nombre desea cambiar y, a continuación, haga clic en *Editar nombre de nodo*.
+. En el cuadro de diálogo *Editar nombre de nodo*, escriba el nuevo nombre para el nodo y, a continuación, haga clic en *Enviar*.
+
+
+
+
+== Cree una interfaz lógica de gestión de nodos
+
+Puede usar System Manager para crear una interfaz lógica de gestión de nodos (LIF) dedicada para gestionar un determinado nodo en un clúster. Puede utilizar esta LIF para gestionar las actividades de mantenimiento del sistema del nodo.
+
+.Pasos
+. Haga clic en *Configuración* > *Cluster* > *actualizaciones de configuración*.
+. En la ficha *Nodes*, seleccione el nodo para el que desea crear una LIF de administración de nodos y, a continuación, haga clic en *Crear LIF de gestión de nodos*.
+. En el cuadro de diálogo *Crear LIF de gestión de nodos*, especifique un nombre para la LIF de administración de nodos.
+. Asigne la dirección IP a la LIF de gestión de nodos:
++
+|===
+| Si desea... | Realice lo siguiente... 
+
+
+ a| 
+Especifique la dirección IP con una subred
+ a| 
+.. Seleccione *usando una subred*.
+.. En el cuadro de diálogo Add Details, seleccione la subred desde la que se debe asignar la dirección IP.
++
+Para una LIF entre clústeres, solo se mostrarán las subredes asociadas al espacio IP seleccionado.
+
+.. Si desea asignar una dirección IP específica a la LIF, seleccione *usar una dirección IP específica* y, a continuación, escriba la dirección IP.
++
+La dirección IP que especifique se añadirá a la subred si la dirección IP no se encuentra en el rango de subredes.
+
+.. Haga clic en *Aceptar*.
+
+
+
+
+ a| 
+Especifique la dirección IP de forma manual sin una subred
+ a| 
+.. Seleccione *sin subred*.
+.. En el cuadro de diálogo Add Details, realice los siguientes pasos:
++
+... Especifique la dirección IP y el prefijo o la máscara de red.
+... Opcional: Especifique la puerta de enlace.
+... Si no desea utilizar el valor predeterminado para el campo destino, especifique un nuevo valor de destino.
++
+Si no especifica un valor, el campo destino se rellenará con el valor predeterminado en función de la familia de la dirección IP.
+
+
+
++
+Si no existe ninguna ruta, se creará una nueva de forma automática en función de la puerta de enlace y el destino.
+
+.. Haga clic en *Aceptar*.
+
+
+|===
+. Seleccione los puertos necesarios en el área *Detalles de puertos*.
+. Haga clic en *Crear*.
+
+
+
+
+=== Qué hacer a continuación
+
+Si desea eliminar una LIF de gestión de nodos existente, debe usar la interfaz de línea de comandos (CLI).
+
+
+
+== Editar configuración de AutoSupport
+
+Puede usar System Manager para modificar la configuración de AutoSupport a fin de especificar una dirección de correo electrónico desde la cual se envían las notificaciones por correo electrónico, y para añadir varios nombres de hosts de correo electrónico.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Seleccione el nodo para el que desea modificar la configuración de AutoSupport y, a continuación, haga clic en *Editar*.
+. En la ficha *destinatario de correo electrónico*, escriba la dirección de correo electrónico desde la que se envían las notificaciones, especifique los destinatarios de correo electrónico y el contenido del mensaje para cada destinatario y, a continuación, agregue los hosts de correo.
++
+Es posible añadir hasta cinco direcciones de correo electrónico para cada host.
+
+. En la ficha *otros*, seleccione un protocolo de transporte para entregar los mensajes de correo electrónico y, a continuación, especifique los detalles del servidor proxy HTTP o HTTPS.
+. Haga clic en *Aceptar*.
+

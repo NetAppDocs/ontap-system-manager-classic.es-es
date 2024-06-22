@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_moving_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: move, flexvol, volume, aggregate, system, manager, online, help 
+summary: Puede mover un volumen de FlexVol a otro agregado o a un nodo diferente para aprovechar la capacidad y mejorar el rendimiento mediante System Manager. 
+---
+= Mueva volúmenes de FlexVol con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para mover un volumen de FlexVol a un agregado diferente o a un nodo diferente para la utilización de capacidad y mejorar el rendimiento.
+
+.Antes de empezar
+Si va a mover un volumen de protección de datos, se deben inicializar las relaciones de reflejos de protección de datos antes de mover el volumen.
+
+.Acerca de esta tarea
+* Cuando mueve un volumen alojado en un agregado de Flash Pool, solo los datos almacenados en el nivel de HDD se mueven al agregado de destino.
++
+Los datos en caché asociados con el volumen no se mueven al agregado de destino. Por lo tanto, es posible que se produzca alguna degradación del rendimiento después del movimiento de volumen.
+
+* No se pueden mover volúmenes desde un agregado de SnapLock.
+* No es posible mover volúmenes desde una SVM que esté configurada para la recuperación ante desastres a un agregado habilitado para FabricPool.
+
+
+.Pasos
+. Elija uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento*.
+** Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+
+
+. Seleccione el agregado que contiene el volumen y, a continuación, haga clic en MENU:More Actions[Volume Move].
+. Escriba o seleccione la información que le solicite el asistente.
+. Confirme los detalles y, a continuación, haga clic en *Finalizar* para completar el asistente.
+

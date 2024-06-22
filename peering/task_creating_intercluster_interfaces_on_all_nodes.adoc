@@ -1,0 +1,73 @@
+---
+permalink: peering/task_creating_intercluster_interfaces_on_all_nodes.html 
+sidebar: sidebar 
+keywords: cluster, communicate, logical, interface, lif, intercluster, create, ipspace, peer, relationship, create intercluster interfaces on all nodes, ontap 9.2 or earlier 
+summary: 'Mediante la interfaz "clásica" de System Manager de ONTAP con ONTAP 9.2 o una versión anterior de ONTAP 9, puede crear LIF de interconexión de clústeres que se usarán para la agrupación en clústeres.' 
+---
+= Crear interfaces de interconexión de clústeres en todos los nodos (ONTAP 9.2 o anterior)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mediante la interfaz _classic_ de ONTAP con ONTAP 9.2 o una versión anterior de ONTAP 9, puede crear LIF de interconexión de clústeres que se usarán para la agrupación en clústeres.
+
+Los clústeres se comunican entre sí mediante interfaces lógicas (LIF) dedicadas a la comunicación entre clústeres. Debe crear una LIF de interconexión de clústeres en cada espacio IP que se utilizará para la agrupación en clústeres.  Los LIF deben crearse en cada nodo de cada clúster para el que desea crear una relación de paridad.
+
+.Antes de empezar
+Debe haber identificado la subred y los puertos, así como las direcciones IP, que planea usar para las LIF de interconexión de clústeres.
+
+.Acerca de esta tarea
+Este procedimiento debe ejecutarse en ambos clústeres para los que desee crear una relación de paridad. Por ejemplo, si tiene un clúster de cuatro nodos en el que desea establecer la paridad entre el clúster X en el espacio IP A y entre el clúster y en el espacio IP y, necesitará un total de ocho LIF de interconexión de clústeres; Cuatro en el espacio IP A (uno por nodo) y cuatro en el espacio IP y (uno por nodo).
+
+.Pasos
+. [[step1-intercluster-lif]]cree una LIF de interconexión de clústeres en un nodo del clúster de origen:
++
+.. Vaya a la ventana *interfaces de red*.
+.. Haga clic en *Crear*.
++
+Se muestra el cuadro de diálogo Crear interfaz de red.
+
+.. Escriba un nombre para la LIF entre clústeres.
++
+Puede utilizar «'icl01'» para la LIF de interconexión de clústeres del primer nodo y «'icl02» para la LIF de interconexión de clústeres del segundo nodo.
+
+.. Seleccione *Intercluster Connectivity* como la función de interfaz.
+.. Seleccione el espacio IP.
+.. En el cuadro de diálogo *Agregar detalles*, seleccione *usando una subred* en la lista desplegable *asignar dirección IP* y, a continuación, seleccione la subred que desea usar para la comunicación entre clústeres.
++
+De forma predeterminada, la dirección IP se selecciona automáticamente desde la subred después de hacer clic en *Crear*. Si no desea usar la dirección IP que está seleccionada automáticamente, debe especificar manualmente la dirección IP que usa el nodo para la comunicación entre clústeres.
+
+.. Si desea especificar manualmente la dirección IP que utiliza el nodo para la comunicación entre clústeres, seleccione *usar esta dirección IP* y escriba la dirección IP.
++
+Debe asegurarse de que la dirección IP que desea utilizar ya esté disponible en la subred o que se pueda añadir a la subred más adelante.
+
+.. En el área *puertos*, haga clic en el nodo que está configurando y seleccione el puerto que desea utilizar para este nodo.
+.. Si ha decidido no compartir puertos para la comunicación entre clústeres con la comunicación de datos, confirme que el puerto seleccionado muestra "'0'" en la columna *Hosted Interface Count*.
++
+image::../media/lif_creation_intercluster.gif[El cuadro de diálogo Crear cara de red]
+
+.. Haga clic en *Crear*.
+
+
+. Repetición <<step1-intercluster-lif,Paso 1>> para cada nodo del clúster.
++
+Cada nodo del clúster tiene una LIF de interconexión de clústeres.
+
+. Anote las direcciones IP de las LIF de interconexión de clústeres de manera que pueda utilizarlas posteriormente cuando cree relaciones de paridad con otros clústeres:
++
+.. En la ventana *interfaces de red*, en la columna *rol*, haga clic en image:../media/icon_columnfilter_sm_peering.gif["Icono de filtro de columna"], Desactive la casilla de verificación *todo* y, a continuación, seleccione *Intercluster*.
++
+La ventana Network interfaces muestra solo las LIF de interconexión de clústeres.
+
+.. Anote las direcciones IP que aparecen en la columna *direcciones IP/WWPN* o deje abierta la ventana *interfaces de red* para poder recuperar las direcciones IP más adelante.
++
+Puede hacer clic en el icono de visualización de columna (image:../media/icon_columnshowhide_sm_onc_peering.gif["Para mostrar u ocultar la columna"]) para ocultar las columnas que no desea ver.
+
+
+
+
+
+.Resultados
+Todos los nodos de cada clúster tienen LIF de interconexión de clústeres que se pueden comunicar entre sí.

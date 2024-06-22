@@ -1,0 +1,20 @@
+---
+permalink: online-help-96-97/concept_updating_clusters_metrocluster_configuration.html 
+sidebar: sidebar 
+keywords: update, cluster, metrocluster, configuration, online, help 
+summary: Puede usar System Manager para actualizar un clúster en las configuraciones de MetroCluster. Debe realizar cada operación en los dos clústeres, a excepción de la actualización del clúster. 
+---
+= Actualice los clústeres en una configuración de MetroCluster con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para actualizar un clúster en configuraciones de MetroCluster. Debe realizar cada operación en los dos clústeres, a excepción de la actualización del clúster.
+
+image::../media/updating_cluster_mcc_configuration.gif[actualizando la configuración del mcc del clúster]
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/upgrade/task_upgrade_andu_sm.html["Actualice ONTAP"]

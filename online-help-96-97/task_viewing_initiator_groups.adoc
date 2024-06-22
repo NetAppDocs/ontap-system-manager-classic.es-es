@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_viewing_initiator_groups.html 
+sidebar: sidebar 
+keywords: view, initiator, group, lun, system, manager, online, help 
+summary: Puede utilizar la pestaña iGroups en System Manager para ver todos los iGroups y los iniciadores asignados a estos iGroups, y las LUN y el ID de LUN asignados a los iGroups. 
+---
+= Vea los iGroups con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar la pestaña *iGroups* de la clásica versión de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para ver todos los iGroups y los iniciadores asignados a estos iGroups, y las LUN y el ID de LUN asignados a los iGroups.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. Haga clic en *iGroups* y revise los iGroups que aparecen en el panel superior.
+. Seleccione un iGroup para ver los iniciadores que pertenecen a él, que se enumeran en la pestaña *Initiators* del panel inferior.
+. Seleccione un iGroup para ver las LUN asignadas a él, que aparecen en la *LUN asignadas* del panel inferior.
+

@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_preparing_cluster_for_expansion.html 
+sidebar: sidebar 
+keywords: prepare, cluster, expansion, node-locked, license, verify, system, health, configuration, generate autosupport, message, prepare the cluster for expansion 
+summary: Para preparar un clúster para la expansión, debe agregar licencias de bloqueo de nodo, verificar el estado del sistema, realizar una copia de seguridad de la configuración del clúster y generar un mensaje de AutoSupport. 
+---
+= Prepare el clúster para la ampliación
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para preparar un clúster para la expansión, debe añadir licencias de bloqueo de nodo, comprobar el estado del sistema, realizar un backup de la configuración del clúster y generar un mensaje de AutoSupport.

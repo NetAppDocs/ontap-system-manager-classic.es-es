@@ -1,0 +1,42 @@
+---
+permalink: fc-config-esxi/task_verifying_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, write, data, verify that the host can write to and read from the lun 
+summary: Antes de utilizar la LUN, debe verificar que el host puede escribir datos en la LUN y leerlos nuevamente. 
+---
+= Compruebe que el host puede escribir y leer desde la LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de utilizar la LUN, debe verificar que el host puede escribir datos en la LUN y leerlos nuevamente.
+
+.Acerca de esta tarea
+Si el nodo de clúster en el que se crea la LUN puede realizar una conmutación al nodo de su compañero, debe verificar que lee los datos mientras el nodo se ha producido una conmutación al nodo de respaldo. Esta prueba podría no ser posible si el clúster está en producción usando.
+
+.Pasos
+. En la página Home* de vSphere Web Client, haga clic en *hosts and Clusters*.
+. En el panel de navegación, haga clic en la ficha *almacenamiento*.
+. Expanda el centro de datos y, a continuación, seleccione el nuevo almacén de datos.
+. En el panel central, haga clic en *Administrar* > *Archivos*.
++
+Se muestra el contenido del almacén de datos.
+
+. Cree una nueva carpeta en el almacén de datos y cargue un archivo en la nueva carpeta.
++
+Es posible que deba instalar el complemento de integración de cliente.
+
+. Compruebe que puede acceder al archivo que acaba de escribir.
+. *Opcional:* conmutar por error el nodo del clúster que contiene el LUN y verificar que todavía puede escribir y leer un archivo.
++
+Si alguna de las pruebas presenta errores, compruebe que el servicio FC se está ejecutando en el clúster de almacenamiento y compruebe las rutas de FC a la división en zonas de LUN y switches FC.
+
+. *Opcional:* Si ha fallado a través del nodo del clúster, asegúrese de devolver el nodo y devolver todas las LIF a sus puertos de inicio.
+. Para un clúster ESXi, vea el almacén de datos desde cada host ESXi en el clúster y compruebe que se muestre el archivo cargado.
+
+
+*Información relacionada*
+
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["Configuración de alta disponibilidad de ONTAP 9"]

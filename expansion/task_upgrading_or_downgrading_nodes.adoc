@@ -1,0 +1,42 @@
+---
+permalink: expansion/task_upgrading_or_downgrading_nodes.html 
+sidebar: sidebar 
+keywords: join, install, node, cluster, run, ontap, upgrade, downgrade 
+summary: Antes de unir los nodos recién instalados al clúster, debe asegurarse de que estén ejecutando la misma versión de ONTAP que el clúster esté ejecutando. Si los nodos ejecutan una versión diferente, debe actualizar o degradar los nodos para que coincidan con el clúster. 
+---
+= Actualice o degrade los nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de unir los nodos recién instalados al clúster, debe asegurarse de que estén ejecutando la misma versión de ONTAP que el clúster esté ejecutando. Si los nodos ejecutan una versión diferente, debe actualizar o degradar los nodos para que coincidan con el clúster.
+
+.Pasos
+. Determine la versión de ONTAP instalada en el clúster: `cluster image show`
+. Vea la versión actual de ONTAP en los nodos:
++
+.. En el primer nodo, vea la versión del software: `system node image show`
++
+[listing]
+----
+::*> system node image show
+                 Is      Is                                Install
+Node     Image   Default Current Version                   Date
+-------- ------- ------- ------- ------------------------- -------------------
+localhost
+         image1  false   false   9.3                    MM/DD/YYYY TIMESTAMP
+         image1  true    true    9.3                    MM/DD/YYYY TIMESTAMP
+2 entries were displayed.
+----
+.. Repita el paso anterior para el segundo nodo.
+
+
+. Compare las versiones de ONTAP en el clúster y los nodos, y realice cualquiera de las siguientes acciones:
++
+** Si las versiones de ONTAP en el clúster y los nodos son las mismas, no se necesita actualización ni degradación.
+** Si las versiones de ONTAP en el clúster y los nodos son diferentes, puede link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Actualice ONTAP"] en los nodos con versiones anteriores o también puede hacerlo link:https://docs.netapp.com/us-en/ontap/revert/index.html["Revierte ONTAP"] para nodos con versiones posteriores.
+
+
+

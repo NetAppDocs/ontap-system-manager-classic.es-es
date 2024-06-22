@@ -1,0 +1,42 @@
+---
+permalink: online-help-96-97/concept_why_you_use_svms.html 
+sidebar: sidebar 
+keywords: svm, data, access, nondisruptive, operation, scalability, security, online, help 
+summary: Las SVM proporcionan a sus clientes acceso a datos independientemente del almacenamiento físico o la controladora, de manera similar a cualquier sistema de almacenamiento. Los SVM proporcionan ventajas como operaciones no disruptivas, escalabilidad, seguridad y almacenamiento unificado. 
+---
+= Acerca de SVM con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar SVM con System Manager classic de ONTAP (disponible en ONTAP 9,7 y versiones anteriores) para proporcionar acceso a los datos a los clientes independientemente del almacenamiento físico o la controladora, de modo similar a cualquier sistema de almacenamiento. Los SVM proporcionan ventajas como operaciones no disruptivas, escalabilidad, seguridad y almacenamiento unificado.
+
+Las SVM ofrecen las siguientes ventajas:
+
+* Soporte para múltiples usuarios
++
+SVM es la unidad fundamental de multi-tenancy seguro, que permite particionar la infraestructura de almacenamiento para que aparezca como varios sistemas de almacenamiento independientes. Estas particiones aíslan los datos y la gestión.
+
+* Operaciones no disruptivas
++
+Las SVM pueden funcionar de forma continua y no disruptiva mientras sean necesarias. Las SVM ayudan a los clústeres a funcionar de forma continua durante las actualizaciones de software y hardware, la adición y la eliminación de nodos, así como todas las operaciones administrativas.
+
+* Escalabilidad
++
+Las SVM hacen frente a un rendimiento de datos bajo demanda y a otros requisitos de almacenamiento.
+
+* Seguridad
++
+Cada SVM aparece como un único servidor independiente, lo que permite que varias SVM coexistan en un clúster mientras se garantiza que no existan flujos de datos entre ellas.
+
+* Almacenamiento unificado
++
+Las SVM pueden servir datos a la vez mediante múltiples protocolos de acceso a datos. Los SVM proporcionan acceso a los datos de nivel de archivo mediante protocolos NAS, como CIFS y NFS, y acceso a datos de nivel de bloque mediante protocolos SAN, como iSCSI, FC/FCoE y NVMe. Las SVM pueden servir datos a clientes SAN y NAS de forma independiente a la vez.
+
+* Delegación de la gestión
++
+Los administradores de SVM tienen privilegios asignados por el administrador del clúster.
+
+

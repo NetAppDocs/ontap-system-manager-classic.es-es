@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_mirroring_aggregates.html 
+sidebar: sidebar 
+keywords: mirror, aggregate, system, manager, data, lun, array, online, help 
+summary: Puede usar System Manager para proteger datos y proporcionar una mayor resiliencia al realizar mirroring de los datos en tiempo real en un solo agregado. El mirroring de agregados quita puntos únicos de error al conectarse a discos y LUN de cabina. 
+---
+= Reflejar agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para proteger datos y proporcionar una mayor resiliencia al realizar mirroring de datos en tiempo real en un solo agregado. El mirroring de agregados quita puntos únicos de error al conectarse a discos y LUN de cabina.
+
+.Antes de empezar
+Deben haber suficientes discos libres en el otro pool para reflejar el agregado.
+
+.Acerca de esta tarea
+Un agregado de Flash Pool no se puede reflejar cuando el origen de caché es un pool de almacenamiento.
+
+.Pasos
+. Elija uno de los siguientes métodos:
++
+** Haga clic en *aplicaciones y niveles* > *niveles de almacenamiento*.
+** Haga clic en *almacenamiento* > *agregados y discos* > *agregados*.
+
+
+. Seleccione el agregado que desea reflejar y, a continuación, haga clic en MENU:More Actions[Mirror].
++
+[NOTE]
+====
+SyncMirror no es compatible con los agregados que admiten FabricPool.
+
+====
+. En el cuadro de diálogo *reflejar este agregado*, haga clic en *espejo* para iniciar la duplicación.
+

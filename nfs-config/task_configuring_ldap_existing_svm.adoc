@@ -1,0 +1,77 @@
+---
+permalink: nfs-config/task_configuring_ldap_existing_svm.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, information, active, directory-based, lightweight, directory, access, protocol, ldap, client, user, information, configure ldap, configure nfs access to an existing svm 
+summary: 'Si desea que la máquina virtual de almacenamiento (SVM) obtenga información de usuario del protocolo ligero de acceso a directorios (LDAP) basado en Active Directory, debe crear un cliente LDAP, habilitarla para la SVM y asignar prioridad de LDAP sobre otros orígenes de información de usuario.' 
+---
+= Configurar LDAP (Configurar el acceso NFS a una SVM existente )
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si desea que la máquina virtual de almacenamiento (SVM) obtenga información de usuario del protocolo ligero de acceso a directorios (LDAP) basado en Active Directory, debe crear un cliente LDAP, habilitarla para la SVM y asignar prioridad de LDAP sobre otros orígenes de información de usuario.
+
+.Antes de empezar
+* La configuración de LDAP debe utilizar Active Directory (AD).
++
+Si utiliza otro tipo de LDAP, debe utilizar la interfaz de línea de comandos (CLI) y otra documentación para configurar LDAP. Para obtener más información, consulte link:https://docs.netapp.com/us-en/ontap/nfs-config/using-ldap-concept.html["Información general sobre cómo usar LDAP"^].
+
+* Debe conocer el dominio y los servidores de AD, así como la siguiente información de vinculación: El nivel de autenticación, el usuario y la contraseña de Bind, el DN base y el puerto LDAP.
+
+
+.Pasos
+. Vaya a la ventana *SVMs*.
+. Seleccione la SVM requerida
+. Haga clic en la ficha *Configuración de SVM*.
+. Configure un cliente LDAP para que la SVM use:
++
+.. En el panel *Servicios*, haga clic en *Cliente LDAP*.
+.. En la ventana *Configuración del cliente LDAP*, haga clic en *Agregar*.
+.. En la ficha *General* de la ventana *Crear cliente LDAP*, escriba el nombre de la configuración del cliente LDAP, por ejemplo `vs0client1`.
+.. Añada el dominio de AD o los servidores de AD.
++
+image::../media/ldap_client_creation_general_tab_nfs.gif[Esta imagen se explica por el texto circundante.]
+
+.. Haga clic en *enlace* y especifique el nivel de autenticación, el usuario y la contraseña de Bind, el DN base y el puerto.
++
+image::../media/ldap_client_creation_binding_tab_nfs.gif[Esta imagen se explica por el texto circundante.]
+
+.. Haga clic en *Guardar y cerrar*.
+
+
++
+Se crea un cliente nuevo y está disponible para que lo use el SVM.
+
+. Habilite el nuevo cliente LDAP para la SVM:
++
+.. En el panel de navegación, haga clic en *Configuración LDAP*.
+.. Haga clic en *Editar*.
+.. Asegúrese de que el cliente que acaba de crear esté seleccionado en *Nombre de cliente LDAP*.
+.. Seleccione *Activar cliente LDAP* y haga clic en *Aceptar*.
++
+image::../media/ldap_svm_configuration_active_ldap_client_nfs.gif[Esta imagen se explica por el texto circundante.]
+
+
+
++
+La SVM usa el nuevo cliente LDAP.
+
+. Asigne prioridad a LDAP sobre otras fuentes de información de usuario, como el Servicio de información de red (NIS) y los usuarios y grupos locales:
++
+.. Vaya a la ventana *SVMs*.
+.. Seleccione la SVM y haga clic en *Editar*.
+.. Haga clic en la ficha *Servicios*.
+.. En *Cambio de servicio de nombres*, especifique *LDAP* como el origen de conmutador de servicio de nombres preferido para los tipos de base de datos.
+.. Haga clic en *Guardar y cerrar*.
+
+
++
+image::../media/name_services_ldap_priority_nfs.gif[Este gráfico se describe con el texto circundante.]
+
++
++
+LDAP es el origen principal de información de usuario para los servicios de nombre y la asignación de nombres en esta SVM.
+
+

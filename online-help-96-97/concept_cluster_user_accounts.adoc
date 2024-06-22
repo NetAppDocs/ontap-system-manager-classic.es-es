@@ -1,0 +1,177 @@
+---
+permalink: online-help-96-97/concept_cluster_user_accounts.html 
+sidebar: sidebar 
+keywords: user, system, manager, add, edit, manage, account, login, online, help, cluster, administration, online, help, modify, lock, delete, unlock, create 
+summary: Puede usar System Manager para añadir, editar y gestionar una cuenta de usuario de clúster, así como para especificar un método de usuario de inicio de sesión para acceder al sistema de almacenamiento. 
+---
+= Gestione cuentas de usuario con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para añadir, editar y gestionar una cuenta de usuario de clúster, así como especificar un método de usuario de inicio de sesión para acceder al sistema de almacenamiento.
+
+
+
+== Añadir una cuenta de usuario de clúster
+
+Puede usar System Manager para añadir una cuenta de usuario de clúster y especificar un método de inicio de sesión de usuario para acceder al sistema de almacenamiento.
+
+.Acerca de esta tarea
+En los clústeres en los que está habilitada la autenticación SAML, para una aplicación determinada, puede añadir una autenticación SAML o una autenticación basada en contraseña, o bien puede añadir ambos tipos de autenticación.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Administración*, haga clic en *usuarios*.
+. Haga clic en *Agregar*.
+. Escriba un nombre de usuario para el nuevo usuario.
+. Escriba una contraseña para que el usuario se conecte al sistema de almacenamiento y confirme la contraseña.
+. Agregue uno o más métodos de inicio de sesión de usuario y, a continuación, haga clic en *Agregar*.
+
+
+
+
+== Editar una cuenta de usuario de clúster
+
+Puede usar System Manager para editar una cuenta de usuario de clúster modificando los métodos de inicio de sesión de usuario para acceder al sistema de almacenamiento.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Administración*, haga clic en *usuarios*.
+. En la ventana *usuarios*, seleccione la cuenta de usuario que desea modificar y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Modificar usuario*, modifique los métodos de inicio de sesión de usuario y, a continuación, haga clic en *Modificar*.
+
+
+
+
+== Cambiar contraseñas de las cuentas de usuario del clúster
+
+Puede usar System Manager para restablecer la contraseña de una cuenta de usuario de clúster.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Administración*, haga clic en *usuarios*.
+. Seleccione la cuenta de usuario para la que desea modificar la contraseña y, a continuación, haga clic en *Cambiar contraseña*.
+. En el cuadro de diálogo *Cambiar contraseña*, escriba la nueva contraseña, confirme la nueva contraseña y haga clic en *Cambiar*.
+
+
+
+
+== Bloquear o desbloquear cuentas de usuario del clúster
+
+Puede usar System Manager para bloquear o desbloquear cuentas de usuario de clúster.
+
+.Pasos
+. Haga clic en *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. En el panel *Administración*, haga clic en *usuarios*.
+. Seleccione la cuenta de usuario para la que desea modificar el estado y haga clic en *Bloquear* o en *Desbloquear*.
+
+
+
+
+== Cuentas de usuario (solo administradores de clúster)
+
+Puede crear, modificar, bloquear, desbloquear o eliminar una cuenta de usuario de clúster, restablecer la contraseña de un usuario o mostrar información sobre todas las cuentas de usuario.
+
+Las cuentas de usuario del clúster se pueden gestionar de las siguientes formas:
+
+* Crear un método de inicio de sesión para un usuario especificando el nombre de cuenta del usuario, el método de acceso, el método de autenticación y, opcionalmente, el rol de control de acceso que está asignado el usuario
+* Mostrar la información de inicio de sesión de los usuarios, como el nombre de cuenta, el método de acceso permitido, el método de autenticación, el rol de control de acceso y el estado de la cuenta
+* Modificar los roles de control de acceso que están asociados con el método de inicio de sesión de un usuario
++
+[NOTE]
+====
+Se recomienda utilizar un único rol para todos los métodos de acceso y autenticación de una cuenta de usuario.
+
+====
+* Eliminar el método de inicio de sesión de un usuario, como el método de acceso o el método de autenticación
+* Cambiar la contraseña de una cuenta de usuario
+* Bloquear una cuenta de usuario para evitar que el usuario acceda al sistema
+* Desbloqueo de una cuenta de usuario anteriormente bloqueada para permitir al usuario volver a acceder al sistema
+
+
+
+
+== Ventana usuarios
+
+Puede utilizar la ventana usuarios para administrar cuentas de usuario, restablecer la contraseña de un usuario y ver información sobre todas las cuentas de usuario.
+
+
+
+=== Botones de comando
+
+* *Agregar*
++
+Abre el cuadro de diálogo Agregar usuario, que permite agregar cuentas de usuario.
+
+* *Edición*
++
+Abre el cuadro de diálogo Modificar usuario, que permite modificar los métodos de inicio de sesión de usuario.
+
++
+[NOTE]
+====
+Se recomienda usar un solo rol para todos los métodos de acceso y autenticación de una cuenta de usuario.
+
+====
+* *Eliminar*
++
+Permite eliminar una cuenta de usuario seleccionada.
+
+* *Cambiar contraseña*
++
+Abre el cuadro de diálogo Cambiar contraseña, que permite restablecer la contraseña de un usuario seleccionado.
+
+* *Bloqueo*
++
+Bloquea la cuenta de usuario.
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Lista de usuarios
+
+El área situada debajo de la lista de usuarios muestra información detallada sobre el usuario seleccionado.
+
+* *Usuario*
++
+Muestra el nombre de la cuenta de usuario.
+
+* *Cuenta bloqueada*
++
+Muestra si la cuenta de usuario está bloqueada.
+
+
+
+
+
+=== Área métodos de inicio de sesión de usuario
+
+* *Aplicación*
++
+Muestra el método de acceso que un usuario puede utilizar para acceder al sistema de almacenamiento. Los métodos de acceso admitidos incluyen los siguientes:
+
++
+** Consola del sistema (consola)
+** HTTP(S) (http)
+** API de ONTAP (ontapi)
+** Procesador de servicio (Service-Processor)
+** SSH (SSH)
+
+
+* *Autenticación*
++
+Muestra el método de autenticación admitido por defecto, que es "'password'".
+
+* *Rol*
++
+Muestra la función de un usuario seleccionado.
+
+

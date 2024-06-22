@@ -1,0 +1,29 @@
+---
+permalink: nfs-config-esxi/task_installing_virtual_storage_console_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords: configuration, provision, task, storage, esxi, host, plug-in, vcenter, server, install 
+summary: Para automatiza muchas de las tareas de configuración y aprovisionamiento necesarias para utilizar el almacenamiento con un host ESXi. Es un complemento de vCenter Server. 
+---
+= Instale
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Virtual Storage Console para automatiza muchas de las tareas de configuración y aprovisionamiento necesarias para utilizar el almacenamiento con un host ESXi. Es un complemento de vCenter Server.
+
+.Antes de empezar
+Debe tener credenciales de administrador en la instancia de vCenter Server que se utiliza para gestionar el host ESXi.
+
+.Acerca de esta tarea
+* Virtual Storage Console se instala como un dispositivo virtual que incluye Virtual Storage Console, API de vStorage para el proveedor de conocimiento del almacenamiento (VASA) y las funcionalidades de Storage Replication Adapter (SRA) para VMware vSphere.
+
+
+.Pasos
+. Descargue la versión de que se admite para la configuración, como se muestra en la herramienta matriz de interoperabilidad.
++
+https://mysupport.netapp.com/site/global/dashboard["Soporte de NetApp"]
+
+. Implemente el dispositivo virtual y configúrelo siguiendo los pasos de _Deployment and Setup Guide_.
+

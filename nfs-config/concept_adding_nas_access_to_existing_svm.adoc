@@ -1,0 +1,75 @@
+---
+permalink: nfs-config/concept_adding_nas_access_to_existing_svm.html 
+sidebar: sidebar 
+keywords: nfs, access, exist, svm, creating, create, data, lif, configuring, configure, nis, provision, volume, export, policy, add, add nfs access to an existing svm 
+summary: Agregar acceso NFS a una SVM existente implica crear una LIF de datos, opcionalmente configurar NIS, aprovisionar un volumen, exportar el volumen y configurar la política de exportación. 
+---
+= Añada el acceso de NFS a una SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Agregar acceso NFS a una SVM existente implica crear una LIF de datos, opcionalmente configurar NIS, aprovisionar un volumen, exportar el volumen y configurar la política de exportación.
+
+.Antes de empezar
+* Debe saber cuáles de los siguientes componentes de red utilizará la SVM:
++
+** El nodo y el puerto específico en ese nodo en el que se creará la interfaz lógica de datos (LIF)
+** Subred desde la que se aprovisionará la dirección IP de la LIF de datos o, si lo desea, la dirección IP específica que desea asignar a la LIF de datos
+
+
+* Todos los firewalls externos deben estar configurados correctamente para permitir el acceso a los servicios de red.
+* Se debe permitir el protocolo NFS en el SVM.
+
+
+Para obtener más información, consulte link:https://docs.netapp.com/us-en/ontap/networking/index.html["Documentación de gestión de redes"^].
+
+.Pasos
+. Desplácese hasta el área en la que pueda configurar los protocolos de la SVM:
++
+.. Seleccione la SVM que desea configurar.
+.. En el panel *Detalles*, junto a *Protocolos*, haga clic en *NFS*.
++
+image::../media/svm_add_protocol_nfs_nfs.gif[Esta imagen se explica por el texto circundante.]
+
+
+
+. En el cuadro de diálogo *Configurar protocolo NFS*, cree una LIF de datos.
++
+.. Asigne una dirección IP a la LIF de forma automática desde una subred que especifique o introduzca manualmente la dirección.
+.. Haga clic en *examinar* y seleccione un nodo y un puerto que se asociarán a la LIF.
++
+image::../media/svm_setup_cifs_nfs_page_lif_multi_nas_nfs.gif[Este gráfico se describe con el texto circundante.]
+
+
+
+. Si su sitio utiliza NIS para servicios de nombres o asignación de nombres, especifique las direcciones IP y de dominio de los servidores NIS y seleccione los tipos de base de datos para los que desea agregar el origen del servicio de nombres NIS.
++
+image::../media/svm_setup_cifs_nfs_page_nis_area_nfs.gif[Este gráfico se explica por el texto circundante.]
+
++
+Si los servicios NIS no están disponibles, no intente configurarlo. Los servicios NIS configurados incorrectamente pueden provocar problemas de acceso al almacén de datos.
+
+. Cree y exporte un volumen para acceder a NFS:
++
+.. En *Nombre de exportación*, escriba un nombre que será tanto el nombre de exportación como el comienzo del nombre del volumen.
+.. Especifique un tamaño para el volumen que contendrá los archivos.
++
+image::../media/svm_setup_cifs_nfs_page_nfs_export_nfs.gif[Captura de pantalla del área en la que se configura la exportación NFS]
+
++
+No es necesario especificar el agregado para el volumen porque se encuentra automáticamente en el agregado con el mayor espacio disponible.
+
+.. En el campo *Permission*, haga clic en *Change* y especifique una regla de exportación que proporcione acceso NFSv3 a un host de administración UNIX, incluido el acceso de superusuario.
++
+image::../media/export_rule_for_admin_manual_nfs_nfs.gif[Esta imagen se explica por el texto circundante.]
+
+
+
++
+Puede crear un volumen de 10 GB denominado Eng, exportarlo como Eng, y agregar una regla que proporcione al cliente "'admin_host'" acceso completo a la exportación, incluido el acceso de superusuario.
+
+. Haga clic en *Enviar y cerrar* y, a continuación, haga clic en *Aceptar*.
+

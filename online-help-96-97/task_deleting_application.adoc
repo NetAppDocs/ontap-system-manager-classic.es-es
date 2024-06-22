@@ -1,0 +1,42 @@
+---
+permalink: online-help-96-97/task_deleting_application.html 
+sidebar: sidebar 
+keywords: delete, application, provisioned 
+summary: Puede eliminar una aplicación aprovisionada cuando ya no sea necesaria. 
+---
+= Elimine una aplicación con System Manager - ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para eliminar una aplicación aprovisionada cuando ya no se necesita.
+
+.Acerca de esta tarea
+Como administrador de clúster, después de aprovisionar una aplicación, puede eliminarla cuando ya no la necesite. El procedimiento de ejemplo que sigue describe cómo eliminar una aplicación *contenedor NAS*.
+
+.Pasos
+. Haga clic en *aplicaciones y niveles* > *aplicaciones*
+. Haga clic en el nombre de la aplicación contenedor NAS.
++
+[NOTE]
+====
+Si alguien agrega nuevas aplicaciones con la CLI o la API de REST mientras visualiza la lista de aplicaciones, no podrá ver esas nuevas aplicaciones al desplazarse por la lista.
+
+====
++
+La ficha *Descripción general* de la ventana Detalles de la aplicación: nas muestra la configuración de la aplicación.
+
+. Haga clic en *Eliminar*.
++
+Un cuadro de diálogo muestra un mensaje de advertencia que le pregunta si está seguro de que desea eliminar esta aplicación.
+
+. Haga clic en *Eliminar*.
++
+[NOTE]
+====
+Cualquier volumen eliminado que utilice la operación de eliminación de la aplicación no se coloca en la cola de recuperación. El volumen se elimina inmediatamente.
+
+====
+

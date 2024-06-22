@@ -1,0 +1,69 @@
+---
+permalink: online-help-96-97/concept_setting_up_network.html 
+sidebar: sidebar 
+keywords: online, help, set, up, network, ipspace, broadcast, domain, subnet, system, manager, cluster, range 
+summary: La configuración de la red consiste en crear espacios IP, un dominio de retransmisión y subredes. 
+---
+= Configure la red con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar la red. La configuración de la red consiste en crear espacios IP, un dominio de retransmisión y subredes.
+
+
+
+== Cree espacios IP
+
+Puede crear un espacio IP mediante System Manager para configurar un único clúster de ONTAP a fin de acceder a clientes desde más de un dominio de red independiente de la administración, incluso cuando los clientes utilizan el mismo rango de subred de direcciones IP. Esto le permite separar el tráfico de los clientes para garantizar la privacidad y la seguridad.
+
+.Acerca de esta tarea
+Todos los nombres de espacio IP deben ser únicos dentro de un clúster y no deben estar formados por nombres reservados por el sistema, como «'local'» o «'localhost'».
+
+.Pasos
+. Haga clic en la ficha *Red*.
+. En la ficha *IPspaces*, haga clic en *Crear*.
+. En el cuadro de diálogo *Crear espacios IP*, especifique un nombre para el espacio IP que desea crear.
+. Haga clic en *Crear*.
+
+
+
+
+== Cree dominios de retransmisión
+
+Puede crear un dominio de retransmisión mediante System Manager para proporcionar una división lógica de una red informática. En un dominio de retransmisión, se puede acceder a todos los nodos asociados mediante la retransmisión en la capa de enlace de datos
+
+.Pasos
+. Haga clic en la ficha *Red*.
+. En la ficha *Dominios de difusión*, haga clic en *Crear*.
+. En el cuadro de diálogo *Crear dominio de difusión*, especifique el nombre, el tamaño de MTU, el espacio IP y los puertos del dominio de difusión que desea crear.
+. Haga clic en *Crear*.
+
+
+
+
+== Crear subredes
+
+Puede crear una subred mediante System Manager para subdividir de forma lógica una red de IP a fin de preasignar las direcciones IP. Una subred permite crear interfaces con mayor facilidad ya que para cada interfaz nueva solo hay que especificar una subred en lugar de una dirección IP y valores de máscara de red.
+
+.Antes de empezar
+Debe haber creado el dominio de retransmisión en el que se usará la subred.
+
+.Acerca de esta tarea
+Si especifica una puerta de enlace al crear una subred, se añadirá automáticamente a la SVM una ruta predeterminada a la puerta de enlace cuando se cree una LIF con dicha subred.
+
+.Pasos
+. Haga clic en la ficha *Red*.
+. En la ficha *subredes*, haga clic en *Crear*.
+. En el cuadro de diálogo *Crear subred*, especifique los detalles de la subred, como el nombre, la dirección IP de la subred o la máscara de subred, el intervalo de direcciones IP, la dirección de la puerta de enlace y el dominio de difusión.
++
+Puede especificar las direcciones IP como un rango, como varias direcciones separadas por comas o mediante una combinación de ambos métodos.
+
+. Haga clic en *Crear*.
+
+
+*Información relacionada*
+
+xref:reference_network_window.adoc[Ventana de red]

@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/task_creating_initiator_groups.html 
+sidebar: sidebar 
+keywords: create, initiator, group, system, manager, lun, online, help, manage, delete, edit, add 
+summary: Puede usar System Manager para crear un iGroup. Los iGroups le permiten controlar el acceso del host a una LUN específica. Puede utilizar conjuntos de puertos para limitar a qué LIF puede acceder un iniciador. 
+---
+= Gestione los iGroups con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar un iGroup. Los iGroups le permiten controlar el acceso del host a una LUN específica. Puede utilizar conjuntos de puertos para limitar a qué LIF puede acceder un iniciador.
+
+
+
+== Cree iGroups
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *iGroups*, haga clic en *Crear*.
+. En la ficha *General* del cuadro de diálogo *Crear iGroup*, especifique el nombre del iGroup, el sistema operativo, el nombre del alias de host, el conjunto de puertos y el protocolo compatible para el grupo.
+. Haga clic en *Crear*.
+
+
+
+
+== Elimine los iGroups
+
+Puede usar la pestaña iGroups en System Manager para eliminar iGroups.
+
+.Antes de empezar
+Se debe quitar la asignación manual de todas las LUN asignadas al iGroup.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *iGroups*, seleccione uno o más iGroups que desee eliminar y, a continuación, haga clic en *Eliminar*.
+. Haga clic en *Eliminar*.
+. Compruebe que los iGroups que ha eliminado ya no se muestran en la pestaña *iGroups*.
+
+
+
+
+== Añada iniciadores
+
+Puede usar System Manager para añadir iniciadores a un iGroup. Un iniciador proporciona acceso a una LUN cuando el iGroup a el que pertenece está asignado a esa LUN.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la ficha *Administración de LUN*, seleccione el iGroup al que desea agregar iniciadores y haga clic en *Editar*.
+. En el cuadro de diálogo *Editar iGroup*, haga clic en *iniciadores*.
+. Haga clic en *Agregar*.
+. Especifique el nombre del iniciador y haga clic en *Aceptar*.
+. Haga clic en *Guardar y cerrar*.
+
+
+
+
+== Elimine los iniciadores de un iGroup
+
+Puede usar la pestaña iGroups en System Manager para eliminar un iniciador. Para eliminar un iniciador de un iGroup, debe desasociar el iniciador del iGroup.
+
+.Antes de empezar
+Se debe quitar la asignación manual de todas las LUN que están asignadas al iGroup que contiene el iniciador que desea eliminar.
+
+.Pasos
+. Haga clic en *almacenamiento* > *LUN*.
+. En la pestaña *iGroups*, seleccione el iGroup desde el que desea eliminar el iniciador y, a continuación, haga clic en *Editar*.
+. En el cuadro de diálogo *Editar iGroup*, haga clic en la ficha *iniciadores*.
+. Seleccione y elimine el iniciador del cuadro de texto y haga clic en *Guardar*.
++
+El iniciador está desasociado del iGroup.
+
+
+
+*Información relacionada*
+
+xref:reference_luns_window.adoc[Ventana de LUN]

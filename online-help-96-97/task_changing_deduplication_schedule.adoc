@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_changing_deduplication_schedule.html 
+sidebar: sidebar 
+keywords: change, deduplication, schedule, online, help, system, manager 
+summary: Puede usar System Manager para cambiar la programación de deduplicación si decide ejecutar la deduplicación manualmente, automáticamente o en la programación que especifique. 
+---
+= Cambie la programación de la deduplicación con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para cambiar la programación de deduplicación si decide ejecutar la deduplicación manualmente, de forma automática o con una programación especificada.
+
+.Pasos
+. Haga clic en *almacenamiento* > *volúmenes*.
+. En el menú desplegable del campo *SVM*, seleccione *todas las SVM*.
+. Seleccione el volumen de lectura/escritura para el que desea modificar la programación de deduplicación.
+. Haga clic en *Editar* y, a continuación, haga clic en la ficha *eficacia de almacenamiento*.
+. Cambie la programación de la deduplicación según sea necesario.
+. Haga clic en *Guardar y cerrar*.
+
+
+*Información relacionada*
+
+xref:reference_volumes_window.adoc[Ventana Volumes]

@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_monitoring_ha_pairs.html 
+sidebar: sidebar 
+keywords: system, manager, ha, availability, monitor, ha, pair 
+summary: 'Puede usar System Manager para supervisar el estado de los nodos y el estado de interconexión de todos los pares de alta disponibilidad (ha) de un clúster. También puede verificar si la toma de control o la devolución están habilitadas o se ha producido, y ver los motivos por los que no es posible realizar la toma de control o la devolución actualmente.' 
+---
+= Supervise parejas de alta disponibilidad con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para supervisar el estado de los nodos y el estado de las interconexiones de todos los pares de alta disponibilidad en un clúster. También puede verificar si la toma de control o la devolución están habilitadas o se ha producido, y ver los motivos por los que no es posible realizar la toma de control o la devolución actualmente.
+
+.Pasos
+. Haga clic en *Configuración* > *clúster* > *Alta disponibilidad*.
+. En la ventana *Alta disponibilidad*, haga clic en la imagen de par de alta disponibilidad para ver detalles como el estado de alta disponibilidad del clúster, el estado del nodo, el estado de interconexión y el modelo de hardware de cada nodo.
++
+Si la LIF de gestión del clúster o los LIF de datos de un nodo no están en su nodo principal, se muestra un mensaje de advertencia que indica que el nodo tiene algunas LIF que no están en el nodo de inicio.
+
+
+
+*Información relacionada*
+
+xref:reference_high_availability.adoc[Ventana de alta disponibilidad]

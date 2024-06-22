@@ -1,0 +1,28 @@
+---
+permalink: volume-disaster-recovery/concept_volume_disaster_recovery_workflow.html 
+sidebar: sidebar 
+keywords: volume, disaster recovery, workflow, activating, activate, destination, configuring, configure, access, reactivate, reactivating, original, source, volume disaster recovery workflow 
+summary: El flujo de trabajo de recuperación ante desastres de volúmenes incluye la activación del volumen de destino, la configuración del volumen de destino para el acceso a los datos y la reactivación del volumen de origen original. 
+---
+= Flujo de trabajo de recuperación ante desastres de volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El flujo de trabajo de recuperación ante desastres de volúmenes incluye la activación del volumen de destino, la configuración del volumen de destino para el acceso a los datos y la reactivación del volumen de origen original.
+
+image::../media/snapmirror_failover_resync_workflow_eg.gif[Esta ilustración muestra un diagrama de flujo del flujo de trabajo para la resincronización y conmutación por error en interconexión de clústeres de SnapMirror. Los pasos del flujo de trabajo coinciden con los temas.]
+
+Hay información adicional disponible que puede ayudarlo a gestionar las relaciones de recuperación ante desastres a nivel de volumen y ofrece otros métodos de recuperación ante desastres para proteger la disponibilidad de sus recursos de datos.
+
+* xref:../volume-backup-snapvault/index.html[Backup de volúmenes mediante SnapVault]
++
+Describe cómo configurar rápidamente las relaciones de almacén de backup entre volúmenes ubicados en distintos clústeres de ONTAP.
+
+* xref:../volume-restore-snapvault/index.html[Gestión de la restauración de volúmenes mediante SnapVault]
++
+Describe cómo restaurar rápidamente un volumen a partir de un almacén de backup en ONTAP.
+
+

@@ -1,0 +1,30 @@
+---
+permalink: nfs-config-esxi/task_creating_aggregate.html 
+sidebar: sidebar 
+keywords: exist, aggregate, create, physical, storage, provision, create an aggregate 
+summary: Si no desea usar un agregado existente, puede crear un nuevo agregado para proporcionar almacenamiento físico al volumen que está aprovisionando. 
+---
+= Cree un agregado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si no desea usar un agregado existente, puede crear un nuevo agregado para proporcionar almacenamiento físico al volumen que está aprovisionando.
+
+.Acerca de esta tarea
+Si tiene un agregado existente que desea usar para el nuevo volumen, puede omitir este procedimiento.
+
+.Pasos
+. Introduzca la URL `+https://IP-address-of-cluster-management-LIF+` en un explorador web e inicie sesión para usar la credencial de administrador de clúster.
+. Desplácese a la ventana *agregados*.
+. Haga clic en *Crear.*
+. Siga las instrucciones que aparecen en pantalla para crear el agregado mediante la configuración predeterminada de RAID-DP y, a continuación, haga clic en *Crear*.
++
+image::../media/aggregate_creation_nfs_esxi.gif[Crear una pantalla de agregado en System Manager]
+
+
+
+.Resultados
+El agregado se creará con la configuración indicada y se añadirá a la lista de agregados de la ventana Aggregates.

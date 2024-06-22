@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/concept_jobs.html 
+sidebar: sidebar 
+keywords: jobs, system, manager, job, task, display, information, progress, asynchronous, volume, operation, copy, move, mirror, data, queue, cluster, administrator, online, help 
+summary: Puede usar System Manager para gestionar tareas de trabajos, como mostrar información de trabajos y supervisar el progreso de un trabajo. 
+---
+= Gestione trabajos con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para gestionar tareas de trabajos como mostrar información de trabajos y supervisar el progreso de un trabajo.
+
+
+
+== Trabajos
+
+_Jobs_ son operaciones de volumen asíncronas y, generalmente, operaciones de volumen de ejecución prolongada, como copiar, mover o reflejar datos. Los trabajos se colocan en una cola de trabajos y se ejecutan cuando hay recursos disponibles. El administrador de clúster puede realizar todas las tareas relacionadas con la gestión de trabajos.
+
+Un trabajo puede ser una de las siguientes categorías:
+
+* Un trabajo _Server-affiliated_ es colocado en cola por el marco de trabajo de administración que se ejecuta en un nodo específico.
+* Un trabajo _cluster-affiliated_ es colocado en cola por el marco de administración que se va a ejecutar en cualquier nodo del clúster.
+* Un trabajo _private_ es específico de un nodo y no utiliza la base de datos replicada (RDB) ni ningún otro mecanismo del clúster.
++
+Se requiere el nivel de privilegio avanzado o superior para ejecutar los comandos para gestionar los trabajos privados.
+
+
+
+Puede gestionar trabajos de las siguientes formas:
+
+* Mostrar información de trabajo, incluidos los siguientes:
++
+** Trabajos basados en cada nodo
+** Trabajos afiliados al cluster
+** Trabajos completados
+** Historial de trabajos
+
+
+* Supervisión del progreso de un trabajo
+* Visualización de información sobre el estado de inicialización de los gestores de trabajos.
+
+
+Puede determinar el resultado de un trabajo completado marcando el registro de eventos.
+
+
+
+== Ventana de trabajo
+
+Puede utilizar la ventana Trabajo para administrar tareas de trabajo, como mostrar información de trabajos y supervisar el progreso de un trabajo.
+
+
+
+=== Botón de comando
+
+* *Actualizar*
++
+Actualiza la información de la ventana.
+
+
+
+
+
+=== Pestañas
+
+* *Trabajos actuales*
++
+Esta pestaña muestra información sobre las tareas de trabajo en curso.
+
+* *Historial del trabajo*
++
+Esta pestaña muestra información sobre todos los trabajos.
+
+
+
+
+
+=== Lista de trabajos
+
+* *ID de trabajo*
++
+Muestra el ID del trabajo.
+
+* *Hora de inicio*
++
+Muestra la hora de inicio del trabajo.
+
+* *Nombre del trabajo*
++
+Muestra el nombre del trabajo.
+
+* *Nodo*
++
+Muestra el nombre del nodo.
+
+* *Estado*
++
+Muestra el estado del trabajo.
+
+* *Descripción del trabajo*
++
+Muestra la descripción del trabajo.
+
+* *Progreso*
++
+Muestra el estado del trabajo.
+
+* *Nombre del programa*
++
+Muestra el nombre de la programación.
+
+

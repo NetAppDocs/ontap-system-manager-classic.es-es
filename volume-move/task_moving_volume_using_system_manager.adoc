@@ -1,0 +1,91 @@
+---
+permalink: volume-move/task_moving_volume_using_system_manager.html 
+sidebar: sidebar 
+keywords: move, volume, system, manager, destination, aggregate, operation, monitor, job, move a volume using system manager 
+summary: 'Con la interfaz "clásica" de ONTAP System Manager con ONTAP 9.7 o una versión anterior, puede mover un volumen seleccionando un volumen y el agregado de destino, iniciando la operación de movimiento de volúmenes y, opcionalmente, supervisando el trabajo de movimiento de volúmenes. Cuando se usa System Manager, una operación de movimiento de volúmenes se completa automáticamente.' 
+---
+= Mover un volumen mediante System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mediante la interfaz _classic_ de ONTAP con ONTAP 9.7 o una versión anterior, puede mover un volumen seleccionando un volumen y el agregado de destino, iniciando la operación de movimiento de volúmenes y, opcionalmente, supervisando el trabajo de movimiento de volúmenes. Cuando se usa System Manager, una operación de movimiento de volúmenes se completa automáticamente.
+
+.Antes de empezar
+Debe haber revisado el espacio disponible en el agregado de origen y el agregado de destino antes de la operación de movimiento de volúmenes y después de la operación de movimiento de volúmenes.
+
+.Acerca de esta tarea
+Una operación de movimiento de volúmenes solo se admite dentro del mismo clúster. Además, debe tener en cuenta que el agregado desde el que se mueve el volumen y el agregado desde el que se mueve el volumen deben estar en la misma máquina virtual de almacenamiento (SVM). Un movimiento de volúmenes no interrumpe el acceso de los clientes.
+
+.Pasos
+. Vaya a la ventana *Volumes*.
+. Seleccione el volumen que desea mover y, a continuación, haga clic en *acciones* > *mover*.
+. Seleccione el agregado de destino y, a continuación, inicie la operación de movimiento de volúmenes:
++
+.. Seleccione un agregado de destino de la lista de posibles agregados, que únicamente incluyen los agregados que tienen la capacidad requerida.
++
+Debe revisar el espacio disponible, el espacio total, el tipo de RAID y el tipo de almacenamiento de los agregados. Por ejemplo, si el objetivo es alterar las características de rendimiento del volumen, puede centrarse en los agregados con el tipo de almacenamiento que desee.
+
+.. Haga clic en *mover* y, a continuación, vuelva a hacer clic en *mover* para confirmar que desea continuar con la operación de movimiento de volumen.
++
+Cuando aparezca el cuadro de diálogo Move Volume, deje el cuadro de diálogo abierto si desea supervisar el trabajo de movimiento de volúmenes.
+
+
+
+. *Opcional:* [[step4-monitor]]supervise el trabajo de movimiento de volumen:
++
+.. En el cuadro de diálogo *mover volumen*, haga clic en el enlace a *ID de trabajo* del trabajo de movimiento de volumen.
+.. Busque el trabajo de movimiento de volúmenes y, a continuación, revise la información en la columna *Estado*.
++
+El trabajo puede estar en una de varias fases, como transferir la base inicial de los datos o iniciar un intento de transposición.
+
++
+image::../media/volume_move_3_job_cutover.gif[Esta imagen se explica por el texto circundante.]
+
+.. Haga clic en *Actualizar* en la ventana *trabajos* para ver el estado actualizado del trabajo.
++
+image::../media/volume_move_4_job_is_successful.gif[Esta imagen se explica por el texto circundante.]
+
++
+El estado del trabajo cambia a. `Complete: Successful` cuando finalice la operación de desplazamiento de volumen.
+
+
+
+. Si el trabajo de movimiento de volumen entra en la fase aplazada de la transición, realice una transposición manual.
++
+.. En la ventana *Volumes*, seleccione el volumen para el que inició el trabajo de movimiento de volúmenes.
+.. Inicie la transición del volumen:
++
+|===
+
+
+| Si está ejecutando... | Realice estos pasos... 
+
+
+ a| 
+ONTAP 9,3 o posterior
+ a| 
+... Expanda el volumen y haga clic en el enlace *Mostrar más detalles* para ver más información sobre el volumen.
+... En la ficha *Descripción general*, haga clic en *Corte*.
+
+
+
+
+ a| 
+ONTAP 9,2 o anterior
+ a| 
+En la ficha *Detalles de movimiento de volumen*, haga clic en *Corte*.
+
+|===
+.. En el cuadro de diálogo *transición* , haga clic en *Opciones avanzadas* .
+.. Especifique la acción de transposición y la duración de la transposición.
++
+image::../media/vol_move_cutover.gif[Esta imagen se explica por el texto circundante.]
+
+.. Haga clic en *Aceptar*.
+
+
+. Repetición <<step4-monitor,Paso 4>>.
+

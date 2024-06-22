@@ -1,0 +1,49 @@
+---
+permalink: volume-disaster-prep/task_setting_up_destination_svm_for_data_access.html 
+sidebar: sidebar 
+keywords: minimize, data, access, disruption, activating, activate, destination, volume, configuration, cifs, policies, policy, nas, environment, initiator, group, svm, set up the destination svm for data access 
+summary: Puede minimizar las interrupciones de acceso a los datos cuando se activa el volumen de destino mediante la configuración de configuraciones necesarias, como LIF, recursos compartidos de CIFS y políticas de exportación para el entorno NAS, y LIF y grupos de iniciadores para el entorno SAN en la SVM que contiene el volumen de destino. 
+---
+= Configure la SVM de destino para el acceso a los datos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede minimizar las interrupciones de acceso a los datos cuando se activa el volumen de destino mediante la configuración de configuraciones necesarias, como LIF, recursos compartidos de CIFS y políticas de exportación para el entorno NAS, y LIF y grupos de iniciadores para el entorno SAN en la SVM que contiene el volumen de destino.
+
+.Acerca de esta tarea
+Debe realizar esta tarea en el clúster *destino* para la SVM que contiene el volumen de destino.
+
+
+
+== Procedimiento
+
+* Entorno NAS:
++
+.. Cree LIF NAS.
+.. Cree recursos compartidos CIFS con los mismos nombres de recursos compartidos que se usaron en el origen.
+.. Cree las políticas de exportación NFS adecuadas.
+.. Crear reglas de cuota adecuadas.
+
+
+* ENTORNO SAN:
++
+.. Cree LIF SAN.
+.. *Opcional:* Configurar conjuntos de puertos.
+.. Configure los iGroups.
+.. Para FC, dividir los switches de FC para permitir que los clientes SAN accedan a las LIF.
+
+
+
+
+
+
+== Qué hacer a continuación
+
+Si se realizaron cambios en la SVM que contiene el volumen de origen, se deben replicar manualmente los cambios en la SVM que contiene el volumen de destino.
+
+*Información relacionada*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de documentación de ONTAP 9"]

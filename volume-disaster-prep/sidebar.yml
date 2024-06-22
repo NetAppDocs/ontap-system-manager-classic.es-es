@@ -1,0 +1,20 @@
+---
+section: volume-disaster-prep
+title: Preparación para la recuperación ante desastres de volúmenes
+entries:
+- title: Descripción general
+  url: "/volume-disaster-prep/index.html"
+- title: Flujo de trabajo de preparación para la recuperación ante desastres de volúmenes
+  url: "/volume-disaster-prep/concept_snapmirror_intercluster_configuration_workflow.html"
+  entries:
+  - title: Compruebe las relaciones de paridad de clústeres y las relaciones de paridad
+      de SVM
+    url: "/volume-disaster-prep/task_verifying_cluster_peer_relationship.html"
+  - title: Crear la relación de SnapMirror (a partir de ONTAP 9.3)
+    url: "/volume-disaster-prep/task_creating_snapmirror_relationships_93_later.html"
+  - title: Crear la relación de SnapMirror (ONTAP 9.2 o anterior)
+    url: "/volume-disaster-prep/task_creating_snapmirror_relationships_92_earlier.html"
+  - title: Configure la SVM de destino para el acceso a los datos
+    url: "/volume-disaster-prep/task_setting_up_destination_svm_for_data_access.html"
+  - title: Supervisar el estado de las transferencias de datos de SnapMirror
+    url: "/volume-disaster-prep/task_monitoring_status_snapmirror_data_transfers.html"

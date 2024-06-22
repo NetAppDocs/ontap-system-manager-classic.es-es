@@ -1,0 +1,87 @@
+---
+permalink: online-help-96-97/task_editing_svm_settings.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, edit, svm, settings 
+summary: 'Puede usar System Manager para editar las propiedades de las máquinas virtuales de almacenamiento (SVM), como el switch de servicio de nombres, el switch de asignación de nombres y la lista de agregados.' 
+---
+= Edite la configuración de SVM con System Manager: ONTAP 9.7 y versiones anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede usar System Manager classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para editar las propiedades de las máquinas virtuales de almacenamiento (SVM), como el switch del servicio de nombres, el switch de asignación de nombres y la lista de agregados.
+
+.Acerca de esta tarea
+* Puede editar los valores de las siguientes propiedades de SVM:
++
+** Cambio de servicio de nombres
+** Protocolos que se habilitan para proporcionar datos
++
+[NOTE]
+====
+El protocolo CIFS que está configurado en la SVM continúa sirviendo datos incluso cuando se deshabilita el protocolo en esa SVM.
+
+====
+** La lista de agregados disponibles para crear volúmenes
++
+[NOTE]
+====
+En FlexVol Volumes, solo puede asignar agregados si ha delegado la administración a un administrador de SVM.
+
+====
+
+
+* System Manager no muestra los valores del switch de servicio de nombres y el switch de asignación de nombres para una SVM que se crea a través de la interfaz de línea de comandos o para los servicios de SVM que no se han configurado y que ONTAP no ha establecido en los valores predeterminados.
++
+Puede utilizar la interfaz de línea de comandos para ver los servicios porque la pestaña Servicios está deshabilitada.
+
++
+System Manager muestra el switch de servicio de nombres y el switch de asignación de nombres de una SVM solo cuando se crea mediante System Manager o cuando los servicios de la SVM se establecen en los valores predeterminados por parte de ONTAP.
+
+
+
+.Pasos
+. Haga clic en *almacenamiento* > *SVM*.
+. Seleccione la SVM y, a continuación, haga clic en *Editar*.
+. En la ficha *Detalles*, modifique los protocolos de datos necesarios.
+. En la ficha *asignación de recursos* , elija uno de los siguientes métodos para delegar la creación de volúmenes:
++
+|===
+| Si desea aprovisionar la creación de volúmenes... | Realice lo siguiente... 
+
+
+ a| 
+Para todos los agregados
+ a| 
+Seleccione la opción *no delegar creación de volumen*.
+
+
+
+ a| 
+Para agregados específicos
+ a| 
+.. Seleccione la opción *creación de volumen de delegado*.
+.. Seleccione los agregados necesarios para delegar la creación de volúmenes.
+
+
+|===
+. En la ficha *Servicio*, especifique los orígenes del modificador de servicio de nombres para los tipos de base de datos necesarios y el orden en el que se deben consultar para recuperar la información del servicio de nombres.
++
+Los valores predeterminados para cada tipo de base de datos son los siguientes:
+
++
+** hosts: archivos, dns
+** namemap: archivos
+** grupo: archivos
+** netgroup: archivos
+** passwd: archivos
+
+
+. Haga clic en *Guardar y cerrar*.
+
+
+*Información relacionada*
+
+xref:concept_how_data_ontap_name_service_switch_configuration_works.adoc[Cómo funciona la configuración de switch de servicio de nombres ONTAP]
