@@ -9069,7 +9069,6 @@ LDAP es el origen principal de información de usuario para los servicios de nom
   <block id="33d698c5405b59cf282a091b0fab54f4" category="image-alt">Esta ilustración es un diagrama de flujo de trabajo de configuración de backup de SnapVault. Los pasos del flujo de trabajo coinciden con los temas.</block>
   <block id="6a34cf18fb7026d09fc129111db8a169" category="paragraph">Hay documentación adicional disponible que ayuda a restaurar datos desde un volumen de destino para probar los datos en los que se ha realizado un backup o cuando se ha perdido el volumen de origen.</block>
   <block id="580df0707800400af79839e20238fb6e" category="paragraph">Describe cómo restaurar rápidamente un volumen a partir de un backup de SnapVault en ONTAP</block>
-  <block id="5069c081842d21ed175ea7a6154fbacb" category="sidebar">La interfaz de System Manager Classic está disponible en ONTAP 9,7 y versiones anteriores de ONTAP 9. En este sitio, la documentación está disponible para flujos de trabajo de configuración que utilizan System Manager Classic, así como la ayuda en línea de System Manager Classic para ONTAP 9,6 y 9,7.</block>
   <block id="b82cad5226b405ad72908490db99b36c" category="sidebar">Documentación clásica de System Manager de ONTAP</block>
   <block id="b7ab6e81313c8d18114a457f193b6312" category="sidebar">System Manager de ONTAP es un producto sencillo y versátil que permite configurar y gestionar fácilmente clústeres de ONTAP. System Manager simplifica las tareas de almacenamiento comunes, como la creación de volúmenes, LUN, qtrees, recursos compartidos y exportaciones. lo que ahorra tiempo y ayuda a evitar errores.</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Manos a la obra</block>
@@ -9080,7 +9079,6 @@ LDAP es el origen principal de información de usuario para los servicios de nom
   <block id="27dc49cb854bf08b0bbc4e74cdbe5316" category="sidebar">Configuración de NFS para ESXi mediante VSC</block>
   <block id="b5224505b319d9c81346246e1f3de1a7" category="sidebar">Configuración de múltiples protocolos de SMB y NFS</block>
   <block id="d05c8dd88231b9c3216259d1e6814a77" category="sidebar">Configuración de SMB</block>
-  <block id="8e719802bed185197f99105e67d3034e" category="sidebar">Configuración de FC para ESXi mediante VSC</block>
   <block id="7d30b55c54296bcdedf5a84c9b75594f" category="sidebar">Configuración FC para Red Hat Enterprise Linux</block>
   <block id="23617d02d88796301c4d82f522e259ea" category="sidebar">Configuración de FC para Windows</block>
   <block id="50575298e52caf9a33c4f761e7f5b730" category="sidebar">Configuración de iSCSI para ESXi mediante VSC</block>
@@ -9311,4 +9309,641 @@ LDAP es el origen principal de información de usuario para los servicios de nom
   <block id="34b038e21199a9f0fc12b3f94eb4fdb0" category="sidebar">Configurar y verificar el acceso del cliente NFS (crear una SVM nueva habilitada para NFS)</block>
   <block id="c9400d1db93e0471869b3c666490fa71" category="sidebar">Abrir la política de exportación del volumen raíz de SVM (configurar el acceso de NFS a una SVM existente)</block>
   <block id="17e1c570ca599dbf87546393bebca4a8" category="sidebar">Configurar y verificar el acceso al cliente NFS (añadir un volumen NFS a una SVM habilitada para NFS)</block>
+  <block id="f068de0dc9fa18c23071832f9eb3a53b" category="summary">Configure los servicios DNS para la SVM antes de crear un servidor NFS o SMB</block>
+  <block id="827c1f58eabad1c045a0db679a4497d8" category="doc">Configurar servicios DNS (ONTAP 9,7 y versiones anteriores)</block>
+  <block id="25b12118e384a60668346d5b1770c323" category="paragraph">Debe configurar los servicios DNS para la SVM antes de crear un servidor NFS o SMB. Generalmente, los servidores de nombres DNS son los servidores DNS integrados de Active Directory para el dominio al que se unirá el servidor NFS o SMB.</block>
+  <block id="232fd7f26d973fe38def49233cd075bf" category="paragraph">Los servidores DNS integrados en Active Directory contienen los registros de ubicación de servicio (SRV) para los servidores LDAP de dominio y controlador de dominio. Si la SVM no puede encontrar los servidores LDAP de Active Directory y las controladoras de dominio, se produce un error en la configuración del servidor NFS o SMB.</block>
+  <block id="fcea48ac44daed4236b24206a9380f46" category="paragraph">Las SVM utilizan la base de datos ns-switch de servicios de nombres de hosts para determinar qué servicios de nombres utilizar y en qué orden se debe buscar información sobre los hosts. Los dos servicios de nombres soportados para la base de datos hosts son<block ref="45b963397aa40d4a0063e0d85e4fe7a1" prefix=" " category="inline-code"></block> y.<block ref="b3bf60b851ebaeb2768b01a32e2ef32f" prefix=" " category="inline-code"></block></block>
+  <block id="4527704dc585750d6e7fe7d7aeabcf31" category="paragraph">Debe asegurarse de que<block ref="b3bf60b851ebaeb2768b01a32e2ef32f" prefix=" " category="inline-code"></block> es uno de los orígenes antes de crear el servidor SMB.</block>
+  <block id="9102f8ca573a7ea6314fe39fd73e71bb" category="admonition">Para ver las estadísticas de los servicios de nombre DNS para el proceso mgwd y el proceso SECD, use la interfaz de usuario de Statistics.</block>
+  <block id="fa7cdcfa8b2a7478bb2a54d0f83a859a" category="list-text">Determine cuál es la configuración actual para<block ref="85cf4e6d42a71e693fd780c8b29accdd" prefix=" " category="inline-code"></block> la base de datos de servicios de nombres.</block>
+  <block id="fa3ae76601a12e272a53977eeb41b643" category="paragraph">En este ejemplo, la base de datos del servicio de nombres de host utiliza la configuración predeterminada.</block>
+  <block id="847f8ec204eec763b02e0337ced420b1" category="paragraph"><block ref="bea8635ea997a67656a3063cc78f75e2" prefix="" category="inline-code"></block></block>
+  <block id="99232d5c50dac0086529798f398fe73a" category="list-text">Si es necesario, realice las siguientes acciones.</block>
+  <block id="bd268bded8420baee3fe731f1f2e049e" category="list-text">Agregue el servicio de nombres DNS a la base de datos del servicio de nombres de host en el orden deseado o reordene los orígenes.</block>
+  <block id="bd24bb1d831cb3160d1f19b14408492b" category="paragraph">En este ejemplo, la base de datos hosts está configurada para utilizar DNS y archivos locales en ese orden.</block>
+  <block id="3b305d126359f61f441d1c9b1407ee6e" category="paragraph"><block ref="840029861af4609db07d22153cf2d94e" prefix="" category="inline-code"></block></block>
+  <block id="2f31ce3b5802e173a34c2bb12e8d8985" category="list-text">Compruebe que la configuración del servicio de nombres es correcta.</block>
+  <block id="9a020166160829712d09ad9ea961a02e" category="list-text">Configure los servicios DNS.</block>
+  <block id="053db3db6fc056eaea6e3b9cbb16fa54" category="paragraph"><block ref="e063fe914a8a273f79b0eaced2dec13a" prefix="" category="inline-code"></block></block>
+  <block id="31f0622ffb837190fe4ecd6525e69c35" category="admonition"><block ref="5ff1d8ac91e1ec1e522d748d28734965" prefix=" " category="inline-code"></block>El comando Vserver SERVICES realiza una validación automática de la configuración y notifica un mensaje de error si ONTAP no puede contactar con el servidor de nombres.</block>
+  <block id="7f5bc8f87538b8ea3a414dc8665d481e" category="list-text">Verifique que la configuración de DNS sea correcta y que el servicio esté habilitado.</block>
+  <block id="3eb40b0aa4a335c40fe7ae415cdcb189" category="list-text">Validar el estado de los servidores de nombres.</block>
+  <block id="0d0155381104939285af36f0f53fb627" category="paragraph"><block ref="c67cbbd7d42014f53a19904f42dfa281" prefix="" category="inline-code"></block></block>
+  <block id="7656300265b9c717a9f7447293499125" category="section-title">Configure el DNS dinámico en la SVM</block>
+  <block id="fc273ec6012710999f8354d98772025c" category="paragraph">Si desea que el servidor DNS integrado en Active Directory registre de forma dinámica los registros DNS de un servidor NFS o SMB en DNS, debe configurar el DNS dinámico (DDNS) en la SVM.</block>
+  <block id="b6adff03d32e0b0dd896460087633e22" category="paragraph">Los servicios de nombres DNS deben configurarse en la SVM. Si utiliza DDNS seguro, debe usar servidores de nombres DNS integrados en Active Directory y debe haber creado un servidor NFS o SMB o una cuenta de Active Directory para la SVM.</block>
+  <block id="cd5fdd9d20e27e06e636100f9e3665ec" category="paragraph">El nombre de dominio completo (FQDN) especificado debe ser único:</block>
+  <block id="a274cd8c658f823b928de4538a273063" category="list-text">Para NFS, el valor especificado en<block ref="80b9de329099e45ebd72f10946f105d1" prefix=" " category="inline-code"></block> como parte del<block ref="e5b541ecb67048e7daec7514922b92f9" prefix=" " category="inline-code"></block> comando se convierte en el FQDN registrado para las LIF.</block>
+  <block id="02e516484836bf2255956aa5c23c38b3" category="list-text">Para SMB, los valores especificados como el nombre de NetBIOS del servidor CIFS y el nombre de dominio completo del servidor CIFS se convierten en el FQDN registrado de los LIF. No se puede configurar en ONTAP. En la siguiente situación, el nombre de dominio completo del LIF es «CIFS_VS1.EXAMPLE.COM":</block>
+  <block id="99e65bd556174dde23c5ca7b0afe1915" category="inline-link-macro">RFC 1123</block>
+  <block id="bc26173d39e2884f0f2c5df080b10ebc" category="admonition">Para evitar un error de configuración de un FQDN de SVM que no es compatible con las reglas RFC para las actualizaciones de DDNS, utilice un nombre FQDN que es compatible con RFC. Para obtener más información, consulte <block ref="ad2a4c28e616a75898ace6fcc3f3ebc5" category="inline-link-macro-rx"></block>.</block>
+  <block id="ad862497985cd77ff1f660a2b1a5dbfa" category="list-text">Configure DDNS en la SVM:</block>
+  <block id="dca9fa837ebb92308343005952b33e9f" category="paragraph"><block ref="99460e91312bd6a1252486de90b153b5" prefix="" category="inline-code"></block></block>
+  <block id="833ba41443ed9cf556f588d733a823de" category="paragraph"><block ref="235c647d12065bc5bfe5d54f2a31cb2a" prefix="" category="inline-code"></block></block>
+  <block id="17b0437c60f40b8bd47c198c724ddaad" category="paragraph">Los asteriscos no se pueden utilizar como parte del FQDN personalizado. Por ejemplo,<block ref="7f3e634da883bc7ad9648453c1e6820a" prefix=" " category="inline-code"></block> no es válido.</block>
+  <block id="05504f3d150848e08b56dd51f228d1da" category="list-text">Compruebe que la configuración DDNS es correcta:</block>
+  <block id="c2b6f9545320175e44bd88861fdcdfad" category="paragraph"><block ref="312f6ab356480452dcfd99b7fc44c477" prefix="" category="inline-code"></block></block>
+  <block id="de73a1e9954790ff0901101e659f1bf5" category="summary">Cree una LIF, que es una dirección IP asociada con un puerto físico o lógico.</block>
+  <block id="85590a77bfd01e233e534a520c5724c6" category="doc">Cree una LIF (interfaz de red) en ONTAP</block>
+  <block id="ec7d87855b2f41d3b6c36ff49c461e98" category="paragraph">Una SVM sirve datos a los clientes a través de una o varias interfaces lógicas de red (LIF). Debe crear LIF en los puertos que desee utilizar para acceder a datos. Una LIF (interfaz de red) es una dirección IP asociada a un puerto físico o lógico. Si hay un fallo de un componente, un LIF puede conmutar al respaldo o migrarse a un puerto físico diferente, lo que continúa comunicándose con la red.</block>
+  <block id="50802d3e5a25b93d471686a10da03dd8" category="paragraph-title">Mejor práctica</block>
+  <block id="5bcb18cd3811711d3c8e7a250c84fbb6" category="paragraph">Los puertos de switch conectados a ONTAP se deben configurar como puertos periféricos de árbol de expansión para reducir los retrasos durante la migración de LIF.</block>
+  <block id="ddaa39224424042ba35394afbe714a70" category="list-text">Para realizar esta tarea, debe ser un administrador de clústeres.</block>
+  <block id="6789dcbf206f0a4f22a16b71e5acd842" category="list-text">El puerto de red físico o lógico subyacente debe haber sido configurado con el estado administrativo activo.</block>
+  <block id="0b7a56152c376f386379636394d6eee1" category="list-text">Si tiene pensado utilizar un nombre de subred para asignar la dirección IP y el valor de máscara de red para una LIF, la subred ya debe existir.</block>
+  <block id="8d7c6d693d91720dcea00ddb63dae543" category="paragraph">Las subredes contienen un grupo de direcciones IP que pertenecen a la misma subred de capa 3. Se crean mediante System Manager o<block ref="0eec35ff52aa111a144d89156bcaed96" prefix=" " category="inline-code"></block> el comando.</block>
+  <block id="dc9e8d63cbbdb8d5ea7b651eb84b063e" category="list-text">El mecanismo para especificar el tipo de tráfico que maneja una LIF ha cambiado. Para ONTAP 9.5 y versiones anteriores, LIF usaba funciones para especificar el tipo de tráfico que gestionaría. A partir de ONTAP 9.6, los LIF utilizan políticas de servicio para especificar el tipo de tráfico que manejaría.</block>
+  <block id="0e2f314790eb6267c4448c40e54aaea9" category="list-text">No puede asignar protocolos NAS y SAN a la misma LIF.</block>
+  <block id="d63abfced299c6ffbd6200e985c6d340" category="paragraph">Los protocolos admitidos son SMB, NFS, FlexCache, iSCSI y FC. ISCSI y FC no se pueden combinar con otros protocolos. Sin embargo, puede haber protocolos SAN basados en NAS y Ethernet en el mismo puerto físico.</block>
+  <block id="917d93a73123e18a54b6430b74261e40" category="list-text">No debe configurar los LIF que lleven tráfico SMB para revertir automáticamente a sus nodos de inicio. Esta recomendación es obligatoria si el servidor SMB va a alojar una solución para las operaciones no disruptivas con Hyper-V o SQL Server sobre SMB.</block>
+  <block id="9d233c1f0b092bc81ad068414cb64e53" category="list-text">Puede crear tanto LIF IPv4 como IPv6 en el mismo puerto de red.</block>
+  <block id="092185cac2efeb6454b5f317056077d4" category="list-text">Todos los servicios de asignación de nombres y resolución de nombres de host que utiliza una SVM, como DNS, NIS, LDAP y Active Directory, Debe ser accesible desde al menos un LIF que gestiona el tráfico de datos de la SVM.</block>
+  <block id="9ad4be6eef992b371fa173aecc5c7bd0" category="list-text">Una LIF que gestiona tráfico dentro del clúster entre nodos no debe estar en la misma subred que una LIF que gestiona el tráfico de gestión o una LIF que gestiona el tráfico de datos.</block>
+  <block id="b4fdad0f41f5d63611cc1226e8b16ef6" category="list-text">Crear una LIF que no tiene un destino de conmutación por error válido da lugar a un mensaje de advertencia.</block>
+  <block id="53c7c393b93df8cb5a9fbfa1f669b976" category="list-text">Si tiene un gran número de LIF en su clúster, puede verificar la capacidad de LIF admitida en el clúster:</block>
+  <block id="cd942e7c6676928ecc4c39ce02efa758" category="list-text">System Manager: A partir de ONTAP 9.12.0, vea el rendimiento en la cuadrícula de interfaz de red.</block>
+  <block id="2d783dafcb9a806c61739c4783f65a68" category="list-text">CLI: Utilice<block ref="be57ee83c24450e6f6cbf92cb6031c11" prefix=" " category="inline-code"></block> el comando y la capacidad de LIF admitidas en cada nodo utilizando<block ref="6d38f68efafeeda72933275474c52475" prefix=" " category="inline-code"></block> el comando (en el nivel de privilegio avanzado).</block>
+  <block id="df6fd02001382d75cfbaa48f225d87e0" category="list-text">A partir de ONTAP 9.7, si ya existen otras LIF para la SVM en la misma subred, no es necesario especificar el puerto de inicio de la LIF. ONTAP elige automáticamente un puerto aleatorio en el nodo raíz especificado en el mismo dominio de retransmisión que las otras LIF ya configuradas en la misma subred.</block>
+  <block id="4832088a6467cdd27ab5e94be99fde92" category="paragraph">A partir de la versión 9.4 de ONTAP, se admite FC-NVMe. Si crea una LIF FC-NVMe, debe tener en cuenta lo siguiente:</block>
+  <block id="cb246c73e23f19b4642bb424d4402935" category="list-text">El protocolo NVMe debe ser compatible con el adaptador de FC en el que se crea la LIF.</block>
+  <block id="183bb9f40117c65cde5613d5e0729ba9" category="list-text">FC-NVMe puede ser el único protocolo de datos en las LIF de datos.</block>
+  <block id="f766fb2dec615453dd7fdf037100b8c5" category="list-text">Debe configurarse un LIF que gestiona el tráfico de gestión para cada máquina virtual de almacenamiento (SVM) compatible con SAN.</block>
+  <block id="1975cc10ca1448345ac212d8f5aaa0e5" category="list-text">Las LIF y los espacios de nombres de NVMe deben alojarse en el mismo nodo.</block>
+  <block id="4834e2c9cccfb6e34f5abd7223de2356" category="list-text">Solo se puede configurar una LIF NVMe que gestiona el tráfico de datos por SVM.</block>
+  <block id="ae0df50a6255a9c9261d6b580219771e" category="list-text">Cuando se crea una interfaz de red con una subred, ONTAP selecciona automáticamente una dirección IP disponible desde la subred seleccionada y la asigna a la interfaz de red. Puede cambiar la subred si hay más de una subred, pero no puede cambiar la dirección IP.</block>
+  <block id="f0a3b3545950846c431aae854b982efd" category="list-text">Cuando crea (añade) una SVM, para una interfaz de red, no puede especificar una dirección IP que esté en el rango de una subred existente. Recibirá un error de conflicto de subred. Este problema se produce en otros flujos de trabajo de una interfaz de red, como crear o modificar interfaces de red entre clústeres en configuraciones de SVM o configuración de clústeres.</block>
+  <block id="17522c98bb6f67a1fc472441ee278f61" category="inline-xref-macro">Configure LIFS para NFS sobre RDMA^</block>
+  <block id="7c883993585be7ef062c0168cab6ae16" category="list-text">A partir de ONTAP 9.10,1,<block ref="168d50085a3c4e712aaa28cf90e2f228" prefix=" " category="inline-code"></block> los comandos de la CLI incluyen un<block ref="e7f31f518110f3c17739edd51d047922" prefix=" " category="inline-code"></block> parámetro para configuraciones NFS over RDMA. La creación de interfaces de red para las configuraciones de NFS over RDMA es compatible en System Manager a partir de ONTAP 9.12.1. Para obtener más información, consulte <block ref="9a76f9bf68e533534ddb17107f75c19e" category="inline-xref-macro-rx"></block>.</block>
+  <block id="cd13dd69b76cb5a8d8836c52e28ee458" category="list-text">A partir de ONTAP 9.11.1, la conmutación automática por error en LIF iSCSI está disponible en las plataformas de cabinas SAN all-flash (ASA).</block>
+  <block id="eb3e6c35d448456277ecc4873989ccd5" category="paragraph">La conmutación por error de LIF iSCSI se habilita automáticamente (la política de conmutación por error se establece en<block ref="9817175b2d67fda65aaaec8b8fcf2111" prefix=" " category="inline-code"></block> y el valor de reversión automática se establece en<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>) en los LIF iSCSI recién creados si no hay ningún LIF iSCSI en el SVM especificado o si todas las LIF iSCSI existentes del SVM especificado ya se encuentran habilitadas en la conmutación por error de LIF de iSCSI.</block>
+  <block id="2e9d79bdadc3c1a3ea80a6d99ea9c771" category="paragraph">Si después de actualizar a ONTAP 9.11,1 o posterior, tiene LIF iSCSI en un SVM que no se han habilitado con la función de conmutación por error de LIF iSCSI y crea nuevos LIF iSCSI en el mismo SVM, los nuevos LIF iSCSI asumen la misma política de conmutación por error <block ref="075ae3d2fc31640504f814f60e5ef713" prefix="(" category="inline-code"></block>) de los LIF iSCSI existentes en el SVM.</block>
+  <block id="ef934d4d8f2b4314965fe0a91d2aac87" category="inline-link-macro">Conmutación por error de LIF de iSCSI para plataformas ASA</block>
+  <block id="76eda67d6bf3f3490d9e9fbdd8ebdde8" category="paragraph"><block ref="76eda67d6bf3f3490d9e9fbdd8ebdde8" category="inline-link-macro-rx"></block></block>
+  <block id="ff75491cef38298812f55b5192a63322" category="paragraph">A partir de ONTAP 9.7, ONTAP elige automáticamente el puerto inicial de una LIF, siempre que al menos una LIF ya exista en la misma subred en ese espacio IP. ONTAP elige un puerto principal en el mismo dominio de retransmisión que otras LIF de esa subred. Puede seguir especificando un puerto de inicio, pero ya no será necesario (a menos que aún no haya ninguna LIF en esa subred en el espacio IP especificado).</block>
+  <block id="cc81ac9d702ccf6d3fb5a87328ac320e" category="paragraph">A partir de ONTAP 9.12.0, el procedimiento que siga depende de la interfaz que utilice--System Manager o la CLI:</block>
+  <block id="26ed02718973e705cd69ee6e109400e0" category="open-title">System Manager</block>
+  <block id="37d203a4d30c92c7e0433e138e21db41" category="paragraph">*Utilice System Manager para agregar una interfaz de red*</block>
+  <block id="deb6ad488690373fea929150f631f83c" category="list-text">Seleccione *Red &gt; Descripción general &gt; interfaces de red*.</block>
+  <block id="c742c2b2ed01c0f1e79d77c9eeebbfd3" category="inline-image-macro">Icono Agregar</block>
+  <block id="09f52291822d07847dc176bf99933cf8" category="list-text">Seleccione <block ref="43f48618b8b157dea4d31396a9d4b622" category="inline-image-macro-rx" type="image"></block>.</block>
+  <block id="80b672eadb959ee067f798c949769797" category="list-text">Seleccione uno de los siguientes roles de interfaz:</block>
+  <block id="f6068daa29dbb05a7ead1e3b5a48bbee" category="list-text">SQL Server</block>
+  <block id="a5e7f0e3e9c9116082e3187550f2112f" category="list-text">Interconexión de clústeres</block>
+  <block id="f8fdb9cc1d709f265daea2bcde48e114" category="list-text">Gestión de SVM</block>
+  <block id="11fc8c77734f91f1358121dc5f9f6343" category="list-text">Seleccione el protocolo:</block>
+  <block id="cb781df6c6dcd5341f2c38def8e0721e" category="list-text">SMB/CIFS Y NFS</block>
+  <block id="e4e1c13bb0b14f6cb7608cbecea948ef" category="list-text">ISCSI</block>
+  <block id="26bcb9f1cb6f391f4b2c18e676bb458d" category="list-text">NVMe/FC</block>
+  <block id="8b7c42123642e2e4ea7dd426aeb2de58" category="list-text">NVMe/TCP</block>
+  <block id="ca087c6b212e188bcd347b7df2d151a9" category="list-text">Asigne un nombre a la LIF o acepte el nombre generado a partir de sus selecciones anteriores.</block>
+  <block id="60fdbb38c75f5c6482244473f87d1a1c" category="list-text">Acepte el nodo de inicio o use el menú desplegable para seleccionar uno.</block>
+  <block id="9f5d454d522b09f8cb2c421adee76a83" category="list-text">Si al menos una subred está configurada en el espacio IP de la SVM seleccionada, se muestra la lista desplegable de subred.</block>
+  <block id="1636f97e6bf0d009e6d54f431dd78331" category="list-text">Si selecciona una subred, selecciónela en el menú desplegable.</block>
+  <block id="4f251f06f399aea726037b03ba55a92e" category="list-text">Si continúa sin una subred, se mostrará el menú desplegable dominio de retransmisión:</block>
+  <block id="c77fd2236a05934d1482c13bc9c2cd4d" category="list-text">Especifique la dirección IP. Si la dirección IP está en uso, aparecerá un mensaje de advertencia.</block>
+  <block id="f2ccfb6eb1082f7276bb8c59544ba16d" category="list-text">Especifique una máscara de subred.</block>
+  <block id="dd8594a8467817eb4f593564094d8619" category="list-text">Seleccione el puerto de inicio en el dominio de difusión, automáticamente (recomendado) o seleccionando uno en el menú desplegable. El control de puerto de inicio se muestra en función del dominio de difusión o de la selección de subred.</block>
+  <block id="877dcf4e4c0dcca42bb2ac810a06d5e7" category="list-text">Guarde la interfaz de red.</block>
+  <block id="91af5705f16502125e8b2187e64202c0" category="open-title">CLI</block>
+  <block id="9264736930746a402294c277d922cca5" category="paragraph">*Utilice la CLI para crear un LIF*</block>
+  <block id="1ebcfad534ca6b48a25ad52ffad224cc" category="list-text">Determine los puertos de dominio de retransmisión que desea usar para la LIF.</block>
+  <block id="f71d8c4bffdcfe0255989a522519e921" category="paragraph"><block ref="f8ae370acaa7702ed5f8a0f329fbbc89" prefix="" category="inline-code"></block></block>
+  <block id="f32118da3d70a4f320a9e03ff567af21" category="list-text">Compruebe que la subred que desea utilizar para las LIF contiene suficientes direcciones IP sin usar.</block>
+  <block id="ec9f06f6ad41803059b084ab6467f053" category="paragraph"><block ref="df45c041fbec4b88d2620f8f27969ca2" prefix="" category="inline-code"></block></block>
+  <block id="2307fb5b78b821211a9b011ea25ba45a" category="list-text">Cree uno o varios LIF en los puertos que desee utilizar para acceder a los datos.</block>
+  <block id="ffae5d6089597acdf7c65a5a7c0c7005" category="inline-link-macro">Cree una subred</block>
+  <block id="c54dbe39234f8280d6f1651be5a1c1a1" category="admonition">NetApp recomienda crear objetos de subred para todas las LIF en SVM de datos. Esto es especialmente importante en las configuraciones de MetroCluster, donde el objeto de subred permite a ONTAP determinar los destinos de conmutación por error en el clúster de destino porque cada objeto de subred tiene un dominio de retransmisión asociado. Para obtener instrucciones, consulte <block ref="ad8e74354bc7fdb3d5c3a1c355adf86b" category="inline-link-macro-rx"></block>.</block>
+  <block id="8d6c97487ddd2038e41c9e6af2e2c2b1" category="list-text"><block ref="42819bf7ae4bf9a7d2a14b2805ca0e83" prefix="" category="inline-code"></block> Es el nodo al que devuelve la LIF cuando<block ref="d1e4afa40f7e9718bdad64b4f5db9abb" prefix=" " category="inline-code"></block> se ejecuta el comando en la LIF.</block>
+  <block id="c55a4f044dfec68d4e9f5b17072e3330" category="paragraph">También puede especificar si el LIF debe volver automáticamente al nodo raíz y al puerto raíz con la opción -auto-revert.</block>
+  <block id="a216b55b3c0bf385e4630d18a1048d5b" category="list-text"><block ref="321ff01f394ce440009a9f460f09d191" prefix="" category="inline-code"></block> Es el puerto físico o lógico al que devuelve la LIF cuando<block ref="d1e4afa40f7e9718bdad64b4f5db9abb" prefix=" " category="inline-code"></block> el comando se ejecuta en la LIF.</block>
+  <block id="66538afe2f70d10ce8f5fa836c504d8e" category="list-text">Puede especificar una dirección IP con las<block ref="38df54fe961fa2bf2a7f82a5854fabad" prefix=" " category="inline-code"></block><block ref="bba17324bbe2e8cea0c60e47268d4b36" prefix=" " category="inline-code"></block> opciones y, o bien habilitar la asignación desde una subred con<block ref="8db950a15da003c155c149cbe4e043a2" prefix=" " category="inline-code"></block> la opción.</block>
+  <block id="74d2e4c4ae33f4210672309e2da7aa67" category="list-text">Al usar una subred para suministrar la dirección IP y la máscara de red, si la subred se definió con una puerta de enlace, se añadirá automáticamente a la SVM una ruta predeterminada a esa puerta de enlace cuando se cree una LIF con dicha subred.</block>
+  <block id="f3497351aae46692e603fedb2f2cd146" category="inline-link-macro">Referencia de comandos del ONTAP</block>
+  <block id="6e3363145085bfe2357613c9c430aae9" category="list-text">Si asigna direcciones IP manualmente (sin una subred), es posible que deba configurar una ruta predeterminada para una puerta de enlace si hay clientes o controladores de dominio en una subred IP diferente. Obtenga más información sobre<block ref="21a17cd54b10a034d5fb8366f2a71517" prefix=" " category="inline-code"></block> en el <block ref="272a3f7563defec9b271835dc324d95b" category="inline-link-macro-rx"></block>.</block>
+  <block id="8c61a3dc9fe23290c557a2511c9b35e1" category="list-text"><block ref="28c988ac956ff7a16325cde07547fef0" prefix="" category="inline-code"></block> Permite especificar si una LIF de datos se revierte automáticamente a su nodo de inicio en circunstancias como el inicio, los cambios en el estado de la base de datos de gestión o cuando se establece la conexión de red. El valor por defecto es<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>, pero puede definirlo en<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> función de las políticas de gestión de red del entorno.</block>
+  <block id="307b6a8428f6f758ace66db2ccc5d91b" category="list-text"><block ref="950af4194b424bf604f7ce86c7eff452" prefix="" category="inline-code"></block> A partir de ONTAP 9.5, puede asignar una política de servicio para la LIF con<block ref="950af4194b424bf604f7ce86c7eff452" prefix=" " category="inline-code"></block> la opción. Cuando se especifica una política de servicio para una LIF, la política se usa para construir un rol predeterminado, una política de conmutación por error y una lista de protocolos de datos para la LIF. En ONTAP 9.5, las políticas de servicio solo se admiten para los servicios entre iguales de BGP y interconexión de clústeres. En ONTAP 9.6, puede crear políticas de servicio para varios servicios de datos y gestión.</block>
+  <block id="efe97ec1aaddc6abcc95f07658ec7a4c" category="list-text"><block ref="5d2f1b504fd65080a58edd34b33a0b73" prefix="" category="inline-code"></block> Le permite crear una LIF que sea compatible con los protocolos FCP o NVMe/FC. Esta opción no es necesaria al crear una LIF de IP.</block>
+  <block id="0e8be86fb1fd96c9321d5e4107e3475b" category="list-text">*Opcional*: Asigne una dirección IPv6 en la opción -address:</block>
+  <block id="30d51071f881a325c624c8b0d9543ceb" category="list-text">Utilice el comando network ndp prefix show para ver la lista de prefijos RA aprendidos en varias interfaces.</block>
+  <block id="76ffff692e8f2a4eea8bb8acb769b46a" category="paragraph"><block ref="621563f27da2174dd6450a0ccd81978f" prefix=" " category="inline-code"></block>El comando está disponible en el nivel de privilegios avanzado.</block>
+  <block id="0d710d73b461c89b1ba215412b9541e2" category="list-text">Utilice el formato<block ref="371fe1c91d7ccdea2021e0fb5b75a7b3" prefix=" " category="inline-code"></block> para construir la dirección IPv6 manualmente.</block>
+  <block id="2fede0e329f4e76a33495cab21d88e61" category="paragraph"><block ref="851f5ac9941d720844d143ed9cfcf60a" prefix="" category="inline-code"></block> es el prefijo aprendido en diversas interfaces.</block>
+  <block id="3848d3a93d8d8ad3c6c94bb4323068cb" category="paragraph">Para derivar el<block ref="b80bb7740288fda1f201890375a60c8f" prefix=" " category="inline-code"></block>, seleccione un número hexadecimal aleatorio de 64 bits.</block>
+  <block id="668781a383497a3b4080e57467cebbec" category="list-text">Compruebe que la configuración de la interfaz LIF es correcta.</block>
+  <block id="d45f6cefbed50da176ce4d7e5929b922" category="paragraph"><block ref="6233fd2657a97d431cd74b2ae6f4956c" prefix="" category="inline-code"></block></block>
+  <block id="62bd47d83f665c91ba56dcaa0254344c" category="list-text">Confirmar que la configuración del grupo de recuperación tras fallos es la deseada.</block>
+  <block id="9ce4adc4e6c330aa6eadbd7a695d2914" category="paragraph"><block ref="7ee8691cd7d47d7e0f05f48be6aa4e75" prefix="" category="inline-code"></block></block>
+  <block id="1eb3a40a1c16648aa07d98bba6880dae" category="list-text">Compruebe que se pueda acceder a la dirección IP configurada:</block>
+  <block id="d4f4121e7645988826a9a59b4f88d9cd" category="cell">Para verificar una...</block>
+  <block id="b2ab9468407024b9e52fcb8768240b7f" category="cell">Usar...</block>
+  <block id="3c40e603ab1c9e14602a6a53d041de45" category="cell">Dirección IPv4</block>
+  <block id="36ecf3f9704f42836a6f1084017a4efb" category="cell">ping de red</block>
+  <block id="681ecbfa9647e806effd6d73a57c33f5" category="cell">Dirección IPv6</block>
+  <block id="ececd851d593a37be8bb1a2009b6afdc" category="cell">red ping6</block>
+  <block id="ff7c0fcd6a31e735a61c001f75426961" category="paragraph-title">Ejemplos</block>
+  <block id="f8f0bbecb07bf9393c191809861e2a52" category="paragraph">El siguiente comando crea una LIF y especifica la dirección IP y los valores de la máscara de red mediante<block ref="38df54fe961fa2bf2a7f82a5854fabad" prefix=" " category="inline-code"></block><block ref="bba17324bbe2e8cea0c60e47268d4b36" prefix=" " category="inline-code"></block> los parámetros y:</block>
+  <block id="f13c42e2942028683cdd7cf874120d74" category="paragraph">El siguiente comando crea una LIF y asigna valores de dirección IP y máscara de red a partir de la subred especificada (denominada cliente1_sub):</block>
+  <block id="3e1b8b018f7b75c483d6bcca99b92cf5" category="paragraph">El siguiente comando crea una LIF NVMe/FC y especifica<block ref="13116ea7c2875017f3b13faf27db2530" prefix=" " category="inline-code"></block> el protocolo de datos:</block>
+  <block id="a819f8586b7479e19e6badcf0dbbf9fe" category="summary">Cree una subred para asignar o reservar bloques específicos de direcciones IP para la configuración de red de ONTAP</block>
+  <block id="f68dfd250c07b38a2267de86c6853714" category="paragraph">Puede crear una subred para asignar bloques específicos de direcciones IPv4 o IPv6 que se usarán más adelante al crear LIF para la SVM.</block>
+  <block id="d22a3359973fc99d4b1e919cf7b35682" category="paragraph">Esto permite crear LIF con mayor facilidad ya que especifica un nombre de subred en lugar de tener que especificar la dirección IP y los valores de máscara de red para cada LIF.</block>
+  <block id="331a370ed47c46150dee6428cbd327d0" category="paragraph">El dominio de retransmisión y el espacio IP en el que va a agregar la subred ya deben existir.</block>
+  <block id="394821118526283bc78aba0efc30c8b3" category="list-text">Todos los nombres de subred deben ser únicos en un espacio IP.</block>
+  <block id="ac218d46ce7b5a920599544a4d27e2ca" category="list-text">Al añadir rangos de direcciones IP a una subred, debe asegurarse de que no haya direcciones IP superpuestas en la red para que distintas subredes, o hosts, no intenten utilizar la misma dirección IP.</block>
+  <block id="e055c5d18898815859452fc665e9b3f1" category="list-text">Si especifica una puerta de enlace al definir una subred, se añadirá automáticamente a la SVM una ruta predeterminada a esa puerta de enlace cuando se cree una LIF con dicha subred. Si no utiliza subredes, o si no especifica una puerta de enlace al definir una subred, deberá utilizar<block ref="174fd4ec4d6994b777d4327cd4e8f15a" prefix=" " category="inline-code"></block> el comando para añadir una ruta a la SVM manualmente.</block>
+  <block id="f0a2b989304d28e556b9962a34329b9d" category="list-text">NetApp recomienda crear objetos de subred para todas las LIF en SVM de datos. Esto es especialmente importante en las configuraciones de MetroCluster, donde el objeto de subred permite a ONTAP determinar los destinos de conmutación por error en el clúster de destino porque cada objeto de subred tiene un dominio de retransmisión asociado.</block>
+  <block id="58cbe3a9cb8955d83743c9ef6ceb5afb" category="paragraph">Puede crear una subred con ONTAP System Manager o la interfaz de línea de comandos de ONTAP.</block>
+  <block id="905ce8a8994f1eca61380b8b520beff8" category="list-text"><block ref="4ce27d02b48dd13802074a3df84fd406" prefix="" category="inline-code"></block> es el nombre de la subred de capa 3 que desea crear.</block>
+  <block id="28ba03ccf8d5e3f1ddbdfce67b0e1f2e" category="paragraph">El nombre puede ser una cadena de texto como "Mgmt" o puede ser un valor IP de subred específico como 192.0.2.0/24.</block>
+  <block id="16818f92d72a16ca22d844e68b7d2171" category="list-text"><block ref="e0caec61aebb1b31c3b192c9eb2f9483" prefix="" category="inline-code"></block> es el nombre del dominio de retransmisión en el que residirá la subred.</block>
+  <block id="26766cea770806863e687a34ae8073db" category="list-text"><block ref="4ae3944df3ee772807922dcf9bb86c13" prefix="" category="inline-code"></block> Es el nombre del espacio IP del que forma parte el dominio de retransmisión.</block>
+  <block id="feed2f690371862aef573255017713b9" category="paragraph">El espacio IP «predeterminado» se utiliza a menos que especifique un valor para esta opción.</block>
+  <block id="3f4680257d54111be7543f57db717b74" category="list-text"><block ref="d52f62729781815dc9ef1dcfdfe6349b" prefix="" category="inline-code"></block> Es la dirección IP y la máscara de la subred; por ejemplo, 192,0.2,0/24.</block>
+  <block id="840ab25561ddd4cd4bc8c96750b96bfb" category="list-text"><block ref="efeadb39d096cbd607bf36aac6cf9b70" prefix="" category="inline-code"></block> es la puerta de enlace de la ruta predeterminada de la subred, por ejemplo, 192,0.2,1.</block>
+  <block id="a4b51119ead306cd9ba30b3a4d28d031" category="list-text"><block ref="131cf1b220ade17f6a3248d54312f858" prefix="" category="inline-code"></block> Es la lista o rango de direcciones IP que se asignarán a la subred.</block>
+  <block id="c0b17d69029b4e4fb6a70f84fb936299" category="paragraph">Las direcciones IP pueden ser direcciones individuales, un rango de direcciones IP o una combinación de ellas en una lista separada por comas.</block>
+  <block id="73754d3d89c10930f8797d81ee876f15" category="list-text">El valor<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> se puede establecer para<block ref="2371ee49460c5795e25eb90f5168d85e" prefix=" " category="inline-code"></block> la opción.</block>
+  <block id="89c251ab0c1c8e1a834a2a197934c26e" category="paragraph">Este comando falla si cualquier procesador de servicios o interfaz de red están utilizando actualmente las direcciones IP del rango especificado. Si se establece este valor en true, se asocia cualquier interfaz dirigida manualmente a la subred actual y se permite que el comando se realice correctamente.</block>
+  <block id="58b8cc02848a2d78050719bfae31651e" category="paragraph">El siguiente comando crea una subred sub1 en el dominio de difusión predeterminado-1 en el espacio IP predeterminado. Añade una máscara y una dirección IP de subred IPv4, la puerta de enlace y un rango de direcciones IP:</block>
+  <block id="77eedf6887f3d77271dc53c9fd38269a" category="paragraph">El siguiente comando crea una subred sub2 en los valores predeterminados de dominio de difusión en el espacio IP "predeterminado". Añade un rango de direcciones IPv6:</block>
+  <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">Después de terminar</block>
+  <block id="2796ed324450a74d4e573575b14a73a6" category="paragraph">Puede asignar SVM e interfaces a un espacio IP en las direcciones de la subred.</block>
+  <block id="f28fce6e01986c8f135346f1efac44a7" category="paragraph">Si necesita cambiar el nombre de una subred existente, utilice<block ref="c1115a716e0f2168a7f66f26d2eefc8b" prefix=" " category="inline-code"></block> el comando.</block>
+  <block id="524f2128cdb9047c02d06179ce3c0cef" category="summary">Cree espacios IP para cada SVM de un clúster</block>
+  <block id="63e9ea12ee077b462ece911ea23131f4" category="paragraph">Los espacios IP son espacios de direcciones IP distintos en los que residen las máquinas virtuales de almacenamiento (SVM). Puede crear espacios IP cuando necesite que sus SVM tengan su propia capacidad de almacenamiento, administración y enrutamiento seguros. Puede usar un espacio IP para crear un espacio de direcciones IP distinto para cada SVM de un clúster. Esto permite a los clientes en dominios de red separados administrativamente acceder a los datos del clúster mientras utilizan direcciones IP superpuestas del mismo rango de subredes de direcciones IP.</block>
+  <block id="ca95c8635ad5fd68ac940e00a0da212c" category="paragraph">Existe un límite para todo el clúster de 512 espacios IP. El límite para todo el clúster se reduce a 256 espacios IP para clústeres que contienen nodos con 6 GB de RAM. Consulte la Hardware Universe para determinar si se aplican límites adicionales a su plataforma.</block>
+  <block id="4c1c93397a0ad82f0b80502a6c7c0799" category="paragraph"><block ref="4c1c93397a0ad82f0b80502a6c7c0799" category="inline-link-rx"></block></block>
+  <block id="11914b786443f21c2c710d44f64c1480" category="admonition">El nombre del espacio IP no puede ser "todos" porque "todos" es un nombre reservado del sistema.</block>
+  <block id="e7396fa25a3c5f851dc80cdef84456d0" category="list-text">Cree un espacio IP:</block>
+  <block id="061a545e69527401190b860465cf4a79" category="paragraph"><block ref="4ae3944df3ee772807922dcf9bb86c13" prefix="" category="inline-code"></block> Es el nombre del espacio IP que desea crear. El siguiente comando crea el espacio IP ipspace1 en un clúster:</block>
+  <block id="bc7a6ad79915b0b669c03cdc4b13c6c5" category="list-text">Visualice los espacios IP:</block>
+  <block id="f4e3ea14a86c053c771cffad27e184f6" category="paragraph"><block ref="a3fa89b248855f9b8841d3f32539f863" prefix="" category="inline-code"></block></block>
+  <block id="1e31c16448255a9e1d55e7b33ac21ee6" category="paragraph">Se crea el espacio IP, junto con la SVM del sistema para el espacio IP. La SVM del sistema transporta el tráfico de gestión.</block>
+  <block id="42de8300ccf0587951996358a11fccf6" category="paragraph">Si crea un espacio IP en un clúster de en una configuración de MetroCluster, los objetos IPspace se deben replicar manualmente en los clústeres de partners. Las SVM que se crean y se asignan a un espacio IP antes de que se replique el espacio IP no se replicarán en los clústeres asociados.</block>
+  <block id="f8019cdb211915da8e1a1ae3877a0696" category="paragraph">Los dominios de retransmisión se crean automáticamente en el espacio IP «predeterminado» y se pueden mover entre espacios IP mediante el siguiente comando:</block>
+  <block id="66d79f86985b2f2499dd8add3343d01c" category="paragraph">Por ejemplo, si desea mover un dominio de difusión de "default" a "ips1", utilizando el siguiente comando:</block>
+  <block id="d6d258eaae41d54bb6c9c23c42a49cfb" category="summary">Cree una SVM para servir datos a los clientes</block>
+  <block id="508d6390b1c65105c1577182bef9b59b" category="paragraph">Debe crear una SVM para servir datos a los clientes.</block>
+  <block id="1704a195a161c4f9823222a8351ee926" category="list-text">Se debe saber qué estilo de seguridad tendrá el volumen raíz de la SVM.</block>
+  <block id="8a3d9f7b85d48c2f56226bde38dea0a1" category="paragraph">Si piensa implementar una solución Hyper-V o SQL Server sobre SMB en esta SVM, debe utilizar el estilo de seguridad NTFS para el volumen raíz. Los volúmenes que contienen archivos de Hyper-V o archivos de base de datos de SQL se deben establecer en seguridad NTFS en el momento en el que se crean. Al establecer el estilo de seguridad del volumen raíz en NTFS, se asegura de que no se creen volúmenes de datos de estilo de seguridad mixtos o UNIX de forma accidental.</block>
+  <block id="a1d44fc603a8a7aba7f1314576a139c3" category="paragraph">Directiva no resuelta en &lt;stdin&gt; - Include:../_include/svm-limits.adoc[]</block>
+  <block id="e79dbb0b4d2ca45d8f4713711dd8c47c" category="paragraph">Puede usar System Manager para crear una máquina virtual de almacenamiento.</block>
+  <block id="f232ec1da86ae610f97011f01f800031" category="list-text">Seleccione *Storage VMs*.</block>
+  <block id="425a1bcbacf8dcc29243de992d955eb3" category="list-text">Haga clic en <block ref="43f48618b8b157dea4d31396a9d4b622" category="inline-image-macro-rx" type="image"></block> para crear una máquina virtual de almacenamiento.</block>
+  <block id="c6db4789357efa25f46351d850a42f00" category="list-text">Asigne un nombre a la máquina virtual de almacenamiento.</block>
+  <block id="a7338288aa4590f3c9d5f7d2485c1c58" category="list-text">Seleccione el protocolo de acceso:</block>
+  <block id="3bebcf8a5d3487ce07f92bb891563edc" category="list-text">SMB/CIFS Y NFS</block>
+  <block id="70d9e3c68d42d6ec42ab792e06c44357" category="list-text">NVMe</block>
+  <block id="22ae78a2ef9f095fe6373bb7295efa3a" category="list-text">Si selecciona *Activar SMB/CIFS*, complete la siguiente configuración:</block>
+  <block id="e68ffd76c817b20de740406064a5984c" category="cell">Campo o casilla de verificación</block>
+  <block id="34e8ac1104cce23ef5971ddf76627eee" category="paragraph">Nombre del administrador</block>
+  <block id="b471bcc9afb249cff00077aeff376c11" category="paragraph">Especifique el nombre de usuario del administrador para la máquina virtual de almacenamiento SMB/CIFS.</block>
+  <block id="dc647eb65e6711e155375218212b3964" category="paragraph">Contraseña</block>
+  <block id="703b6c917b59c453905f6777f0563187" category="paragraph">Especifique la contraseña de administrador para la máquina virtual de almacenamiento SMB/CIFS.</block>
+  <block id="637e29e8db23b0832fae80848e4d4733" category="paragraph">Nombre del servidor</block>
+  <block id="cdcfd099349a8285a8e7a1ca74271068" category="paragraph">Especifique el nombre del servidor para la máquina virtual de almacenamiento SMB/CIFS.</block>
+  <block id="f490d3302e7cd81f3dafead6c8311b60" category="paragraph">Dominio de Active Directory</block>
+  <block id="8cf13cd851c58a9306128f0ad0941d79" category="paragraph">Especifique el dominio de Active Directory para proporcionar autenticación de usuarios para la máquina virtual de almacenamiento SMB/CIFS.</block>
+  <block id="ff309cf3107765153856990e03224d8c" category="paragraph">Unidad organizacional</block>
+  <block id="4425eb7547a089cc817e237749a91443" category="paragraph">Especifique la unidad organizativa en el dominio de Active Directory asociado con el servidor SMB/CIFS. "CN=Computers" es el valor predeterminado, que se puede modificar.</block>
+  <block id="369873f8ef2eab73e01e08c2e3aedecb" category="paragraph">Cifra datos al acceder a los recursos compartidos de la máquina virtual de almacenamiento</block>
+  <block id="0dd0999209a05468327ee3e3281ced03" category="paragraph">Seleccione esta casilla de comprobación para cifrar datos mediante SMB 3.0 para evitar el acceso no autorizado a archivos en los recursos compartidos de la máquina virtual de almacenamiento SMB/CIFS.</block>
+  <block id="78cd2c7d5422ffdb6d9545211ca49eeb" category="paragraph">Dominios</block>
+  <block id="44e86c21646cd6565c3fd1ca8c11f0d2" category="paragraph">Añada, elimine o reordene los dominios enumerados para la máquina virtual de almacenamiento de SMB/CIFS.</block>
+  <block id="5983d82c47c0afe291746daa1c40b3ae" category="paragraph">Servidores de nombres</block>
+  <block id="c503bd72fd9f98341f61070a2b337ac6" category="paragraph">Añada, elimine o reordene los servidores de nombres para la máquina virtual de almacenamiento SMB/CIFS.</block>
+  <block id="951cfb94bce19fdd877e24ccfec144b9" category="paragraph">Idioma predeterminado</block>
+  <block id="cd0ab8bd4d82650fa6882f32120db4f9" category="paragraph">Especifica la configuración de codificación de idioma predeterminada para la máquina virtual de almacenamiento y sus volúmenes. Use la interfaz de línea de comandos para cambiar la configuración de cada volumen dentro de una máquina virtual de almacenamiento.</block>
+  <block id="fbebc6739678d32573bdcc8e7d9712a2" category="paragraph">Interfaz de red</block>
+  <block id="addc2324c2ccf4577b40cd95c2b0adcd" category="paragraph">Para cada interfaz de red que configure para el equipo virtual de almacenamiento, seleccione una subred existente (si existe al menos una) o especifique *sin subred* y complete los campos *Dirección IP* y *Máscara de subred*. Si resulta útil, active la casilla de verificación *usar la misma máscara de subred y puerta de enlace para todas las siguientes interfaces* . Puede permitir que el sistema seleccione automáticamente el puerto de inicio o seleccionar manualmente el que desea utilizar en la lista.</block>
+  <block id="6f3b36f7d8c2187b5159cdb82423b93a" category="paragraph">Administrar cuenta de administrador</block>
+  <block id="37fd1df845b96544bc823d9ee0d67cc1" category="paragraph">Seleccione esta casilla de comprobación si desea gestionar la cuenta de administrador de máquina virtual de almacenamiento. Cuando se selecciona, especifique el nombre de usuario, la contraseña, confirme la contraseña e indique si desea añadir una interfaz de red para la gestión de máquinas virtuales de almacenamiento.</block>
+  <block id="0d284df1be748e15793b8264348b675e" category="list-text">Si selecciona *Habilitar NFS*, complete la siguiente configuración:</block>
+  <block id="3de8b42b3601db654d1550084d657906" category="paragraph">Casilla de verificación permitir el acceso de cliente NFS</block>
+  <block id="3badd390719f5de7be91359220a017d8" category="paragraph">Seleccione esta casilla de comprobación cuando todos los volúmenes creados en el equipo virtual de almacenamiento NFS deban usar la ruta de volumen raíz "/" para montar y recorrer. Añada reglas a la directiva de exportación "default" para permitir una transversal de montaje ininterrumpida.</block>
+  <block id="1f4da964f8eab62e96e8cfe406e44364" category="paragraph">Bases de datos</block>
+  <block id="c676e0b6d2fa06f7c150e74b7d7878ac" category="paragraph">Haga clic <block ref="43f48618b8b157dea4d31396a9d4b622" category="inline-image-macro-rx" type="image"></block> para crear reglas.</block>
+  <block id="e0cc4684693f4e93cf56f3017cfaa481" category="list-text">Especificación del cliente: Especifique los nombres de host, direcciones IP, grupos de red o dominios.</block>
+  <block id="15e1f930200c5ef680eccbc11fd982ca" category="list-text">Protocolos de acceso: Seleccione una combinación de las siguientes opciones:</block>
+  <block id="8d3f3d8ac4e0e2e8685821807920a78e" category="list-text">SMB/CIFS</block>
+  <block id="f24ce81f056d5acd59788df7f5ab36a1" category="list-text">FlexCache</block>
+  <block id="1d1a594959ec615f56516f5d0f5e8ddb" category="list-text">NFS</block>
+  <block id="5b12ee0369243579651edca43ff65c85" category="list-text">NFSv3</block>
+  <block id="08e90903fe145a9dcc2fb967259a1755" category="list-text">NFSv4</block>
+  <block id="86e42f76258fecb272d85febc7840cae" category="list-text">Detalles de acceso: Para cada tipo de usuario, especifique el nivel de acceso, ya sea de sólo lectura, de lectura/escritura o de superusuario. Los tipos de usuario incluyen:</block>
+  <block id="b1c94ca2fbc3e78fc30069c8d0f01680" category="list-text">Todo</block>
+  <block id="3b8189b52f32bb0356f9ae582e04094d" category="list-text">All (como usuario anónimo)</block>
+  <block id="c5541b475fdab9fce04884adff3b0359" category="list-text">Kerberos 5</block>
+  <block id="f22873ba6efee4accc10bd5a3d3ca9eb" category="list-text">Kerberos 5i</block>
+  <block id="a98fd9001be872cb9763c171625ee881" category="list-text">Kerberos 5p</block>
+  <block id="d11322c1a7a2383491c23f13113c59ea" category="list-text">NTLM</block>
+  <block id="7383d6f7ab3b52644d30a4a0e2ae3df1" category="paragraph">Guarde la regla.</block>
+  <block id="83163eeadc9ddb2ac656cb4f4245b264" category="list-text">Si selecciona *Activar iSCSI*, complete la siguiente configuración:</block>
+  <block id="cb87cc4133d76efd12f5de622190e7c4" category="list-text">Si selecciona *Habilitar FC*, complete la siguiente configuración:</block>
+  <block id="8503a722b3fe068428f739c9dbd4d43f" category="paragraph">Configure los puertos FC</block>
+  <block id="8488410a80842f058100899223773ebb" category="paragraph">Seleccione las interfaces de red en los nodos que desea incluir en la máquina virtual de almacenamiento. Se recomiendan dos interfaces de red por nodo.</block>
+  <block id="7cfc92cd0570022bd7e56b7c286c6bac" category="list-text">Si selecciona *Habilitar NVMe/FC*, complete la siguiente configuración:</block>
+  <block id="cdf900c4ac940fb389c02e3a3292fae5" category="list-text">Si selecciona *Habilitar NVMe/TCP*, complete la siguiente configuración:</block>
+  <block id="345e93a96b6e66cb9274dbad975c0db2" category="list-text">Guarde los cambios.</block>
+  <block id="61157a0dbd65c93a06825f5c886c2bdc" category="paragraph">Use la interfaz de línea de comandos de ONTAP para crear una subred.</block>
+  <block id="9e410dfb5a2299a2f9aeae2d14595de2" category="list-text">Determine qué agregados son candidatos para contener el volumen raíz de la SVM.</block>
+  <block id="d5e80ad93326693bccc06be4536713de" category="paragraph"><block ref="ab0abb3da82fd9575686e8f7abdfdcd5" prefix="" category="inline-code"></block></block>
+  <block id="4dfb9b40ea052c23a3a0f77d337cbdee" category="paragraph">Debe elegir un agregado que tenga al menos 1 GB de espacio libre para contener el volumen raíz. Si piensa configurar la auditoría NAS en el SVM, debe tener como mínimo 3 GB de espacio libre adicional en el agregado raíz, y el espacio adicional se utilizará para crear el volumen de almacenamiento provisional de auditoría cuando la auditoría esté habilitada.</block>
+  <block id="4e756dafef2428c97af05ef326dff6ed" category="admonition">Si la auditoría de NAS ya está habilitada en una SVM existente, el volumen provisional del agregado se crea inmediatamente después de que la creación de un agregado se haya completado correctamente.</block>
+  <block id="1d4025ba42560b66fc521994c2d4ab8a" category="list-text">Registre el nombre del agregado en el que desea crear el volumen raíz de la SVM.</block>
+  <block id="21c7896623b02b15d2c661cc2e5a5255" category="list-text">Si piensa especificar un idioma cuando crea la SVM y no conoce el valor que desea usar, identifique y registre el valor del idioma que desea especificar:</block>
+  <block id="6f0db2c0e3209546c14d633363b336e8" category="paragraph"><block ref="7e3619f076c911dc84602d00403fd4c8" prefix="" category="inline-code"></block></block>
+  <block id="1d8404eb6271fc502c911b0db577288e" category="list-text">Si piensa especificar una política de Snapshot al crear la SVM y no conoce el nombre de la política, enumere las políticas disponibles e identifique y registre el nombre de la política de Snapshot que desea utilizar:</block>
+  <block id="3dae10567943cbfb6af5ecfc66d573a5" category="paragraph"><block ref="35445e40043671f182d2acb44ed589a4" prefix="" category="inline-code"></block></block>
+  <block id="8d20ed56563f9cbada635a4c622b9945" category="list-text">Si piensa especificar una política de cuota cuando crea la SVM y no conoce el nombre de la política, enumere las políticas disponibles, identifique y registre el nombre de la política de cuota que desea utilizar:</block>
+  <block id="bc9b110970671d35ec963b22428b4fc6" category="paragraph"><block ref="3bd8dda2d5ae5e5237187c31d2c74164" prefix="" category="inline-code"></block></block>
+  <block id="891942f01dbf46f03681746fb932d692" category="list-text">Cree una SVM:</block>
+  <block id="cb7bf213cd3b9774ed6dc06d7829f27f" category="paragraph"><block ref="27b483e7b9ee9e6551db297d8745aa90" prefix="" category="inline-code"></block></block>
+  <block id="c4c1eb91697ed5e319e37fb61374dd54" category="paragraph"><block ref="abf8f3d2a8f2bf44483e35c5cf5189ed" prefix="" category="inline-code"></block></block>
+  <block id="c75de7d8081e3cf501427ec47ca0cbf9" category="list-text">Compruebe que la configuración de SVM sea correcta.</block>
+  <block id="a08bac7bed1b7eaef93ae8eb19ca62e9" category="paragraph"><block ref="c69629cafced5cf16a105c3fc5369973" prefix="" category="inline-code"></block></block>
+  <block id="5fe6a4ff9e5b4c958267930735a5750b" category="paragraph">En este ejemplo, el comando crea la SVM llamada "vs1" en el espacio IP "ipspace1". El volumen raíz se denomina "vs1_root" y se crea en aggr3 con estilo de seguridad NTFS.</block>
+  <block id="28e9e84d4ea23f4e930e8628e9dd1d79" category="paragraph">Directiva no resuelta en &lt;stdin&gt; - Include:../_include/adaptive-qos-policy.adc[]</block>
+  <block id="00168315e4762d2b2b9c5462bdf8c7cc" category="summary">Los LIF con diferentes roles tienen características diferentes</block>
+  <block id="0c0b240863b39f03b5d2a93471991c0f" category="doc">Roles de LIF (ONTAP 9,5 y anteriores)</block>
+  <block id="971dbc285b73d7c6f7ac90280984bb27" category="paragraph">Los LIF con diferentes roles tienen características diferentes. Una función de LIF determina el tipo de tráfico que se admite a través de la interfaz, junto con las reglas de conmutación por error aplicables, las restricciones de firewall aplicadas, la seguridad, el equilibrio de carga y el comportamiento de enrutamiento de cada LIF. Una LIF puede tener cualquiera de los siguientes roles: Clúster, gestión de clústeres, datos, interconexión de clústeres, gestión de nodos, y undef (sin definir). El rol Undef se utiliza para los LIF BGP.</block>
+  <block id="948b8964eebece7a2ddba6799f736a2c" category="paragraph">A partir de ONTAP 9.6, los roles de LIF quedan obsoletos. Debería especificar políticas de servicio para las LIF en lugar de un rol. No es necesario especificar un rol de LIF al crear una LIF con una política de servicio.</block>
+  <block id="94e6cee7fe1a1375bf9dc65d4f0dd995" category="section-title">Seguridad de LIF</block>
+  <block id="f86f4a50388930909d983126e43601d2" category="cell">LIF de datos</block>
+  <block id="aff7b3c6a1a82a339ee68a62e5bf859e" category="cell">LIF del clúster</block>
+  <block id="e2578ec54f85b5b6333c94364b756a1c" category="cell">LIF de gestión de nodos</block>
+  <block id="15a4d902a9e2eeb56724bdb94f9d1977" category="cell">LIF de gestión de clústeres</block>
+  <block id="54f7d853bcd07992f133218c21a038be" category="cell">LIF de interconexión de clústeres</block>
+  <block id="bbcca6fb4cc39c40c272284afd47fb0d" category="cell">¿Necesita una subred IP privada?</block>
+  <block id="bafd7322c6e97d25b6299b5d6fe8920b" category="cell">No</block>
+  <block id="94aa616ded63df1ddfd2db3f000298f5" category="cell">¿Necesita una red segura?</block>
+  <block id="b484916e97900df1211612f037613d9a" category="cell">Política de firewall predeterminada</block>
+  <block id="9fed7b9fa5681c8f3085940cc39e70e6" category="cell">Muy restrictivo</block>
+  <block id="32f4d3b1db1c5f465cb22e4877370085" category="cell">Completamente abierto</block>
+  <block id="87f8a6ab85c9ced3702b4ea641ad4bb5" category="cell">Mediano</block>
+  <block id="bc7b428ef80f13f9db850081a0baf5f8" category="cell">¿Se puede personalizar el firewall?</block>
+  <block id="989edd27b2259c0a99bdf49486b0e282" category="section-title">Recuperación tras fallos de LIF</block>
+  <block id="590f6d9a5885f042982c9a911f76abda" category="cell">Comportamiento predeterminado</block>
+  <block id="f22315dd8ccfb0e386d9d87ebc2b1bba" category="cell">Solo esos puertos del mismo grupo de recuperación tras fallos que se encuentran en el nodo principal de la LIF y en un nodo partner distinto de SFO</block>
+  <block id="83f96cdb7303472fdea7614250e0c3fd" category="cell">Solo aquellos puertos del mismo grupo de conmutación al nodo de respaldo que se encuentran en el nodo raíz de la LIF</block>
+  <block id="d9ccc0630cdaf0a667836ce00d1db024" category="cell">Cualquier puerto del mismo grupo de recuperación tras fallos</block>
+  <block id="498be304757715bc51f2f7d8b0b16b8a" category="cell">¿Se puede personalizar?</block>
+  <block id="0562bc2d0812b604322ccdfe52b44d18" category="section-title">Enrutamiento de LIF</block>
+  <block id="98f8738f80b3c6ab46e13578531a5d7e" category="cell">¿Cuándo es necesaria una ruta predeterminada?</block>
+  <block id="c001ad4efcbb1955baa7f6162cab4143" category="cell">Cuando los clientes o el controlador de dominio están en una subred IP diferente</block>
+  <block id="6e7b34fa59e1bd229b207892956dc41c" category="cell">Nunca</block>
+  <block id="9081e9fd698e3464b29b10ce9eee9fd8" category="cell">Cuando cualquiera de los tipos de tráfico principales requiere acceso a una subred IP diferente</block>
+  <block id="ec5334cfc1ff0a04b70f21168eccd32a" category="cell">Cuando el administrador se conecta desde otra subred IP</block>
+  <block id="44446842df9e28ad4397fd58ef039cd6" category="cell">Cuando otras LIF de interconexión de clústeres se encuentran en una subred IP diferente</block>
+  <block id="56b69eb70b78df6fce9dd2059bf416b2" category="cell">¿Cuándo se necesita una ruta estática a una subred IP específica?</block>
+  <block id="a2cc588f2ab07ad61b05400f593eeb0a" category="cell">Raras</block>
+  <block id="398406706598a44bad4df839c72c9fe0" category="cell">Cuando los nodos de otro clúster tienen sus LIF de interconexión de clústeres en subredes IP diferentes</block>
+  <block id="423aabc92a5f3d53d90d88c84358b59b" category="cell">¿Cuándo se necesita una ruta de host estática a un servidor específico?</block>
+  <block id="0ec028ac0f80b4414ca0b7d12cde6fb6" category="cell">Para tener uno de los tipos de tráfico enumerados en LIF de gestión de nodos, vaya a través de una LIF de datos y no a una LIF de gestión de nodos. Esto requiere un cambio de firewall correspondiente.</block>
+  <block id="e9d15683f03673a2edf8195d24964eb1" category="section-title">Reequilibrado de LIF</block>
+  <block id="0ec08ba45fa50a6f8cf3c5332d5f7b1a" category="cell">DNS: ¿Usar como servidor DNS?</block>
+  <block id="b6ecb378831203b6df90201c84ac0d36" category="cell">DNS: ¿Exportar como zona?</block>
+  <block id="05873a13cdcf394cb1781d50396d9033" category="section-title">Tipos de tráfico principales de LIF</block>
+  <block id="91c997ac411302de89a704da8c90a365" category="cell">Tipos de tráfico principales</block>
+  <block id="863fafa226fdca241847822df0d9cf40" category="cell">Servidor NFS, servidor CIFS, cliente NIS, Active Directory, LDAP, WINS, cliente DNS y servidor, iSCSI y servidor FC</block>
+  <block id="226a6d91c34879bfbe918926cd1f94c4" category="cell">Dentro del clúster</block>
+  <block id="1e14e7e2a6e253cfec1589d743aa33f6" category="cell">Servidor SSH, servidor HTTPS, cliente NTP, SNMP, cliente AutoSupport, Cliente DNS, cargando actualizaciones de software</block>
+  <block id="fad014a43df1d0597a1cda7f1426ea6b" category="cell">Servidor SSH, servidor HTTPS</block>
+  <block id="3b013b6d96eafcc4e55a6beb603d64c4" category="cell">Replicación entre clústeres</block>
+  <block id="459c7b8e7f7af952393c9b24d0cbd35d" category="summary">ONTAP 9.7 y anteriores, retire una NIC defectuosa de su ranura o mueva la NIC a otra ranura para realizar tareas de mantenimiento</block>
+  <block id="c34df23c67ce2c224ace362d5c84f2c1" category="doc">Eliminar una NIC del nodo (ONTAP 9,7 o anterior)</block>
+  <block id="1578a0b8542e51d6976133034d10f88b" category="paragraph">Este tema se aplica a ONTAP 9.7 o anterior. Es posible que tenga que extraer una NIC defectuosa de su ranura o mover la NIC a otra ranura para realizar tareas de mantenimiento.</block>
+  <block id="af573fe3536f49b538a7a5e78478b47e" category="list-text">Todas las LIF alojadas en los puertos NIC deben haberse migrado o eliminado.</block>
+  <block id="68f5b35cecb146725fd3787d47d97f60" category="list-text">Ninguno de los puertos NIC puede ser el puerto principal de ningún LIF.</block>
+  <block id="60ccccf52bc751406dcc4a9aff1bd74e" category="list-text">Debe tener privilegios avanzados para eliminar los puertos de una NIC.</block>
+  <block id="38abd375e1250ccb945791ffe0f4fcf2" category="list-text">Elimine los puertos de la NIC:</block>
+  <block id="1edc30c9cec2665a01f0a9cc7910d9fc" category="paragraph"><block ref="ce40425bd6c0ef0314bdd114d6980b61" prefix="" category="inline-code"></block></block>
+  <block id="d7dd98ce71c2f2739d8dbb0312174af2" category="list-text">Compruebe que los puertos se han eliminado:</block>
+  <block id="47cd03a2fa721b9f4f83dca38829afea" category="paragraph"><block ref="838c4deb1e9c47dcd4c44b6e40276467" prefix="" category="inline-code"></block></block>
+  <block id="daa7b5256a5159e27b3a5a2ec8349d9d" category="list-text">Repita el paso 1, si el resultado del comando network Port show sigue mostrando el puerto eliminado.</block>
+  <block id="19bf87c82445072fe6568b60767d7b78" category="summary">No es necesario o se recomienda añadir y quitar puertos manualmente de dominios de retransmisión</block>
+  <block id="876b163d470ad17f7e57977a1fb3a7a4" category="doc">Agregar o quitar puertos de un dominio de retransmisión (ONTAP 9,7 y versiones anteriores)</block>
+  <block id="d0e4d312be789fa9609491a71720b1a1" category="paragraph">Es posible añadir puertos de red cuando se crea inicialmente un dominio de retransmisión, o bien añadir puertos a un dominio de retransmisión o quitar puertos de este ya existente. Esto le permite utilizar de forma eficiente todos los puertos del clúster.</block>
+  <block id="82d5593d0cdfd31166134520e453fb74" category="paragraph">Si los puertos que desea añadir al nuevo dominio de retransmisión ya se encuentran en otro dominio de retransmisión, debe quitar los puertos de ese dominio de retransmisión antes de asignarles el nuevo dominio de retransmisión.</block>
+  <block id="807951cd4d6fcb2e150d21fbd9f5b807" category="admonition">Esta tarea es relevante para ONTAP 9.0 - 9.7, no para ONTAP 9.8.</block>
+  <block id="353cd250aa9a6d62eefe59937d353b0f" category="list-text">Los puertos que desea agregar a un dominio de difusión no deben pertenecer a otro dominio de difusión.</block>
+  <block id="59270bd5af684cbd2f53d6057c1fb383" category="list-text">Los puertos que ya pertenecen a un grupo de interfaces no se pueden agregar individualmente a un dominio de retransmisión.</block>
+  <block id="540b443896df21c3dd0b368ca18128af" category="paragraph">Las siguientes reglas se aplican al agregar y quitar puertos de red:</block>
+  <block id="8811151dda23edd2a5108a6fa1ff1be8" category="cell">Al agregar puertos...</block>
+  <block id="858f1a0e377ca7cbf492f157f80c1789" category="cell">Al quitar puertos...</block>
+  <block id="a9ab7ec094ce4b25c1cefebbdcc04d38" category="cell">Los puertos pueden ser puertos de red, VLAN o grupos de interfaces (ifgrps).</block>
+  <block id="3bc4fb7c2035117d63df4fa973af67bf" category="cell">Los puertos se añaden al grupo de conmutación al nodo de respaldo definido por el sistema del dominio de retransmisión.</block>
+  <block id="f71ce9afeee0c9083f8cec5ce12e8d6d" category="cell">Los puertos se quitan de todos los grupos de conmutación al nodo de respaldo en el dominio de retransmisión.</block>
+  <block id="5ec058e125df964e3212b92a1344e836" category="cell">El MTU de los puertos se actualiza con el valor de MTU establecido en el dominio de retransmisión.</block>
+  <block id="7bcbfe8bd9d90deb15678f71f0bed919" category="cell">El MTU de los puertos no cambia.</block>
+  <block id="9afc0ffaa6e1d4e4f5ea6cd92cbe12b9" category="cell">El espacio IP de los puertos se actualiza al valor IPspace del dominio de retransmisión.</block>
+  <block id="b64f65c77c392ed7c104c1ff38a89f7b" category="cell">Los puertos se mueven al espacio IP "predeterminado" sin ningún atributo de dominio de difusión.</block>
+  <block id="bc8bcf06defaa0b66aea0e8f6331139f" category="admonition">Si quita el último puerto miembro de un grupo de interfaces mediante<block ref="d575b091ef70bd2ac59a248dac4d658e" prefix=" " category="inline-code"></block> el comando, hace que el puerto del grupo de interfaces se elimine del dominio de retransmisión porque no se permite un puerto de grupo de interfaces vacío en un dominio de retransmisión.</block>
+  <block id="40df56690b3f73d28b9c0537efd4c202" category="list-text">Muestra los puertos que están actualmente asignados o sin asignar a un dominio de retransmisión mediante<block ref="838c4deb1e9c47dcd4c44b6e40276467" prefix=" " category="inline-code"></block> el comando.</block>
+  <block id="33f8d1377a89c0505bf6bbd687544fe8" category="list-text">Añada o quite puertos de red del dominio de retransmisión:</block>
+  <block id="75679f9f9577ec4abce75ef8e0a00e7d" category="paragraph">Añada puertos a un dominio de retransmisión</block>
+  <block id="8f822f2d07295ece2b3ed7d8bc0255ff" category="paragraph"><block ref="c12e4cf1de1c55f93fa3c87cac484b3b" prefix="" category="inline-code"></block></block>
+  <block id="c0551af818f4a1ac54f3175279a051b3" category="paragraph">Quite puertos de un dominio de retransmisión</block>
+  <block id="ee210a0730802d9c055ca601e95c499c" category="paragraph"><block ref="0a00983c93a43364f8ece0dd4878a2d5" prefix="" category="inline-code"></block></block>
+  <block id="eb595208b2e206995da2f02804845846" category="list-text">Compruebe que los puertos se han agregado o eliminado del dominio de retransmisión:</block>
+  <block id="b594ae869da49f856ebb1c5ca8dfb9b4" category="section-title">Ejemplos de cómo agregar y quitar puertos</block>
+  <block id="fb8d5ad141799c307eb1fcfcb716b28a" category="paragraph">El siguiente comando agrega el puerto e0g en el nodo cluster-1-01 y el puerto e0g en el nodo cluster-1-02 al dominio de retransmisión bcast1 en el espacio IP predeterminado:</block>
+  <block id="f23acb14778bd25381425e8327f3775c" category="paragraph"><block ref="e5d2dc24fe6e32d79713c7fbc4e6f490" prefix="" category="inline-code"></block></block>
+  <block id="30671794ffa73ee4b020d67f720d6f68" category="paragraph">El siguiente comando añade dos puertos de clúster al clúster de retransmisión en el espacio IP del clúster:</block>
+  <block id="6a91675c7de00d7744149b3e588cd626" category="paragraph"><block ref="d83e55384a4a0bec023cb45fe68c600d" prefix="" category="inline-code"></block></block>
+  <block id="614c89cdf853f484ebc0b5b55e7a87cd" category="paragraph">El siguiente comando elimina el puerto e0e en el cluster no1-01 del dominio de broadcast bcast1 en el espacio IP predeterminado:</block>
+  <block id="05acd91b7cdf216d410b1b3c44593e88" category="paragraph"><block ref="f988032db9ad3aefa801757eb684c9d6" prefix="" category="inline-code"></block></block>
+  <block id="bc2602c5a66493ba7d85e8bd5d0e7f9b" category="list-text"><block ref="bc2602c5a66493ba7d85e8bd5d0e7f9b" category="inline-link-macro-rx"></block></block>
+  <block id="84bdf9349c63fefa4aa4743ee6f7bc1c" category="summary">Modifique el valor MTU de un dominio de retransmisión para cambiar ese valor para todos los puertos del dominio de retransmisión</block>
+  <block id="b65f35d38e54f653d62f385179f0697a" category="doc">Cambiar el valor de MTU para los puertos en un dominio de retransmisión (ONTAP 9,7 y anteriores)</block>
+  <block id="2b8eb4f7080b49d3e6d219e7482285c1" category="paragraph">Puede modificar el valor MTU para un dominio de retransmisión para cambiar el valor de MTU para todos los puertos en ese dominio de retransmisión. Esto se puede hacer para admitir cambios de topología que se han realizado en la red.</block>
+  <block id="17169cdd38bd8629d45990b5c46f3b8a" category="paragraph">El valor de MTU debe coincidir con todos los dispositivos conectados a esa red de capa 2, excepto en el caso del puerto e0M que gestiona el tráfico de gestión.</block>
+  <block id="387b8c86faaf37988b48544b6aeee058" category="paragraph">Al cambiar el valor de MTU, se produce una breve interrupción en el tráfico de los puertos afectados. El sistema muestra un símbolo del sistema de que debe responder con y para hacer el cambio de la MTU.</block>
+  <block id="c558e6cc70dea26b9ff4a4f10e4fcf81" category="paragraph">Cambie el valor de MTU para todos los puertos de un dominio de retransmisión:</block>
+  <block id="eff7b7f6ff578e4ab608a330289c49a5" category="list-text"><block ref="91597b98c407da31245936f26c8a9887" prefix="" category="inline-code"></block> es el nombre del dominio de retransmisión.</block>
+  <block id="65437b39a930bfdd02459d96ad335c5f" category="list-text"><block ref="661a504c6c4cd163fe4d67836577b926" prefix="" category="inline-code"></block> Es el tamaño de MTU para los paquetes IP; 1500 y 9000 son valores típicos.</block>
+  <block id="3174c9efde96d4881e6291980fe1cb18" category="list-text"><block ref="1e2d1a4a58bdff2d126f8f6ca8608478" prefix="" category="inline-code"></block> Es el nombre del espacio IP en el que reside este dominio de retransmisión. El espacio IP «predeterminado» se utiliza a menos que especifique un valor para esta opción. El siguiente comando cambia la MTU a 9000 para todos los puertos del dominio de broadcast bcast1:</block>
+  <block id="c8c91b71c9f2c29b3110bfc3348a9f0a" category="summary">Los dominios de difusión agrupan los puertos de red que pertenecen a la misma red de capa 2</block>
+  <block id="0eac6cba5e9f8b059013158afd4c62e1" category="doc">Información general sobre el dominio de retransmisión (ONTAP 9,7 y anteriores)</block>
+  <block id="d9aacb3b3086394f21ba1ec931f98cfc" category="paragraph">Los dominios de difusión están destinados a agrupar puertos de red que pertenecen a la misma red de capa 2. Los puertos del grupo pueden usarse en una máquina virtual de almacenamiento (SVM) para el tráfico de datos o gestión.</block>
+  <block id="ab7522c6814a39bb50b1835cf25f6259" category="paragraph">Un dominio de retransmisión reside en un espacio IP. Durante la inicialización del clúster, el sistema crea dos dominios de retransmisión predeterminados:</block>
+  <block id="b162e4d019362577aa2f67b09f6f8671" category="list-text">El dominio de retransmisión predeterminado contiene puertos que se encuentran en el espacio IP predeterminado. Estos puertos se utilizan principalmente para servir datos. Los puertos de gestión de clústeres y gestión de nodos también están en este dominio de retransmisión.</block>
+  <block id="e706cfbf7e7027617769f0a64d1aa44b" category="list-text">El dominio de retransmisión del clúster contiene puertos que se encuentran en el espacio IP del clúster. Estos puertos se utilizan para la comunicación del clúster e incluyen todos los puertos de clúster de todos los nodos del clúster.</block>
+  <block id="d58198b796a8425bceb05d28fbd76655" category="paragraph">Si ha creado espacios IP únicos para separar el tráfico de cliente, debe crear un dominio de retransmisión en cada uno de esos espacios IP.</block>
+  <block id="6803a7584a25c4fead41b63c82cd6216" category="admonition">Cree un dominio de retransmisión para agrupar los puertos de red del clúster que pertenecen a la misma red de capa 2. Los puertos pueden entonces ser utilizados por las SVM.</block>
+  <block id="c7d645e9536a7b441c9ccf5073a87e53" category="section-title">Ejemplo de uso de dominios de retransmisión</block>
+  <block id="6b1bc3d86b8575e2402bcae1d0dd6788" category="paragraph">Un dominio de retransmisión es un conjunto de puertos de red en el mismo espacio IP que también tiene capacidad para el uno al otro de la capa 2, lo que suele incluir puertos de muchos nodos del clúster.</block>
+  <block id="d4f97706d831e1453d51bf1fc26afe5b" category="paragraph">En la ilustración, se muestran los puertos asignados a tres dominios de retransmisión en un clúster de cuatro nodos:</block>
+  <block id="3b33bbfb1f410cbbfcbb9edebb1724b5" category="list-text">El dominio de retransmisión de clúster se crea automáticamente durante la inicialización del clúster. Contiene los puertos a y b de cada nodo del clúster.</block>
+  <block id="45bb6bb21322652b107d80754e12b482" category="list-text">El dominio de retransmisión predeterminado también se crea automáticamente durante la inicialización del clúster; contiene los puertos c y d de cada nodo del clúster.</block>
+  <block id="e1c2adb896f3eb2d80b2bb9acd04a2ab" category="list-text">El dominio de difusión bcast1 se ha creado manualmente y contiene los puertos e, f y g de cada nodo del clúster. Este dominio de retransmisión lo creó el administrador del sistema específicamente para que un nuevo cliente acceda a los datos a través de una nueva SVM.</block>
+  <block id="bc800d449ed8e2782b98036c5f5a2d7f" category="inline-image-macro">Imagen del dominio de retransmisión</block>
+  <block id="8c96bff404841be809ae66a4ad5b6275" category="paragraph"><block ref="8c96bff404841be809ae66a4ad5b6275" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="330c8578ee83c50c4ecc9ee0f494fa09" category="paragraph">Un grupo de conmutación por error con el mismo nombre y los mismos puertos de red que cada dominio de retransmisión se crea automáticamente. El sistema administra automáticamente este grupo de conmutación por error, lo que significa que, a medida que se agregan o quitan puertos del dominio de retransmisión, se agregan o se quitan automáticamente de este grupo de conmutación por error.</block>
+  <block id="25f1938e8a6466ef3646cb1540f85372" category="summary">Los dominios de retransmisión agrupan los puertos de red del clúster que pertenecen a la misma red de capa 2</block>
+  <block id="7084354993a2057e35e719497f454908" category="doc">Crear un dominio de retransmisión (ONTAP 9,7 y versiones anteriores)</block>
+  <block id="d2af663c9f1ae5451b1a97146f08a126" category="paragraph">En ONTAP 9.7 y versiones anteriores, se crea un dominio de retransmisión para agrupar los puertos de red del clúster que pertenecen a la misma red de capa 2. Los puertos pueden entonces ser utilizados por las SVM. Debe crear un dominio de retransmisión para un espacio IP personalizado. Las SVM creadas en el espacio IP utilizan los puertos del dominio de retransmisión.</block>
+  <block id="2e42f15c7120467b5cdcd910659c690e" category="paragraph">A partir de ONTAP 9.8, los dominios de retransmisión se crean automáticamente durante la operación de creación de clústeres o unión. Si ejecuta ONTAP 9.8 o una versión posterior, no necesita estos pasos.</block>
+  <block id="cdfc66112c43ad875d275256bf56a0f7" category="paragraph">En ONTAP 9.7 y versiones anteriores, los puertos que desea agregar al dominio de retransmisión no deben pertenecer a otro dominio de retransmisión.</block>
+  <block id="00234cb54c6941e3ce2aa2db5d988975" category="paragraph">El puerto al que se conmuta por error un LIF debe ser miembro del grupo de conmutación por error de la LIF. Cuando se crea un dominio de retransmisión, ONTAP crea automáticamente un grupo de conmutación por error con el mismo nombre. El grupo de conmutación por error contiene todos los puertos asignados al dominio de retransmisión.</block>
+  <block id="2da0403e9693c05aeecf9502d0349c34" category="list-text">Todos los nombres de dominio de retransmisión deben ser únicos en un espacio IP.</block>
+  <block id="8bf49bcc8e8b90061bbd45e3db073ec4" category="list-text">Los puertos que se añaden a un dominio de retransmisión pueden ser puertos de red físicos, VLAN o grupos de interfaces (ifgrps).</block>
+  <block id="608b519dfea74bf54d6726307e2a1766" category="list-text">Si los puertos que desea usar pertenecen a otro dominio de retransmisión, pero no se utilizan,<block ref="0a00983c93a43364f8ece0dd4878a2d5" prefix=" " category="inline-code"></block> el comando se usará para quitar los puertos del dominio de retransmisión existente.</block>
+  <block id="f565d0644ece2679545030bed13406b0" category="list-text">El MTU de los puertos añadidos a un dominio de retransmisión se actualiza al valor MTU establecido en el dominio de retransmisión.</block>
+  <block id="cfb2c61655c25e94834a1f09fd005d19" category="list-text">El valor de MTU debe coincidir con todos los dispositivos conectados a esa red de capa 2, excepto en el caso del puerto e0M que gestiona el tráfico de gestión.</block>
+  <block id="e5fe57f952d70ed401e5861edaf9ae0c" category="list-text">Si no especifica un nombre de espacio IP, el dominio de retransmisión se crea en el espacio IP «predeterminado».</block>
+  <block id="1312b6cbbbab7880093895c4569e66da" category="paragraph">Para facilitar la configuración del sistema, se crea automáticamente un grupo de conmutación por error con el mismo nombre que contiene los mismos puertos.</block>
+  <block id="ceada676563d9ab4ca18178626c9043a" category="list-text">Vea los puertos que no están asignados actualmente a un dominio de retransmisión:</block>
+  <block id="f177c774edac8d2a79f45ccdc8769093" category="paragraph">Si la pantalla es grande, utilice<block ref="2a3461e3a4a6c88dfd6189ed53d7be86" prefix=" " category="inline-code"></block> el comando para ver sólo los puertos no asignados.</block>
+  <block id="c0530f1c04744d25a88aeb2f159adc32" category="list-text">Cree un dominio de retransmisión:</block>
+  <block id="8c75d5d1dad634d47b8f73b373c64a84" category="paragraph"><block ref="a75f2bb2d65350dc3dc21819fddf6ccb" prefix="" category="inline-code"></block></block>
+  <block id="7dbda91791d8061923d0727a2ffcdc7b" category="list-text"><block ref="289edfc4a087f238917c49bef07c1c04" prefix="" category="inline-code"></block> es el nombre del dominio de retransmisión que desea crear.</block>
+  <block id="14409e67f8d582025246a8374acb16f3" category="list-text"><block ref="7454bc6579d8ca579fcee3b334978157" prefix="" category="inline-code"></block> Es el tamaño de MTU para los paquetes IP; 1500 y 9000 son valores típicos.</block>
+  <block id="2de58babc2706f5001395f1a14ded934" category="paragraph">Este valor se aplica a todos los puertos que se agregan a este dominio de difusión.</block>
+  <block id="ce33973ccdcf8db7aecac1107c0732d5" category="list-text"><block ref="c1e9d0002d8674820c304cb9a686131b" prefix="" category="inline-code"></block> Es el nombre del espacio IP al que se agregará este dominio de retransmisión.</block>
+  <block id="bf18ab96260035dd0a9ffe0a460ad2fb" category="paragraph">El espacio IP «predeterminado» se utiliza a menos que especifique un valor para este parámetro.</block>
+  <block id="d5fa6d0e4cbcf07ae0a8f6fc75cfe84f" category="list-text"><block ref="81e7b05ddc23856a323f5d93ae3411e9" prefix="" category="inline-code"></block> es la lista de puertos que se agregarán al dominio de retransmisión.</block>
+  <block id="7b5feee15c08e42c701b1e7d2baf4cd4" category="paragraph">Los puertos se agregan en el formato<block ref="c9d6108e720ea1dc6b861e3dc3f9a836" prefix=" " category="inline-code"></block>, por ejemplo,<block ref="7118632ca0fca9993b6e431b5a8f18ef" prefix=" " category="inline-code"></block>.</block>
+  <block id="ef21becc740e64be66d95dae6102c96b" category="list-text">Compruebe que el dominio de retransmisión se ha creado como desee:<block ref="837631748deddf22ad5093eb8e692fc8" prefix=" " category="inline-code"></block></block>
+  <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="paragraph-title">Ejemplo</block>
+  <block id="a1135c8ad88ea4ba1a44733d141d127f" category="paragraph">El siguiente comando crea el dominio de broadcast bcast1 en el espacio IP predeterminado, establece la MTU en 1500 y agrega cuatro puertos:</block>
+  <block id="3eb4407be0a68041d1a14be0f55138aa" category="paragraph"><block ref="8e73198de3259084af8bf415b1d828da" prefix="" category="inline-code"></block></block>
+  <block id="8ce92432b3a9f0e70f3f2194fd9e5d63" category="inline-link-macro">Relaciones entre iguales de clústeres y SVM</block>
+  <block id="3296d9be819d40b3f88d4db2f4765b60" category="paragraph">Puede definir el pool de direcciones IP disponibles en el dominio de retransmisión mediante la creación de una subred, o puede asignar SVM e interfaces al espacio IP en este momento. Para obtener más información, consulte <block ref="0f49ebc043f34c8eee78a10f20fb2395" category="inline-link-macro-rx"></block>.</block>
+  <block id="b7c51c7c8ce6cfe3ce9622c15ab603c5" category="paragraph">Si se necesita cambiar el nombre de un dominio de retransmisión existente, utilice<block ref="de2e0efb0823c8f70bf0a6956aa9f32d" prefix=" " category="inline-code"></block> el comando.</block>
+  <block id="c4eb738b4fb28de5899d6607eabfc15a" category="summary">Elimine dominios de retransmisión innecesarios. De este modo, se mueven los puertos asociados al espacio IP «predeterminado»</block>
+  <block id="69d33826982d1d12f324d1a4f62ae3ab" category="doc">Eliminar un dominio de retransmisión</block>
+  <block id="dfc877fbb3dd5451e66053dd8808b9b1" category="paragraph">Si ya no necesita un dominio de retransmisión, puede eliminarlo. Esto mueve los puertos asociados a ese dominio de retransmisión al espacio IP "predeterminado".</block>
+  <block id="7238432d2f6c501bf5a873fb2b1aa2d7" category="paragraph">No debe haber subredes, interfaces de red ni SVM asociadas al dominio de retransmisión que desee eliminar.</block>
+  <block id="0d6eaca347d77dcdc19b0b5ea1a76a61" category="list-text">El dominio de retransmisión "Cluster" creado por el sistema no se puede eliminar.</block>
+  <block id="c86cdfa0da2a4d2bbe3d74986b93ee5c" category="list-text">Cuando se elimina el dominio de retransmisión, se quitan todos los grupos de conmutación por error relacionados con el dominio de retransmisión.</block>
+  <block id="15536381fe2a2faa89fd9b3d765858dc" category="paragraph">El procedimiento que siga depende de la interfaz que utilice: System Manager o CLI:</block>
+  <block id="2a73cf4fc00ade50c334946244d87d3f" category="paragraph">*A partir de ONTAP 9.12.0, puede utilizar System Manager para eliminar un dominio de difusión*</block>
+  <block id="25b4cd8d82f19eb90a3e456bb673bf8e" category="paragraph">La opción delete no se muestra cuando el dominio de retransmisión contiene puertos o está asociado a una subred.</block>
+  <block id="c8a1e492c48f762ae54e7ebb4ab541d8" category="list-text">Seleccione *Red &gt; Descripción general &gt; dominio de difusión*.</block>
+  <block id="11325f67c791914c7c2be6dc6d510a40" category="inline-image-macro">Icono de opciones de menú</block>
+  <block id="18cda7d39c0d23abf04a9c2d34d065a5" category="list-text">Seleccione <block ref="d47b50c0fc9a1e10d010a1d0b2f31ccd" category="inline-image-macro-rx" type="image"></block> *&gt; Eliminar* junto al dominio de difusión que desea eliminar.</block>
+  <block id="d27fbf78daa20f580f2506f06c970c17" category="paragraph">*Utilice la CLI para eliminar un dominio de difusión*</block>
+  <block id="4144172f3b3d46962522b41714817b2d" category="paragraph">Eliminar un dominio de retransmisión:</block>
+  <block id="5f8a1a5751f8c542306289a85e36091e" category="paragraph"><block ref="3e8c642d9d28230b7ee4b2542ab14d65" prefix="" category="inline-code"></block></block>
+  <block id="a0acbfe543c454b3348d2c133f1b6295" category="paragraph">El siguiente comando elimina el dominio de difusión predeterminado-1 en IPspace1:</block>
+  <block id="b321c736b07e48b1322969a9c95bf535" category="paragraph"><block ref="327ac268b07d31761507d696a711658c" prefix="" category="inline-code"></block></block>
+  <block id="5c95c84543784e9f6a2fe5bf885e2294" category="summary">Antes de poder configurar un dominio de retransmisión para añadir al espacio IP nuevo, debe determinar qué puertos están disponibles para el dominio de retransmisión</block>
+  <block id="0c5196e82570c15f81530537057e1331" category="doc">Determinar qué puertos se pueden usar para un dominio de retransmisión (ONTAP 9,7 y versiones anteriores)</block>
+  <block id="a55490311f238285cbb94de7290101cc" category="paragraph">Antes de poder configurar un dominio de retransmisión para añadir al espacio IP nuevo, debe determinar qué puertos están disponibles para el dominio de retransmisión.</block>
+  <block id="c22f3cda47d5fdbc6e1f4f8e6014b80b" category="list-text">Los puertos pueden ser puertos físicos, VLAN o grupos de interfaces (grupos de interfaces).</block>
+  <block id="3c78652b2fd986979d6a5db98dfdfca4" category="list-text">Los puertos que desea añadir al nuevo dominio de retransmisión no se pueden asignar a un dominio de retransmisión existente.</block>
+  <block id="f55ecca1951608d9ee58243faa5b107c" category="list-text">Si los puertos que desea agregar al dominio de retransmisión ya se encuentran en otro dominio de retransmisión (por ejemplo, el dominio de retransmisión predeterminado en el espacio IP predeterminado), debe eliminar los puertos de ese dominio de retransmisión antes de asignarles el nuevo dominio de retransmisión.</block>
+  <block id="6899d13f3ef6ad75270d9a56232747d8" category="list-text">Los puertos que tienen asignadas LIF no se pueden quitar de un dominio de retransmisión.</block>
+  <block id="d467d03c8ba5fa104d666b5e698af708" category="list-text">Dado que las LIF de gestión del clúster y de gestión de nodos se asignan al dominio de retransmisión predeterminado en el espacio IP predeterminado, los puertos asignados a estas LIF no se pueden quitar del dominio de retransmisión predeterminado.</block>
+  <block id="9fe84254c2b50f9d152b2529ef6d5896" category="list-text">Determine las asignaciones de puertos actuales.</block>
+  <block id="87f0cb242dad3911382bed9e6b49a3eb" category="paragraph">En este ejemplo, el resultado del comando proporciona la siguiente información:</block>
+  <block id="060fc6a7d0732c3911402b04e0cd7712" category="list-text">Los puertos<block ref="96640993dd2592a16c29226daf83b860" prefix=" " category="inline-code"></block>, ,<block ref="5191792b1ad05675fea3bbf015036b3b" prefix=" " category="inline-code"></block>, ,<block ref="295208bc8c52d4a2745d40b6c029c8a2" prefix=" " category="inline-code"></block><block ref="40c989cc0bdee457475f49d3f3f8c10a" prefix=" " category="inline-code"></block> y<block ref="cbd803f54be888bcec7290684e827de3" prefix=" " category="inline-code"></block> en cada nodo se asignan al dominio de difusión por defecto.</block>
+  <block id="5a5769097d7ff909d9db4994eb94c598" category="list-text">Estos puertos están potencialmente disponibles para su uso en el dominio de retransmisión del espacio IP que desea crear.</block>
+  <block id="2d7bd16b2b05b3beba9d306ace93fc16" category="list-text">Determine qué puertos del dominio de retransmisión predeterminado se asignan a las interfaces LIF y, por lo tanto, no se pueden mover a un nuevo dominio de retransmisión.</block>
+  <block id="6485b14c0e329aebda0c4dcd7d09dbd0" category="paragraph"><block ref="16fdd92def5a71313d6535c74ef67b81" prefix="" category="inline-code"></block></block>
+  <block id="206fd17bd4ff22578ce7dfd3eeda1bce" category="paragraph">En el ejemplo siguiente, el resultado del comando proporciona la siguiente información:</block>
+  <block id="aea36eb42bb9dbe26fa3ca2ed50f13ef" category="list-text">Los puertos de nodo están asignados al puerto de<block ref="96640993dd2592a16c29226daf83b860" prefix=" " category="inline-code"></block> cada nodo y el nodo principal de la LIF administrativa de clúster está activado<block ref="96640993dd2592a16c29226daf83b860" prefix=" " category="inline-code"></block><block ref="164546f60261c7e4be0c5f5f9aaeec86" prefix=" " category="inline-code"></block> .</block>
+  <block id="e030789a4812857d3fe43582fb0c26e9" category="list-text">Los puertos<block ref="5191792b1ad05675fea3bbf015036b3b" prefix=" " category="inline-code"></block>, ,<block ref="295208bc8c52d4a2745d40b6c029c8a2" prefix=" " category="inline-code"></block>,<block ref="40c989cc0bdee457475f49d3f3f8c10a" prefix=" " category="inline-code"></block> y<block ref="cbd803f54be888bcec7290684e827de3" prefix=" " category="inline-code"></block> en cada nodo no alojan LIF y se pueden eliminar del dominio de retransmisión predeterminado y agregar a un nuevo dominio de retransmisión para el nuevo espacio IP.</block>
+  <block id="0c0ebf5d0c386effe0c4ea3bb6a091d0" category="summary">Vea una lista de dominios de retransmisión dentro de cada espacio IP de un clúster</block>
+  <block id="ab1bcf457d346a893b0eafa1a236c09a" category="doc">Mostrar dominios de retransmisión (ONTAP 9,7 y anteriores)</block>
+  <block id="cbe1dc3777cd20a0d92187abbff67361" category="paragraph">Puede mostrar la lista de dominios de retransmisión dentro de cada espacio IP de un clúster. El resultado también muestra la lista de puertos y el valor MTU para cada dominio de retransmisión.</block>
+  <block id="4dd0a3dcb24b65dc74edf225eea96e9e" category="paragraph">Muestre los dominios de retransmisión y los puertos asociados en el clúster:</block>
+  <block id="16bcfd3dd5caef4624a26861f613de4d" category="paragraph">El siguiente comando muestra todos los dominios de retransmisión y los puertos asociados en el clúster:</block>
+  <block id="02c6f3c7f2a102c8feaf17f1ee49d7d1" category="paragraph">El siguiente comando muestra los puertos del dominio de difusión bcast1 que tienen el estado de actualización del error, lo que indica que el puerto no se ha podido actualizar correctamente:</block>
+  <block id="f676f8146c874e30db84a1b86b98cdd8" category="paragraph">Para obtener más información, consulte la<block ref="757904457a186124ea090cb36514c336" category="inline-link-rx"></block>.</block>
+  <block id="f125fb7a17694fde8fc62bf1f5403f63" category="summary">Fusionar los puertos de un dominio de difusión en un dominio de retransmisión existente</block>
+  <block id="d6e77738134005faad3f13e9d99832e0" category="doc">Fusionar dominios de retransmisión (ONTAP 9,7 y anteriores)</block>
+  <block id="d44312486267d0b67b359622ebec3072" category="paragraph">Puede mover todos los puertos de un dominio de difusión a un dominio de difusión existente mediante el comando MERGE.</block>
+  <block id="c4d2cf7b708e6f4a9be5ebb749367d51" category="paragraph">Esta operación reduce los pasos necesarios si quita todos los puertos de un dominio de retransmisión y luego añade los puertos a un dominio de retransmisión existente.</block>
+  <block id="34742edd88e1c1a838801b96a12aa853" category="paragraph">Fusionar los puertos de un dominio de difusión en un dominio de difusión existente:</block>
+  <block id="231d7a8a938027c3f431dd44a351d590" category="list-text"><block ref="4ae3944df3ee772807922dcf9bb86c13" prefix="" category="inline-code"></block> Es el nombre del espacio IP en el que residen los dominios de retransmisión.</block>
+  <block id="b45cf8a38f8a35883dad2febf2eebd8c" category="list-text"><block ref="d62caed4dd1926010ddc86f190b6ba33" prefix="" category="inline-code"></block> es el nombre del dominio de retransmisión que se fusionará.</block>
+  <block id="ebbc4cb7d39145643367dba5b44ec3a4" category="list-text"><block ref="8bc45a66ca1d95be402cd8b945966bc0" prefix="" category="inline-code"></block> es el nombre del dominio de retransmisión que recibirá puertos adicionales.</block>
+  <block id="084a5499a3262408f7407d4b5d94a8cd" category="paragraph">El siguiente ejemplo fusiona el dominio de broadcast bd-data1 en el dominio de broadcast bd-data2:</block>
+  <block id="8c0d6cb3daaa4c421de57e8603baba9e" category="paragraph"><block ref="222fb13a2f3f8435ab3341d0a1e6646e" prefix="" category="inline-code"></block></block>
+  <block id="3ba5cac2cdb7a6b105f8f2f54ab809ab" category="summary">Divida un dominio de difusión para sincronizar la configuración de ONTAP 9.0 a 9.7 con la topología de red física</block>
+  <block id="de68df247c72eac7598794005c3adb05" category="doc">Dividir dominios de retransmisión (ONTAP 9,7 o anterior)</block>
+  <block id="1665dbb387021af02fbd41599af8c1ea" category="paragraph">Puede modificar un dominio de retransmisión existente dividiéndolo en dos dominios de retransmisión diferentes, y cada dominio de retransmisión contendrá algunos de los puertos originales asignados al dominio de retransmisión original.</block>
+  <block id="9f09e6fc8b14b00ee0893ebaf95d57f5" category="list-text">Si los puertos están en un grupo de conmutación por error, todos los puertos de un grupo de conmutación por error deben estar divididos.</block>
+  <block id="0f3b145a3b547dc0be5f0e9aac22376d" category="list-text">Si los puertos tienen LIF asociadas, las LIF no pueden formar parte de los rangos de una subred.</block>
+  <block id="1436ed75c3dbf565a1b99976386fad9c" category="paragraph">Divida un dominio de retransmisión en dos dominios de retransmisión:</block>
+  <block id="3f555ebbd92becae184f01887af6d1bc" category="list-text"><block ref="4ae3944df3ee772807922dcf9bb86c13" prefix="" category="inline-code"></block> Es el nombre del espacio IP en el que reside el dominio de retransmisión.</block>
+  <block id="fd0bf1d9d932f6e270977c4b7d345378" category="list-text"><block ref="d62caed4dd1926010ddc86f190b6ba33" prefix="" category="inline-code"></block> es el nombre del dominio de retransmisión que se dividirá.</block>
+  <block id="95bc0aa511018e57fce15a6576a48093" category="list-text"><block ref="0a902740c3a036c7e0d2e7d9629f8b97" prefix="" category="inline-code"></block> es el nombre del nuevo dominio de retransmisión que se creará.</block>
+  <block id="6a6f9b1e774f2ce8e84c95acac76ae96" category="list-text"><block ref="739b964305f4482d70b429f32839ba08" prefix="" category="inline-code"></block> es el nombre del nodo y el puerto que se van a agregar al nuevo dominio de retransmisión.</block>
+  <block id="23c0ae72a284fcf3f5b10548f5789ff4" category="summary">Bienvenido al flujo de trabajo de recuperación tras fallos de ruta de NAS de ONTAP 9.0 - 9.7</block>
+  <block id="34db590c01ede9e82dd63cccecaa913f" category="doc">Configuración de la conmutación por error de ruta NAS (ONTAP 9,7 y versiones anteriores)</block>
+  <block id="6bd13b949c8f90ab75bda1bca4590734" category="paragraph">Este flujo de trabajo le guía por los pasos de configuración de redes para configurar la conmutación por error de rutas NAS para ONTAP 9.0 - 9.7. En este flujo de trabajo se dan por hechos los siguientes elementos:</block>
+  <block id="504b17be8679b22ce0ff24309326833c" category="list-text">Desea utilizar las prácticas recomendadas de conmutación por error de rutas NAS que simplifican la configuración de red.</block>
+  <block id="084e87a2feb2d2b3178ae0ce559845d4" category="list-text">Desea utilizar la CLI, no con System Manager.</block>
+  <block id="edd065cbe8aace4091a0ae0c74038b57" category="list-text">Está configurando la conexión a redes en un sistema nuevo que ejecuta ONTAP 9.0 a 9.7.</block>
+  <block id="f5bf5336fca238353f35af37209df243" category="paragraph">Si ejecuta una versión de ONTAP posterior a 9.7, debe utilizar el procedimiento de conmutación al nodo de respaldo de la ruta NAS para ONTAP 9.8 o posterior:</block>
+  <block id="ec2261a75bde24b45faec00c74cb5402" category="inline-link-macro">ONTAP 9.8 y flujo de trabajo de conmutación al nodo de respaldo de ruta de NAS posterior</block>
+  <block id="426171489fede6b6c617db26566f2b65" category="list-text"><block ref="426171489fede6b6c617db26566f2b65" category="inline-link-macro-rx"></block></block>
+  <block id="5c701a2881474e7fd80b7c493de7a89b" category="paragraph">Si desea obtener información detallada sobre los componentes y la administración de la red, debe utilizar el material de referencia de administración de red:</block>
+  <block id="33343788000c2e11b2ab3d1f5c0a84f4" category="inline-link-macro">Información general sobre la gestión de redes</block>
+  <block id="c018500b1daca5c03a1b256cd2e162b1" category="list-text"><block ref="c018500b1daca5c03a1b256cd2e162b1" category="inline-link-macro-rx"></block></block>
+  <block id="51a7c4cc865e3b2797a7e9bad8a38cd9" category="summary">Configuración de recuperación tras fallos de rutas NAS para ONTAP 9.0 - 9.7</block>
+  <block id="06d5a559d704cb358a39441a58ad7bdc" category="doc">Flujo de trabajo de conmutación al nodo de respaldo de ruta NAS (ONTAP 9,7 y versiones anteriores)</block>
+  <block id="48a52df7e251ea9f3671d1eddb223a69" category="paragraph">Si ya está familiarizado con los conceptos básicos de red, es posible que pueda ahorrar tiempo en la configuración de la red revisando este flujo de trabajo práctico para la configuración de conmutación por error de ruta NAS.</block>
+  <block id="db56fc3159913493dd62271cf105ae5e" category="paragraph">Un LIF NAS migra automáticamente a un puerto de red superviviente tras un error de enlace en su puerto actual. Si su red es plana, puede confiar en los valores predeterminados de ONTAP para gestionar la recuperación tras fallos de ruta. De lo contrario, debe configurar la conmutación por error de ruta siguiendo los pasos de este flujo de trabajo.</block>
+  <block id="e809b033aefc596f34714759e8952cfd" category="inline-image-macro">Flujo de trabajo para configuración de conmutación al nodo de respaldo de ruta NAS</block>
+  <block id="7afa3e05706fb2c1d22370a50ddd70db" category="paragraph"><block ref="7afa3e05706fb2c1d22370a50ddd70db" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="673dcd987ffee0d36ad8b601d118bee1" category="admonition">Un LIF SAN no migra (a menos que lo mueva manualmente después del fallo del enlace). En su lugar, la tecnología multivía en el host desvía el tráfico a otra LIF. Para obtener más información, consulte <block ref="b35eb150b08c3207edd7d52f8c5b1782" category="inline-link-macro-rx"></block>.</block>
+  <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">Una</block>
+  <block id="85e2e027bff940fa88f819e030434f41" category="inline-link-macro">Rellene la hoja de trabajo</block>
+  <block id="dd592f9173f2e3aa39503dc6404b62cc" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="ba82cab04dc8cd96e7d1d4eb4ddaa74c" category="inline-link-macro-rx"></block></block>
+  <block id="7a21d4711ab8743806dfcc48fe98d49f" category="paragraph">Utilice la hoja de trabajo para planificar la conmutación por error de ruta NAS.</block>
+  <block id="aada29daee1d64ed0fe907043855cb7e" category="inline-image-macro">Dos</block>
+  <block id="3430a606df1bb4e9856b52bf4630cc68" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="855c5f5c266078890e0287e98c817adb" category="inline-link-macro-rx"></block></block>
+  <block id="e5e61e8932467a83b8d90c275a2ef298" category="paragraph">Cree un espacio de dirección IP distinto para cada SVM en un clúster.</block>
+  <block id="ca8a2087e5557e317599344687a57391" category="inline-image-macro">Tres</block>
+  <block id="2dead1d9ad7d823c51e1cff8d5128b65" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="35068c46c015a21209889b285af38788" category="inline-link-macro-rx"></block></block>
+  <block id="1910962f156f61912684490f4242065c" category="paragraph">Crear dominios de retransmisión.</block>
+  <block id="981b8fcee42e1e726a67a2b9a98ea6e9" category="inline-image-macro">Cuatro</block>
+  <block id="19122663da1f92b70a07dcad6d15f038" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block><block ref="709fb476c1c74490343cf76fbe3eb527" category="inline-link-macro-rx"></block></block>
+  <block id="3c084c392af3c1ac1cb987e1e9b9361d" category="paragraph">Cree subredes.</block>
+  <block id="e5d9de39f7ca1ba2637e5640af3ae8aa" category="inline-image-macro">Cinco</block>
+  <block id="62f0d7e61a87ca7750612015fcd9e49e" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block><block ref="f45004704d4c0d172f2819e8cc869fab" category="inline-link-macro-rx"></block></block>
+  <block id="667155d2bf1a682dd7b481d3b104f8f4" category="paragraph">Cree SVM para servir datos a los clientes.</block>
+  <block id="e6fbc0b9673f8c86726688d7607fc8f5" category="inline-image-macro">Seis</block>
+  <block id="5085681ae6e18662ed0f7dbc3acdd8b6" category="inline-link-macro">Cree LIF</block>
+  <block id="acb8a1e19dae2542880403acd668761e" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block><block ref="2b2e92d677c5f9738af6172260042ef9" category="inline-link-macro-rx"></block></block>
+  <block id="9ac3a14a3d6d5935af229768daa1a457" category="paragraph">Cree LIF en los puertos que desee utilizar para acceder a los datos.</block>
+  <block id="12e67aac3e7f9227cc35f8f047d7dc74" category="inline-image-macro">Siete</block>
+  <block id="07944f91170bbdc41891de5118723d5f" category="inline-link-macro">Configure los servicios DNS para la SVM</block>
+  <block id="09ea1912035f7c4012c76855c7edd529" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block><block ref="f3483a1000991c0ad065cd246c2a0d4e" category="inline-link-macro-rx"></block></block>
+  <block id="ba4515c67fa8b30b78068a6068b29366" category="paragraph">Configure los servicios DNS para la SVM antes de crear un servidor NFS o SMB.</block>
+  <block id="3f0f1f86cf650b1a2cf4754fc5fec337" category="summary">Complete todas las secciones de la hoja de trabajo antes de configurar la conmutación por error de rutas NAS para ONTAP 9.0 - 9.7</block>
+  <block id="97c96f564cb1a6da828d8dfec057cf12" category="doc">Hoja de datos para la configuración de conmutación al nodo de respaldo de ruta NAS (ONTAP 9,7 y versiones anteriores)</block>
+  <block id="83b133aa529b564cecd3e7d7a8f96314" category="paragraph">Debe completar todas las secciones de la hoja de trabajo antes de configurar la conmutación por error de la ruta NAS.</block>
+  <block id="e5bd0aee2452c5f3d5d5cab77d5dff6e" category="section-title">Configuración del espacio IP</block>
+  <block id="b97bd3c8bcc7f81686a9082b10daf43d" category="paragraph">Puede usar un espacio IP para crear un espacio de direcciones IP distinto para cada SVM de un clúster. Esto permite a los clientes en dominios de red separados administrativamente acceder a los datos del clúster mientras utilizan direcciones IP superpuestas del mismo rango de subredes de direcciones IP.</block>
+  <block id="a82be0f551b8708bc08eb33cd9ded0cf" category="cell">Información</block>
+  <block id="6e18e908568ef24580d93bfd3e0f40d7" category="cell">Necesario</block>
+  <block id="f8d0e53dace25d0c35a6408f7cc4b99f" category="cell">Sus valores</block>
+  <block id="2810996596467d952c3bc505ef2ce0c4" category="paragraph">Nombre del espacio IP</block>
+  <block id="3addeb84a4863033cbf00b39f8402b69" category="list-text">El nombre del espacio IP.</block>
+  <block id="b047342ee7d111aefcccd5670a47b87b" category="list-text">El nombre debe ser único en el clúster.</block>
+  <block id="dc92da9eb694675647cf429795361db5" category="section-title">Configuración de dominio de retransmisión</block>
+  <block id="a05666131ccfeadc81a46ce8db6fcc93" category="paragraph">Un dominio de retransmisión agrupa puertos que pertenecen a la misma red de capa 2 y establece la MTU para los puertos de dominio de retransmisión.</block>
+  <block id="3d1de194271f0ef6170d5b075b43f5a8" category="paragraph">Los dominios de retransmisión se asignan a un espacio IP. Un espacio IP puede contener uno o varios dominios de retransmisión.</block>
+  <block id="7a666d858ef4d90f82df092808c08225" category="list-text">El espacio IP al que se asigna el dominio de retransmisión.</block>
+  <block id="f78fb2ae89f1f25120e1dbc3eefae80c" category="list-text">Debe existir el espacio IP.</block>
+  <block id="4e66c0b0500d3b3ef6cbaebc0e0adf49" category="paragraph">Nombre de dominio de retransmisión</block>
+  <block id="65d3f1b2e060e13d61d3dcc5cb01e345" category="list-text">El nombre del dominio de retransmisión.</block>
+  <block id="0b4800d671f34459d0f8962d5a0b0d94" category="list-text">Este nombre debe ser único en el espacio IP.</block>
+  <block id="1a03f6720968dfb968df6cc034114444" category="paragraph">MTU</block>
+  <block id="8c9f46597d2aead3fa844651ee562ed6" category="list-text">La MTU del dominio de retransmisión.</block>
+  <block id="6a79bb70929dcc80f9375a5ada5a2c2f" category="list-text">Normalmente configurado en *1500* o *9000*.</block>
+  <block id="8904a66adde271eedf2d2612ef724d51" category="list-text">El valor MTU se aplica a todos los puertos del dominio de retransmisión y a los puertos que se añadan posteriormente al dominio de retransmisión.</block>
+  <block id="514e1f6ac6d46bd4dd1aff421440b7c6" category="admonition">El valor MTU debe coincidir con todos los dispositivos conectados a esa red. Tenga en cuenta que el tráfico de gestión de puertos e0M y del procesador de servicios debe tener la MTU establecida en no más de 1500 bytes.</block>
+  <block id="407c4e9fac86b98147da49acd4fa0d01" category="paragraph">Puertos</block>
+  <block id="a9d545a8be6012214571d812baced1af" category="list-text">Los puertos de red que se añadirán al dominio de retransmisión.</block>
+  <block id="e1961453874db902176504734ff74994" category="list-text">Los puertos asignados al dominio de retransmisión pueden ser puertos físicos, VLAN o grupos de interfaces (grupos de interfaces).</block>
+  <block id="1305f0748c773db97c49e7146800263a" category="list-text">Si un puerto está en otro dominio de retransmisión, debe eliminarse para poder agregarlo al dominio de retransmisión.</block>
+  <block id="79f36819c05f36d7aa6021153cf1cb0f" category="list-text">Los puertos se asignan especificando el nombre del nodo y el puerto: Por ejemplo, 1:e0d.</block>
+  <block id="d4eb3fd806f1b879ccaf2a16a2c42767" category="section-title">Configuración de subred</block>
+  <block id="9729f55cd82694df764e283507b8ccf9" category="paragraph">Una subred contiene pools de direcciones IP y una puerta de enlace predeterminada que se pueden asignar a las LIF utilizadas por las SVM que residen en el espacio IP.</block>
+  <block id="a1c6c5799039a99aad9c439e2cd5db96" category="list-text">Al crear una LIF en una SVM, puede especificar el nombre de la subred en lugar de suministrar una dirección IP y una subred.</block>
+  <block id="646599ec8773da9a93a68d449302526f" category="list-text">Dado que puede configurarse una subred con una puerta de enlace predeterminada, no tiene que crear la puerta de enlace predeterminada en un paso independiente al crear una SVM.</block>
+  <block id="d9e502816b831781990d1762c16564b2" category="list-text">Un dominio de retransmisión puede contener una o varias subredes. Puede configurar las LIF de SVM que están en diferentes subredes mediante la asociación de más de una subred al dominio de retransmisión del espacio IP.</block>
+  <block id="8c3d27ac961ae71ced271d4febccae0d" category="list-text">Cada subred debe contener direcciones IP que no se superpongan con direcciones IP asignadas a otras subredes en el mismo espacio IP.</block>
+  <block id="ddcf4e1c1216e96f385a3739e0a17f2c" category="list-text">Puede asignar direcciones IP específicas a LIF de datos de SVM y crear una puerta de enlace predeterminada para la SVM en lugar de usar una subred.</block>
+  <block id="727b5595061035010757a5289661b260" category="list-text">El espacio IP al que se asignará la subred.</block>
+  <block id="1ed3530a3787bea53a54c48ac5c62fc4" category="paragraph">Nombre de subred</block>
+  <block id="3bc5640ce9665d89513a468cc547e6e7" category="list-text">El nombre de la subred.</block>
+  <block id="d76124e4167fe8c750e2d08acfcca2ce" category="list-text">El nombre debe ser único en el espacio IP.</block>
+  <block id="a8288c2a3522ce8098992f847589b9c3" category="list-text">El dominio de retransmisión al que se asignará la subred.</block>
+  <block id="bdbf51e493f02bd57cc80cf06d9f7205" category="list-text">El dominio de retransmisión debe residir en el espacio IP especificado.</block>
+  <block id="e7c7c564e15052903f54b7e8c8aa486d" category="paragraph">Nombre de subred y máscara</block>
+  <block id="503c8e0f8167825792cf774622f4ddcc" category="list-text">La subred y la máscara en la que residen las direcciones IP.</block>
+  <block id="261366d41bd76a93bb2437087853a489" category="list-text">No puede especificar una puerta de enlace predeterminada para la subred.</block>
+  <block id="5bae9da685d7dace1251b3ffd3ccd898" category="list-text">Si no asigna una puerta de enlace al crear la subred, puede asignarla a la subred en cualquier momento.</block>
+  <block id="29c595bcdc7ffa8a27f2583bdf8ca0bd" category="paragraph">Intervalos de direcciones IP</block>
+  <block id="30c3bb312f3fc3c97ea4e9a9de1cdfde" category="list-text">Puede especificar un rango de direcciones IP o direcciones IP específicas. Por ejemplo, puede especificar un rango como:<block ref="7f8386efdf48158c8938319ab0d7ee26" prefix=" " category="inline-code"></block></block>
+  <block id="3b2576d784d591234dd70d07b0a01e51" category="list-text">Si no especifica un rango de direcciones IP, el rango completo de direcciones IP de la subred especificada está disponible para asignarse a las LIF.</block>
+  <block id="19574a7f9b48b89d6be7f52d664c9f69" category="paragraph">Forzar actualización de asociaciones de LIF</block>
+  <block id="e9ab789f936a3a886cc5cce66830eb7c" category="list-text">Especifica si se fuerza la actualización de las asociaciones LIF existentes.</block>
+  <block id="5676a4c28d818be40848aeef92ec3a40" category="list-text">De forma predeterminada, se produce un error en la creación de subredes si alguna interfaz de procesador de servicio o interfaces de red está utilizando las direcciones IP de los rangos proporcionados.</block>
+  <block id="4c4a2a7343af16e13f3154e9f1c4e1ae" category="list-text">El uso de este parámetro asocia cualquier interfaz tratada manualmente con la subred y permite que el comando se lleve a cabo correctamente.</block>
+  <block id="99897c39b8224cf5a25fe9c6f599b3a7" category="section-title">Configuración de SVM</block>
+  <block id="7acdd762e80048ce0b202007498ab360" category="paragraph">Utiliza SVM para servir datos a los clientes y hosts.</block>
+  <block id="3ab25d5f5087226e9601e9405341d073" category="inline-link-macro">Instale un MetroCluster FAS</block>
+  <block id="abbd612ee9cbfeb24eeb2620fdbeb3a7" category="inline-link-macro">Instale un MetroCluster de ampliación</block>
+  <block id="08cf8d8ff0eefec04bc3ee3801724ca5" category="paragraph">Los valores registrados sirven para crear una SVM de datos predeterminada. Si va a crear una SVM de origen de MetroCluster, consulte <block ref="5488151483f7e2bfe24758bbbb4d6f40" category="inline-link-macro-rx"></block>o la <block ref="0f945cf40056f72194333a50ae2a7c08" category="inline-link-macro-rx"></block>.</block>
+  <block id="909e80dc24d1482269e80eced7d88999" category="list-text">Nombre de la SVM.</block>
+  <block id="f9c215fad59eccfd633cc802142428bf" category="list-text">Debe utilizar un nombre de dominio completo (FQDN) para garantizar nombres SVM únicos en las ligas de clústeres.</block>
+  <block id="ef353fe31d5db8109b5d533c24bef6ec" category="paragraph">Nombre del volumen raíz</block>
+  <block id="71fb303e432869b4fecaa82142df78b0" category="list-text">El nombre del volumen raíz de la SVM.</block>
+  <block id="89e2bd1a8abca7dc54e226c642335923" category="list-text">El nombre del agregado que contiene el volumen raíz de la SVM.</block>
+  <block id="524fe24b7614583659b4776b84cf9fc0" category="list-text">Debe existir este agregado.</block>
+  <block id="06c36c7f86c5fbaf46d802a84b9181ad" category="list-text">El estilo de seguridad para el volumen raíz de SVM.</block>
+  <block id="dd7a83ccba76c6dcb9fb1c70e44b53cf" category="list-text">Los valores posibles son *ntfs*, *unix* y *mezclado*.</block>
+  <block id="5afd2082730bfa6121fd03528cb70ac6" category="list-text">El espacio IP al que se asigna la SVM.</block>
+  <block id="c5920bc5aa330be11d10b27e4a4f267a" category="list-text">Este espacio IP debe existir.</block>
+  <block id="9909525fa5942e85be246dfa744836e4" category="paragraph">Configuración de idioma de SVM</block>
+  <block id="534f06bd7d7e91addf533215d348f635" category="list-text">El idioma predeterminado que se usará para la SVM y sus volúmenes.</block>
+  <block id="6810bd6fb965e510a000caaaf5cede04" category="list-text">Si no especifica un idioma predeterminado, el idioma de SVM predeterminado se establece en *C.UTF-8*.</block>
+  <block id="c9d672e5232d7dd45cf750528352cfbb" category="list-text">La configuración de idioma de SVM determina el conjunto de caracteres utilizado para mostrar los nombres de archivos y los datos de todos los volúmenes NAS de la SVM. Puede modificar el idioma después de crear la SVM.</block>
+  <block id="cb001cd493365720d42ec425b1721062" category="section-title">Configuración de LIF</block>
+  <block id="e20ec2a162d3ed9a051e35844d6967ac" category="paragraph">Una SVM proporciona datos a clientes y hosts a través de una o varias interfaces lógicas de red (LIF).</block>
+  <block id="b69141d39d5f37e0dc4a7afcba6b5d15" category="list-text">El nombre de la SVM para la LIF.</block>
+  <block id="8e429a606dfb2cd8e6e6d6665eeb5067" category="paragraph">Nombre de LIF</block>
+  <block id="aca5c43eb5724bd30dab74c6c1b4ca51" category="list-text">Nombre de la LIF.</block>
+  <block id="d9875a9b18af94ad593e9cf6f2acd590" category="list-text">Puede asignar varios LIF de datos por nodo y puede asignar LIF a cualquier nodo del clúster, siempre y cuando el nodo tenga puertos de datos disponibles.</block>
+  <block id="dc21c1d5e0019fbe2ce57daf9055d365" category="list-text">Para proporcionar redundancia, debe crear al menos dos LIF de datos para cada subred de datos, y las LIF asignadas a una subred en particular deben asignarse puertos principales en nodos diferentes. *Importante:* Si está configurando un servidor SMB para que aloje Hyper-V o SQL Server a través de SMB para soluciones de operaciones no disruptivas, la SVM debe tener al menos una LIF de datos en cada nodo del clúster.</block>
+  <block id="77e741be92ecc04ee13fcfd53988b199" category="paragraph">Rol LIF</block>
+  <block id="3a2cdcdec40516552430edaef938a929" category="list-text">El rol de la LIF.</block>
+  <block id="da0fa0d25572794dea4ac4a6be847d1a" category="list-text">Los LIF de datos tienen asignado el rol de datos.</block>
+  <block id="6bcd23cd4d0583cbac3240665b21113a" category="cell">Sí Dedeprecated de ONTAP 9.6</block>
+  <block id="53cd0c7fe94923d60ebc43f128ac06b9" category="cell">Política de servicio para la LIF. La política de servicio define qué servicios de red pueden utilizar la LIF. Hay disponibles políticas de servicio y servicios incorporados para gestionar el tráfico de datos y gestión de las SVM de los datos y del sistema.</block>
+  <block id="ca0424782e05c72333cda58235a8e74b" category="cell">Sí, a partir de ONTAP 9.6</block>
+  <block id="5c3e82aaab88228809071abe1946de82" category="paragraph">Protocolos permitidos</block>
+  <block id="904e941dc3f7d5ad65283bdba75b4c91" category="list-text">Los protocolos que pueden utilizar la LIF.</block>
+  <block id="c27a6bb12bf5dc4359cfaafcf80b0083" category="list-text">De forma predeterminada, se permiten SMB, NFS y FlexCache. El protocolo FlexCache permite usar un volumen como volumen de origen para un volumen FlexCache en un sistema que ejecuta Data ONTAP en 7-Mode.</block>
+  <block id="4e1730669bff2008b0a4dffee3a59d7a" category="admonition">Los protocolos que usan la LIF no se pueden modificar una vez creada la LIF. Debe especificar todos los protocolos al configurar la LIF.</block>
+  <block id="3e59131434f3a574162c6a9f46c4bae5" category="paragraph">Nodo de inicio</block>
+  <block id="febe10a3047b2475b8983f8db76f7bb9" category="list-text">El nodo al que devuelve el LIF cuando el LIF se revierte a su puerto principal.</block>
+  <block id="0fc089cfc9daaf7fd97972795ea8cffb" category="list-text">Debería registrar un nodo de inicio para cada LIF de datos.</block>
+  <block id="a3f83c0fa8815df9be554f2f19e2a6b4" category="paragraph">Puerto inicial o dominio de retransmisión</block>
+  <block id="8248f505d519f103856ec5553ce0a1ca" category="list-text">El puerto al que devuelve la interfaz lógica cuando el LIF se revierte a su puerto raíz.</block>
+  <block id="1a3a0e0614b76b32b5b3d2114770bd19" category="list-text">Debe registrar un puerto de inicio para cada LIF de datos.</block>
+  <block id="2f6be82345aa8df96d0f1040df7eaf2f" category="list-text">La subred que se asignará a la SVM.</block>
+  <block id="e2395fd8c89f496becbd6d29cb6bf2bf" category="list-text">Todos los LIF de datos utilizados para crear conexiones SMB disponibles de forma continua para servidores de aplicaciones deben estar en la misma subred.</block>
+  <block id="92726c0f24832710bb5154f1048f934b" category="cell">Sí (si se utiliza una subred)</block>
+  <block id="489f99357e51540f388c06988f7d5a29" category="section-title">Configuración de DNS</block>
+  <block id="c7c142a0d5d4f9c60dcdf7a3bc09a4ff" category="paragraph">Debe configurar DNS en la SVM antes de crear un servidor NFS o SMB.</block>
+  <block id="44685b08b845cc11ae9c9f8140dc0d6b" category="list-text">El nombre de la SVM en la que se creará el servidor NFS o SMB.</block>
+  <block id="d04714ee29d29f72537dfb160f6d5ad5" category="paragraph">Nombre de dominio DNS</block>
+  <block id="a379c3b1b459e3dfdfbe21845dc1cf69" category="list-text">Lista de nombres de dominio que se anexan a un nombre de host al realizar la resolución de nombres de host a IP.</block>
+  <block id="a4472cd10a741a0f8d78c0359728a2d5" category="list-text">Enumere primero el dominio local, seguido de los nombres de dominio para los que se realizan más a menudo las consultas DNS.</block>
+  <block id="9da99b068b3f65fefc36626478b66566" category="paragraph">Direcciones IP de los servidores DNS</block>
+  <block id="19c87adcee53338ce2c53bae0c6be7b5" category="list-text">Lista de direcciones IP para los servidores DNS que proporcionarán la resolución de nombres para el servidor NFS o SMB.</block>
+  <block id="7ff51c9d56f426dd2680804fefe19f96" category="list-text">Los servidores DNS enumerados deben contener los registros de ubicación de servicio (SRV) necesarios para localizar los servidores LDAP de Active Directory y los controladores de dominio para el dominio al que se unirá el servidor SMB. El registro SRV se utiliza para asignar el nombre de un servicio al nombre de equipo DNS de un servidor que ofrece ese servicio. Se produce un error en la creación del servidor SMB si ONTAP no puede obtener los registros de ubicación del servicio mediante consultas DNS locales. La forma más sencilla de garantizar que ONTAP pueda localizar los registros SRV de Active Directory es configurar los servidores DNS integrados de Active Directory como servidores DNS de SVM. Puede utilizar servidores DNS no integrados en Active Directory siempre que el administrador DNS haya agregado manualmente los registros SRV a la zona DNS que contenga información acerca de los controladores de dominio de Active Directory.</block>
+  <block id="232df65ca03c67ddb27adbf8e408280c" category="inline-link-macro">Cómo funciona la compatibilidad con DNS para Active Directory en Microsoft TechNet</block>
+  <block id="3cd9abcfa006c1e077bce0c7b96b9c20" category="list-text">Para obtener información sobre los registros SRV integrados en Active Directory, consulte el tema <block ref="d1f6662e4871c2f33d4b20711c690ec4" category="inline-link-macro-rx"></block>.</block>
+  <block id="dd47bd62208837b6e1f60041344e1295" category="section-title">Configuración de DNS dinámica</block>
+  <block id="c45d5ec9671bb526fc03e7539cffa0ed" category="paragraph">Antes de poder utilizar DNS dinámico para agregar automáticamente entradas DNS a los servidores DNS integrados en Active Directory, debe configurar DNS dinámico (DDNS) en la SVM.</block>
+  <block id="09c16992a902cd1818335845718fd9a7" category="paragraph">Se crean registros de DNS para cada LIF de datos de la SVM. Si crea varias LIF de datos en la SVM, puede equilibrar las conexiones de clientes con las direcciones IP de datos asignadas. La carga DNS equilibra las conexiones que se realizan utilizando el nombre de host a las direcciones IP asignadas en un turno rotatorio.</block>
+  <block id="b2342f7f4b047678a52f44c5a1c7d747" category="list-text">La SVM en la que desea crear un servidor NFS o SMB.</block>
+  <block id="3359de90ad703eb25320fdf6246535c4" category="paragraph">Si se utiliza DDNS</block>
+  <block id="4509c88bd3315acc21448a213e2e65a7" category="list-text">Especifica si se debe usar DDNS.</block>
+  <block id="0bbc8715109e7d978d1bd9a97ed54eb5" category="list-text">Los servidores DNS configurados en la SVM deben ser compatibles con DDNS. De forma predeterminada, DDNS está desactivado.</block>
+  <block id="fd2ff08f0ed721e158829abea5b2f554" category="paragraph">Si se utiliza DDNS seguro</block>
+  <block id="bbb664556743685b88e062062c435131" category="list-text">La DDNS segura solo es compatible con el DNS integrado en Active Directory.</block>
+  <block id="05ed41391caf6661a07768eaa3dab5e8" category="list-text">Si el DNS integrado en Active Directory sólo permite actualizaciones DDNS seguras, el valor de este parámetro debe ser TRUE.</block>
+  <block id="b364c30be937abefba6a4416aeb852c0" category="list-text">De forma predeterminada, la DDNS segura está desactivada.</block>
+  <block id="3acd119655ed0a9783317f21b6fdbd87" category="list-text">La DDNS segura solo se puede habilitar después de que se haya creado un servidor SMB o una cuenta de Active Directory para la SVM.</block>
+  <block id="59bf7732b97416bd383c815b45e84669" category="paragraph">FQDN del dominio DNS</block>
+  <block id="664b37c4a141f9cef183a7f4fc968661" category="list-text">El FQDN del dominio DNS.</block>
+  <block id="6bc11f0c86a787b4d889735982c409da" category="list-text">Debe usar el mismo nombre de dominio configurado para los servicios de nombre DNS en la SVM.</block>
+  <block id="3fca185d931e262fa7a276c9bf6f2cee" category="sidebar">La interfaz de System Manager disponible en ONTAP 9,7 y versiones anteriores se denomina System Manager Classic y proporciona una navegación de usuario distinta a la de la interfaz de System Manager para ONTAP 9,8 y versiones posteriores. Para los usuarios de System Manager en ONTAP 9,7 y versiones anteriores, este sitio de documentación proporciona flujos de trabajo de configuración con System Manager Classic, así como la ayuda en línea de System Manager Classic para ONTAP 9,6 y 9,7. Los aspectos básicos de redes de ONTAP también han cambiado significativamente a partir de ONTAP 9,8, y este sitio de documentación proporciona información de redes que se aplica solo a ONTAP 9,7 y versiones anteriores.</block>
+  <block id="6c0c5be5efc057d5f1d970ee6885e6d7" category="sidebar">Gestión de dominios de retransmisión (ONTAP 9,7 o anterior)</block>
+  <block id="ba13c142bb4736a3dabe15c34364414f" category="sidebar">Gestión de red para ONTAP 9,7 y versiones anteriores</block>
+  <block id="b1ddb251aa66bea48e797b1ba2490583" category="sidebar">Temas generales sobre redes (ONTAP 9,7 y anteriores)</block>
+  <block id="a29d5547f6b6a3eb59e3d47cdb1c8b3e" category="sidebar">Dominios de retransmisión (ONTAP 9,7 o anterior)</block>
+  <block id="d7f29243972dcd66136a878c3167ee3a" category="sidebar">Acerca de la conmutación al nodo de respaldo de ruta NAS (ONTAP 9,7 y versiones anteriores)</block>
 </blocks>

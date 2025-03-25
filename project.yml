@@ -41,6 +41,11 @@ sidebar:
   - title: Gestión de clústeres mediante System Manager 9.6 y 9.7
     entries:
     - section: online-help-96-97
+  - title: Gestión de red para ONTAP 9,7 y versiones anteriores
+    entries:
+    - section: networking-failover
+    - section: networking-bd
+    - section: networking
   - title: Documentos de ONTAP
     url: https://docs.netapp.com/us-en/ontap/
   - title: Avisos legales

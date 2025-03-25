@@ -5,7 +5,12 @@ keywords: aggregates, system, manager, security, backup, performance, data, shar
 summary: Puede usar System Manager para crear agregados que admitan los distintos requisitos de seguridad, backup, rendimiento y uso compartido de datos de los usuarios. 
 ---
 = Gestione agregados con System Manager: ONTAP 9.7 y versiones anteriores
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 Puede utilizar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para crear agregados para dar cabida a los distintos requisitos de seguridad, backup, rendimiento y uso compartido de datos de los usuarios.

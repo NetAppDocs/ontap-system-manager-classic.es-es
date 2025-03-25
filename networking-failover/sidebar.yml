@@ -1,0 +1,14 @@
+---
+section: networking-failover
+title: Flujo de trabajo de conmutación al nodo de respaldo de ruta NAS (ONTAP 9,7
+  y versiones anteriores)
+entries:
+- title: Acerca de la conmutación al nodo de respaldo de ruta NAS (ONTAP 9,7 y versiones
+    anteriores)
+  url: "/networking-failover/set_up_nas_path_failover_9_to_97_cli.html"
+- title: Flujo de trabajo de conmutación al nodo de respaldo de ruta NAS (ONTAP 9,7
+    y versiones anteriores)
+  url: "/networking-failover/workflow__nas_path_failover_overview_manual.html"
+- title: Hoja de datos para la configuración de conmutación al nodo de respaldo de
+    ruta NAS (ONTAP 9,7 y versiones anteriores)
+  url: "/networking-failover/worksheet_for_nas_path_failover_configuration_manual.html"

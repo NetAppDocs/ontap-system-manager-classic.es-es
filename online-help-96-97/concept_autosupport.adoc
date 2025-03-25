@@ -5,7 +5,12 @@ keywords: autosupport, notification, message, monitor, system, health, storage, 
 summary: Puede usar System Manager para configurar las notificaciones de AutoSupport que permiten supervisar el estado del sistema de almacenamiento. 
 ---
 = Gestione notificaciones de AutoSupport con System Manager: ONTAP 9.7 y versiones anteriores
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar las notificaciones de AutoSupport que permiten supervisar el estado del sistema de almacenamiento.
