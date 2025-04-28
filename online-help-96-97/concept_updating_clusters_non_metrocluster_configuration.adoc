@@ -13,7 +13,7 @@ summary: 'Puede usar System Manager para actualizar un clúster o los nodos indi
 [role="lead"]
 Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para actualizar un clúster o los nodos individuales de un par de alta disponibilidad. Para realizar una actualización, debe seleccionar una imagen de ONTAP, comprobar que el clúster o los nodos individuales de la pareja de ha estén listos para la actualización y, a continuación, llevar a cabo la actualización.
 
-image::../media/updating_cluster.gif[actualizando clúster]
+image::../media/updating_cluster.gif[actualice clústeres en una configuración que no sea de MetroCluster con el administrador del sistema]
 
 *Información relacionada*
 

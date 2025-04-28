@@ -17,7 +17,6 @@ Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones 
 
 == Ventana de red
 
-[role="lead"]
 Puede usar la ventana Network para ver la lista de componentes de red, como subredes, interfaces de red, puertos Ethernet, dominios de retransmisión, Adaptadores FC/FCoE y NVMe, así como espacios IP, y para crear, editar o eliminar estos componentes en el sistema de almacenamiento.
 
 

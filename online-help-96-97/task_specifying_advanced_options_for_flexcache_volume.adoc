@@ -14,7 +14,7 @@ summary: A partir de System Manager 9.6, cuando se edita un volumen FlexCache, e
 A partir de System Manager 9.6, cuando se edita un volumen FlexCache, es posible especificar las opciones avanzadas que se desean asociar al volumen FlexCache.
 
 .Pasos
-. *Opcional:* en la ventana *Editar volumen FlexCache*, haga clic en image:../media/advanced_options.gif[""] para especificar las opciones avanzadas.
+. *Opcional:* En la ventana *Editar volumen de FlexCache*, haz clic image:../media/advanced_options.gif["icono de opciones avanzadas"] para especificar las opciones avanzadas.
 +
 Aparece la ventana Opciones avanzadas. Contiene secciones (los encabezados de la columna izquierda), en las que puede especificar varias opciones.
 

@@ -178,7 +178,3 @@ Muestra el nombre del pool al que se asignó el LUN de cabina seleccionado.
 === El área Detalles
 
 El área debajo de la lista de LUN de cabina muestra información detallada sobre el LUN de cabina seleccionado.
-
-*Información relacionada*
-
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Referencias y requisitos de instalación de la virtualización FlexArray"]

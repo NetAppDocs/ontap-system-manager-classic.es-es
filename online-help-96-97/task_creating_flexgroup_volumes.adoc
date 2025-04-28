@@ -70,7 +70,7 @@ Impide que los datos del volumen se muevan a un nivel de cloud.
 ** Si sólo existen agregados FabricPool en el SVM, el botón *FabricPool* se muestra en la posición "Activado" y no se puede cambiar.
 
 
-. Si desea especificar agregados concretos, haga clic en image:../media/advanced_options.gif[""] (opciones avanzadas).
+. Si desea especificar agregados concretos, haga clic en image:../media/advanced_options.gif["icono de opciones avanzadas"] (opciones avanzadas).
 +
 Los agregados asociados con el volumen FlexGroup que va a crear se seleccionan de forma predeterminada según las prácticas recomendadas. Se muestran junto a la etiqueta *agregados*.
 

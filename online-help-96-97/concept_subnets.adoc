@@ -17,7 +17,6 @@ Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y ver
 
 == Editar la configuración de la subred
 
-[role="lead"]
 Puede usar System Manager para modificar atributos de subred, como el nombre, la dirección de subred, el rango de direcciones IP y la dirección de puerta de enlace de la subred.
 
 .Acerca de esta tarea

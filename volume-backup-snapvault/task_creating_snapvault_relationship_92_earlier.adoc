@@ -59,13 +59,13 @@ Sin conexión entre iguales
 
 
 +
-image::../media/dest_vol_snapvault.gif[SnapVault vol. dest]
+image::../media/dest_vol_snapvault.gif[pestaña configuration destination volume con la casilla de verificación habilitar deduplicación]
 
 . En la sección *Detalles de configuración*, seleccione `XDPDefault` como política de protección.
 . Seleccione una programación de protección de la lista de programaciones.
 . Asegúrese de que la casilla de verificación *inicializar relación* esté activada para transferir la copia snapshot básica y, a continuación, haga clic en *Crear*
 +
-image::../media/config_details_snapvault.gif[detalles de configuración SnapVault]
+image::../media/config_details_snapvault.gif[separador detalles de configuración con la casilla de control initialize relationship]
 
 +
 El asistente crea la relación con la política de almacén y la programación especificadas. Para inicializar la relación, inicie una transferencia inicial de datos del volumen de origen al volumen de destino.
@@ -74,14 +74,14 @@ El asistente crea la relación con la política de almacén y la programación e
 La sección Estado muestra el estado de cada trabajo.
 
 +
-image::../media/create_snapvault_success.gif[creación del éxito de SnapVault]
+image::../media/create_snapvault_success.gif[cree una pestaña de relación de protección con la sección de estado que muestra el estado de cada trabajo]
 
 . Compruebe que el estado de la relación de SnapVault sea en la `Snapmirrored` estado.
 +
 .. Seleccione el volumen de la lista Volumes y, a continuación, haga clic en *Data Protection*.
 .. En la ficha inferior de *Protección de datos*, compruebe que la relación de SnapMirror que ha creado aparece en la lista y que el estado de la relación es `Snapmirrored` y el tipo es `Vault`.
 +
-image::../media/data_protection_window_sv.gif[ventana de protección de datos sv]
+image::../media/data_protection_window_sv.gif[la pestaña inferior de la protección de datos]
 
 
 

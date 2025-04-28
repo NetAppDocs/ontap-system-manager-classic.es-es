@@ -56,4 +56,4 @@ En la segunda fase, el sitio está listo para el proceso de regreso.
 
 El siguiente diagrama de flujo muestra las fases y procesos que ocurren cuando se inician operaciones de conmutación de sitios y conmutación de estado.
 
-image::../media/switchover_switchback_workflow.jpg[flujo de trabajo de conmutación de estado]
+image::../media/switchover_switchback_workflow.jpg[gráfico de flujo de trabajo de conmutación y conmutación de estado de MetroCluster]

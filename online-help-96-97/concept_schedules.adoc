@@ -100,7 +100,6 @@ Especifique las opciones avanzadas de cron en meses, días, días semanales (si 
 
 == Eliminar programaciones
 
-[role="lead"]
 Puede usar System Manager para eliminar las programaciones que ejecutan tareas de gestión de almacenamiento específicas.
 
 .Pasos

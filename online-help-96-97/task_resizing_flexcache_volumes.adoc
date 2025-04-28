@@ -29,7 +29,7 @@ De forma predeterminada, se utilizan los agregados existentes para cambiar el ta
 +
 [NOTE]
 ====
-Si desea expandir el volumen de FlexCache añadiendo nuevos recursos, haga clic en image:../media/advanced_options.gif[""] (opciones avanzadas). Consulte link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Especificar las opciones avanzadas para FlexCache Volumes"].
+Si desea expandir el volumen de FlexCache añadiendo nuevos recursos, haga clic en image:../media/advanced_options.gif["icono de opciones avanzadas"] (opciones avanzadas). Consulte link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Especificar las opciones avanzadas para FlexCache Volumes"].
 
 ====
 . Haga clic en *Guardar* para cambiar el tamaño del volumen FlexCache.

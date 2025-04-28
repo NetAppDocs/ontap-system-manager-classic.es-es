@@ -37,7 +37,7 @@ A partir de System Manager 9.6, también se puede cambiar el nombre de los volú
 Esta opción solo estará disponible si habilitó la licencia de cifrado de volúmenes y si la plataforma correspondiente admite el cifrado.
 
 . Especifique el porcentaje de la reserva de copias Snapshot.
-. *Opcional:* haga clic image:../media/advanced_options.gif[""] Para modificar la configuración de volúmenes FlexGroup. Consulte link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar las opciones avanzadas para un volumen de FlexGroup"].
+. *Opcional:* Haga clic image:../media/advanced_options.gif["icono de opciones avanzadas"] para modificar la configuración del volumen de FlexGroup. Consulte link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar las opciones avanzadas para un volumen de FlexGroup"].
 . Especifique el tamaño deseado para el volumen de FlexGroup.
 +
 De forma predeterminada, se utilizan los agregados existentes para cambiar el tamaño del volumen de FlexGroup. El tamaño mínimo permitido para el volumen se muestra junto a los campos de tamaño.
@@ -45,7 +45,7 @@ De forma predeterminada, se utilizan los agregados existentes para cambiar el ta
 +
 [NOTE]
 ====
-Si desea expandir el volumen de FlexGroup añadiendo nuevos recursos, haga clic en image:../media/advanced_options.gif[""] (opciones avanzadas). Consulte link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar las opciones avanzadas para un volumen de FlexGroup"].
+Si desea expandir el volumen de FlexGroup añadiendo nuevos recursos, haga clic en image:../media/advanced_options.gif["icono de opciones avanzadas"] (opciones avanzadas). Consulte link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar las opciones avanzadas para un volumen de FlexGroup"].
 
 ====
 . Haga clic en *Guardar* para guardar los cambios.

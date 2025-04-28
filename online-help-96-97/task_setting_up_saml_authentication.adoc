@@ -13,7 +13,7 @@ summary: 'Puede configurar la autenticación del lenguaje de marcado de aserció
 [role="lead"]
 Puede usar System Manager Classic de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar la autenticación del lenguaje de marcado de aserción de seguridad (SAML). Los usuarios remotos se autentican a través de un proveedor de identidad seguro (IDP) antes de iniciar sesión en System Manager.
 
-image::../media/mfa_workflow.gif[flujo de trabajo de mfa]
+image::../media/mfa_workflow.gif[flujo de trabajo de configuración de la autenticación saml con system manager]
 
 
 

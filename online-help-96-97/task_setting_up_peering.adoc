@@ -13,7 +13,7 @@ summary: 'La configuración de una relación entre iguales implica la creación 
 [role="lead"]
 Puede usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 y versiones anteriores) para configurar la configuración de relaciones de paridad. La configuración de una relación entre iguales implica la creación de interfaces lógicas de interconexión de clústeres (LIF) en cada nodo, la creación de relaciones entre iguales de clústeres y la creación de relaciones entre iguales de SVM.
 
-image::../media/peering_workflow.gif[flujo de trabajo entre iguales]
+image::../media/peering_workflow.gif[flujo de trabajo para configurar la interconexión]
 
 
 

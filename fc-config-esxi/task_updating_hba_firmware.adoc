@@ -26,7 +26,3 @@ Los proveedores de HBA proporcionan controladores, firmware, BIOS y utilidades H
 Las instrucciones de instalación y las utilidades de instalación necesarias están disponibles con la descarga.
 
 
-
-*Información relacionada*
-
-http://kb.vmware.com/kb/1002413["Artículo de la base de conocimientos de VMware 1002413: Identificación del firmware de un HBA FC de Emulex o Qlogic"]

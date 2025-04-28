@@ -13,4 +13,4 @@ summary: 'Puede crear un clúster con System Manager o con la interfaz de línea
 [role="lead"]
 Puede crear un clúster con System Manager o con la interfaz de línea de comandos (CLI). Para crear un clúster mediante System Manager, debe configurar la dirección IP de gestión de nodos en cualquier nodo de la red de clústeres. Si ha creado un clúster mediante la CLI, puede configurar el clúster mediante System Manager.
 
-image::../media/guided_cluster_setup.gif[configuración guiada del clúster]
+image::../media/guided_cluster_setup.gif[flujo de trabajo de configuración del entorno del clúster]

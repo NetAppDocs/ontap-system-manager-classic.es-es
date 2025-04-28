@@ -26,7 +26,7 @@ La ventana Trace File Access para la SVM seleccionada muestra los requisitos pre
 . Haga clic en *continuar* para comenzar el proceso de rastreo de archivos.
 . Seleccione el protocolo que se utiliza para acceder a los archivos o recursos compartidos de la SVM seleccionada.
 . En el campo *Nombre de usuario*, introduzca el nombre del usuario que estaba intentando tener acceso al archivo o recurso compartido.
-. *Opcional:* haga clic image:../media/advanced_options.gif[""] para especificar más detalles para restringir el ámbito del trazado.
+. *Opcional:* Haga clic image:../media/advanced_options.gif["icono de opciones avanzadas"] para especificar más detalles para reducir el alcance de la traza.
 +
 La ventana de diálogo Opciones avanzadas le permite especificar los siguientes detalles:
 

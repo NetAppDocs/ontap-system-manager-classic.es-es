@@ -29,7 +29,7 @@ De forma predeterminada, se utilizan los agregados existentes para cambiar el ta
 +
 [NOTE]
 ====
-Si desea expandir el volumen de FlexGroup añadiendo nuevos recursos, haga clic en image:../media/advanced_options.gif[""] (opciones avanzadas).
+Si desea expandir el volumen de FlexGroup añadiendo nuevos recursos, haga clic en image:../media/advanced_options.gif["icono de opciones avanzadas"] (opciones avanzadas).
 
 ====
 . Especifique el porcentaje de la reserva de copias Snapshot.

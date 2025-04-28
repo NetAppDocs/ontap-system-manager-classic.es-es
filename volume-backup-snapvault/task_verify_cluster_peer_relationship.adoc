@@ -25,7 +25,7 @@ Debe realizar esta tarea desde el clúster *fuente*.
 .. Haga clic en *Configuración* > *Cluster peers*.
 .. Compruebe que el clúster con relación entre iguales esté autenticado y esté disponible.
 +
-image::../media/cluster_pper_930_backup.gif[respaldo de cluster pper 930]
+image::../media/cluster_pper_930_backup.gif[verificación del clúster con conexión entre iguales]
 
 .. Haga clic en *Configuración* > *SVM peers*.
 .. Compruebe que la SVM de destino tiene una relación entre iguales con la SVM de origen.
@@ -37,7 +37,7 @@ image::../media/cluster_pper_930_backup.gif[respaldo de cluster pper 930]
 .. En el panel *Detalles del clúster*, haga clic en *pares de clústeres*.
 .. Verifique que el clúster con relación entre iguales esté autenticado y disponible.
 +
-image::../media/cluster_peer_health_backup.gif[backup de estado de conexión entre clústeres y iguales]
+image::../media/cluster_peer_health_backup.gif[panel de detalles del clúster que muestra la sección cluster peers para verificar que el clúster con relación entre iguales está autenticado y disponible]
 
 .. Haga clic en la ficha *SVMs* y seleccione la SVM de origen.
 .. En el área *Peer Storage Virtual Machines*, compruebe que la SVM de destino tiene una relación entre iguales y la SVM de origen.

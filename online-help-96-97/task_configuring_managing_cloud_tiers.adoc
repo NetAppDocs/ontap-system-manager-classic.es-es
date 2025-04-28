@@ -15,7 +15,7 @@ Es posible usar el clásico de System Manager de ONTAP (disponible en ONTAP 9.7 
 * Debe tener agregados all-flash (todos SSD)
 
 
-image::../media/fabricpool_workflow.gif[flujo de trabajo de FabricPool]
+image::../media/fabricpool_workflow.gif[flujo de trabajo para configurar y gestionar niveles del cloud con el administrador del sistema]
 
 
 
@@ -69,7 +69,7 @@ En función de su selección, el campo *Nombre de servicio (FQDN)* se rellena au
 +
 Si ha seleccionado AWS Commercial Cloud Service (C2S) como tipo, debe especificar la URL de CAP, los certificados de CA de servidor y los certificados de cliente.
 
-. Si desea modificar cualquiera de los siguientes ajustes, haga clic en el icono Opciones avanzadas image:../media/advanced_options.gif[""] Para mostrar la ventana de diálogo *Opciones avanzadas*, donde puede realizar los cambios:
+. Si desea modificar cualquiera de los siguientes ajustes, haga clic en el icono Opciones avanzadas image:../media/advanced_options.gif["icono de opciones avanzadas"]para mostrar la ventana de diálogo *Opciones avanzadas* donde puede realizar los cambios:
 +
 ** El número de puerto utilizado para acceder al nivel de cloud
 ** Active o desactive la opción *SSL* que le permite transferir datos de forma segura al nivel de nube

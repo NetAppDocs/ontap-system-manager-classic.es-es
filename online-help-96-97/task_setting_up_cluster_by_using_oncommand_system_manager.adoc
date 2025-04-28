@@ -31,4 +31,4 @@ La operación de configuración del clúster no es compatible con las configurac
 
 Puede configurar el clúster mediante un archivo de plantilla o de forma manual mediante la introducción de los valores del asistente de configuración del clúster.
 
-image::../media/cluster_setup_workflow.gif[flujo de trabajo de configuración del clúster]
+image::../media/cluster_setup_workflow.gif[flujo de trabajo de configuración del clúster con el administrador del sistema de ONTAP]
